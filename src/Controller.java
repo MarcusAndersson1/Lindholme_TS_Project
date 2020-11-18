@@ -54,7 +54,24 @@ public class Controller {
     }
 
     public void planning(){
-        //
+        boolean run = true;
+        while(run){    
+
+        project.printCal();
+
+        System.out.println("Press 1 to Add a To-Do task");
+        System.out.println("Press 2 for removing a To-Do task");
+        System.out.println("Press 3 to move back to main menu");
+
+        String menu = input.nextLine();
+        
+        switch(menu){
+            case "1" -> project.addToDo(); 
+            case "2" -> project.removeToDo();
+            case "3" -> run = false;
+            default -> System.out.println("Please type a number 1-4");
+        }
+    }
     }
 
     

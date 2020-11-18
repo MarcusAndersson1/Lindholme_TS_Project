@@ -1,9 +1,12 @@
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Scanner;
 
 public class Project {
 
     private Backlog backlog = new Backlog();
     private Scanner input = new Scanner(System.in);
+    private ArrayList<ToDo> toDoList = new ArrayList<>();
     
 
     public void addUserStories(){
@@ -53,8 +56,45 @@ public class Project {
         //
     }
 
-    public void planning(){
-        //
+    public void printCal(){
+        Calendar cal = Calendar.getInstance();
+
+        cal.add(Calendar.DATE,0);
+        String date0 = cal.get(Calendar.DATE) + "-" + cal.get(Calendar.MONTH) + "-" + cal.get(Calendar.YEAR);
+        System.out.println(date0);
+        for(ToDo toDo : toDoList){
+            if(toDo.getDate().equals(date0)){
+                toDo.printDesription();
+            }
+        }
+
+        for(int i = 0; i<6; i++){     
+            cal.add(Calendar.DATE,1);
+            String date = cal.get(Calendar.DATE) + "-" + cal.get(Calendar.MONTH) + "-" + cal.get(Calendar.YEAR);
+            System.out.println(date);
+            
+            for(ToDo toDo : toDoList){
+                if(toDo.getDate().equals(date)){
+                    toDo.printDesription();
+                }
+            }
+        }
+    }
+
+    public void addToDo(){
+        
+        System.out.println("Add a short description for your team to see (Example meeting at 14:00)");
+        String description = input.nextLine();
+        System.out.println("Type the date you want to add it to (Exampel 22-10-2020) ");
+        String date  = input.nextLine();
+
+        ToDo toDo = new ToDo(description, date);
+        toDoList.add(toDo);
+
+    }
+
+    public void removeToDo(){
+        System.out.println("Under Construction...");
     }
 
     
