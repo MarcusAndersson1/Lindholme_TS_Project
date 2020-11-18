@@ -1,19 +1,55 @@
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Project {
+    private ManageProject manageProject;
 
-    private Backlog backlog = new Backlog();
+    private String name;
+    private String createdDate;
+    private String lastTimeOpened;
+    private ScrumBoard scrumboard;
+    private Backlog backlog;
+    private Team assignedTeam;
+
+
+/*
+
     private Scanner input = new Scanner(System.in);
     private ArrayList<ToDo> toDoList = new ArrayList<>();
-    
 
+*/
+
+    public Project(String name, String date) {
+        this.name = name;
+        this.createdDate = date;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setLastTimeOpened(String lastTimeOpened) {
+        this.lastTimeOpened = lastTimeOpened;
+    }
+
+
+
+/*
     public void addUserStories(){
         
-        System.out.println("Type your user storie");
+        System.out.println("Type your user story");
         String description = input.nextLine();
-        System.out.println("Type the score of the user storie");
+        System.out.println("Type the score of the user story");
         int score = input.nextInt();
         input.nextLine();
 
@@ -64,7 +100,7 @@ public class Project {
         System.out.println(date0);
         for(ToDo toDo : toDoList){
             if(toDo.getDate().equals(date0)){
-                toDo.printDesription();
+                toDo.printDescription();
             }
         }
 
@@ -75,7 +111,7 @@ public class Project {
             
             for(ToDo toDo : toDoList){
                 if(toDo.getDate().equals(date)){
-                    toDo.printDesription();
+                    toDo.printDescription();
                 }
             }
         }
@@ -85,7 +121,7 @@ public class Project {
         
         System.out.println("Add a short description for your team to see (Example meeting at 14:00)");
         String description = input.nextLine();
-        System.out.println("Type the date you want to add it to (Exampel 22-10-2020) ");
+        System.out.println("Type the date you want to add it to (Example 22-10-2020) ");
         String date  = input.nextLine();
 
         ToDo toDo = new ToDo(description, date);
@@ -102,6 +138,6 @@ public class Project {
     public void view(){
         //
     }
-
+*/
 
 }
