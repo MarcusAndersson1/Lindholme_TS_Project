@@ -3,10 +3,14 @@
 import menus.Print;
 import utilities.Input;
 
+import java.security.PrivateKey;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 
 public class ManageProject {
+
+    private static int projectID;
 
 
 
@@ -16,6 +20,10 @@ public class ManageProject {
         Project project = new Project(name, currentDateTime);
         System.out.println(project.getName());
         System.out.println(project.getCreatedDate());
+        projectID++;
+        Storage.addToClass(projectID, project);
+
+        Storage.printHashMap();
 
         Controller.runManageProject();
     }
