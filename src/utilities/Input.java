@@ -1,6 +1,6 @@
 package utilities;
 
-import src.menus.Print;
+import menus.Print;
 
 import java.util.Scanner;
 

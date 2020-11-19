@@ -1,7 +1,5 @@
-
-
-import src.menus.Print;
-import src.utilities.Input;
+import menus.Print;
+import utilities.Input;
 
 public class Controller {
     Main main;

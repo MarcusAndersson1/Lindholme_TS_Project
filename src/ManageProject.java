@@ -1,7 +1,7 @@
 
 
-import src.menus.Print;
-import src.utilities.Input;
+import menus.Print;
+import utilities.Input;
 
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
