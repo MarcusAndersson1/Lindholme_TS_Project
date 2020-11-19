@@ -11,6 +11,8 @@ public class ManageProject {
     private Input input = new Input();
     private Controller controller = new Controller();
     private Project project;
+    private Storage storage = new Storage();
+    private int id = 0;
 
     public ManageProject(Main main){ this.main = main; }
 
@@ -21,6 +23,8 @@ public class ManageProject {
         this.project = new Project(name, currentDateTime);
         System.out.println(project.getName());
         System.out.println(project.getCreatedDate());
+        this.id = id + 1;
+        this.storage.addToClass(this.id,this.project);
 
         controller.runManageProject();
     }
