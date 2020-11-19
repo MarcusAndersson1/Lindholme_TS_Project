@@ -1,9 +1,13 @@
+package src.utilities;
+
+import src.menus.Print;
+
 import java.util.Scanner;
 
 public class Input {
     private Print print = new Print();
 
-    public String fetchInputString(String message) {
+    public static String fetchInputString(String message) {
         System.out.println(message);
         Scanner input = new Scanner(System.in);
         return (input.nextLine());

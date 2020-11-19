@@ -1,10 +1,14 @@
+package src;
+
+import src.menus.Print;
+import src.utilities.Input;
+
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
 public class ManageProject {
     Main main;
     private Input input = new Input();
-    private Print print = new Print();
     private Controller controller = new Controller();
     private Project project;
 
@@ -12,7 +16,7 @@ public class ManageProject {
 
 
     public void createProject(){
-        String name = input.fetchInputString(Print.ENTER_PROJECT_NAME);
+        String name = Input.fetchInputString(Print.ENTER_PROJECT_NAME);
         String currentDateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy - H:mm"));
         this.project = new Project(name, currentDateTime);
         System.out.println(project.getName());

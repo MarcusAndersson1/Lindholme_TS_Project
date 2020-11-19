@@ -1,3 +1,5 @@
+package src.menus;
+
 public class Print {
 
     public static final String EOL = System.lineSeparator();
@@ -18,7 +20,7 @@ public class Print {
 
     public static final String ENTER_PROJECT_NAME = ("Enter Project Name: ");
 
-    void print(String stringToPrint) {
+    public void print(String stringToPrint) {
         System.out.print(stringToPrint);
     }
 }
