@@ -24,6 +24,8 @@ public class Project {
     public Project(String name, String date) {
         this.name = name;
         this.createdDate = date;
+        this.scrumboard = new ScrumBoard();
+        this.backlog = new Backlog();
     }
 
     public String getName() {
@@ -41,6 +43,12 @@ public class Project {
     public void setLastTimeOpened(String lastTimeOpened) {
         this.lastTimeOpened = lastTimeOpened;
     }
+
+    public Team getTeam(){return assignedTeam;}
+
+    public void setTeam(Team assignedTeam) {this.assignedTeam = assignedTeam;}
+
+
 
 
 
