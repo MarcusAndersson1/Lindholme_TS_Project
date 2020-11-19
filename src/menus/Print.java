@@ -20,7 +20,7 @@ public class Print {
 
     public static final String ENTER_PROJECT_NAME = ("Enter Project Name: ");
 
-    public void print(String stringToPrint) {
+    public static void print(String stringToPrint) {
         System.out.print(stringToPrint);
     }
 }

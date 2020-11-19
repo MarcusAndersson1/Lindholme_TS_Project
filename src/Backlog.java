@@ -5,12 +5,11 @@ import java.util.ArrayList;
 
 public class Backlog implements IBacklog {
 
-    private ArrayList<UserStory> backlogList = new ArrayList<>();
+    private ArrayList<UserStory> backlogList = new ArrayList<>();  //inheritance interface kanske+???
     private ArrayList<UserStory> toDoList = new ArrayList<>();
     private ArrayList<UserStory> inProgressList = new ArrayList<>();
     private ArrayList<UserStory> reviewList = new ArrayList<>();
     private ArrayList<UserStory> doneList = new ArrayList<>();
-
     private ArrayList<UserStory> allUserStoriesList = new ArrayList<>();
 
 
@@ -18,10 +17,10 @@ public class Backlog implements IBacklog {
     
     public void addToBacklog(String desc, int score, int id){
 
-        UserStory storie = new UserStory(desc, score, id);
-        backlogList.add(storie);
+        UserStory story = new UserStory(desc, score, id);
+        backlogList.add(story);
 
-        allUserStoriesList.add(storie);
+        allUserStoriesList.add(story);
 
     }
     public void remove(){
@@ -30,24 +29,24 @@ public class Backlog implements IBacklog {
 
     public void printAll(){
         System.out.println("    Backlog: ");
-        for(UserStory storie : backlogList){
-            System.out.println(storie.description + " " + storie.points + "p" + " Id: " + storie.id);
+        for(UserStory story : backlogList){
+            System.out.println(story.description + " " + story.points + "p" + " Id: " + story.id);
         }
         System.out.println("    To Do: ");
-        for(UserStory storie : toDoList){
-            System.out.println(storie.description + " " + storie.points + "p" + " Id: " + storie.id);
+        for(UserStory story : toDoList){
+            System.out.println(story.description + " " + story.points + "p" + " Id: " + story.id);
         }
         System.out.println("    In progress: ");
-        for(UserStory storie : inProgressList){
-            System.out.println(storie.description + " " + storie.points + "p" + " Id: " + storie.id);
+        for(UserStory story : inProgressList){
+            System.out.println(story.description + " " + story.points + "p" + " Id: " + story.id);
         }
         System.out.println("    Review: ");
-        for(UserStory storie : reviewList){
-            System.out.println(storie.description + " " + storie.points + "p" + " Id: " + storie.id);
+        for(UserStory story : reviewList){
+            System.out.println(story.description + " " + story.points + "p" + " Id: " + story.id);
         }
         System.out.println("    Done: ");
-        for(UserStory storie : doneList){
-            System.out.println(storie.description + " " + storie.points + "p" + " Id: " + storie.id);
+        for(UserStory story : doneList){
+            System.out.println(story.description + " " + story.points + "p" + " Id: " + story.id);
         }
     }
     
@@ -56,7 +55,7 @@ public class Backlog implements IBacklog {
         return allUserStoriesList.size();
     }
 
-    public UserStory getUserStorieById(int id){
+    public UserStory getUserStoryById(int id){
 
         UserStory result = null;
 		boolean found = false;
@@ -81,37 +80,37 @@ public class Backlog implements IBacklog {
 		return result;
     }
 
-    public void remove(UserStory storie){
+    public void remove(UserStory story){
         
-        if (storie != null)
+        if (story != null)
 		{
-            allUserStoriesList.remove(storie);
-            backlogList.remove(storie);
-            toDoList.remove(storie);
-            inProgressList.remove(storie);
-            reviewList.remove(storie);
-            doneList.remove(storie);
+            allUserStoriesList.remove(story);
+            backlogList.remove(story);
+            toDoList.remove(story);
+            inProgressList.remove(story);
+            reviewList.remove(story);
+            doneList.remove(story);
 			System.out.println("Removed");
 		}
 		else
 		{
-			System.out.println("Given ID is invalid, user storie not found");
+			System.out.println("Given ID is invalid, user story not found");
 		}
     }
 
-    public void changeList(UserStory storie){
-        if(backlogList.contains(storie)){
-            backlogList.remove(storie);
-            toDoList.add(storie);
-        }else if(toDoList.contains(storie)){
-            toDoList.remove(storie);
-            inProgressList.add(storie);
-        }else if(inProgressList.contains(storie)){
-            inProgressList.remove(storie);
-            reviewList.add(storie);
-        }else if(reviewList.contains(storie)){
-            reviewList.remove(storie);
-            doneList.add(storie);
+    public void changeList(UserStory story){
+        if(backlogList.contains(story)){
+            backlogList.remove(story);
+            toDoList.add(story);
+        }else if(toDoList.contains(story)){
+            toDoList.remove(story);
+            inProgressList.add(story);
+        }else if(inProgressList.contains(story)){
+            inProgressList.remove(story);
+            reviewList.add(story);
+        }else if(reviewList.contains(story)){
+            reviewList.remove(story);
+            doneList.add(story);
         }
     }
 

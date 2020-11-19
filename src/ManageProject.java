@@ -7,39 +7,34 @@ import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
 public class ManageProject {
-    Main main;
-    private Input input = new Input();
-    private Controller controller = new Controller();
-    private Project project;
-
-    public ManageProject(Main main){ this.main = main; }
 
 
-    public void createProject(){
+
+    public static void createProject(){
         String name = Input.fetchInputString(Print.ENTER_PROJECT_NAME);
         String currentDateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy - H:mm"));
-        this.project = new Project(name, currentDateTime);
+        Project project = new Project(name, currentDateTime);
         System.out.println(project.getName());
         System.out.println(project.getCreatedDate());
 
-        controller.runManageProject();
+        Controller.runManageProject();
     }
 
-    public void openProject(){
+    public static void openProject(){
       //  String currentDateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy - H:mm"));
       //  project.setLastTimeOpened(currentDateTime);
 
-        controller.runManageProject();
+        Controller.runManageProject();
     }
 
-    public void saveProject(){
+    public static void saveProject(){
 
-        controller.runManageProject();
+        Controller.runManageProject();
     }
 
-    public void deleteProject(){
+    public static void deleteProject(){
 
-        controller.runManageProject();
+        Controller.runManageProject();
     }
 
 }

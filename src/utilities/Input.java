@@ -14,7 +14,7 @@ public class Input {
 
     }
 
-    public int fetchInputInt() {
+    public static int fetchInputInt() {
         Scanner input = new Scanner(System.in);
         int digit;
         try {

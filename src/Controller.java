@@ -5,18 +5,17 @@ import src.utilities.Input;
 
 public class Controller {
     Main main;
-    private Input input = new Input();
-    private Print print = new Print();
 
 
-    public void controllerMenu() {
+
+    public static void controllerMenu() {
         int choice;
-        print.print(Print.CONTROLLER_MENU);
+        Print.print(Print.CONTROLLER_MENU);
 
         do {
-            choice = input.fetchInputInt();
+            choice = Input.fetchInputInt();
             if (choice == 0 || choice < 1 || choice > 2) {
-                print.print(Print.ERROR_INPUT);
+                Print.print(Print.ERROR_INPUT);
             }
         } while (choice < 1 || choice > 2);
 
@@ -27,24 +26,23 @@ public class Controller {
         }
     }
 
-    public void runManageProject (){
+    public static void runManageProject(){
        int choice;
-        print.print(Print.Project_Menu);
+        Print.print(Print.Project_Menu);
 
        do{
-            choice = input.fetchInputInt();
+            choice = Input.fetchInputInt();
             if(choice == 0 || choice < 1 || choice > 5 ){
-                print.print(Print.ERROR_INPUT);
+                Print.print(Print.ERROR_INPUT);
             }
        }while(choice < 1 || choice > 5 );
 
-             ManageProject manageProject = new ManageProject(this.main);
 
            switch (choice){
-               case 1 -> manageProject.createProject();
-               case 2 -> manageProject.openProject();
-               case 3 -> manageProject.saveProject();
-               case 4 -> manageProject.deleteProject();
+               case 1 -> ManageProject.createProject();
+               case 2 -> ManageProject.openProject();
+               case 3 -> ManageProject.saveProject();
+               case 4 -> ManageProject.deleteProject();
                case 5 -> controllerMenu();
 
            }
