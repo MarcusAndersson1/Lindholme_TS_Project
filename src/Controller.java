@@ -4,8 +4,6 @@ import utilities.Input;
 public class Controller {
     Main main;
 
-
-
     public static void controllerMenu() {
         int choice;
         Print.print(Print.CONTROLLER_MENU);
