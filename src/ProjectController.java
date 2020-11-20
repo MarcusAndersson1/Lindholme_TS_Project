@@ -6,10 +6,12 @@ import utilities.Input;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.Map;
 
 public class ProjectController {
 
     private static int projectID;
+    private static Project project;
     private static final HashMap<Integer, Project> projectStorage = new HashMap();
 
 
@@ -17,15 +19,13 @@ public class ProjectController {
     public static void createProject(){
         String name = Input.fetchInputString(Print.ENTER_PROJECT_NAME);
         String currentDateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy - H:mm"));
-        Project project = new Project(name, currentDateTime);
-        System.out.println(project.getName());
-        System.out.println(project.getCreatedDate());
         projectID++;
+        project = new Project(name, projectID, currentDateTime);
         projectStorage.put(projectID, project);
 
         printProjectStorage();
 
-        Controller.runManageProject();
+        Controller.runProjectController();
     }
 
     public static void openProject(){
@@ -33,38 +33,50 @@ public class ProjectController {
       //  project.setLastTimeOpened(currentDateTime);
         printProjectStorage();
 
-        Controller.runManageProject();
+        Controller.runProjectController();
     }
 
     public static void saveProject(){
 
-        Controller.runManageProject();
+        Controller.runProjectController();
     }
 
     public static void deleteProject(String s){
         int check;
-        do {
-            try{
-                s = Input.fetchInputString("Type ID");
-            }catch(Exception e){
-                check = 1;
-            }
-            check = 0;
-        }while(check == 1);
+        if (projectStorage.isEmpty()){
+            System.out.println(Print.THE_LIST_IS_EMPTY);
+        }else {
+            do {
+                try {
+                    s = Input.fetchInputString(Print.TYPE_ID);
+                } catch (Exception e) {
+                    check = 1;
+                }
+                check = 0;
+            } while (check == 1);
 
-        if(projectStorage.containsKey(s)) {
-            System.out.println(Print.ERROR_INPUT);
-        }else{
-            System.out.println("The project with ID " + s + "has been deleted");
-            projectStorage.remove(Integer.parseInt(s));
+            if (projectStorage.containsKey(Integer.parseInt(s))) {
+                System.out.println("The project with ID " + s + " has been deleted");
+                projectStorage.remove(Integer.parseInt(s));
+            } else {
+                System.out.println(Print.ERROR_INPUT);
+            }
         }
 
-        Controller.runManageProject();
+        Controller.runProjectController();
     }
 
-    public static void printProjectStorage(){
-        String content = projectStorage.toString();
-        System.out.println(content);
-    }
+    public static void printProjectStorage() {
+        if (projectStorage.isEmpty()){
+            System.out.println(Print.THE_LIST_IS_EMPTY);
+        }else{
+            for(Map.Entry<Integer,Project> entry: projectStorage.entrySet()){
+                System.out.println("User " + entry.getValue().getID() + ": " + entry.getValue().getName()
+                        + " " + entry.getValue().getCreatedDate());
+            }
+        }
 
+        // String content = teamStorage.toString();
+        //  System.out.println(content);
+    }
 }

@@ -2,6 +2,7 @@ public class Project {
     private ProjectController manageProject;
 
     private String name;
+    private int id;
     private String createdDate;
     private String lastTimeOpened;
     private ScrumBoard scrumboard;
@@ -17,8 +18,9 @@ public class Project {
 
 */
 
-    public Project(String name, String date) {
+    public Project(String name,int id, String date) {
         this.name = name;
+        this.id = id;
         this.createdDate = date;
         this.scrumboard = new ScrumBoard();
         this.backlog = new Backlog();
@@ -43,6 +45,10 @@ public class Project {
     public Team getTeam(){return assignedTeam;}
 
     public void setTeam(Team assignedTeam) {this.assignedTeam = assignedTeam;}
+
+    public int getID() {
+        return id;
+    }
 
 
 
