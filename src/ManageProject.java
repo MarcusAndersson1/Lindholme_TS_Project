@@ -3,10 +3,8 @@
 import menus.Print;
 import utilities.Input;
 
-import java.security.PrivateKey;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
-import java.util.HashMap;
 
 public class ManageProject {
 
@@ -21,9 +19,9 @@ public class ManageProject {
         System.out.println(project.getName());
         System.out.println(project.getCreatedDate());
         projectID++;
-        Storage.addToClass(projectID, project);
+        Storage.addToProjectStorage(projectID, project);
 
-        Storage.printHashMap();
+        Storage.printProjectStorage();
 
         Controller.runManageProject();
     }
