@@ -35,10 +35,10 @@ public class Controller {
 
 
            switch (choice){
-               case 1 -> ManageProject.createProject();
-               case 2 -> ManageProject.openProject();
-               case 3 -> ManageProject.saveProject();
-               case 4 -> ManageProject.deleteProject();
+               case 1 -> ProjectController.createProject();
+               case 2 -> ProjectController.openProject();
+               case 3 -> ProjectController.saveProject();
+               case 4 -> ProjectController.deleteProject("");
                case 5 -> controllerMenu();
 
            }

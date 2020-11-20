@@ -1,11 +1,5 @@
-
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Scanner;
-
 public class Project {
-    private ManageProject manageProject;
+    private ProjectController manageProject;
 
     private String name;
     private String createdDate;
