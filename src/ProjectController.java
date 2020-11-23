@@ -3,14 +3,17 @@
 import menus.Print;
 import utilities.Input;
 
+import javax.swing.text.Utilities;
+import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ProjectController {
 
-    private static int projectID;
+    private static int projectID; //wont work when importing projects IO before creating projects would be better
     private static Project project;
     private static final HashMap<Integer, Project> projectStorage = new HashMap();
 
@@ -36,8 +39,36 @@ public class ProjectController {
         Controller.runProjectController();
     }
 
-    public static void saveProject(){
+    public static void saveProjects() {
+        for (Project project : projectStorage.values()){
+            try{
+            IO.saveProject(project);}
+            catch (IOException e){
+                e.printStackTrace();
+            }
+    }
+        Controller.runProjectController();
+    }
+    public static void saveProject(Project p){ //this method is better but implementations comes later =)
+        try{
+            IO.saveProject(p);}
+        catch (IOException e){
+            e.printStackTrace(); //fix error handling later
+        }
+        Controller.runProjectController();
+    }
 
+    public static void loadProject() {
+        ArrayList<Integer> usersProjects = new ArrayList<>(); //take this list as input for the method instead
+        for (Integer projectID : usersProjects){
+            try{
+                Project loadedProject = IO.loadProject(projectID);  //perhaps check if file exists
+                projectStorage.put(loadedProject.getID(),loadedProject);
+            }
+            catch (Exception e){ //or check what type of error is received here instead
+                e.printStackTrace();
+            }
+        }
         Controller.runProjectController();
     }
 

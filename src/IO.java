@@ -19,9 +19,10 @@ public class IO{
         //ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(saveProjectFile));
         //oos.writeObject(project);
     }
-    public static void loadProject(int projectID) throws IOException {
+    public static Project loadProject(int projectID) throws Exception {
         File loadProjectFile = new File(PROJECT_LOCATION.replace("ProjectID", Integer.toString(projectID)));
-        //ObjectInputStream ois = new ObjectInputStream(new FileInputStream(loadProjectFile));
-        //oos.writeObject(project);
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(loadProjectFile));
+        Project loadedProject = (Project) ois.readObject();
+        return loadedProject;
     }
 }
