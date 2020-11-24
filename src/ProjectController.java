@@ -13,11 +13,13 @@ import java.util.Map;
 
 public class ProjectController {
 
-    private static int projectID; //wont work when importing projects IO before creating projects would be better
+    private static int projectID; //save to file
     private static Project project;
     private static final HashMap<Integer, Project> projectStorage = new HashMap();
 
-
+public ProjectController(User u){
+    //this.projectID = IO.loadProjectID();
+}
 
     public static void createProject(){
         String name = Input.fetchInputString(Print.ENTER_PROJECT_NAME);
