@@ -1,8 +1,9 @@
 package ProjectPlanning;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ProjectPlanning {
+public class ProjectPlanning implements Serializable {
     private String startDate;
     private String endDate;
     private ArrayList<Activity> activities = new ArrayList<>();

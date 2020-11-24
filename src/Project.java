@@ -1,8 +1,6 @@
 import java.io.Serializable;
 import ProjectPlanning.ProjectPlanning;
 
-public class Project {
-    private ProjectController manageProject;
 
 public class Project implements Serializable {
     private String name;
@@ -13,7 +11,7 @@ public class Project implements Serializable {
     private ScrumBoard scrumboard;
     private Backlog backlog;
     private Team assignedTeam;
-    private ProjectPlanning planning = new ProjectPlanning(createdDate,endDate);
+    private ProjectPlanning planning = new ProjectPlanning(createdDate, endDate);
 
 
 
@@ -24,7 +22,7 @@ public class Project implements Serializable {
 
 */
 
-    public Project(String name,int id, String startDate, String endDate) {
+    public Project(String name, int id, String startDate, String endDate) {
         this.name = name;
         this.id = id;
         this.createdDate = startDate;
@@ -49,18 +47,20 @@ public class Project implements Serializable {
         this.lastTimeOpened = lastTimeOpened;
     }
 
-    public Team getTeam(){return assignedTeam;}
+    public Team getTeam() {
+        return assignedTeam;
+    }
 
-    public void setTeam(Team assignedTeam) {this.assignedTeam = assignedTeam;}
+    public void setTeam(Team assignedTeam) {
+        this.assignedTeam = assignedTeam;
+    }
 
     public int getID() {
         return id;
     }
 
 
-
-
-
+}
 /*
     public void addUserStories(){
         
@@ -157,4 +157,4 @@ public class Project implements Serializable {
     }
 */
 
-}
+
