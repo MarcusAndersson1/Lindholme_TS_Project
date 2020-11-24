@@ -17,6 +17,7 @@ public class ProjectController {
     private static Project project;
     private static final HashMap<Integer, Project> projectStorage = new HashMap();
 
+
 public ProjectController(User u){
     //this.projectID = IO.loadProjectID();
 }
@@ -24,15 +25,15 @@ public ProjectController(User u){
     public static void createProject(){
         String name = Input.fetchInputString(Print.ENTER_PROJECT_NAME);
         String currentDateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy - H:mm"));
+        String endDate = setEndDate();
         projectID++;
-        project = new Project(name, projectID, currentDateTime);
+        project = new Project(name, projectID, currentDateTime, endDate);
         projectStorage.put(projectID, project);
 
         printProjectStorage();
 
         Controller.runProjectController();
     }
-
     public static void openProject(){
       //  String currentDateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy - H:mm"));
       //  project.setLastTimeOpened(currentDateTime);
@@ -111,5 +112,20 @@ public ProjectController(User u){
 
         // String content = teamStorage.toString();
         //  System.out.println(content);
+    }
+    public static String setEndDate(){
+    String endDate="";
+    int check;
+    do {
+
+        try {
+            endDate = Input.fetchInputString("Enter end Date dd/MM/YYYY");
+
+        } catch (Exception e) {
+            check = 1;
+        }
+        check = 0;
+    }while (check==1);
+        return endDate;
     }
 }

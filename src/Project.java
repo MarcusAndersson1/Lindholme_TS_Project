@@ -1,13 +1,17 @@
+import ProjectPlanning.ProjectPlanning;
+
 public class Project {
     private ProjectController manageProject;
 
     private String name;
     private int id;
     private String createdDate;
+    private String endDate;
     private String lastTimeOpened;
     private ScrumBoard scrumboard;
     private Backlog backlog;
     private Team assignedTeam;
+    private ProjectPlanning planning = new ProjectPlanning(createdDate,endDate);
 
 
 
@@ -18,10 +22,11 @@ public class Project {
 
 */
 
-    public Project(String name,int id, String date) {
+    public Project(String name,int id, String startDate, String endDate) {
         this.name = name;
         this.id = id;
-        this.createdDate = date;
+        this.createdDate = startDate;
+        this.endDate = endDate;
         this.scrumboard = new ScrumBoard();
         this.backlog = new Backlog();
     }
