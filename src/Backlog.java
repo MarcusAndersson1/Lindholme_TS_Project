@@ -1,9 +1,10 @@
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class Backlog implements IBacklog {
+public class Backlog implements IBacklog, Serializable{
 
     private ArrayList<UserStory> backlogList = new ArrayList<>();  //inheritance interface kanske+???
     private ArrayList<UserStory> toDoList = new ArrayList<>();

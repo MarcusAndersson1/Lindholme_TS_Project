@@ -21,7 +21,8 @@ public class Print {
             + ("[2] Open Project") + EOL
             + ("[3] Save Project") + EOL
             + ("[4] Delete Project") + EOL
-            + ("[5] Back") + EOL;
+            + ("[5] Load Project From File") + EOL
+            + ("[6] Back") + EOL;
 
     public static final String ENTER_PROJECT_NAME = (" Enter Project Name: ");
 
