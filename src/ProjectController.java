@@ -80,6 +80,7 @@ public ProjectController(){ //move the try catch out of the constructor
 
     public static void loadProject() {
         ArrayList<Integer> usersProjects = new ArrayList<>(); //take this list as input for the method instead
+        usersProjects.add(1);
         for (Integer projectID : usersProjects){
             try{
                 Project loadedProject = IO.loadProject(projectID);  //perhaps check if file exists
