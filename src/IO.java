@@ -5,6 +5,7 @@ public class IO{
     //public static final File PROJECT_DATA= new File("Files/ProjectData.txt");
     public static final File USER_DATA= new File("Files/UserData.txt");
     public static final String PROJECT_LOCATION = ("Files/ProjectREPLACE_WITH_ID.txt");
+    public static final File PROJECT_ID = new File("Files/ProjectID.txt");
 
     public static void saveUsers() throws IOException {
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(USER_DATA));
@@ -24,5 +25,14 @@ public class IO{
         ObjectInputStream ois = new ObjectInputStream(new FileInputStream(loadProjectFile));
         Project loadedProject = (Project) ois.readObject();
         return loadedProject;
+    }
+    public static int loadProjectID() throws Exception {
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(PROJECT_ID));
+        int loadedID = (int) ois.readObject();
+        return loadedID;
+    }
+    public static void saveProjectID(int projectID) throws IOException {
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(PROJECT_ID));
+        oos.writeObject(projectID);
     }
 }

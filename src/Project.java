@@ -1,6 +1,6 @@
-public class Project {
-    private ProjectController manageProject;
+import java.io.Serializable;
 
+public class Project implements Serializable {
     private String name;
     private int id;
     private String createdDate;
