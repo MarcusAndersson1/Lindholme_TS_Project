@@ -1,16 +1,18 @@
+import java.io.Serializable;
 
-
-public class User {
-            String name;
-            int ID;
+public class User implements Serializable{
+    private String name;
+    private int iD;
+    private String createdDate;
     public User(){}
-    public User(String name,int ID){
+    public User(String name,int iD, String date){
         this.name = name;
-        this.ID = ID;
+        this.iD = iD;
+        this.createdDate = date;
     }
 
     public int getID() {
-        return ID;
+        return iD;
     }
 
     public String getName() {
@@ -20,5 +22,9 @@ public class User {
     @Override
     public String toString() {
         return "Name: " + getName() + "ID: " + getID();
+    }
+
+    public String getCreatedDate() {
+        return createdDate;
     }
 }

@@ -10,21 +10,22 @@ public class Controller {
 
         do {
             choice = Input.fetchInputInt();
-            if (choice == 0 || choice < 1 || choice > 2) {
+            if (choice == 0 || choice < 1 || choice > 3) {
                 Print.print(Print.ERROR_INPUT);
             }
-        } while (choice < 1 || choice > 2);
+        } while (choice < 1 || choice > 3);
 
         switch (choice) {
-            case 1 -> runManageProject();
-            case 2 -> controllerMenu();
+            case 1 -> runProjectController();
+            case 2 -> runUserController();
+            case 3 -> runTeamController();
 
         }
     }
 
-    public static void runManageProject(){
+    public static void runProjectController(){
        int choice;
-        Print.print(Print.Project_Menu);
+        Print.print(Print.PROJECT_MENU);
 
        do{
             choice = Input.fetchInputInt();
@@ -35,16 +36,64 @@ public class Controller {
 
 
            switch (choice){
-               case 1 -> ManageProject.createProject();
-               case 2 -> ManageProject.openProject();
-               case 3 -> ManageProject.saveProject();
-               case 4 -> ManageProject.deleteProject();
+               case 1 -> ProjectController.createProject();
+               case 2 -> ProjectController.openProject();
+               case 3 -> ProjectController.saveProjects();
+               case 4 -> ProjectController.deleteProject("");
                case 5 -> controllerMenu();
 
            }
 
 
    }
+
+    public static void runUserController(){
+        int choice;
+        Print.print(Print.USER_MENU);
+
+        do{
+            choice = Input.fetchInputInt();
+            if(choice == 0 || choice < 1 || choice > 5 ){
+                Print.print(Print.ERROR_INPUT);
+            }
+        }while(choice < 1 || choice > 5 );
+
+
+        switch (choice){
+            case 1 -> UserController.createUser();
+            case 2 -> UserController.openUser();
+            case 3 -> UserController.saveUser();
+            case 4 -> UserController.deleteUser("");
+            case 5 -> controllerMenu();
+
+        }
+
+
+    }
+
+    public static void runTeamController(){
+        int choice;
+        Print.print(Print.TEAM_MENU);
+
+        do{
+            choice = Input.fetchInputInt();
+            if(choice == 0 || choice < 1 || choice > 5 ){
+                Print.print(Print.ERROR_INPUT);
+            }
+        }while(choice < 1 || choice > 5 );
+
+
+        switch (choice){
+            case 1 -> TeamController.createTeam();
+            case 2 -> TeamController.openTeam();
+            case 3 -> TeamController.saveTeam();
+            case 4 -> TeamController.deleteTeam("");
+            case 5 -> controllerMenu();
+
+        }
+
+
+    }
 
     /*
     private Scanner input = new Scanner(System.in);
