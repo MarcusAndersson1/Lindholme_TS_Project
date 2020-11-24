@@ -32,7 +32,7 @@ public class Controller {
             if(choice == 0 || choice < 1 || choice > 5 ){
                 Print.print(Print.ERROR_INPUT);
             }
-       }while(choice < 1 || choice > 5 );
+       }while(choice < 1 || choice > 6 );
 
 
            switch (choice){
@@ -40,11 +40,9 @@ public class Controller {
                case 2 -> ProjectController.openProject();
                case 3 -> ProjectController.saveProjects();
                case 4 -> ProjectController.deleteProject("");
-               case 5 -> controllerMenu();
-
+               case 5 -> ProjectController.loadProject();
+               case 6 -> controllerMenu();
            }
-
-
    }
 
     public static void runUserController(){

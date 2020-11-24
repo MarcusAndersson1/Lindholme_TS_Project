@@ -1,4 +1,4 @@
+import java.io.Serializable;
 
-
-public class ScrumBoard {
+public class ScrumBoard implements Serializable {
 }

@@ -1,8 +1,10 @@
+import java.io.Serializable;
 import ProjectPlanning.ProjectPlanning;
 
 public class Project {
     private ProjectController manageProject;
 
+public class Project implements Serializable {
     private String name;
     private int id;
     private String createdDate;

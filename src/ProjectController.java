@@ -18,11 +18,23 @@ public class ProjectController {
     private static final HashMap<Integer, Project> projectStorage = new HashMap();
 
 
-public ProjectController(User u){
-    //this.projectID = IO.loadProjectID();
+public ProjectController(){ //move the try catch out of the constructor
+    try {
+        this.projectID = IO.loadProjectID();
+    }catch(Exception e){
+        e.printStackTrace();
+    }
 }
 
+
     public static void createProject(){
+        try {
+            projectID = IO.loadProjectID();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+
         String name = Input.fetchInputString(Print.ENTER_PROJECT_NAME);
         String currentDateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy - H:mm"));
         String endDate = setEndDate();
@@ -32,8 +44,15 @@ public ProjectController(User u){
 
         printProjectStorage();
 
+        try {
+            IO.saveProjectID(projectID);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
         Controller.runProjectController();
     }
+
     public static void openProject(){
       //  String currentDateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy - H:mm"));
       //  project.setLastTimeOpened(currentDateTime);
