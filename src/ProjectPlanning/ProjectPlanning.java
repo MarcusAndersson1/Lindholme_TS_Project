@@ -1,5 +1,7 @@
 package ProjectPlanning;
 
+import utilities.Input;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -14,7 +16,17 @@ public class ProjectPlanning implements Serializable {
         this.endDate=endDate;
     }
 
-    public void createGantt(ArrayList<Activity> activities, ArrayList<Milestone> milestones ){
+    public void addMilestone(){
+        String name = Input.fetchInputString("Enter milestone Name: ");
+        String milestoneDate = Input.fetchInputString("Enter milestoneDate: dd/MM/YYYY");
+        milestones.add(new Milestone(name, milestoneDate));
+    }
+    public void addActivity(){
+        String name = Input.fetchInputString("Enter Activity name: ");
+        String duration = Input.fetchInputString("Enter Activity duration: dd/MM/YYY");
+        activities.add(new Activity(name, duration));
+    }
+    public void createGantt(){
         for (Activity a: activities) {
             System.out.println(a.getDuration());
         }

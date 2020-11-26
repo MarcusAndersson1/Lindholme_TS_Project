@@ -2,24 +2,24 @@ package ProjectPlanning;
 
 public class Activity {
     private String name;
-    private int duration;
-    public Activity(String name, int duration){
+    private String duration;
+    public Activity(String name, String duration){
         this.name = name;
-        this.duration = duration;
+        this.duration= duration;
     }
 
     public String getName() {
         return name;
     }
 
-    public int getDuration() {
+    public String getDuration() {
         return duration;
     }
 
     public void setName(String name) {
         this.name = name;
     }
-    public void setDuration(int duration) {
+    public void setDuration(String duration) {
         this.duration = duration;
     }
 }

@@ -1,5 +1,6 @@
 import java.io.Serializable;
-import ProjectPlanning.ProjectPlanning;
+import ProjectPlanning.*;
+import utilities.Input;
 
 
 public class Project implements Serializable {
@@ -12,8 +13,7 @@ public class Project implements Serializable {
     private Backlog backlog;
     private Team assignedTeam;
     private ProjectPlanning planning = new ProjectPlanning(createdDate, endDate);
-
-
+    private RiskManagement riskManagement = new RiskManagement();
 
 /*
 
@@ -29,6 +29,8 @@ public class Project implements Serializable {
         this.endDate = endDate;
         this.scrumboard = new ScrumBoard();
         this.backlog = new Backlog();
+        planning.createGantt();
+        riskManagement.riskAssesment();
     }
 
     public String getName() {
@@ -42,7 +44,6 @@ public class Project implements Serializable {
     public String getCreatedDate() {
         return createdDate;
     }
-
     public void setLastTimeOpened(String lastTimeOpened) {
         this.lastTimeOpened = lastTimeOpened;
     }
@@ -57,6 +58,15 @@ public class Project implements Serializable {
 
     public int getID() {
         return id;
+    }
+    void addRisk(){
+        riskManagement.addRisk();
+    }
+    void addMilestone(){
+        planning.addMilestone();
+    }
+    void addActivity(){
+        planning.addActivity();
     }
 
 

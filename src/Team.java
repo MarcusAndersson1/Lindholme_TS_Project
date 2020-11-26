@@ -13,6 +13,7 @@ public class Team {
         this.iD = iD;
         this.createdDate = date;
     }
+
     void addTeamMember(User user){
         teamArray.add(user);
     }
