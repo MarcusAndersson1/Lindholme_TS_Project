@@ -1,15 +1,19 @@
 import java.io.Serializable;
+import ProjectPlanning.*;
+import utilities.Input;
+
 
 public class Project implements Serializable {
     private String name;
     private int id;
     private String createdDate;
+    private String endDate;
     private String lastTimeOpened;
     private ScrumBoard scrumboard;
     private Backlog backlog;
     private Team assignedTeam;
-
-
+    private ProjectPlanning planning = new ProjectPlanning(createdDate, endDate);
+    private RiskManagement riskManagement = new RiskManagement();
 
 /*
 
@@ -18,12 +22,15 @@ public class Project implements Serializable {
 
 */
 
-    public Project(String name,int id, String date) {
+    public Project(String name, int id, String startDate, String endDate) {
         this.name = name;
         this.id = id;
-        this.createdDate = date;
+        this.createdDate = startDate;
+        this.endDate = endDate;
         this.scrumboard = new ScrumBoard();
         this.backlog = new Backlog();
+        planning.createGantt();
+        riskManagement.riskAssesment();
     }
 
     public String getName() {
@@ -37,23 +44,45 @@ public class Project implements Serializable {
     public String getCreatedDate() {
         return createdDate;
     }
-
     public void setLastTimeOpened(String lastTimeOpened) {
         this.lastTimeOpened = lastTimeOpened;
     }
 
-    public Team getTeam(){return assignedTeam;}
+    public Team getTeam() {
+        return assignedTeam;
+    }
 
-    public void setTeam(Team assignedTeam) {this.assignedTeam = assignedTeam;}
+    public void setTeam(Team assignedTeam) {
+        this.assignedTeam = assignedTeam;
+    }
 
     public int getID() {
         return id;
     }
+    void addRisk(){
+        riskManagement.addRisk();
+    }
 
+    public ScrumBoard getScrumboard() {
+        return scrumboard;
+    }
 
+    public Backlog getBacklog() {
+        return backlog;
+    }
 
+    void addMilestone(){
+        planning.addMilestone();
+    }
+    void addActivity(){
+        planning.addActivity();
+    }
 
-
+    @Override
+    public String toString() {
+        return  " id: " + id +" Project name: " + name + " Created date: " + getCreatedDate();
+    }
+}
 /*
     public void addUserStories(){
         
@@ -150,4 +179,4 @@ public class Project implements Serializable {
     }
 */
 
-}
+

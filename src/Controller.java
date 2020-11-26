@@ -9,7 +9,7 @@ public class Controller {
         Print.print(Print.CONTROLLER_MENU);
 
         do {
-            choice = Input.fetchInputInt();
+            choice = Input.fetchInputInt("");
             if (choice == 0 || choice < 1 || choice > 3) {
                 Print.print(Print.ERROR_INPUT);
             }
@@ -28,8 +28,8 @@ public class Controller {
         Print.print(Print.PROJECT_MENU);
 
        do{
-            choice = Input.fetchInputInt();
-            if(choice == 0 || choice < 1 || choice > 5 ){
+            choice = Input.fetchInputInt("");
+            if(choice == 0 || choice < 1 || choice > 6 ){
                 Print.print(Print.ERROR_INPUT);
             }
        }while(choice < 1 || choice > 6 );
@@ -50,7 +50,7 @@ public class Controller {
         Print.print(Print.USER_MENU);
 
         do{
-            choice = Input.fetchInputInt();
+            choice = Input.fetchInputInt("");
             if(choice == 0 || choice < 1 || choice > 5 ){
                 Print.print(Print.ERROR_INPUT);
             }
@@ -74,7 +74,7 @@ public class Controller {
         Print.print(Print.TEAM_MENU);
 
         do{
-            choice = Input.fetchInputInt();
+            choice = Input.fetchInputInt("");
             if(choice == 0 || choice < 1 || choice > 5 ){
                 Print.print(Print.ERROR_INPUT);
             }

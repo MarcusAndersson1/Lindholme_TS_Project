@@ -43,6 +43,11 @@ public class Print {
             + ("[3] Save Team") + EOL
             + ("[4] Delete Team") + EOL
             + ("[5] Back") + EOL;
+    public static final String SCRUM_BOARD_MENU = EOL +  (" Scrum Board Menu") + EOL
+            + ("[1] Plan Sprint") + EOL
+            + ("[2] Move User Stories") + EOL
+            + ("[3] End Sprint") + EOL
+            + ("[4] Back") + EOL;
 
     public static final String ENTER_TEAM_NAME = ("Enter Team Name: ");
 
