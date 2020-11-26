@@ -70,19 +70,19 @@ public ProjectController(){ //move the try catch out of the constructor
            project=projectStorage.get(id);
         System.out.println(project);
         int choice;
-        Print.print(Print.PROJECT_MENU);
+        Print.print(Print.PROJECT_PLANNING_MENU);
 
         do{
             choice = Input.fetchInputInt("");
-            if(choice == 0 || choice < 1 || choice > 6 ){
+            if(choice == 0 || choice < 1 || choice > 3 ){
                 Print.print(Print.ERROR_INPUT);
             }
-        }while(choice < 1 || choice > 6 );
+        }while(choice < 1 || choice > 3 );
 
 
         switch (choice){
-            case 1 -> ProjectController.createProject();
-            case 2 -> ProjectController.openProject();
+            case 1 -> new ProjectPlanningController(project).createUserStory();
+            case 2 -> new ProjectPlanningController(project).viewUserStories();
             case 3 -> Controller.runProjectController();
         }
         }
@@ -187,7 +187,7 @@ public ProjectController(){ //move the try catch out of the constructor
         switch (choice){
             case 1 -> scrumController.moveStory();
             case 2 -> scrumController.endSprint();
-            case 3 -> scrumController.planSprint();
+            //case 3 -> scrumController.planSprint();
             case 4 -> Controller.runProjectController();
         }
     }

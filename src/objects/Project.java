@@ -64,7 +64,7 @@ public class Project implements Serializable {
 
     @Override
     public String toString() {
-        return  " id: " + id +" Project name: " + name + " Created date: " + getCreatedDate();
+        return  " id: " + id +"  Project name: " + name + " Created date: " + getCreatedDate();
     }
 }
 /*

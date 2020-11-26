@@ -48,6 +48,10 @@ public class Print {
             + ("[2] Move User Stories") + EOL
             + ("[3] End Sprint") + EOL
             + ("[4] Back") + EOL;
+    public static final String PROJECT_PLANNING_MENU = EOL +  (" Plan Your Project Bro!") + EOL
+            + ("[1] Create User Story") + EOL
+            + ("[2] View Backlog") + EOL
+            + ("[3] Back") + EOL;
 
     public static final String ENTER_TEAM_NAME = ("Enter Team Name: ");
 

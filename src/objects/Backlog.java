@@ -10,7 +10,7 @@ public class Backlog implements IBacklog, Serializable{
     @Override
     public void addToBacklog(String desc, int score){
         int id  = idMaker();
-        UserStory story = new UserStory(desc, score, id);
+        UserStory story = new UserStory(desc,id);
         backlogList.add(story);
 
     }
@@ -25,10 +25,10 @@ public class Backlog implements IBacklog, Serializable{
             System.out.println(story.description + " " + story.points + "p" + " Id: " + story.id);
         }
     }
-    
+
     public int idMaker(){
         int id;
-        UserStory u =backlogList.get(backlogList.size()-1);
+        UserStory u =backlogList.get(backlogList.size());
         id = u.getId()+1;
         return id;
     }

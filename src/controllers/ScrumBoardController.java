@@ -19,7 +19,5 @@ public class ScrumBoardController {
     public void endSprint(){
         scrumBoard.endSprint();
     }
-    public void planSprint(){
-        scrumBoard.planSprint(projectPlanning.getBacklog());
-    }
+
 }

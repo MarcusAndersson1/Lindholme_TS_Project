@@ -1,6 +1,8 @@
 package objects;
 
-public class UserStory {
+import java.io.Serializable;
+
+public class UserStory implements Serializable {
 
 
     String description;
@@ -8,9 +10,8 @@ public class UserStory {
     int id;
     UserStoryState state = UserStoryState.BACK_LOGG;
 
-    public UserStory(String description, int points, int id){
+    public UserStory(String description, int id){
         this.description = description;
-        this.points = points;
         this.id = id;
     }
     public int getId()
@@ -32,5 +33,12 @@ public class UserStory {
 
     public UserStoryState getState() {
         return state;
+    }
+
+    @Override
+    public String toString() {
+        return "UserStory: "+" description: " + description + "points=" + points +
+                " id: " + getId() +
+                " state: " + getState();
     }
 }

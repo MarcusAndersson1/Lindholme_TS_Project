@@ -11,21 +11,22 @@ import java.util.ArrayList;
     private ArrayList<Activity> activities;
     private ArrayList<Milestone> milestones;
     private ArrayList<Risk> risks;
+    private ArrayList<UserStory>backlog;
 
-    public Backlog backlog;
     public ScrumBoard scrumBoard;
 
      public ProjectPlanning(){
         activities = new ArrayList<>();
         milestones = new ArrayList<>();
         risks = new ArrayList<>();
+        backlog = new ArrayList<>();
     }
 
      public ScrumBoard getScrumBoard() {
          return scrumBoard;
      }
 
-     public Backlog getBacklog() {
+     public ArrayList<UserStory> getBacklog() {
          return backlog;
      }
 
@@ -68,5 +69,10 @@ import java.util.ArrayList;
             System.out.println(m.getName() + " : "+ m.getEndDate());
         }
     }
+     public void addToBacklog(UserStory u){
+
+         backlog.add(u);
+
+     }
  }
 
