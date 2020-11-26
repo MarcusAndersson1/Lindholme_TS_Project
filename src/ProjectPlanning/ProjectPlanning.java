@@ -1,25 +1,59 @@
 package ProjectPlanning;
 
+import objects.Backlog;
+import objects.ScrumBoard;
+import objects.UserStory;
 import utilities.Input;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+ public class ProjectPlanning implements Serializable, IProjectPlanning  {
+    private ArrayList<Activity> activities;
+    private ArrayList<Milestone> milestones;
+    private ArrayList<Risk> risks;
 
-public class ProjectPlanning implements Serializable {
-    private String startDate;
-    private String endDate;
-    private ArrayList<Activity> activities = new ArrayList<>();
-    private ArrayList<Milestone> milestones = new ArrayList<>();
+    public Backlog backlog;
+    public ScrumBoard scrumBoard;
 
-    public ProjectPlanning(String startDate, String endDate){
-        this.startDate = startDate;
-        this.endDate=endDate;
+     public ProjectPlanning(){
+        activities = new ArrayList<>();
+        milestones = new ArrayList<>();
+        risks = new ArrayList<>();
+    }
+
+     public ScrumBoard getScrumBoard() {
+         return scrumBoard;
+     }
+
+     public Backlog getBacklog() {
+         return backlog;
+     }
+
+     Risk createRisk(String name){
+        Risk risk = new Risk(name);
+        return risk;
+    }
+    public void addRisk(){
+        String name = Input.fetchInputString("Enter risk name: ");
+        risks.add(createRisk(name));
+    }
+    public void riskAssesment(){
+        for (Risk r: risks) {
+            if(r.getSeverity()<=0){
+                System.out.println(r.getName());
+                r.setSeverity(Input.fetchInputInt("Enter severity of risk"));
+            }
+            if(r.getOccurrence()<=0){
+                System.out.println(r.getName());
+                r.setOccurrence(Input.fetchInputInt("Enter Occurrence of risk"));
+            }
+        }
     }
 
     public void addMilestone(){
         String name = Input.fetchInputString("Enter milestone Name: ");
         String milestoneDate = Input.fetchInputString("Enter milestoneDate: dd/MM/YYYY");
-        milestones.add(new Milestone(name, milestoneDate));
+        milestones.add(new Milestone());
     }
     public void addActivity(){
         String name = Input.fetchInputString("Enter Activity name: ");
@@ -34,5 +68,5 @@ public class ProjectPlanning implements Serializable {
             System.out.println(m.getName() + " : "+ m.getEndDate());
         }
     }
-}
+ }
 

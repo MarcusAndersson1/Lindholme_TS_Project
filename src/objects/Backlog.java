@@ -1,4 +1,4 @@
-
+package objects;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class Backlog implements IBacklog, Serializable{
     }
 
     public void printAll(){
-        System.out.println("    Backlog: ");
+        System.out.println("    objects.Backlog: ");
         for(UserStory story : backlogList) {
             System.out.println(story.description + " " + story.points + "p" + " Id: " + story.id);
         }

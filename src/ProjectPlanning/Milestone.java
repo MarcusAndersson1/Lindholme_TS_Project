@@ -1,9 +1,10 @@
 package ProjectPlanning;
 
-public class Milestone {
+public class Milestone extends ProjectPlanning{
     String name;
     String endDate;
-    public  Milestone(String name, String endDate){
+    public  Milestone(){
+        super();
         this.endDate = endDate;
         this.name=name;
     }

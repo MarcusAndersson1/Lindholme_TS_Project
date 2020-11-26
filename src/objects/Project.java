@@ -1,6 +1,8 @@
+package objects;
+
 import java.io.Serializable;
+
 import ProjectPlanning.*;
-import utilities.Input;
 
 
 public class Project implements Serializable {
@@ -10,11 +12,8 @@ public class Project implements Serializable {
     private String endDate;
     private String lastTimeOpened;
     private ScrumBoard scrumboard;
-    private Backlog backlog;
     private Team assignedTeam;
-    private ProjectPlanning planning = new ProjectPlanning(createdDate, endDate);
-    private RiskManagement riskManagement = new RiskManagement();
-
+    public ProjectPlanning projectPlanning;
 /*
 
     private Scanner input = new Scanner(System.in);
@@ -27,11 +26,9 @@ public class Project implements Serializable {
         this.id = id;
         this.createdDate = startDate;
         this.endDate = endDate;
-        this.scrumboard = new ScrumBoard();
-        this.backlog = new Backlog();
-        planning.createGantt();
-        riskManagement.riskAssesment();
+        this.projectPlanning = new ProjectPlanning();
     }
+
 
     public String getName() {
         return name;
@@ -59,23 +56,10 @@ public class Project implements Serializable {
     public int getID() {
         return id;
     }
-    void addRisk(){
-        riskManagement.addRisk();
-    }
+
 
     public ScrumBoard getScrumboard() {
         return scrumboard;
-    }
-
-    public Backlog getBacklog() {
-        return backlog;
-    }
-
-    void addMilestone(){
-        planning.addMilestone();
-    }
-    void addActivity(){
-        planning.addActivity();
     }
 
     @Override

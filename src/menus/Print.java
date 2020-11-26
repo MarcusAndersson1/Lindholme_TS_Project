@@ -9,14 +9,14 @@ public class Print {
 
 
     //controller related
-    public static final String CONTROLLER_MENU = EOL + (" Controller Menu") + EOL
+    public static final String CONTROLLER_MENU = EOL + (" Menu ") + EOL
             + ("[1] Project") + EOL
             + ("[2] User") + EOL
             + ("[3] Team") + EOL;
 
 
     //project related
-    public static final String PROJECT_MENU = EOL +  (" Project Menu") + EOL
+    public static final String PROJECT_MENU = EOL +  (" objects.Project Menu") + EOL
             + ("[1] New Project") + EOL
             + ("[2] Open Project") + EOL
             + ("[3] Save Project") + EOL

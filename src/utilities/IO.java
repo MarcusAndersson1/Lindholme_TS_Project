@@ -1,3 +1,7 @@
+package utilities;
+
+import objects.Project;
+
 import java.io.*;
 
 public class IO{
@@ -13,7 +17,7 @@ public class IO{
     }
     public static void readUsers() throws Exception{
         ObjectInputStream ois = new ObjectInputStream(new FileInputStream(USER_DATA));
-       //users = (ArrayList<User>) ois.readObject();
+       //users = (ArrayList<objects.User>) ois.readObject();
     }
     public static void saveProject(Project project) throws IOException {
         //File saveProjectFile = new File(PROJECT_LOCATION.replace("REPLACE_WITH_ID", Integer.toString(project.getID())));

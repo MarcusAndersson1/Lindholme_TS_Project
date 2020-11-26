@@ -1,8 +1,10 @@
+package controllers;
+
+
 import menus.Print;
 import utilities.Input;
 
 public class Controller {
-    Main main;
 
     public static void controllerMenu() {
         int choice;
@@ -95,7 +97,7 @@ public class Controller {
 
     /*
     private Scanner input = new Scanner(System.in);
-    private Project project = new Project();
+    private objects.Project project = new objects.Project();
     
     public void projectMenu(){
         

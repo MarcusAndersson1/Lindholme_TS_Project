@@ -1,9 +1,11 @@
+package controllers;
 
-
+import controllers.Controller;
 import menus.Print;
+import objects.Project;
+import utilities.IO;
 import utilities.Input;
 
-import javax.swing.text.Utilities;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
@@ -16,7 +18,6 @@ public class ProjectController {
     private static int projectID; //save to file
     private static Project project;
     private static final HashMap<Integer, Project> projectStorage = new HashMap();
-
 
 public ProjectController(){ //move the try catch out of the constructor
     try {
@@ -68,10 +69,23 @@ public ProjectController(){ //move the try catch out of the constructor
         }while(!projectStorage.containsKey(id));
            project=projectStorage.get(id);
         System.out.println(project);
+        int choice;
+        Print.print(Print.PROJECT_MENU);
+
+        do{
+            choice = Input.fetchInputInt("");
+            if(choice == 0 || choice < 1 || choice > 6 ){
+                Print.print(Print.ERROR_INPUT);
+            }
+        }while(choice < 1 || choice > 6 );
+
+
+        switch (choice){
+            case 1 -> ProjectController.createProject();
+            case 2 -> ProjectController.openProject();
+            case 3 -> Controller.runProjectController();
         }
-
-
-
+        }
     public static void saveProjects() {
         for (Project project : projectStorage.values()){
             try{
@@ -135,7 +149,7 @@ public ProjectController(){ //move the try catch out of the constructor
         if (projectStorage.isEmpty()){
             System.out.println(Print.THE_LIST_IS_EMPTY);
         }else{
-            for(Map.Entry<Integer,Project> entry: projectStorage.entrySet()){
+            for(Map.Entry<Integer, Project> entry: projectStorage.entrySet()){
                 System.out.println(entry.getValue());
             }
         }
@@ -160,7 +174,7 @@ public ProjectController(){ //move the try catch out of the constructor
     }
     public static void runScrum(){
         int choice;
-        ScrumBoardController scrumController = new ScrumBoardController(project);
+        ScrumBoardController scrumController = new ScrumBoardController(project.projectPlanning);
         Print.print(Print.SCRUM_BOARD_MENU);
         do{
             choice = Input.fetchInputInt("");

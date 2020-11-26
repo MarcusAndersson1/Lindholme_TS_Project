@@ -1,4 +1,5 @@
 import CommandObserver.UserInput;
+import controllers.Controller;
 
 import java.util.Scanner;
 

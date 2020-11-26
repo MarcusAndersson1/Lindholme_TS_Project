@@ -1,12 +1,13 @@
 package ProjectPlanning;
 
-public class Risk {
+public class Risk extends ProjectPlanning {
     private String name;
     private int ID;
     private int severity;
     private int occurrence;
     private int rating;
     public Risk(String name){
+        super();
         this.name = name;
     }
 
