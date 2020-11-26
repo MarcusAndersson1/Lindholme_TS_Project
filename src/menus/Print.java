@@ -33,8 +33,21 @@ public class Print {
             + ("[4] Delete User") + EOL
             + ("[5] Back") + EOL;
 
+    public static final String PROJECT_LEADER_MENU = EOL +  (" Poject Leader Menu") + EOL
+            + ("[1] Create Team") + EOL
+            + ("[2] Create Team Member") + EOL
+            + ("[3] Save Team Member") + EOL
+            + ("[4] Delete Team Member") + EOL
+            + ("[5] Assign Role") + EOL
+            + ("[6] Back") + EOL;
+
     public static final String ENTER_USER_NAME = ("Enter User Name: ");
 
+    public static final String ENTER_FIRST_NAME = ("Enter First Name: ");
+
+    public static final String ENTER_LAST_NAME = ("Enter Last Name: ");
+
+    public static final String ENTER_ROLE = ("Enter Role: ");
     //team related
     public static final String TEAM_MENU = EOL + (" Team Menu") + EOL
             + ("[1] New Team") + EOL

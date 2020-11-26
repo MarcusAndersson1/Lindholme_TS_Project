@@ -11,7 +11,6 @@ public class TeamController {
     private static int teamID;
     private static Team team;
     private static final HashMap<Integer, Team> teamStorage = new HashMap();
-
 /*
     public static void addToTeamStorage (Integer integer, Team team ){
         teamStorage.put(integer, team);
@@ -37,20 +36,18 @@ public class TeamController {
 
     public static void openTeam() {
         printTeamStorage();
-
         Controller.runTeamController();
     }
 
     public static void saveTeam() {
-
         Controller.runTeamController();
     }
 
     public static void deleteTeam(String s) {
         int check;
-        if (teamStorage.isEmpty()){
+        if (teamStorage.isEmpty()) {
             System.out.println(Print.THE_LIST_IS_EMPTY);
-        }else {
+        } else {
             do {
                 try {
                     s = Input.fetchInputString(Print.TYPE_ID);
@@ -73,14 +70,28 @@ public class TeamController {
 
     public static void printTeamStorage() {
 
-        if (teamStorage.isEmpty()){
+        if (teamStorage.isEmpty()) {
             System.out.println(Print.THE_LIST_IS_EMPTY);
-        }else{
-            for(Map.Entry<Integer,Team> entry: teamStorage.entrySet()){
+        } else {
+            for (Map.Entry<Integer, Team> entry : teamStorage.entrySet()) {
                 System.out.println("User " + entry.getValue().getID() + ": " + entry.getValue().getName()
                         + " " + entry.getValue().getCreatedDate());
             }
         }
+    }
+
+    public static void createTeamMember(User teamMember) {
+        //String firstName = Input.fetchInputString(Print.ENTER_FIRST_NAME);
+        //String lastName = Input.fetchInputString(Print.ENTER_LAST_NAME);
+        String name = teamMember.getName();
+        int ID = teamMember.getID();
+        String date = teamMember.getCreatedDate();
+        String teamName = Input.fetchInputString(Print.ENTER_TEAM_NAME);
+        String role = Input.fetchInputString(Print.ENTER_ROLE);
+        System.out.println("User: " + name + "has the following role: " + role + "and was added to " + teamName);
+
+        //System.out.println("There was a problem creating the team member, please try again");
+        //  TeamController.createTeamMember();
 
         // String content = teamStorage.toString();
         //  System.out.println(content);

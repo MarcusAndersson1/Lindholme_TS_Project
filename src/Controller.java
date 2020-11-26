@@ -70,7 +70,29 @@ public class Controller {
 
 
     }
+    public static void runProjectLeaderController(){
+        int choice;
+        Print.print(Print.PROJECT_LEADER_MENU);
 
+        do{
+            choice = Input.fetchInputInt();
+            if(choice == 0 || choice < 1 || choice > 5 ){
+                Print.print(Print.ERROR_INPUT);
+            }
+        }while(choice < 1 || choice > 5 );
+
+
+        switch (choice){
+            case 1 -> UserController.createUser();
+            case 2 -> UserController.openUser();
+            case 3 -> UserController.saveUser();
+            case 4 -> UserController.deleteUser("");
+            case 5 -> controllerMenu();
+
+        }
+
+
+    }
     public static void runTeamController(){
         int choice;
         Print.print(Print.TEAM_MENU);

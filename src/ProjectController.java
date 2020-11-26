@@ -5,11 +5,12 @@ import utilities.Input;
 
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ProjectController {
-
+    private ArrayList<Team> teamArray = new ArrayList();
     private static int projectID;
     private static Project project;
     private static final HashMap<Integer, Project> projectStorage = new HashMap();

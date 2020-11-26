@@ -1,10 +1,11 @@
 import java.io.Serializable;
 
 public class User implements Serializable{
+    private String firstName;
+    private String lastName;
     private String name;
     private int iD;
     private String createdDate;
-    public User(){}
     public User(String name,int iD, String date){
         this.name = name;
         this.iD = iD;
