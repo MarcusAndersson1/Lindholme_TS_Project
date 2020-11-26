@@ -62,6 +62,15 @@ public class Project implements Serializable {
     void addRisk(){
         riskManagement.addRisk();
     }
+
+    public ScrumBoard getScrumboard() {
+        return scrumboard;
+    }
+
+    public Backlog getBacklog() {
+        return backlog;
+    }
+
     void addMilestone(){
         planning.addMilestone();
     }
@@ -69,7 +78,10 @@ public class Project implements Serializable {
         planning.addActivity();
     }
 
-
+    @Override
+    public String toString() {
+        return  " id: " + id +" Project name: " + name + " Created date: " + getCreatedDate();
+    }
 }
 /*
     public void addUserStories(){

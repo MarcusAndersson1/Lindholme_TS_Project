@@ -29,7 +29,7 @@ public class Controller {
 
        do{
             choice = Input.fetchInputInt("");
-            if(choice == 0 || choice < 1 || choice > 5 ){
+            if(choice == 0 || choice < 1 || choice > 6 ){
                 Print.print(Print.ERROR_INPUT);
             }
        }while(choice < 1 || choice > 6 );
