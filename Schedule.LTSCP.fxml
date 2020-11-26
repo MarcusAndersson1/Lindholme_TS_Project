@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="45.0" fitWidth="369.0" layoutX="5.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@LTSCP%20logo.png" />
+         </image>
+      </ImageView>
+      <TableView layoutX="10.0" layoutY="58.0" prefHeight="200.0" prefWidth="380.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="Monday" />
+          <TableColumn prefWidth="75.0" text="Tuesday" />
+            <TableColumn prefWidth="75.0" text="Wednesday" />
+            <TableColumn prefWidth="75.96076965332031" text="Thursday" />
+            <TableColumn prefWidth="78.53924560546875" text="Friday" />
+        </columns>
+      </TableView>
+      <Button layoutX="300.0" layoutY="265.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="90.0" text="Back" />
+      <Label layoutX="140.0" layoutY="11.0" prefHeight="35.0" prefWidth="119.0" text="Schedule">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <SplitMenuButton layoutX="289.0" layoutY="15.0" mnemonicParsing="false" text="Week. 47">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Action 1" />
+          <MenuItem mnemonicParsing="false" text="Action 2" />
+        </items>
+      </SplitMenuButton>
+   </children>
+</Pane>
