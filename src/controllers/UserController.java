@@ -1,4 +1,8 @@
+package controllers;
+
+import controllers.Controller;
 import menus.Print;
+import objects.User;
 import utilities.Input;
 
 import java.time.LocalDateTime;
@@ -61,7 +65,7 @@ public class UserController {
     }
 
 /*
-    public static void addToUserStorage(Integer integer, User user) {
+    public static void addToUserStorage(Integer integer, objects.User user) {
         userStorage.put(integer, user);
 
     }
@@ -76,7 +80,7 @@ public class UserController {
             System.out.println(Print.THE_LIST_IS_EMPTY);
         }else{
             for(Map.Entry<Integer,User> entry: userStorage.entrySet()){
-                System.out.println("User " + entry.getValue().getID() + ": " + entry.getValue().getName()
+                System.out.println("objects.User " + entry.getValue().getID() + ": " + entry.getValue().getName()
                         + " " + entry.getValue().getCreatedDate());
             }
         }

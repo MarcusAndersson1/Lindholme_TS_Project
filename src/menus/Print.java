@@ -9,19 +9,20 @@ public class Print {
 
 
     //controller related
-    public static final String CONTROLLER_MENU = EOL + (" Controller Menu") + EOL
+    public static final String CONTROLLER_MENU = EOL + (" Menu ") + EOL
             + ("[1] Project") + EOL
             + ("[2] User") + EOL
             + ("[3] Team") + EOL;
 
 
     //project related
-    public static final String PROJECT_MENU = EOL +  (" Project Menu") + EOL
+    public static final String PROJECT_MENU = EOL +  (" objects.Project Menu") + EOL
             + ("[1] New Project") + EOL
             + ("[2] Open Project") + EOL
             + ("[3] Save Project") + EOL
             + ("[4] Delete Project") + EOL
-            + ("[5] Back") + EOL;
+            + ("[5] Load Project From File") + EOL
+            + ("[6] Back") + EOL;
 
     public static final String ENTER_PROJECT_NAME = (" Enter Project Name: ");
 
@@ -55,6 +56,15 @@ public class Print {
             + ("[3] Save Team") + EOL
             + ("[4] Delete Team") + EOL
             + ("[5] Back") + EOL;
+    public static final String SCRUM_BOARD_MENU = EOL +  (" Scrum Board Menu") + EOL
+            + ("[1] Plan Sprint") + EOL
+            + ("[2] Move User Stories") + EOL
+            + ("[3] End Sprint") + EOL
+            + ("[4] Back") + EOL;
+    public static final String PROJECT_PLANNING_MENU = EOL +  (" Plan Your Project Bro!") + EOL
+            + ("[1] Create User Story") + EOL
+            + ("[2] View Backlog") + EOL
+            + ("[3] Back") + EOL;
 
     public static final String ENTER_TEAM_NAME = ("Enter Team Name: ");
 

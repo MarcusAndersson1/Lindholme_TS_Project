@@ -1,16 +1,17 @@
 package CommandObserver;
 
-public class UserInputController implements InputObserver{
+public class UserInputController implements InputObserver {
 
-    public UserInputController(UserInputBraodcaster b){
+    public UserInputController(UserInputBraodcaster b) {
         b.addObserver(this);
     }
+
     @Override
     public void handleInput(String command) {
-        if(command.equalsIgnoreCase("Hej")) {
+        if (command.equalsIgnoreCase("Hej")) {
             System.out.println("körv");
         }
-        if(command.equalsIgnoreCase("q")) {
+        if (command.equalsIgnoreCase("q")) {
             System.out.println("krister");
         }
     }

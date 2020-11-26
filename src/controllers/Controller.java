@@ -1,15 +1,17 @@
+package controllers;
+
+
 import menus.Print;
 import utilities.Input;
 
 public class Controller {
-    Main main;
 
     public static void controllerMenu() {
         int choice;
         Print.print(Print.CONTROLLER_MENU);
 
         do {
-            choice = Input.fetchInputInt();
+            choice = Input.fetchInputInt("");
             if (choice == 0 || choice < 1 || choice > 3) {
                 Print.print(Print.ERROR_INPUT);
             }
@@ -28,23 +30,21 @@ public class Controller {
         Print.print(Print.PROJECT_MENU);
 
        do{
-            choice = Input.fetchInputInt();
-            if(choice == 0 || choice < 1 || choice > 5 ){
+            choice = Input.fetchInputInt("");
+            if(choice == 0 || choice < 1 || choice > 6 ){
                 Print.print(Print.ERROR_INPUT);
             }
-       }while(choice < 1 || choice > 5 );
+       }while(choice < 1 || choice > 6 );
 
 
            switch (choice){
                case 1 -> ProjectController.createProject();
                case 2 -> ProjectController.openProject();
-               case 3 -> ProjectController.saveProject();
+               case 3 -> ProjectController.saveProjects();
                case 4 -> ProjectController.deleteProject("");
-               case 5 -> controllerMenu();
-
+               case 5 -> ProjectController.loadProject();
+               case 6 -> controllerMenu();
            }
-
-
    }
 
     public static void runUserController(){
@@ -52,7 +52,7 @@ public class Controller {
         Print.print(Print.USER_MENU);
 
         do{
-            choice = Input.fetchInputInt();
+            choice = Input.fetchInputInt("");
             if(choice == 0 || choice < 1 || choice > 5 ){
                 Print.print(Print.ERROR_INPUT);
             }
@@ -98,7 +98,7 @@ public class Controller {
         Print.print(Print.TEAM_MENU);
 
         do{
-            choice = Input.fetchInputInt();
+            choice = Input.fetchInputInt("");
             if(choice == 0 || choice < 1 || choice > 5 ){
                 Print.print(Print.ERROR_INPUT);
             }
@@ -119,7 +119,7 @@ public class Controller {
 
     /*
     private Scanner input = new Scanner(System.in);
-    private Project project = new Project();
+    private objects.Project project = new objects.Project();
     
     public void projectMenu(){
         

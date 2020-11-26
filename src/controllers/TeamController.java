@@ -1,4 +1,8 @@
+package controllers;
+
+import controllers.Controller;
 import menus.Print;
+import objects.Team;
 import utilities.Input;
 
 import java.time.LocalDateTime;
@@ -11,8 +15,9 @@ public class TeamController {
     private static int teamID;
     private static Team team;
     private static final HashMap<Integer, Team> teamStorage = new HashMap();
+
 /*
-    public static void addToTeamStorage (Integer integer, Team team ){
+    public static void addToTeamStorage (Integer integer, objects.Team team ){
         teamStorage.put(integer, team);
     }
 
@@ -36,10 +41,12 @@ public class TeamController {
 
     public static void openTeam() {
         printTeamStorage();
+
         Controller.runTeamController();
     }
 
     public static void saveTeam() {
+
         Controller.runTeamController();
     }
 
@@ -72,9 +79,9 @@ public class TeamController {
 
         if (teamStorage.isEmpty()) {
             System.out.println(Print.THE_LIST_IS_EMPTY);
-        } else {
-            for (Map.Entry<Integer, Team> entry : teamStorage.entrySet()) {
-                System.out.println("User " + entry.getValue().getID() + ": " + entry.getValue().getName()
+        }else{
+            for(Map.Entry<Integer, Team> entry: teamStorage.entrySet()){
+                System.out.println("objects.User " + entry.getValue().getID() + ": " + entry.getValue().getName()
                         + " " + entry.getValue().getCreatedDate());
             }
         }

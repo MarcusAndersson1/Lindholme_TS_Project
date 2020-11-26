@@ -1,16 +1,19 @@
-public class Project {
-    private ProjectController manageProject;
+package objects;
 
+import java.io.Serializable;
+
+import ProjectPlanning.*;
+
+
+public class Project implements Serializable {
     private String name;
     private int id;
     private String createdDate;
+    private String endDate;
     private String lastTimeOpened;
     private ScrumBoard scrumboard;
-    private Backlog backlog;
     private Team assignedTeam;
-
-
-
+    public ProjectPlanning projectPlanning;
 /*
 
     private Scanner input = new Scanner(System.in);
@@ -18,13 +21,14 @@ public class Project {
 
 */
 
-    public Project(String name,int id, String date) {
+    public Project(String name, int id, String startDate, String endDate) {
         this.name = name;
         this.id = id;
-        this.createdDate = date;
-        this.scrumboard = new ScrumBoard();
-        this.backlog = new Backlog();
+        this.createdDate = startDate;
+        this.endDate = endDate;
+        this.projectPlanning = new ProjectPlanning();
     }
+
 
     public String getName() {
         return name;
@@ -37,23 +41,32 @@ public class Project {
     public String getCreatedDate() {
         return createdDate;
     }
-
     public void setLastTimeOpened(String lastTimeOpened) {
         this.lastTimeOpened = lastTimeOpened;
     }
 
-    public Team getTeam(){return assignedTeam;}
+    public Team getTeam() {
+        return assignedTeam;
+    }
 
-    public void setTeam(Team assignedTeam) {this.assignedTeam = assignedTeam;}
+    public void setTeam(Team assignedTeam) {
+        this.assignedTeam = assignedTeam;
+    }
 
     public int getID() {
         return id;
     }
 
 
+    public ScrumBoard getScrumboard() {
+        return scrumboard;
+    }
 
-
-
+    @Override
+    public String toString() {
+        return  " id: " + id +"  Project name: " + name + " Created date: " + getCreatedDate();
+    }
+}
 /*
     public void addUserStories(){
         
@@ -150,4 +163,4 @@ public class Project {
     }
 */
 
-}
+
