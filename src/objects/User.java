@@ -6,12 +6,14 @@ public class User implements Serializable{
     private String name;
     private int iD;
     private String createdDate;
-    public User(){}
+
+
     public User(String name,int iD, String date){
         this.name = name;
         this.iD = iD;
         this.createdDate = date;
     }
+
 
     public int getID() {
         return iD;
@@ -21,10 +23,12 @@ public class User implements Serializable{
         return name;
     }
 
+
     @Override
     public String toString() {
-        return "Name: " + getName() + "ID: " + getID();
+        return getID() + ", " + getName();
     }
+
 
     public String getCreatedDate() {
         return createdDate;

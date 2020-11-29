@@ -16,6 +16,12 @@ public class UserController {
     private static User user;
     private static final HashMap<Integer, User> userStorage = new HashMap();
 
+    public static void addTestUser(){
+        userStorage.put(12,new User("stefan",12,"hallå"));
+        userStorage.put(1,new User("olof",1,"hallå"));
+        userStorage.put(5,new User("per",5,"hallå"));
+    }
+
     public static void createUser() {
         String name = Input.fetchInputString(Print.ENTER_USER_NAME);
         String currentDateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy - H:mm"));
@@ -80,12 +86,22 @@ public class UserController {
             System.out.println(Print.THE_LIST_IS_EMPTY);
         }else{
             for(Map.Entry<Integer,User> entry: userStorage.entrySet()){
-                System.out.println("objects.User " + entry.getValue().getID() + ": " + entry.getValue().getName()
-                        + " " + entry.getValue().getCreatedDate());
+                System.out.println(entry.getValue());
             }
         }
 
+
         // String content = teamStorage.toString();
         //  System.out.println(content);
+    }
+    public static boolean userExists(int id){
+        if (userStorage.containsKey(id)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public static User getUser(int userID){
+        return userStorage.get(userID);
     }
 }
