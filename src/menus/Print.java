@@ -25,21 +25,21 @@ public class Print {
 
     public static final String ENTER_PROJECT_NAME = (" Enter Project Name: ");
 
-    public static final String SCRUM_MASTER_MENU = EOL + (" Scrum Master Menu: ") + EOL
+  /*  public static final String SCRUM_MASTER_MENU = EOL + (" Scrum Master Menu: ") + EOL
             + ("[1] View Team ") + EOL
             + ("[2] View Schedule") + EOL
             + ("[3] View Project") + EOL
             + ("[4] Team Chat") + EOL
             + ("[5] Back") + EOL;
+*/
 
-
-    public static final String DEVELOPER_MENU = EOL + (" Developer Menu: ") + EOL
+  /*  public static final String DEVELOPER_MENU = EOL + (" Developer Menu: ") + EOL
             + ("[1] View Team ") + EOL
             + ("[2] View Schedule") + EOL
             + ("[3] Work on Project") + EOL
             + ("[4] Team Chat") + EOL
             + ("[5] Back") + EOL;
-
+*/
     //user related
     public static final String USER_MENU = EOL +  (" User Menu") + EOL
             + ("[1] New User") + EOL
@@ -48,7 +48,7 @@ public class Print {
             + ("[4] Delete User") + EOL
             + ("[5] Back") + EOL;
 
-    public static final String PROJECT_LEADER_MENU = EOL +  (" Poject Leader Menu") + EOL
+  /*  public static final String PROJECT_LEADER_MENU = EOL +  (" Poject Leader Menu") + EOL
             + ("[1] Create Team") + EOL
             + ("[2] Open Team") + EOL
             + ("[3] Save Team") + EOL
@@ -57,7 +57,7 @@ public class Print {
             + ("[6] Delete Team Member") + EOL
             + ("[7] Assign Role to Team Member") + EOL
             + ("[8] Back") + EOL;
-
+*/
     public static final String ENTER_USER_NAME = ("Enter User Name: ");
     public static final String ENTER_ROLE = ("Enter Role: ");
     //team related
