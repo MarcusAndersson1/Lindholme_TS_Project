@@ -76,7 +76,7 @@ public class Controller {
             case 1 -> UserController.createUser();
             case 2 -> UserController.openUser();
             case 3 -> UserController.saveUser();
-            case 4 -> UserController.deleteUser("");
+            case 4 -> UserController.deleteUser();
             case 5 -> controllerMenu();
 
         }

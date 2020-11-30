@@ -46,23 +46,19 @@ public class UserController {
         Controller.runUserController();
     }
 
-    public static void deleteUser(String s) {
-        int check;
+    public static void deleteUser() {
+        int input = 0;
         if (userStorage.isEmpty()) {
             System.out.println(Print.THE_LIST_IS_EMPTY);
         } else {
-            do {
                 try {
-                    s = Input.fetchInputString(Print.TYPE_ID);
+                    input = Integer.parseInt(Input.fetchInputString(Print.TYPE_ID));
                 } catch (Exception e) {
-                    check = 1;
-                }
-                check = 0;
-            } while (check == 1);
 
-            if (userStorage.containsKey(Integer.parseInt(s))) {
-                System.out.println("The user with ID " + s + " has been deleted");
-                userStorage.remove(Integer.parseInt(s));
+                }
+            if (userStorage.containsKey(input)) {
+                System.out.println("The user with ID " + input + " has been deleted");
+                userStorage.remove(input);
             } else {
                 System.out.println(Print.ERROR_INPUT);
             }
