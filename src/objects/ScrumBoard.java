@@ -25,8 +25,7 @@ public class ScrumBoard implements Serializable {
     public void moveStory(int id){
         UserStory u= sprint.get(id);
 
-        u.setState();
-    }
+   }
 
     // moves all storys not done to backlogg
     public void endSprint(){

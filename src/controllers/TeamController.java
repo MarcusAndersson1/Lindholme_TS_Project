@@ -3,6 +3,7 @@ package controllers;
 import controllers.Controller;
 import menus.Print;
 import objects.Team;
+import objects.User;
 import utilities.Input;
 
 import java.time.LocalDateTime;
@@ -81,27 +82,15 @@ public class TeamController {
             System.out.println(Print.THE_LIST_IS_EMPTY);
         }else{
             for(Map.Entry<Integer, Team> entry: teamStorage.entrySet()){
-                System.out.println("objects.User " + entry.getValue().getID() + ": " + entry.getValue().getName()
-                        + " " + entry.getValue().getCreatedDate());
+                System.out.println(entry.getValue());
             }
         }
     }
 
-    public static void createTeamMember(User teamMember) {
-        //String firstName = Input.fetchInputString(Print.ENTER_FIRST_NAME);
-        //String lastName = Input.fetchInputString(Print.ENTER_LAST_NAME);
-        String name = teamMember.getName();
-        int ID = teamMember.getID();
-        String date = teamMember.getCreatedDate();
-        String teamName = Input.fetchInputString(Print.ENTER_TEAM_NAME);
-        String role = Input.fetchInputString(Print.ENTER_ROLE);
-        System.out.println("User: " + name + "has the following role: " + role + "and was added to " + teamName);
-
-        //System.out.println("There was a problem creating the team member, please try again");
-        //  TeamController.createTeamMember();
-
-        // String content = teamStorage.toString();
-        //  System.out.println(content);
+    public static void addTeamMember(User teamMember) {
+        team.addTeamMember(teamMember);
 
     }
+
+
 }

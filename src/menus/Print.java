@@ -14,7 +14,6 @@ public class Print {
             + ("[2] User") + EOL
             + ("[3] Team") + EOL;
 
-
     //project related
     public static final String PROJECT_MENU = EOL +  (" objects.Project Menu") + EOL
             + ("[1] New Project") + EOL
@@ -26,6 +25,21 @@ public class Print {
 
     public static final String ENTER_PROJECT_NAME = (" Enter Project Name: ");
 
+    public static final String SCRUM_MASTER_MENU = EOL + (" Scrum Master Menu: ") + EOL
+            + ("[1] View Team ") + EOL
+            + ("[2] View Schedule") + EOL
+            + ("[3] View Project") + EOL
+            + ("[4] Team Chat") + EOL
+            + ("[5] Back") + EOL;
+
+
+    public static final String DEVELOPER_MENU = EOL + (" Developer Menu: ") + EOL
+            + ("[1] View Team ") + EOL
+            + ("[2] View Schedule") + EOL
+            + ("[3] Work on Project") + EOL
+            + ("[4] Team Chat") + EOL
+            + ("[5] Back") + EOL;
+
     //user related
     public static final String USER_MENU = EOL +  (" User Menu") + EOL
             + ("[1] New User") + EOL
@@ -36,18 +50,15 @@ public class Print {
 
     public static final String PROJECT_LEADER_MENU = EOL +  (" Poject Leader Menu") + EOL
             + ("[1] Create Team") + EOL
-            + ("[2] Create Team Member") + EOL
-            + ("[3] Save Team Member") + EOL
-            + ("[4] Delete Team Member") + EOL
-            + ("[5] Assign Role") + EOL
-            + ("[6] Back") + EOL;
+            + ("[2] Open Team") + EOL
+            + ("[3] Save Team") + EOL
+            + ("[4] Delete Team") + EOL
+            + ("[5] Add Team Member") + EOL
+            + ("[6] Delete Team Member") + EOL
+            + ("[7] Assign Role to Team Member") + EOL
+            + ("[8] Back") + EOL;
 
     public static final String ENTER_USER_NAME = ("Enter User Name: ");
-
-    public static final String ENTER_FIRST_NAME = ("Enter First Name: ");
-
-    public static final String ENTER_LAST_NAME = ("Enter Last Name: ");
-
     public static final String ENTER_ROLE = ("Enter Role: ");
     //team related
     public static final String TEAM_MENU = EOL + (" Team Menu") + EOL
@@ -56,11 +67,13 @@ public class Print {
             + ("[3] Save Team") + EOL
             + ("[4] Delete Team") + EOL
             + ("[5] Back") + EOL;
+
     public static final String SCRUM_BOARD_MENU = EOL +  (" Scrum Board Menu") + EOL
             + ("[1] Plan Sprint") + EOL
             + ("[2] Move User Stories") + EOL
             + ("[3] End Sprint") + EOL
             + ("[4] Back") + EOL;
+
     public static final String PROJECT_PLANNING_MENU = EOL +  (" Plan Your Project Bro!") + EOL
             + ("[1] Create User Story") + EOL
             + ("[2] View Backlog") + EOL
