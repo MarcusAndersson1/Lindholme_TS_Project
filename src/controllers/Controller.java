@@ -7,16 +7,7 @@ import objects.ProjectLeader;
 import objects.ScrumMaster;
 import utilities.Input;
 
-import javax.naming.ldap.Control;
-
 public class Controller {
-
-    public static void logIn(){
-            Print.print(Print.LOGIN_MENU_USERID);
-            checkUserID();
-
-
-    }
 
     public static void controllerMenu() {
         int choice;
@@ -24,16 +15,15 @@ public class Controller {
 
         do {
             choice = Input.fetchInputInt("");
-            if (choice == 0 || choice < 1 || choice > 4) {
+            if (choice == 0 || choice < 1 || choice > 3) {
                 Print.print(Print.ERROR_INPUT);
             }
-        } while (choice < 1 || choice > 4);
+        } while (choice < 1 || choice > 3);
 
         switch (choice) {
             case 1 -> runProjectController();
             case 2 -> runUserController();
             case 3 -> runTeamController();
-            case 4 -> logIn();
 
         }
     }
@@ -183,40 +173,6 @@ public class Controller {
     }
 
      */
-    public static void checkUserID() {
-        int userID = Input.fetchInputInt("");
-        if(userID != 0){
-            if((UserController.userExists(userID))){
-                checkPassword(userID);
-
-
-            }else{
-                Print.print(Print.USER_DOES_NOT_EXIST);
-                checkUserID();
-            }
-
-        } else{
-            Print.print(Print.ERROR_INPUT);
-            checkUserID();
-        }
-
-    }
-
-    public static void checkPassword(int userID){
-        String input = Input.fetchInputString(Print.LOGIN_MENU_PASSWORD);
-
-        if(input.isEmpty()){
-            Controller.logIn();
-        }else if(UserController.getUserPassword(userID).equals(input)){
-            Print.print(Print.ACCESS_GRANTED);
-            Controller.controllerMenu();
-        }else{
-            Print.print(Print.WRONG_PASSWORD);
-            checkPassword(userID);
-        }
-
-    }
-
 }
 
 

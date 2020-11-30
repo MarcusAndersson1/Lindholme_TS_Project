@@ -6,7 +6,6 @@ import utilities.Input;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,18 +15,17 @@ public class UserController {
     private static User user;
     private static final HashMap<Integer, User> userStorage = new HashMap();
 
-    public static void addTestUser() {
-        userStorage.put(1, new User("stefan", 1, "hallå", "password123"));
-        userStorage.put(2, new User("olof", 2, "hallå", "password123"));
-        userStorage.put(3, new User("per", 3, "hallå", "password123"));
+    public static void addTestUser(){
+        userStorage.put(12,new User("stefan",12,"hallå"));
+        userStorage.put(1,new User("olof",1,"hallå"));
+        userStorage.put(5,new User("per",5,"hallå"));
     }
 
     public static void createUser() {
         String name = Input.fetchInputString(Print.ENTER_USER_NAME);
         String currentDateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy - H:mm"));
-        String password = setUserPassword();
-        userID = getMaxKey() + 1;
-        user = new User(name, userID, currentDateTime, password);
+        userID++;
+        user = new User(name, userID, currentDateTime);
         userStorage.put(userID, user);
 
         printUserStorage();
@@ -35,22 +33,22 @@ public class UserController {
         Controller.runUserController();
     }
 
-    public static void openUser() {
+    public static void openUser(){
         printUserStorage();
 
         Controller.runUserController();
     }
 
-    public static void saveUser() {
+    public static void saveUser(){
 
         Controller.runUserController();
     }
 
-    public static void deleteUser(String s) {
+    public static void deleteUser(String s){
         int check;
-        if (userStorage.isEmpty()) {
+        if (userStorage.isEmpty()){
             System.out.println(Print.THE_LIST_IS_EMPTY);
-        } else {
+        }else {
             do {
                 try {
                     s = Input.fetchInputString(Print.TYPE_ID);
@@ -83,10 +81,10 @@ public class UserController {
 
     public static void printUserStorage() {
 
-        if (userStorage.isEmpty()) {
+        if (userStorage.isEmpty()){
             System.out.println(Print.THE_LIST_IS_EMPTY);
-        } else {
-            for (Map.Entry<Integer, User> entry : userStorage.entrySet()) {
+        }else{
+            for(Map.Entry<Integer,User> entry: userStorage.entrySet()){
                 System.out.println(entry.getValue());
             }
         }
@@ -95,51 +93,14 @@ public class UserController {
         // String content = teamStorage.toString();
         //  System.out.println(content);
     }
-
-    public static boolean userExists(int id) {
-        if (userStorage.containsKey(id)) {
+    public static boolean userExists(int id){
+        if (userStorage.containsKey(id)){
             return true;
-        } else {
+        }else{
             return false;
         }
     }
-
-    public static User getUser(int userID) {
+    public static User getUser(int userID){
         return userStorage.get(userID);
     }
-
-    public static String getUserPassword(int userID) {
-        return userStorage.get(userID).getPassword();
-    }
-
-
-    public static String setUserPassword() {
-        String password = "";
-        int validPassword;
-        do {
-            String tryPassword = Input.fetchInputString(Print.ENTER_PASSWORD);
-            if (tryPassword.isEmpty() || tryPassword.isBlank()) {
-                Print.print(Print.ERROR_INPUT);
-                validPassword = 0;
-            } else {
-
-                password = tryPassword;
-                validPassword = 1;
-            }
-
-        } while (validPassword == 0);
-        return password;
-
-    }
-
-    public static int getMaxKey() {
-        int maxKey = 0;
-        for (Map.Entry<Integer, User> entry : userStorage.entrySet()) {
-            if (maxKey < entry.getKey()) {
-                maxKey = entry.getKey();
-            }
-        }
-        return maxKey;
-    }
 }
-

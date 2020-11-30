@@ -8,12 +8,10 @@ public class User implements Serializable{
     private static String name;
     private static int iD;
     private static String createdDate;
-    private static String password;
-    public User(String name,int iD, String date, String password){
+    public User(String name,int iD, String date){
         this.name = name;
         this.iD = iD;
         this.createdDate = date;
-        this.password = password;
 
     }
 
@@ -23,14 +21,6 @@ public class User implements Serializable{
 
     public static String getName() {
         return name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        User.password = password;
     }
 
 

@@ -11,8 +11,8 @@ public class ProjectLeader extends User {
     public static HashMap<Integer,User> leaderMap = new HashMap<>();
     HashSet<Integer> ProjectsID = new HashSet<>();
 
-    public ProjectLeader(String teamName, String leader, String name, int iD, String date, String password) {
-        super(name, iD, date, password);
+    public ProjectLeader(String teamName, String leader, String name, int iD, String date) {
+        super(name, iD, date);
         this.leader = leader;
         this.teamName = teamName;
 
