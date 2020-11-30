@@ -8,14 +8,22 @@ public class Print {
     public static final String THE_LIST_IS_EMPTY = ("The list is currently empty");
 
 
+    //login related
+    public static final String LOGIN_MENU_USERID = ("Login Menu ") + EOL
+            + ("User ID:") + EOL;
+    public static final String LOGIN_MENU_PASSWORD = ("Password: ") + EOL;
+    public static final String ACCESS_GRANTED = ("* ACCESS GRANTED *") + EOL;
+    public static final String WRONG_PASSWORD = ("Wrong Password") + EOL + ("Press \"Enter\" to go back") + EOL;
+
     //controller related
     public static final String CONTROLLER_MENU = EOL + (" Menu ") + EOL
             + ("[1] Project") + EOL
             + ("[2] User") + EOL
-            + ("[3] Team") + EOL;
+            + ("[3] Team") + EOL
+            + ("[4] Log Out") + EOL;
 
     //project related
-    public static final String PROJECT_MENU = EOL +  (" objects.Project Menu") + EOL
+    public static final String PROJECT_MENU = EOL +  ("Project Menu") + EOL
             + ("[1] New Project") + EOL
             + ("[2] Open Project") + EOL
             + ("[3] Save Project") + EOL
@@ -41,6 +49,8 @@ public class Print {
             + ("[5] Back") + EOL;
 */
     //user related
+    public static final String USER_DOES_NOT_EXIST = ("User does not exist") + EOL;
+    public static final String ENTER_PASSWORD = ("Enter Password") + EOL;
     public static final String USER_MENU = EOL +  (" User Menu") + EOL
             + ("[1] New User") + EOL
             + ("[2] Open User") + EOL
