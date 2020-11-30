@@ -3,6 +3,7 @@ package controllers;
 import controllers.Controller;
 import menus.Print;
 import objects.Team;
+import objects.User;
 import utilities.Input;
 
 import java.time.LocalDateTime;
@@ -52,9 +53,9 @@ public class TeamController {
 
     public static void deleteTeam(String s) {
         int check;
-        if (teamStorage.isEmpty()){
+        if (teamStorage.isEmpty()) {
             System.out.println(Print.THE_LIST_IS_EMPTY);
-        }else {
+        } else {
             do {
                 try {
                     s = Input.fetchInputString(Print.TYPE_ID);
@@ -77,17 +78,19 @@ public class TeamController {
 
     public static void printTeamStorage() {
 
-        if (teamStorage.isEmpty()){
+        if (teamStorage.isEmpty()) {
             System.out.println(Print.THE_LIST_IS_EMPTY);
         }else{
             for(Map.Entry<Integer, Team> entry: teamStorage.entrySet()){
-                System.out.println("objects.User " + entry.getValue().getID() + ": " + entry.getValue().getName()
-                        + " " + entry.getValue().getCreatedDate());
+                System.out.println(entry.getValue());
             }
         }
+    }
 
-        // String content = teamStorage.toString();
-        //  System.out.println(content);
+    public static void addTeamMember(User teamMember) {
+        team.addTeamMember(teamMember);
 
     }
+
+
 }

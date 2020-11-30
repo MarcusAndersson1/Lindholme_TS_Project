@@ -2,33 +2,14 @@ package controllers;
 
 
 import menus.Print;
-import objects.User;
+import objects.Project;
+import objects.ProjectLeader;
+import objects.ScrumMaster;
 import utilities.Input;
 
 public class Controller {
 
-    public static User currentUser;
-
-    public static void logIn(){
-        System.out.println("User:");
-        UserController.printUserStorage();
-        Print.print("Enter your ID:"+Print.EOL);
-        int userID;
-        boolean userExists;
-        do{
-            userID = Input.fetchInputInt("");
-            userExists = UserController.userExists(userID);
-            if(!userExists){
-                Print.print(Print.ERROR_INPUT);
-            }
-        }while(!userExists);
-        Print.print("Successfully logged in!"+Print.EOL);
-        currentUser=UserController.getUser(userID);
-        controllerMenu();
-    }
-
     public static void controllerMenu() {
-        System.out.println(Print.EOL+"Welcome "+currentUser.getName()+"!");
         int choice;
         Print.print(Print.CONTROLLER_MENU);
 
@@ -92,6 +73,7 @@ public class Controller {
 
 
     }
+
 
     public static void runTeamController(){
         int choice;

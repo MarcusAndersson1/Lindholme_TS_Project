@@ -3,34 +3,33 @@ package objects;
 import java.io.Serializable;
 
 public class User implements Serializable{
-    private String name;
-    private int iD;
-    private String createdDate;
 
 
+    private static String name;
+    private static int iD;
+    private static String createdDate;
     public User(String name,int iD, String date){
         this.name = name;
         this.iD = iD;
         this.createdDate = date;
+
     }
 
-
-    public int getID() {
+    public static int getID() {
         return iD;
     }
 
-    public String getName() {
+    public static String getName() {
         return name;
     }
 
 
     @Override
     public String toString() {
-        return getID() + ", " + getName();
+        return "Name: " + getName() + "ID: " + getID();
     }
 
-
-    public String getCreatedDate() {
+    public static String getCreatedDate() {
         return createdDate;
     }
 }

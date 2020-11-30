@@ -1,6 +1,5 @@
 package controllers;
 
-import controllers.Controller;
 import menus.Print;
 import objects.User;
 import utilities.Input;
@@ -26,7 +25,7 @@ public class UserController {
         String name = Input.fetchInputString(Print.ENTER_USER_NAME);
         String currentDateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy - H:mm"));
         userID++;
-        user = new User(name, userID, currentDateTime );
+        user = new User(name, userID, currentDateTime);
         userStorage.put(userID, user);
 
         printUserStorage();

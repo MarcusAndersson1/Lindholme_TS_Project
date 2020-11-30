@@ -1,43 +1,39 @@
 package objects;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Team {
-
-    private String name;
+    private String teamName;
     private int iD;
     private String createdDate;
-    private ArrayList<User> teamArray = new ArrayList();
+    public static HashMap<Integer,User> memberMap = new HashMap<>();
 
+   // public static HashMap<Integer, User> getMemberMap() { return memberMap; }
+    //public static void setMemberMap(HashMap<Integer, User> memberMap) { Team.memberMap = memberMap; }
 
-    public Team (String name, int iD, String date){
-        this.name = name;
+    public Team (String teamName, int iD, String date){
+        this.teamName = teamName;
         this.iD = iD;
         this.createdDate = date;
     }
 
+    public void addTeamMember(User user){ memberMap.put(user.getID(),user); }
+    public void removeTeamMember(User user){ memberMap.remove(user.getID());
+    }
 
-    void addTeamMember(User user){
-        teamArray.add(user);
-    }
-    void removeTeamMember(User user){
-        teamArray.remove(user);
-    }
-    void viewTeam(){
-        for(User user : teamArray) {
-            user.toString();
+    public void viewTeam(){
+        for(User user : memberMap.values()) {
+            System.out.println(user);
         }
     }
 
-
     public String getName() {
-        return name;
+        return teamName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.teamName = teamName;
     }
-
     public String getCreatedDate() {
         return createdDate;
     }
