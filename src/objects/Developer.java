@@ -10,8 +10,8 @@ public class Developer extends User {
     public static HashMap<Integer,User> developerMap = new HashMap<>();
     HashSet<Integer> ProjectsID = new HashSet<>();
 
-    public Developer(String teamName, String developer, String name, int iD, String date, String password) {
-        super(name, iD, date, password);
+    public Developer(String teamName, String developer, String name, int iD, String date) {
+        super(name, iD, date);
 
         this.developer = developer;
         this.teamName = teamName;
