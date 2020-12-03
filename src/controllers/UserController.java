@@ -13,13 +13,15 @@ import java.util.Map;
 public class UserController {
 
     private static int userID;
-    private static User user;
-    private static final HashMap<Integer, User> userStorage = new HashMap();
+    private static HashMap<Integer, User> userStorage = new HashMap<>();
 
     public static void addTestUser() {
         userStorage.put(1, new User("stefan", 1, "hallå", "password123"));
         userStorage.put(2, new User("olof", 2, "hallå", "password123"));
-        userStorage.put(3, new User("per", 3, "hallå", "password123"));
+        userStorage.put(3, new User("per", 3, "hallå", " "));
+        User olaC = new User("ola-conny", 4, "hallå", " ");
+        userStorage.put(4,olaC);
+
     }
 
     public static void createUser() {
@@ -27,7 +29,7 @@ public class UserController {
         String currentDateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy - H:mm"));
         String password = setUserPassword();
         userID = getMaxKey() + 1;
-        user = new User(name, userID, currentDateTime, password);
+        User user = new User(name, userID, currentDateTime, password);
         userStorage.put(userID, user);
 
         printUserStorage();

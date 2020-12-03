@@ -5,11 +5,13 @@ import menus.Print;
 import objects.Project;
 import objects.ProjectLeader;
 import objects.ScrumMaster;
+import objects.User;
 import utilities.Input;
 
 import javax.naming.ldap.Control;
 
 public class Controller {
+    public static User currentUser;
 
     public static void logIn(){
             Print.print(Print.LOGIN_MENU_USERID);
@@ -20,6 +22,7 @@ public class Controller {
 
     public static void controllerMenu() {
         int choice;
+        Print.print(Print.EOL+"Welcome "+currentUser.getName()+"!");
         Print.print(Print.CONTROLLER_MENU);
 
         do {
@@ -204,19 +207,21 @@ public class Controller {
 
     public static void checkPassword(int userID){
         String input = Input.fetchInputString(Print.LOGIN_MENU_PASSWORD);
-
+        User user = UserController.getUser(userID);
         if(input.isEmpty()){
             Controller.logIn();
         }else if(UserController.getUserPassword(userID).equals(input)){
             Print.print(Print.ACCESS_GRANTED);
-            Controller.controllerMenu();
+            loginSuccessful(user);
         }else{
             Print.print(Print.WRONG_PASSWORD);
             checkPassword(userID);
         }
-
     }
-
+    public static void loginSuccessful(User user){
+        currentUser = user;
+        Controller.controllerMenu();
+    }
 }
 
 

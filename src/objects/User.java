@@ -5,10 +5,10 @@ import java.io.Serializable;
 public class User implements Serializable{
 
 
-    private static String name;
-    private static int iD;
-    private static String createdDate;
-    private static String password;
+    private String name;
+    private int iD;
+    private String createdDate;
+    private String password;
     public User(String name,int iD, String date, String password){
         this.name = name;
         this.iD = iD;
@@ -17,11 +17,11 @@ public class User implements Serializable{
 
     }
 
-    public static int getID() {
+    public int getID() {
         return iD;
     }
 
-    public static String getName() {
+    public String getName() {
         return name;
     }
 
@@ -30,16 +30,16 @@ public class User implements Serializable{
     }
 
     public void setPassword(String password) {
-        User.password = password;
+        this.password = password;
     }
 
 
     @Override
     public String toString() {
-        return "Name: " + getName() + "ID: " + getID();
+        return "Name: " + getName() + " ID: " + getID();
     }
 
-    public static String getCreatedDate() {
-        return createdDate;
+    public String getCreatedDate() {
+        return this.createdDate;
     }
 }
