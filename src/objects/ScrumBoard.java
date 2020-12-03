@@ -36,7 +36,7 @@ public class ScrumBoard implements Serializable {
         }
     }
     public void planSprint(Backlog b){
-        int id = Input.fetchInputInt("chise story id");
+        int id = Input.fetchInputInt("choose story id");
         ArrayList<UserStory> backlogList = b.getBacklogList();
         backlogList.get(id).setState();
     }

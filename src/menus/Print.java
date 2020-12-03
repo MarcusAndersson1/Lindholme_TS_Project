@@ -23,7 +23,7 @@ public class Print {
             + ("[4] Log Out") + EOL;
 
     //project related
-    public static final String PROJECT_MENU = EOL +  ("Project Menu") + EOL
+    public static final String PROJECT_MENU = EOL +  (" objects.Project Menu") + EOL
             + ("[1] New Project") + EOL
             + ("[2] Open Project") + EOL
             + ("[3] Save Project") + EOL
@@ -76,21 +76,28 @@ public class Print {
             + ("[2] Open Team") + EOL
             + ("[3] Save Team") + EOL
             + ("[4] Delete Team") + EOL
-            + ("[5] Back") + EOL;
+            + ("[5] load Team") + EOL
+            + ("[6] Back") + EOL;
 
     public static final String SCRUM_BOARD_MENU = EOL +  (" Scrum Board Menu") + EOL
             + ("[1] Plan Sprint") + EOL
             + ("[2] Move User Stories") + EOL
             + ("[3] End Sprint") + EOL
             + ("[4] Back") + EOL;
-
     public static final String PROJECT_PLANNING_MENU = EOL +  (" Plan Your Project Bro!") + EOL
             + ("[1] Create User Story") + EOL
             + ("[2] View Backlog") + EOL
-            + ("[3] Back") + EOL;
+            + ("[3] Create Risk") + EOL
+            + ("[4] View Risks") + EOL
+            + ("[4] Back") + EOL;
 
     public static final String ENTER_TEAM_NAME = ("Enter Team Name: ");
-
+    public static final String EDIT_TEAM = EOL +  (" Edit your team ") + EOL
+            + ("[1] Add team member") + EOL
+            + ("[2] Back") + EOL;
+    public static final String ADD_MEMBER = EOL +  (" Edit your team ") + EOL
+            + ("[1] Add Member") + EOL
+            + ("[0] Back") + EOL;
     public static void print(String stringToPrint) {
         System.out.print(stringToPrint);
     }
