@@ -1,6 +1,7 @@
 package objects;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 public class User implements Serializable{
 
@@ -9,6 +10,8 @@ public class User implements Serializable{
     private int iD;
     private String createdDate;
     private String password;
+    private int timeOutInc;
+    private LocalDateTime timeOut = LocalDateTime.now();
     public User(String name,int iD, String date, String password){
         this.name = name;
         this.iD = iD;
@@ -16,6 +19,7 @@ public class User implements Serializable{
         this.password = password;
 
     }
+
 
     public int getID() {
         return iD;
@@ -41,5 +45,25 @@ public class User implements Serializable{
 
     public String getCreatedDate() {
         return this.createdDate;
+    }
+
+    public int getTimeOutInc() {
+        return timeOutInc;
+    }
+    public int incTimeOut(){return this.timeOutInc++;}
+
+    public void setTimeOutInc(int timeOutInc) {
+        this.timeOutInc = timeOutInc;
+    }
+    public void setTimeOut(LocalDateTime timeOut){
+        this.timeOut = timeOut;
+    }
+
+    public void timeOut30Minutes() {
+        this.timeOut = LocalDateTime.now().plusMinutes(1);
+    }
+
+    public LocalDateTime getTimeOut() {
+        return timeOut;
     }
 }

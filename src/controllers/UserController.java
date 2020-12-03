@@ -16,7 +16,7 @@ public class UserController {
     private static HashMap<Integer, User> userStorage = new HashMap<>();
 
     public static void addTestUser() {
-        userStorage.put(1, new User("stefan", 1, "hallå", "password123"));
+        userStorage.put(1, new User("stefan", 1, "hallå", "Password123"));
         userStorage.put(2, new User("olof", 2, "hallå", "Password123"));
         userStorage.put(3, new User("per", 3, "hallå", "Password123"));
 

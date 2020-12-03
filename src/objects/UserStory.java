@@ -8,6 +8,7 @@ public class UserStory implements Serializable {
     String description;
     int points;
     int id;
+
     UserStoryState state = UserStoryState.BACK_LOGG;
 
     public UserStory(String description, int id){
