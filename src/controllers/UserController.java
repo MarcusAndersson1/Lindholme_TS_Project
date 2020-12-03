@@ -37,13 +37,13 @@ public class UserController {
         Controller.runUserController();
     }
 
-    public static void openUser() {
+    public static void openUser(){
         printUserStorage();
 
         Controller.runUserController();
     }
 
-    public static void saveUser() {
+    public static void saveUser(){
 
         Controller.runUserController();
     }
@@ -81,10 +81,10 @@ public class UserController {
 
     public static void printUserStorage() {
 
-        if (userStorage.isEmpty()) {
+        if (userStorage.isEmpty()){
             System.out.println(Print.THE_LIST_IS_EMPTY);
-        } else {
-            for (Map.Entry<Integer, User> entry : userStorage.entrySet()) {
+        }else{
+            for(Map.Entry<Integer,User> entry: userStorage.entrySet()){
                 System.out.println(entry.getValue());
             }
         }
@@ -93,16 +93,14 @@ public class UserController {
         // String content = teamStorage.toString();
         //  System.out.println(content);
     }
-
-    public static boolean userExists(int id) {
-        if (userStorage.containsKey(id)) {
+    public static boolean userExists(int id){
+        if (userStorage.containsKey(id)){
             return true;
-        } else {
+        }else{
             return false;
         }
     }
-
-    public static User getUser(int userID) {
+    public static User getUser(int userID){
         return userStorage.get(userID);
     }
 
