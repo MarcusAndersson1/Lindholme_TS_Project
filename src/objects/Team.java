@@ -6,10 +6,8 @@ public class Team {
     private String teamName;
     private int iD;
     private String createdDate;
-    public static HashMap<Integer,User> memberMap = new HashMap<>();
+    public HashMap<Integer,User> memberMap = new HashMap<>();
 
-   // public static HashMap<Integer, User> getMemberMap() { return memberMap; }
-    //public static void setMemberMap(HashMap<Integer, User> memberMap) { Team.memberMap = memberMap; }
 
     public Team (String teamName, int iD, String date){
         this.teamName = teamName;
@@ -17,8 +15,8 @@ public class Team {
         this.createdDate = date;
     }
 
-    public void addTeamMember(User user){ memberMap.put(user.getID(),user); }
-    public void removeTeamMember(User user){ memberMap.remove(user.getID());
+    public void addTeamMember(User user){ this.memberMap.put(user.getID(),user); }
+    public void removeTeamMember(User user){ this.memberMap.remove(user.getID());
     }
 
     public void viewTeam(){
