@@ -36,7 +36,7 @@ public class User implements Serializable{
 
     @Override
     public String toString() {
-        return "Name: " + getName() + " ID: " + getID();
+        return "Name: " + getName() + " ID: " + getID() + " Passwprd: " + getPassword();
     }
 
     public String getCreatedDate() {
