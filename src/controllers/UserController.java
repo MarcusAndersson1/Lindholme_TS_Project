@@ -6,26 +6,30 @@ import utilities.Input;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 public class UserController {
 
     private static int userID;
-    private static User user;
-    private static final HashMap<Integer, User> userStorage = new HashMap();
+    private static HashMap<Integer, User> userStorage = new HashMap<>();
 
-    public static void addTestUser(){
-        userStorage.put(12,new User("stefan",12,"hallå"));
-        userStorage.put(1,new User("olof",1,"hallå"));
-        userStorage.put(5,new User("per",5,"hallå"));
+    public static void addTestUser() {
+        userStorage.put(1, new User("stefan", 1, "hallå", "password123"));
+        userStorage.put(2, new User("olof", 2, "hallå", "password123"));
+        userStorage.put(3, new User("per", 3, "hallå", " "));
+        User olaC = new User("ola-conny", 4, "hallå", " ");
+        userStorage.put(4,olaC);
+
     }
 
     public static void createUser() {
         String name = Input.fetchInputString(Print.ENTER_USER_NAME);
         String currentDateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy - H:mm"));
-        userID++;
-        user = new User(name, userID, currentDateTime);
+        String password = setUserPassword();
+        userID = getMaxKey() + 1;
+        User user = new User(name, userID, currentDateTime, password);
         userStorage.put(userID, user);
 
         printUserStorage();
@@ -44,23 +48,19 @@ public class UserController {
         Controller.runUserController();
     }
 
-    public static void deleteUser(String s){
-        int check;
-        if (userStorage.isEmpty()){
+    public static void deleteUser() {
+        int input = 0;
+        if (userStorage.isEmpty()) {
             System.out.println(Print.THE_LIST_IS_EMPTY);
-        }else {
-            do {
+        } else {
                 try {
-                    s = Input.fetchInputString(Print.TYPE_ID);
+                    input = Integer.parseInt(Input.fetchInputString(Print.TYPE_ID));
                 } catch (Exception e) {
-                    check = 1;
-                }
-                check = 0;
-            } while (check == 1);
 
-            if (userStorage.containsKey(Integer.parseInt(s))) {
-                System.out.println("The user with ID " + s + " has been deleted");
-                userStorage.remove(Integer.parseInt(s));
+                }
+            if (userStorage.containsKey(input)) {
+                System.out.println("The user with ID " + input + " has been deleted");
+                userStorage.remove(input);
             } else {
                 System.out.println(Print.ERROR_INPUT);
             }
@@ -103,4 +103,39 @@ public class UserController {
     public static User getUser(int userID){
         return userStorage.get(userID);
     }
+
+    public static String getUserPassword(int userID) {
+        return userStorage.get(userID).getPassword();
+    }
+
+
+    public static String setUserPassword() {
+        String password = "";
+        int validPassword;
+        do {
+            String tryPassword = Input.fetchInputString(Print.ENTER_PASSWORD);
+            if (tryPassword.isEmpty() || tryPassword.isBlank()) {
+                Print.print(Print.ERROR_INPUT);
+                validPassword = 0;
+            } else {
+
+                password = tryPassword;
+                validPassword = 1;
+            }
+
+        } while (validPassword == 0);
+        return password;
+
+    }
+
+    public static int getMaxKey() {
+        int maxKey = 0;
+        for (Map.Entry<Integer, User> entry : userStorage.entrySet()) {
+            if (maxKey < entry.getKey()) {
+                maxKey = entry.getKey();
+            }
+        }
+        return maxKey;
+    }
 }
+

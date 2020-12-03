@@ -5,25 +5,38 @@ import menus.Print;
 import objects.Project;
 import objects.ProjectLeader;
 import objects.ScrumMaster;
+import objects.User;
 import utilities.Input;
 
+import javax.naming.ldap.Control;
+
 public class Controller {
+    public static User currentUser;
+
+    public static void logIn(){
+            Print.print(Print.LOGIN_MENU_USERID);
+            checkUserID();
+
+
+    }
 
     public static void controllerMenu() {
         int choice;
+        Print.print(Print.EOL+"Welcome "+currentUser.getName()+"!");
         Print.print(Print.CONTROLLER_MENU);
 
         do {
             choice = Input.fetchInputInt("");
-            if (choice == 0 || choice < 1 || choice > 3) {
+            if (choice == 0 || choice < 1 || choice > 4) {
                 Print.print(Print.ERROR_INPUT);
             }
-        } while (choice < 1 || choice > 3);
+        } while (choice < 1 || choice > 4);
 
         switch (choice) {
             case 1 -> runProjectController();
             case 2 -> runUserController();
             case 3 -> runTeamController();
+            case 4 -> logIn();
 
         }
     }
@@ -66,7 +79,7 @@ public class Controller {
             case 1 -> UserController.createUser();
             case 2 -> UserController.openUser();
             case 3 -> UserController.saveUser();
-            case 4 -> UserController.deleteUser("");
+            case 4 -> UserController.deleteUser();
             case 5 -> controllerMenu();
 
         }
@@ -173,6 +186,42 @@ public class Controller {
     }
 
      */
+    public static void checkUserID() {
+        int userID = Input.fetchInputInt("");
+        if(userID != 0){
+            if((UserController.userExists(userID))){
+                checkPassword(userID);
+
+
+            }else{
+                Print.print(Print.USER_DOES_NOT_EXIST);
+                checkUserID();
+            }
+
+        } else{
+            Print.print(Print.ERROR_INPUT);
+            checkUserID();
+        }
+
+    }
+
+    public static void checkPassword(int userID){
+        String input = Input.fetchInputString(Print.LOGIN_MENU_PASSWORD);
+        User user = UserController.getUser(userID);
+        if(input.isEmpty()){
+            Controller.logIn();
+        }else if(UserController.getUserPassword(userID).equals(input)){
+            Print.print(Print.ACCESS_GRANTED);
+            loginSuccessful(user);
+        }else{
+            Print.print(Print.WRONG_PASSWORD);
+            checkPassword(userID);
+        }
+    }
+    public static void loginSuccessful(User user){
+        currentUser = user;
+        Controller.controllerMenu();
+    }
 }
 
 
