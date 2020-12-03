@@ -36,7 +36,7 @@ public class Controller {
             case 1 -> runProjectController();
             case 2 -> runUserController();
             case 3 -> runTeamController();
-            case 4 -> logIn();
+            case 4 -> logOut();
 
         }
     }
@@ -221,6 +221,10 @@ public class Controller {
     public static void loginSuccessful(User user){
         currentUser = user;
         Controller.controllerMenu();
+    }
+    public static void logOut(){
+        currentUser = null;
+        logIn();
     }
 }
 

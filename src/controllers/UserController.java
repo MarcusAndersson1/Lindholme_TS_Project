@@ -3,10 +3,8 @@ package controllers;
 import menus.Print;
 import objects.User;
 import utilities.Input;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,15 +29,12 @@ public class UserController {
         userID = getMaxKey() + 1;
         User user = new User(name, userID, currentDateTime, password);
         userStorage.put(userID, user);
-
         printUserStorage();
-
         Controller.runUserController();
     }
 
     public static void openUser(){
         printUserStorage();
-
         Controller.runUserController();
     }
 
@@ -65,7 +60,6 @@ public class UserController {
                 System.out.println(Print.ERROR_INPUT);
             }
         }
-
         Controller.runUserController();
     }
 
@@ -88,10 +82,6 @@ public class UserController {
                 System.out.println(entry.getValue());
             }
         }
-
-
-        // String content = teamStorage.toString();
-        //  System.out.println(content);
     }
     public static boolean userExists(int id){
         if (userStorage.containsKey(id)){
@@ -108,7 +98,6 @@ public class UserController {
         return userStorage.get(userID).getPassword();
     }
 
-
     public static String setUserPassword() {
         String password = "";
         int validPassword;
@@ -118,14 +107,11 @@ public class UserController {
                 Print.print(Print.ERROR_INPUT);
                 validPassword = 0;
             } else {
-
                 password = tryPassword;
                 validPassword = 1;
             }
-
         } while (validPassword == 0);
         return password;
-
     }
 
     public static int getMaxKey() {
@@ -138,4 +124,3 @@ public class UserController {
         return maxKey;
     }
 }
-

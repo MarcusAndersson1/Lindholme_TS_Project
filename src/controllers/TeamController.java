@@ -82,8 +82,9 @@ public class TeamController {
             System.out.println(Print.THE_LIST_IS_EMPTY);
         }else{
             for(Map.Entry<Integer, Team> entry: teamStorage.entrySet()){
-                System.out.println(entry.getValue());
-            }
+                System.out.println(entry.getValue().toString());
+
+                }
         }
     }
 
