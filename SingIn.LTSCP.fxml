@@ -1,23 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gluonhq.charm.glisten.control.Icon?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="b" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" stylesheets="@Stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <PasswordField layoutX="78.0" layoutY="221.0" prefHeight="27.0" prefWidth="245.0" promptText="Password" />
-      <TextField layoutX="78.0" layoutY="181.0" prefHeight="27.0" prefWidth="245.0" promptText="Username" />
-      <Button layoutX="235.0" layoutY="259.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="88.0" text="Sign In" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="127.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@LTSCP%20logo.png" />
-         </image>
-      </ImageView>
-      <CheckBox layoutX="78.0" layoutY="264.0" mnemonicParsing="false" text="Remember Me" />
+      <AnchorPane fx:id="leftLogIn" prefHeight="500.0" prefWidth="350.0" />
+      <TextField id="username" fx:id="username" layoutX="450.0" layoutY="220.0" prefHeight="20.0" prefWidth="150.0" promptText="Username">
+         <font>
+            <Font size="12.0" />
+         </font></TextField>
+      <PasswordField fx:id="password" layoutX="450.0" layoutY="250.0" prefHeight="20.0" prefWidth="150.0" promptText="Password">
+         <font>
+            <Font size="12.0" />
+         </font></PasswordField>
+      <CheckBox layoutX="420.0" layoutY="300.0" mnemonicParsing="false" text="Remember Me">
+         <font>
+            <Font size="12.0" />
+         </font></CheckBox>
+      <Button fx:id="loginButton" layoutX="475.0" layoutY="400.0" mnemonicParsing="false" text="Sign In">
+         <font>
+            <Font size="12.0" />
+         </font></Button>
+      <Icon content="ACCOUNT_CIRCLE" layoutX="420.0" layoutY="220.0" />
+      <Icon content="LOCK" layoutX="420.0" layoutY="250.0" />
+      <Label fx:id="lable" layoutX="370.0" layoutY="96.0" text="LTSCP Mangment Tool">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
    </children>
 </Pane>
