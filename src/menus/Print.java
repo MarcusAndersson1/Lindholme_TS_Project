@@ -15,6 +15,7 @@ public class Print {
     public static final String ACCESS_GRANTED = ("* ACCESS GRANTED *") + EOL;
     public static final String WRONG_PASSWORD = ("Wrong Password") + EOL + ("Press \"Enter\" to go back") + EOL;
 
+
     //controller related
     public static final String CONTROLLER_MENU = EOL + (" Menu ") + EOL
             + ("[1] Project") + EOL
@@ -51,6 +52,13 @@ public class Print {
     //user related
     public static final String USER_DOES_NOT_EXIST = ("User does not exist") + EOL;
     public static final String ENTER_PASSWORD = ("Enter Password") + EOL;
+    public static final String VALID_PASSWORD = ("Valid Password") + EOL;
+    public static final String INVALID_PASSWORD = ("Invalid Password: \n" +
+            "Password must contain at least one lower case letter, one upper case letter, one digit, " +
+            "and contain at least 8 characters and at most 20 characters. \n" +
+            "No white spaces allowed. \n") + EOL;
+
+            
     public static final String USER_MENU = EOL +  (" User Menu") + EOL
             + ("[1] New User") + EOL
             + ("[2] Open User") + EOL

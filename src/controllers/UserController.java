@@ -7,6 +7,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class UserController {
 
@@ -14,11 +16,9 @@ public class UserController {
     private static HashMap<Integer, User> userStorage = new HashMap<>();
 
     public static void addTestUser() {
-        userStorage.put(1, new User("stefan", 1, "hallå", "password123"));
-        userStorage.put(2, new User("olof", 2, "hallå", "password123"));
-        userStorage.put(3, new User("per", 3, "hallå", " "));
-        User olaC = new User("ola-conny", 4, "hallå", " ");
-        userStorage.put(4,olaC);
+        userStorage.put(1, new User("stefan", 1, "hallå", "Password123"));
+        userStorage.put(2, new User("olof", 2, "hallå", "Password123"));
+        userStorage.put(3, new User("per", 3, "hallå", "Password123"));
 
     }
 
@@ -63,16 +63,6 @@ public class UserController {
         Controller.runUserController();
     }
 
-/*
-    public static void addToUserStorage(Integer integer, objects.User user) {
-        userStorage.put(integer, user);
-
-    }
-    public static void removeFromUserStorage (Integer integer){
-        userStorage.remove(integer);
-    }
-*/
-
     public static void printUserStorage() {
 
         if (userStorage.isEmpty()){
@@ -99,19 +89,27 @@ public class UserController {
     }
 
     public static String setUserPassword() {
-        String password = "";
-        int validPassword;
+        String password;
         do {
-            String tryPassword = Input.fetchInputString(Print.ENTER_PASSWORD);
-            if (tryPassword.isEmpty() || tryPassword.isBlank()) {
-                Print.print(Print.ERROR_INPUT);
-                validPassword = 0;
-            } else {
-                password = tryPassword;
-                validPassword = 1;
+            password = Input.fetchInputString(Print.ENTER_PASSWORD);
+            if(isValidPassword(password)){
+                Print.print(Print.INVALID_PASSWORD);
+            }else{
+                Print.print(Print.VALID_PASSWORD);
             }
-        } while (validPassword == 0);
+        } while (isValidPassword(password));
         return password;
+    }
+
+    public static boolean isValidPassword(String password) {
+        String regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,20}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(password);
+        if (matcher.matches()) {
+            return false;
+        }else{
+            return true;
+        }
     }
 
     public static int getMaxKey() {
