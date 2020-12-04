@@ -50,6 +50,7 @@ public class Print {
               + ("[5] Back") + EOL;
   */
     //user related
+    public static final String CANNOT_DELETE_LOGGED_IN_USER = ("Error: Cannot delete, user is currently logged in");
     public static final String USER_DOES_NOT_EXIST = ("User does not exist") + EOL;
     public static final String ENTER_PASSWORD = ("Enter Password") + EOL;
     public static final String VALID_PASSWORD = ("Valid Password") + EOL;

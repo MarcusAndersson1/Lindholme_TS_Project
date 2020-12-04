@@ -53,13 +53,18 @@ public class UserController {
                 } catch (Exception e) {
 
                 }
-            if (userStorage.containsKey(input)) {
-                System.out.println("The user with ID " + input + " has been deleted");
-                userStorage.remove(input);
-            } else {
-                System.out.println(Print.ERROR_INPUT);
-            }
-        }
+                if(!userStorage.get(input).equals(Controller.getCurrentUser())){
+                    if (userStorage.containsKey(input)) {
+                        System.out.println("The user with ID " + input + " has been deleted");
+                        userStorage.remove(input);
+                    } else {
+                        System.out.println(Print.ERROR_INPUT);
+                    }
+                }else{
+                    Print.print(Print.CANNOT_DELETE_LOGGED_IN_USER);
+                }
+                }
+
         Controller.runUserController();
     }
 
