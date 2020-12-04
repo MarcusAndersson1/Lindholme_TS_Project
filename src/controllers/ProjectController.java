@@ -74,16 +74,18 @@ public ProjectController(){ //move the try catch out of the constructor
 
         do{
             choice = Input.fetchInputInt("");
-            if(choice == 0 || choice < 1 || choice > 3 ){
+            if(choice == 0 || choice < 1 || choice > 6 ){
                 Print.print(Print.ERROR_INPUT);
             }
-        }while(choice < 1 || choice > 3 );
+        }while(choice < 1 || choice > 6 );
 
 
         switch (choice){
             case 1 -> new ProjectPlanningController(project).createUserStory();
             case 2 -> new ProjectPlanningController(project).viewUserStories();
-            case 3 -> Controller.runProjectController();
+            case 3 -> new ProjectPlanningController(project).createRisk();
+            case 4 -> new ProjectPlanningController(project).viewRisks();
+            case 5 -> Controller.runProjectController();
         }
         }
     public static void saveProjects() {

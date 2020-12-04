@@ -2,29 +2,32 @@ package controllers;
 
 
 import menus.Print;
+import objects.Project;
+import objects.ProjectLeader;
+import objects.ScrumMaster;
 import objects.User;
 import utilities.Input;
-import java.time.LocalDateTime;
+
+import javax.naming.ldap.Control;
 
 public class Controller {
-    private static User currentUser;
+    public static User currentUser;
 
-
-    public static void logIn() {
-        Print.print(Print.LOGIN_MENU_USERID);
-        checkUserID();
+    public static void logIn(){
+            Print.print(Print.LOGIN_MENU_USERID);
+            checkUserID();
 
 
     }
 
-    public static void controllerMenu() {
+    public static void controllerMenu(){
         int choice;
-        Print.print(Print.EOL + "Welcome " + currentUser.getName() + "!");
+        Print.print(Print.EOL+"Welcome "+currentUser.getName()+"!");
         Print.print(Print.CONTROLLER_MENU);
 
         do {
             choice = Input.fetchInputInt("");
-            if (choice < 1 || choice > 4) {
+            if (choice == 0 || choice < 1 || choice > 4) {
                 Print.print(Print.ERROR_INPUT);
             }
         } while (choice < 1 || choice > 4);
@@ -38,41 +41,41 @@ public class Controller {
         }
     }
 
-    public static void runProjectController() {
-        int choice;
+    public static void runProjectController(){
+       int choice;
         Print.print(Print.PROJECT_MENU);
 
-        do {
+       do{
             choice = Input.fetchInputInt("");
-            if (choice < 1 || choice > 6) {
+            if(choice == 0 || choice < 1 || choice > 6 ){
                 Print.print(Print.ERROR_INPUT);
             }
-        } while (choice < 1 || choice > 6);
+       }while(choice < 1 || choice > 6 );
 
 
-        switch (choice) {
-            case 1 -> ProjectController.createProject();
-            case 2 -> ProjectController.openProject();
-            case 3 -> ProjectController.saveProjects();
-            case 4 -> ProjectController.deleteProject("");
-            case 5 -> ProjectController.loadProject();
-            case 6 -> controllerMenu();
-        }
-    }
+           switch (choice){
+               case 1 -> ProjectController.createProject();
+               case 2 -> ProjectController.openProject();
+               case 3 -> ProjectController.saveProjects();
+               case 4 -> ProjectController.deleteProject("");
+               case 5 -> ProjectController.loadProject();
+               case 6 -> controllerMenu();
+           }
+   }
 
-    public static void runUserController() {
+    public static void runUserController(){
         int choice;
         Print.print(Print.USER_MENU);
 
-        do {
+        do{
             choice = Input.fetchInputInt("");
-            if (choice < 1 || choice > 5) {
+            if(choice == 0 || choice < 1 || choice > 5 ){
                 Print.print(Print.ERROR_INPUT);
             }
-        } while (choice < 1 || choice > 5);
+        }while(choice < 1 || choice > 5 );
 
 
-        switch (choice) {
+        switch (choice){
             case 1 -> UserController.createUser();
             case 2 -> UserController.openUser();
             case 3 -> UserController.saveUser();
@@ -85,26 +88,27 @@ public class Controller {
     }
 
 
-    public static void runTeamController() {
+    public static void runTeamController(){
         int choice;
         Print.print(Print.TEAM_MENU);
 
-        do {
+        do{
             choice = Input.fetchInputInt("");
-            if (choice < 1 || choice > 5) {
+            if(choice==0 ||choice < 1 || choice > 6 ){
                 Print.print(Print.ERROR_INPUT);
             }
-        } while (choice < 1 || choice > 5);
+        }while(choice < 1 || choice > 6 );
 
-
-        switch (choice) {
+        switch (choice){
             case 1 -> TeamController.createTeam();
             case 2 -> TeamController.openTeam();
             case 3 -> TeamController.saveTeam();
             case 4 -> TeamController.deleteTeam("");
-            case 5 -> controllerMenu();
-
+            case 5 -> TeamController.loadTeam();
+            case 6 -> controllerMenu();
         }
+
+
     }
 
     /*
@@ -117,7 +121,7 @@ public class Controller {
         while(run){
 
         System.out.println("Press 1 for the scrum board");
-        System.out.println("Press 2 for planing/schedule");
+        System.out.println("Press 2 for planing/scedule");
         System.out.println("Press 3 to to exit:");
          
         String menu = input.nextLine();
@@ -141,9 +145,9 @@ public class Controller {
 
         project.printScrumBoard();
 
-        System.out.println("Press 1 for adding a user story");
-        System.out.println("Press 2 for removing a user story");
-        System.out.println("Press 3 to move user story to next stage");
+        System.out.println("Press 1 for adding a user storie");
+        System.out.println("Press 2 for removing a user storie");
+        System.out.println("Press 3 to move user storie to next stage");
         System.out.println("Press 4 to move back to main menu");
 
         String menu = input.nextLine();
@@ -151,7 +155,7 @@ public class Controller {
         switch(menu){
             case "1" -> project.addUserStories(); 
             case "2" -> project.removeUserStories();
-            case "3" -> project.moveUserStory();
+            case "3" -> project.moveUserStorie();
             case "4" -> run = false;
             default -> System.out.println("Please type a number 1-4");
         }
@@ -183,81 +187,44 @@ public class Controller {
      */
     public static void checkUserID() {
         int userID = Input.fetchInputInt("");
+        if(userID != 0){
+            if((UserController.userExists(userID))){
+                checkPassword(userID);
 
-            if (userID != 0) {
-                if ((!UserController.userExists(userID))) {
-                    Print.print(Print.USER_DOES_NOT_EXIST);
-                    logIn();
-                } else {
-                    checkPassword(userID, UserController.getUser(userID));
-                }
-            } else {
-                Print.print(Print.ERROR_INPUT);
-                logIn();
+
+            }else{
+                Print.print(Print.USER_DOES_NOT_EXIST);
+                checkUserID();
             }
+
+        } else{
+            Print.print(Print.ERROR_INPUT);
+            checkUserID();
+        }
+
     }
 
-
-    public static void checkPassword(int userID, User user) {
+    public static void checkPassword(int userID){
         String input = Input.fetchInputString(Print.LOGIN_MENU_PASSWORD);
-
-        if (input.isEmpty()) { //Option that sends user back to login page
-            Controller.logIn();}
-        if (timeOutChecker(userID)){
-            if (UserController.getUserPassword(userID).equals(input)) {
-                Print.print(Print.ACCESS_GRANTED);
-                user.setTimeOutInc(0);
-                loginSuccessful(user);
-            }else if(user.getTimeOutInc() < 3) {
-                Print.print(Print.WRONG_PASSWORD);
-                user.incTimeOut();
-                System.out.println(4 - user.getTimeOutInc() + " attempts left. ");
-                checkPassword(userID, user);
-            } else{
-                setTimeOut(user);
-                logIn();
-            }
-                }else{
-                    lockedOutPrint(user);
-                    logIn();
-                }
-            }
-
-
-
-
-
-    public static void loginSuccessful(User user) {
+        User user = UserController.getUser(userID);
+        if(input.isEmpty()){
+            Controller.logIn();
+        }else if(UserController.getUserPassword(userID).equals(input)){
+            Print.print(Print.ACCESS_GRANTED);
+            loginSuccessful(user);
+        }else{
+            Print.print(Print.WRONG_PASSWORD);
+            checkPassword(userID);
+        }
+    }
+    public static void loginSuccessful(User user){
         currentUser = user;
-        user.setTimeOut(LocalDateTime.now());
         Controller.controllerMenu();
     }
-
-    public static void logOut() {
+    public static void logOut(){
         currentUser = null;
         logIn();
     }
-
-    public static boolean timeOutChecker(int userID) {
-        LocalDateTime now = LocalDateTime.now();
-        LocalDateTime timeOut = UserController.getUser(userID).getTimeOut();
-        return now.isAfter(timeOut);
-        }
-
-    public static void setTimeOut(User user){
-        user.timeOut30Minutes();
-        System.out.println("The user account has been locked");
-        lockedOutPrint(user);
-
-    }
-
-    public static void lockedOutPrint(User user){
-        System.out.println("Locked out until: " + user.getTimeOut() +
-                " Remaining Time: " + (user.getTimeOut().getMinute() - LocalDateTime.now().getMinute()) + " minutes");
-    }
 }
-
-
-
 
 

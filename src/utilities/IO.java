@@ -1,6 +1,7 @@
 package utilities;
 
 import objects.Project;
+import objects.Team;
 
 import java.io.*;
 
@@ -10,6 +11,8 @@ public class IO{
     public static final File USER_DATA= new File("src/Files/UserData.txt");
     public static final String PROJECT_LOCATION = ("src/Files/ProjectREPLACE_WITH_ID.txt");
     public static final File PROJECT_ID = new File("src/Files/ProjectID.txt");
+    public static final String TEAM_LOCATION = ("src/Files/TeamREPLACE_WITH_ID.txt");
+    public static final File TEAM_ID = new File("src/Files/TeamID.txt");
 
     public static void saveUsers() throws IOException {
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(USER_DATA));
@@ -40,5 +43,28 @@ public class IO{
     public static void saveProjectID(int projectID) throws IOException {
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(PROJECT_ID));
         oos.writeObject(projectID);
+    }
+    public static void saveTeamID(int teamID) throws IOException {
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(TEAM_ID));
+        oos.writeObject(teamID);
+    }
+
+
+    public static void saveTeam(Team team) throws IOException {
+        File saveTeamFile = new File(TEAM_LOCATION.replace("REPLACE_WITH_ID", "1"));
+        saveTeamFile.createNewFile();
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(saveTeamFile));
+        oos.writeObject(team);
+    }
+    public static Team loadTeam(int teamID) throws Exception {
+        File loadTeamFile = new File(TEAM_LOCATION.replace("REPLACE_WITH_ID", Integer.toString(teamID)));
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(loadTeamFile));
+        Team loadedTeam = (Team) ois.readObject();
+        return loadedTeam;
+    }
+    public static int loadTeamID() throws Exception {
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(TEAM_ID));
+        int loadedID = (int) ois.readObject();
+        return loadedID;
     }
 }
