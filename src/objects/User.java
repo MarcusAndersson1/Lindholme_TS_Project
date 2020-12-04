@@ -2,6 +2,7 @@ package objects;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 public class User implements Serializable{
 
@@ -12,6 +13,7 @@ public class User implements Serializable{
     private String password;
     private int timeOutInc;
     private LocalDateTime timeOut = LocalDateTime.now();
+    private Set<Integer> teamIDs;
     public User(String name,int iD, String date, String password){
         this.name = name;
         this.iD = iD;
@@ -32,6 +34,8 @@ public class User implements Serializable{
     public String getPassword() {
         return password;
     }
+
+    public void addTeam(int teamID){this.teamIDs.add(teamID);}
 
     public void setPassword(String password) {
         this.password = password;

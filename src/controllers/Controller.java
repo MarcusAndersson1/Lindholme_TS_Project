@@ -17,7 +17,7 @@ public class Controller {
 
     }
 
-    public static void controllerMenu() {
+    public static void controllerMenu(){
         int choice;
         Print.print(Print.EOL + "Welcome " + currentUser.getName() + "!");
         Print.print(Print.CONTROLLER_MENU);
@@ -91,19 +91,18 @@ public class Controller {
 
         do {
             choice = Input.fetchInputInt("");
-            if (choice < 1 || choice > 5) {
+            if(choice==0 ||choice < 1 || choice > 6 ){
                 Print.print(Print.ERROR_INPUT);
             }
-        } while (choice < 1 || choice > 5);
-
+        }while(choice < 1 || choice > 6 );
 
         switch (choice) {
             case 1 -> TeamController.createTeam();
             case 2 -> TeamController.openTeam();
             case 3 -> TeamController.saveTeam();
             case 4 -> TeamController.deleteTeam("");
-            case 5 -> controllerMenu();
-
+            case 5 -> TeamController.loadTeam();
+            case 6 -> controllerMenu();
         }
     }
 

@@ -1,8 +1,8 @@
 package controllers;
 
-import ProjectPlanning.ProjectPlanning;
+import ProjectPlanning.*;
 import objects.Project;
-import objects.UserStory;
+import objects.*;
 import utilities.Input;
 
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ public class ProjectPlanningController {
         if(size==0){
             id=1;
         }else {
-            id = stories.get(size).getId() + 1;
+            id = size+1;
         }
         return id;
     }
@@ -33,10 +33,20 @@ public class ProjectPlanningController {
         projectPlanning.addToBacklog(userStory);
         ProjectController.openProject();
     }
+    public void createRisk(){
+        projectPlanning.addRisk();
+        ProjectController.openProject();
+    }
     public void viewUserStories(){
         for (UserStory u: projectPlanning.getBacklog()) {
             System.out.println(u);
 
+        }
+        Controller.runProjectController();
+    }
+    public void viewRisks(){
+        for (Risk u: projectPlanning.getRisks()) {
+            System.out.println(u);
         }
         Controller.runProjectController();
     }

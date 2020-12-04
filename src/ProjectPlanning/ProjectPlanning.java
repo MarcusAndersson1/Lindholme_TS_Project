@@ -1,5 +1,6 @@
 package ProjectPlanning;
 
+import controllers.ProjectPlanningController;
 import objects.Backlog;
 import objects.ScrumBoard;
 import objects.UserStory;
@@ -29,10 +30,22 @@ import java.util.ArrayList;
      public ArrayList<UserStory> getBacklog() {
          return backlog;
      }
+     public int idMaker(){
+         int id;
+         int size;
+         size=risks.size();
+         if(size==0){
+             id=1;
+         }else {
+             id = size+1;
+         }
+         return id;
+     }
 
      Risk createRisk(String name){
-        Risk risk = new Risk(name);
-        return risk;
+         int id = idMaker();
+         Risk risk = new Risk(name,id);
+         return risk;
     }
     public void addRisk(){
         String name = Input.fetchInputString("Enter risk name: ");
@@ -73,6 +86,10 @@ import java.util.ArrayList;
 
          backlog.add(u);
 
+     }
+
+     public ArrayList<Risk> getRisks() {
+         return risks;
      }
  }
 

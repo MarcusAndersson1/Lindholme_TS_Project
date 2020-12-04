@@ -6,11 +6,11 @@ public class Risk extends ProjectPlanning {
     private int severity;
     private int occurrence;
     private int rating;
-    public Risk(String name){
+    public Risk(String name, int ID){
         super();
         this.name = name;
+        this.ID = ID;
     }
-
     public String getName() {
             return name;
     }
@@ -34,5 +34,14 @@ public class Risk extends ProjectPlanning {
     public int getRating() {
         this.rating = getOccurrence() * getSeverity();
         return this.rating;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    @Override
+    public String toString() {
+        return "Risk: "+ name +" ID: " + getID()+ " Rating: " + getRating();
     }
 }
