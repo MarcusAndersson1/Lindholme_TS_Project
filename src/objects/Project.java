@@ -3,6 +3,7 @@ package objects;
 import java.io.Serializable;
 
 import ProjectPlanning.*;
+import utilities.DateHandler;
 
 
 public class Project implements Serializable {
@@ -49,8 +50,21 @@ public class Project implements Serializable {
         return assignedTeam;
     }
 
+    public String getEndDate() {
+        return endDate;
+    }
+
     public void setTeam(Team assignedTeam) {
         this.assignedTeam = assignedTeam;
+    }
+    public int daysLeft(){
+        int workingDays=0;
+        try{
+         workingDays =   DateHandler.getBusinessDaysBetween(DateHandler.getCurrentDate(),getEndDate());
+        }catch(Exception e){
+
+        }
+        return workingDays;
     }
 
     public int getID() {
@@ -64,7 +78,7 @@ public class Project implements Serializable {
 
     @Override
     public String toString() {
-        return  " id: " + id +"  Project name: " + name + " Created date: " + getCreatedDate();
+        return  " id: " + id +"  Project name: " + name + " Created date: " + getCreatedDate() + " " + daysLeft() +" days to complete.";
     }
 }
 /*

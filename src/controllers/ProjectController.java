@@ -3,6 +3,7 @@ package controllers;
 import controllers.Controller;
 import menus.Print;
 import objects.Project;
+import utilities.DateHandler;
 import utilities.IO;
 import utilities.Input;
 
@@ -37,7 +38,7 @@ public ProjectController(){ //move the try catch out of the constructor
 
 
         String name = Input.fetchInputString(Print.ENTER_PROJECT_NAME);
-        String currentDateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy - H:mm"));
+        String currentDateTime = DateHandler.getCurrentDate();
         String endDate = setEndDate();
         projectID++;
         project = new Project(name, projectID, currentDateTime, endDate);
@@ -150,6 +151,7 @@ public ProjectController(){ //move the try catch out of the constructor
     public static void printProjectStorage() {
         if (projectStorage.isEmpty()){
             System.out.println(Print.THE_LIST_IS_EMPTY);
+            Controller.runProjectController();
         }else{
             for(Map.Entry<Integer, Project> entry: projectStorage.entrySet()){
                 System.out.println(entry.getValue());
@@ -165,7 +167,7 @@ public ProjectController(){ //move the try catch out of the constructor
     do {
 
         try {
-            endDate = Input.fetchInputString("Enter end Date dd/MM/YYYY");
+            endDate = DateHandler.setDate();
 
         } catch (Exception e) {
             check = 1;

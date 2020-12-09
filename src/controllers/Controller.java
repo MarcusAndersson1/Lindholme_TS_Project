@@ -91,10 +91,10 @@ public class Controller {
 
         do {
             choice = Input.fetchInputInt("");
-            if (choice < 1 || choice > 5) {
+            if (choice < 1 || choice > 6) {
                 Print.print(Print.ERROR_INPUT);
             }
-        } while (choice < 1 || choice > 5);
+        } while (choice < 1 || choice > 6);
 
         switch (choice) {
             case 1 -> TeamController.createTeam();

@@ -5,6 +5,7 @@ import menus.Print;
 import objects.Project;
 import objects.Team;
 import objects.User;
+import utilities.DateHandler;
 import utilities.IO;
 import utilities.Input;
 
@@ -38,7 +39,7 @@ public class TeamController {
             e.printStackTrace();
         }
         String name = Input.fetchInputString(Print.ENTER_TEAM_NAME);
-        String currentDateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy - H:mm"));
+        String currentDateTime = DateHandler.getCurrentDate();
         teamID++;
         team = new Team(name, teamID, currentDateTime);
         teamStorage.put(teamID, team);
@@ -59,7 +60,7 @@ public class TeamController {
         printTeamStorage();
         Team mTeam;
         int id;
-        Print.print("Choose team: ");
+        Print.print(Print.TYPE_ID);
         do{
             id = Input.fetchInputInt("");
             if(!teamStorage.containsKey(id)){
@@ -117,8 +118,6 @@ public class TeamController {
         }
         Controller.runTeamController();
     }
-
-
     public static void deleteTeam(String s) {
         int check;
         if (teamStorage.isEmpty()) {
@@ -134,8 +133,8 @@ public class TeamController {
             } while (check == 1);
 
             if (teamStorage.containsKey(Integer.parseInt(s))) {
-                System.out.println("The team with ID " + s + " has been deleted");
                 teamStorage.remove(Integer.parseInt(s));
+                System.out.println("The team with ID " + s + " has been deleted");
             } else {
                 System.out.println(Print.ERROR_INPUT);
             }
@@ -160,9 +159,11 @@ public class TeamController {
         int id;
         UserController.printUserStorage();
         System.out.println(team);
-        Print.print("Enter ID: ");
+        Print.print(Print.TYPE_ID);
         id = Input.fetchInputInt("");
-        team.addTeamMember(UserController.getUser(id)); // någon bugg härvettefan vad det är
+        if(UserController.userExists(id)) {
+            team.addTeamMember(UserController.getUser(id));
+        }
         Controller.runTeamController();
     }
 }
