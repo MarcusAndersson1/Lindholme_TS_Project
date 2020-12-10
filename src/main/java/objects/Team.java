@@ -7,28 +7,31 @@ import java.util.HashMap;
 
 public class Team  implements Serializable {
     private String teamName;
-    private int iD;
+    private int teamID;
     private String createdDate;
-    public static ArrayList<User> memberMap = new ArrayList<>();
+    public static ArrayList<User> memberList = new ArrayList<>();
 
    // public static HashMap<Integer, User> getMemberMap() { return memberMap; }
     //public static void setMemberMap(HashMap<Integer, User> memberMap) { Team.memberMap = memberMap; }
 
-    public Team (String teamName, int iD, String date){
+    public Team (String teamName, int teamID, String date){
         this.teamName = teamName;
-        this.iD = iD;
+        this.teamID = teamID;
         this.createdDate = date;
+    }
+    public ArrayList<User> getMemberList() {
+        return memberList;
     }
 
     public void addTeamMember(User user){
-        memberMap.add(user);
+        memberList.add(user);
         System.out.println(user + " added");
     }
-    public void removeTeamMember(User user){ memberMap.remove(user.getID());
+    public void removeTeamMember(User user){ memberList.remove(user.getID());
     }
 
     public void viewTeam(){
-        for(User user : memberMap) {
+        for(User user : memberList) {
             System.out.println(user);
         }
     }
@@ -44,12 +47,12 @@ public class Team  implements Serializable {
         return createdDate;
     }
 
-    public int getID() {
-        return iD;
+    public int getTeamID() {
+        return teamID;
     }
 
     @Override
     public String toString() {
-        return "ID: "+ getID()+" Team: " + teamName + "Team members :" + memberMap.toString();
+        return "ID: "+ getTeamID()+" Team: " + teamName + "Team members :" + memberList.toString();
     }
 }

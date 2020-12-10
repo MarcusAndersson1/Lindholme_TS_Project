@@ -20,7 +20,7 @@ public class TeamController {
 
     private static int teamID;
     private static Team team;
-    private static final HashMap<Integer, Team> teamStorage = new HashMap();
+    public static HashMap<Integer, Team> teamStorage = new HashMap();
 /*
     public static void addToTeamStorage (Integer integer, objects.Team team ){
         teamStorage.put(integer, team);
@@ -31,6 +31,9 @@ public class TeamController {
     }
 
  */
+    public static HashMap<Integer, Team> getTeamStorage() {
+    return teamStorage;
+}
 
     public static void createTeam() {
         try {
@@ -110,7 +113,7 @@ public class TeamController {
         for (Integer teamID : usersTeams){
             try{
                 Team loadedTeam = IO.loadTeam(teamID);  //perhaps check if file exists
-                teamStorage.put(loadedTeam.getID(),loadedTeam);
+                teamStorage.put(loadedTeam.getTeamID(),loadedTeam);
             }
             catch (Exception e){ //or check what type of error is received here instead
                 e.printStackTrace();
@@ -166,4 +169,5 @@ public class TeamController {
         }
         Controller.runTeamController();
     }
+
 }
