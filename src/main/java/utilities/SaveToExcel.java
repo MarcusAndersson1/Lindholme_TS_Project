@@ -1,5 +1,5 @@
 package utilities;
-/*
+
 import java.io.File;
 import java.io.FileOutputStream;
 
@@ -30,9 +30,9 @@ import objects.UserStory;
 
 
 // compile "org.apache.poi:poi-ooxml:4.1.1"	 // Maybe also for gradle!!
-*/
+
 public class SaveToExcel {
-/*
+
     private static String[] columns = {"ID", "Points", "Description"};
 
     public static void saveToExcel(Project project) throws Exception {
@@ -73,5 +73,5 @@ public class SaveToExcel {
         out.close();
         workbook.close();
         System.out.println("File written successfully");
-    }*/
+    }
 }
