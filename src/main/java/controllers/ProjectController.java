@@ -124,7 +124,7 @@ public class ProjectController {
         project = projectStorage.get(id);
 
         try {
-           // SaveToExcel.saveToExcel(project);
+           SaveToExcel.saveToExcel(project);
         } catch (Exception e) {
             e.printStackTrace();
         }
