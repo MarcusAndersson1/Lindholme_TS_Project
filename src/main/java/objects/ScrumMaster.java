@@ -10,7 +10,7 @@ public class ScrumMaster extends User {
     HashSet<Integer> ProjectsID = new HashSet<>();
 
     public ScrumMaster(String scrumMaster, String name, int iD, String date) {
-        super(name, iD, date, "password123");
+        super(name, iD, date, "password123", "", "");
 
         this.scrumMaster = scrumMaster;
         this.teamName = teamName;

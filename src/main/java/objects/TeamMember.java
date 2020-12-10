@@ -8,7 +8,7 @@ public class TeamMember extends User {
     private int teamID;
 
     public TeamMember(String name, int userID, String date, String password, String role, int teamID) {
-        super(name, userID, date, "password123");
+        super(name, userID, date, "password123","", "");
         this.role = "none";
         this.teamID = teamID;
 
