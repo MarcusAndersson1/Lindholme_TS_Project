@@ -19,7 +19,7 @@ import java.util.Map;
 public class TeamController {
 
     private static int teamID;
-    private static Team team;
+    private static Team currentTeam;
     private static final HashMap<Integer, Team> teamStorage = new HashMap();
 /*
     public static void addToTeamStorage (Integer integer, objects.Team team ){
@@ -30,7 +30,9 @@ public class TeamController {
         teamStorage.remove(integer);
     }
 
- */
+ */public static void setTeam(Team team){
+     currentTeam=team;
+}
 
     public static void createTeam() {
         try {
@@ -41,8 +43,8 @@ public class TeamController {
         String name = Input.fetchInputString(Print.ENTER_TEAM_NAME);
         String currentDateTime = DateHandler.getCurrentDate();
         teamID++;
-        team = new Team(name, teamID, currentDateTime);
-        teamStorage.put(teamID, team);
+        currentTeam = new Team(name, teamID, currentDateTime);
+        teamStorage.put(teamID, currentTeam);
 
         printTeamStorage();
         try {
@@ -117,6 +119,11 @@ public class TeamController {
             }
         }
         Controller.runTeamController();
+    }
+    public static void deleteTeam(Team team){
+     team.getID();
+     teamStorage.remove(team.getID());
+     //should remove team from file aswell =))
     }
     public static void deleteTeam(String s) {
         int check;
