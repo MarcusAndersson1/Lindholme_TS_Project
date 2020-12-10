@@ -18,9 +18,9 @@ public class GradleMain extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("view/MainMenu.Page.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("view/SignIn.Page.fxml"));
         primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setScene(new Scene(root));
         primaryStage.show();
         //new ChangeScene().changeScene(primaryStage,"Create-Team.Page.fxml");
     }
