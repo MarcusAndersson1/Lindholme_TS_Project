@@ -12,7 +12,7 @@ public class ProjectLeader extends User {
     HashSet<Integer> ProjectsID = new HashSet<>();
 
     public ProjectLeader(String teamName, String leader, String name, int iD, String date) {
-        super(name, iD, date,"password123");
+        super(name, iD, date,"password123", "", "");
         this.leader = leader;
         this.teamName = teamName;
 

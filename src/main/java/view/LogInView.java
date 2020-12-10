@@ -1,26 +1,24 @@
 package view;
 
 import controllers.Controller;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.CheckBox;
+import javafx.scene.control.*;
 
 
 import javafx.event.ActionEvent;
-import javafx.scene.control.TextField;
 import menus.Print;
 
 public class LogInView {
     public Button signInButton;
     public PasswordField passwordField;
     public TextField usernameField;
+    public Label errorMessage;
     public Button quitButton;
     public CheckBox rememberMe;
 
     public void signIn(ActionEvent event){
             try{
                 int id = Integer.parseInt(usernameField.getText());
-                if(!Controller.checkUserID(id)){
+                if(!Controller.checkUserID(id)){errorMessage.setText("Sign In Failed");
 
                 }else {
                     new ChangeScene().changeScene(event, "MainMenu.Page.fxml");

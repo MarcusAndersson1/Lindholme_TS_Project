@@ -11,12 +11,16 @@ public class User implements Serializable{
     private int iD;
     private String createdDate;
     private String password;
+    private String email;
+    private String personalPresentation;
     private int timeOutInc;
     private LocalDateTime timeOut = LocalDateTime.now();
     private Set<Integer> teamIDs;
-    public User(String name,int iD, String date, String password){
+    public User(String name,int iD, String date, String password, String email, String personalPresentation){
         this.name = name;
         this.iD = iD;
+        this.email = email;
+        this.personalPresentation = personalPresentation;
         this.createdDate = date;
         this.password = password;
 
