@@ -1,6 +1,7 @@
 package objects;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import ProjectPlanning.*;
 import utilities.DateHandler;
@@ -15,6 +16,7 @@ public class Project implements Serializable {
     private ScrumBoard scrumboard;
     private Team assignedTeam;
     public ProjectPlanning projectPlanning;
+    public ArrayList<Team> teamList = new ArrayList<>();
 /*
 
     private Scanner input = new Scanner(System.in);
@@ -22,15 +24,21 @@ public class Project implements Serializable {
 
 */
 
-    public Project(String name, int id, String startDate, String endDate) {
+    public Project(String name, int teamID, String startDate, String endDate) {
         this.name = name;
-        this.id = id;
+        this.id = teamID;
         this.createdDate = startDate;
         this.endDate = endDate;
         this.projectPlanning = new ProjectPlanning();
     }
 
+    public void assignTeam(Team team) {
+        teamList.add(team);
+    }
 
+    public void removeTeam(Team team) {
+        teamList.remove(team.getTeamID());
+    }
     public String getName() {
         return name;
     }
