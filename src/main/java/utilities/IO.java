@@ -8,11 +8,11 @@ import java.io.*;
 public class IO{
 
     //public static final File PROJECT_DATA= new File("Files/ProjectData.txt");
-    public static final File USER_DATA= new File("src/Files/UserData.txt");
-    public static final String PROJECT_LOCATION = ("src/Files/ProjectREPLACE_WITH_ID.txt");
-    public static final File PROJECT_ID = new File("src/Files/ProjectID.txt");
-    public static final String TEAM_LOCATION = ("src/Files/TeamREPLACE_WITH_ID.txt");
-    public static final File TEAM_ID = new File("src/Files/TeamID.txt");
+    public static final File USER_DATA= new File("src/main/java/Files/UserData.txt");
+    public static final String PROJECT_LOCATION = ("src/main/java/Files/ProjectREPLACE_WITH_ID.txt");
+    public static final File PROJECT_ID = new File("src/main/java/Files/ProjectID.txt");
+    public static final String TEAM_LOCATION = ("src/main/java/Files/TeamREPLACE_WITH_ID.txt");
+    public static final File TEAM_ID = new File("src/main/java/Files/TeamID.txt");
 
     public static void saveUsers() throws IOException {
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(USER_DATA));

@@ -11,13 +11,24 @@ public class UserStory implements Serializable {
 
     UserStoryState state = UserStoryState.BACK_LOGG;
 
-    public UserStory(String description, int id){
+    public UserStory(String description, int id, int points){
         this.description = description;
         this.id = id;
+        this.points = points;
     }
     public int getId()
     {
 	return this.id;
+    }
+
+    public int getPoints()
+    {
+	return this.points;
+    }
+
+    public String getDescription()
+    {
+	return this.description;
     }
 
     public void setState() {

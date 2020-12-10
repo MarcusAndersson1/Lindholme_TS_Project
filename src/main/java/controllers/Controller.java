@@ -2,6 +2,7 @@ package controllers;
 
 
 import menus.Print;
+import objects.Backlog;
 import objects.User;
 import utilities.Input;
 import java.time.LocalDateTime;
@@ -44,10 +45,10 @@ public class Controller {
 
         do {
             choice = Input.fetchInputInt("");
-            if (choice < 1 || choice > 6) {
+            if (choice < 1 || choice > 7) {
                 Print.print(Print.ERROR_INPUT);
             }
-        } while (choice < 1 || choice > 6);
+        } while (choice < 1 || choice > 7);
 
 
         switch (choice) {
@@ -56,7 +57,8 @@ public class Controller {
             case 3 -> ProjectController.saveProjects();
             case 4 -> ProjectController.deleteProject("");
             case 5 -> ProjectController.loadProject();
-            case 6 -> controllerMenu();
+            case 6 -> ProjectController.saveProjectToExcel();
+            case 7 -> controllerMenu();
         }
     }
 

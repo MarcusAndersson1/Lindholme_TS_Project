@@ -30,7 +30,8 @@ public class Print {
             + ("[3] Save Project") + EOL
             + ("[4] Delete Project") + EOL
             + ("[5] Load Project From File") + EOL
-            + ("[6] Back") + EOL;
+            + ("[6] Save to Excel") + EOL
+            + ("[7] Back") + EOL;
 
     public static final String ENTER_PROJECT_NAME = (" Enter Project Name: ");
 
@@ -98,7 +99,7 @@ public class Print {
             + ("[2] View Backlog") + EOL
             + ("[3] Create Risk") + EOL
             + ("[4] View Risks") + EOL
-            + ("[4] Back") + EOL;
+            + ("[5] Back") + EOL;
 
     public static final String ENTER_TEAM_NAME = ("Enter Team Name: ");
     public static final String EDIT_TEAM = EOL +  (" Edit your team ") + EOL

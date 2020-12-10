@@ -28,8 +28,9 @@ public class ProjectPlanningController {
     }
     public void createUserStory(){
         int id = idMaker();
-        String desc = Input.fetchInputString("Write title");
-        UserStory userStory = new UserStory(desc,id);
+        String desc = Input.fetchInputString("Write title ");
+        int score = Input.fetchInputInt("Type score ");
+        UserStory userStory = new UserStory(desc,id,score);
         projectPlanning.addToBacklog(userStory);
         ProjectController.openProject();
     }
