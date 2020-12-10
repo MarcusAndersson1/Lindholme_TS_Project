@@ -1,5 +1,7 @@
 package controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import menus.Print;
 import objects.User;
 import utilities.Input;
@@ -16,21 +18,23 @@ public class UserController {
     private static HashMap<Integer, User> userStorage = new HashMap<>();
 
     public static void addTestUser() {
-        userStorage.put(1, new User("stefan", 1, "hallå", "Password123"));
-        userStorage.put(2, new User("olof", 2, "hallå", "Password123"));
-        userStorage.put(3, new User("per", 3, "hallå", "Password123"));
+        userStorage.put(1, new User("stefan", 1, "hallå", "Password123", "gmail@gmail.com", "Jag heter Marcus"));
+        userStorage.put(2, new User("olof", 2, "hallå", "Password123", "gmail@gmail.com", "Jag heter Marcus"));
+        userStorage.put(3, new User("per", 3, "hallå", "Password123", "gmail@gmail.com", "Jag heter Marcus"));
 
     }
-
-    public static void createUser() {
-        String name = Input.fetchInputString(Print.ENTER_USER_NAME);
+    public static ObservableList getUsers() {
+        ObservableList<User> users = FXCollections.observableArrayList(userStorage.values());
+        return users;
+    }
+    public static void createUser(String name, String password, String email, String personalPresentation) {
+        System.out.println(Print.ENTER_USER_NAME);
         String currentDateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy - H:mm"));
-        String password = setUserPassword();
+       // password = setUserPassword();
         userID = getMaxKey() + 1;
-        User user = new User(name, userID, currentDateTime, password);
+        User user = new User(name, userID, currentDateTime, password, email, personalPresentation);
         userStorage.put(userID, user);
         printUserStorage();
-        Controller.runUserController();
     }
 
     public static void openUser(){
