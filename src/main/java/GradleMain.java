@@ -1,3 +1,4 @@
+import controllers.UserController;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +13,7 @@ import java.io.IOException;
 public class GradleMain extends Application {
 
     public static void main(String[] args) {
+        UserController.addTestUser();
         System.out.println("1");
         launch(args);
     }

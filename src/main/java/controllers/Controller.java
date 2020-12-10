@@ -8,13 +8,15 @@ import utilities.Input;
 import java.time.LocalDateTime;
 
 public class Controller {
-    private static User currentUser;
+    static User currentUser;
 
 
-    public static void logIn() {
+    public static boolean logIn(int id, String password) {
+        checkUserID(id);
+        checkPassword(id, password);
         Print.print(Print.LOGIN_MENU_USERID);
-        checkUserID();
 
+        return true;
 
     }
 
@@ -108,45 +110,37 @@ public class Controller {
         }
     }
 
-    public static void checkUserID() {
-        int userID = Input.fetchInputInt("");
-
-            if (userID != 0) {
-                if ((!UserController.userExists(userID))) {
-                    Print.print(Print.USER_DOES_NOT_EXIST);
-                    logIn();
-                } else {
-                    checkPassword(userID, UserController.getUser(userID));
-                }
-            } else {
-                Print.print(Print.ERROR_INPUT);
-                logIn();
-            }
+    public static boolean checkUserID(int userID) {
+        if (!UserController.userExists(userID)) {
+            Print.print(Print.USER_DOES_NOT_EXIST);
+            return false;
+        } else {
+            Print.print(" Succe!!! ");
+            return true;
+        }
     }
 
 
-    public static void checkPassword(int userID, User user) {
-        String input = Input.fetchInputString(Print.LOGIN_MENU_PASSWORD);
-
-        if (input.isEmpty()) { //Option that sends user back to login page
-            Controller.logIn();}
+    public static boolean checkPassword(int userID, String password) {
+        User user = UserController.getUser(userID);
         if (timeOutChecker(userID)){
-            if (UserController.getUserPassword(userID).equals(input)) {
+            if (UserController.getUserPassword(userID).equals(password)) {
                 Print.print(Print.ACCESS_GRANTED);
                 user.setTimeOutInc(0);
                 loginSuccessful(user);
+                return true;
             }else if(user.getTimeOutInc() < 3) {
                 Print.print(Print.WRONG_PASSWORD);
                 user.incTimeOut();
                 System.out.println(4 - user.getTimeOutInc() + " attempts left. ");
-                checkPassword(userID, user);
+                return false;
             } else{
                 setTimeOut(user);
-                logIn();
+                return false;
             }
                 }else{
                     lockedOutPrint(user);
-                    logIn();
+                 return false;
                 }
             }
 
@@ -163,7 +157,6 @@ public class Controller {
 
     public static void logOut() {
         currentUser = null;
-        logIn();
     }
 
     public static boolean timeOutChecker(int userID) {
