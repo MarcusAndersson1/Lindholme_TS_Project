@@ -3,6 +3,7 @@ package controllers;
 import controllers.Controller;
 import menus.Print;
 import objects.Project;
+import objects.Team;
 import utilities.DateHandler;
 import utilities.IO;
 import utilities.Input;
@@ -17,6 +18,7 @@ import java.util.Map;
 
 public class ProjectController {
 
+    private static TeamController teamController;
     private static int projectID; // save to file
     private static Project project;
     private static final HashMap<Integer, Project> projectStorage = new HashMap();
@@ -87,6 +89,25 @@ public class ProjectController {
             case 4 -> new ProjectPlanningController(project).viewRisks();
             case 5 -> Controller.runProjectController();
         }
+    }
+    public static void assignTeam () {
+        teamController.printTeamStorage();
+        Team mTeam;
+        int id;
+        Print.print("Choose team: ");
+        do{
+            id = Input.fetchInputInt("");
+            if(!teamController.teamStorage.containsKey(id)){
+                Print.print(Print.ERROR_INPUT);
+                Controller.runProjectController();
+            }
+            if(id == 0){
+                Controller.runTeamController();
+            }
+        }while(!teamController.teamStorage.containsKey(id));
+        mTeam=teamController.teamStorage.get(id);
+        project.assignTeam(teamController.getTeamStorage().get(mTeam));
+
     }
 
     public static void saveProjects() {
