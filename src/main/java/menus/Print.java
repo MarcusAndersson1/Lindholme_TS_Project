@@ -27,11 +27,12 @@ public class Print {
     public static final String PROJECT_MENU = EOL +  (" objects.Project Menu") + EOL
             + ("[1] New Project") + EOL
             + ("[2] Open Project") + EOL
-            + ("[3] Save Project") + EOL
-            + ("[4] Delete Project") + EOL
-            + ("[5] Load Project From File") + EOL
-            + ("[6] Save to Excel") + EOL
-            + ("[7] Back") + EOL;
+            + ("[3] Assign to Team")
+            + ("[4] Save Project") + EOL
+            + ("[5] Delete Project") + EOL
+            + ("[6] Load Project From File") + EOL
+            + ("[7] Save to Excel") + EOL
+            + ("[8] Back") + EOL;
 
     public static final String ENTER_PROJECT_NAME = (" Enter Project Name: ");
 
