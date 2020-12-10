@@ -21,6 +21,8 @@ public class TeamController {
     private static int teamID;
     private static Team team;
     public static HashMap<Integer, Team> teamStorage = new HashMap();
+    private static Team currentTeam;
+    private static final HashMap<Integer, Team> teamStorage = new HashMap();
 /*
     public static void addToTeamStorage (Integer integer, objects.Team team ){
         teamStorage.put(integer, team);
@@ -33,6 +35,9 @@ public class TeamController {
  */
     public static HashMap<Integer, Team> getTeamStorage() {
     return teamStorage;
+}
+ */public static void setTeam(Team team){
+     currentTeam=team;
 }
 
     public static void createTeam() {
@@ -120,6 +125,11 @@ public class TeamController {
             }
         }
         Controller.runTeamController();
+    }
+    public static void deleteTeam(Team team){
+     team.getTeamID();
+     teamStorage.remove(team.getTeamID());
+     //should remove team from file aswell =))
     }
     public static void deleteTeam(String s) {
         int check;
