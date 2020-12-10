@@ -1,10 +1,13 @@
 package controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import menus.Print;
 import objects.User;
 import utilities.Input;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -19,7 +22,10 @@ public class UserController {
         userStorage.put(1, new User("stefan", 1, "hallå", "Password123"));
         userStorage.put(2, new User("olof", 2, "hallå", "Password123"));
         userStorage.put(3, new User("per", 3, "hallå", "Password123"));
-
+    }
+    public static ObservableList getUsers(){
+        ObservableList<User> users= FXCollections.observableArrayList(userStorage.values());
+        return users;
     }
 
     public static void createUser() {
