@@ -1,6 +1,7 @@
 package objects;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import ProjectPlanning.*;
@@ -10,8 +11,8 @@ import utilities.DateHandler;
 public class Project implements Serializable {
     private String name;
     private int id;
-    private String createdDate;
-    private String endDate;
+    private LocalDate createdDate;
+    private LocalDate endDate;
     private String lastTimeOpened;
     private ScrumBoard scrumboard;
     private Team assignedTeam;
@@ -24,7 +25,7 @@ public class Project implements Serializable {
 
 */
 
-    public Project(String name, int teamID, String startDate, String endDate) {
+    public Project(String name, int teamID, LocalDate startDate, LocalDate endDate) {
         this.name = name;
         this.id = teamID;
         this.createdDate = startDate;
@@ -47,7 +48,7 @@ public class Project implements Serializable {
         this.name = name;
     }
 
-    public String getCreatedDate() {
+    public LocalDate getCreatedDate() {
         return createdDate;
     }
     public void setLastTimeOpened(String lastTimeOpened) {
@@ -58,7 +59,7 @@ public class Project implements Serializable {
         return assignedTeam;
     }
 
-    public String getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
@@ -68,7 +69,7 @@ public class Project implements Serializable {
     public int daysLeft(){
         int workingDays=0;
         try{
-         workingDays =   DateHandler.getBusinessDaysBetween(DateHandler.getCurrentDate(),getEndDate());
+         workingDays =   DateHandler.getBusinessDaysBetween(getCreatedDate(),getEndDate());
         }catch(Exception e){
 
         }

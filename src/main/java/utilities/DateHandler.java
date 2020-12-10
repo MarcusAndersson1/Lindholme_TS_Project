@@ -19,10 +19,13 @@ import static java.time.temporal.ChronoUnit.DAYS;
 
 public class DateHandler {
 
-    public static int getBusinessDaysBetween(String startDate, String endDate) throws Exception {
+    public static DateTimeFormatter format(){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate mStartDate = LocalDate.parse(startDate, formatter);
-        LocalDate mEndDate = LocalDate.parse(endDate, formatter);
+        return formatter;
+    }
+
+    public static int getBusinessDaysBetween(LocalDate mStartDate, LocalDate mEndDate) throws Exception {
+
         List<LocalDate> allDays = new ArrayList<>();
         List<LocalDate> businessDays = new ArrayList<>();
         //long daysBetween = ChronoUnit.DAYS.between(mStartDate, mEndDate); if we want regular days
@@ -38,7 +41,7 @@ public class DateHandler {
         return businessDays.size();
     }
     public static String getCurrentDate(){
-        String currentDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        String currentDate = LocalDateTime.now().format(format());
         return currentDate;
     }
     public static String setDate(){
@@ -63,9 +66,8 @@ public class DateHandler {
     public static boolean checkDate(String date){
         boolean b = false;
         LocalDate mDate;
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
        try {
-            mDate = LocalDate.parse(date, formatter);
+            mDate = LocalDate.parse(date, format());
         if(mDate.isAfter(LocalDate.now())){
             b=true;
         }

@@ -1,27 +1,23 @@
 package controllers;
 
-import controllers.Controller;
-import menus.Print;
-import objects.Project;
-import objects.Team;
-import utilities.DateHandler;
-import utilities.IO;
-import utilities.Input;
-import utilities.SaveToExcel;
+
+import objects.*;
+import utilities.*;
 
 import java.io.IOException;
-import java.time.format.DateTimeFormatter;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import menus.*;
 
 public class ProjectController {
 
     private static TeamController teamController;
     private static int projectID; // save to file
     private static Project project;
-    private static final HashMap<Integer, Project> projectStorage = new HashMap();
+    private static final HashMap<Integer, Project> projectStorage = new HashMap<Integer, Project>();
 
     public ProjectController() { // move the try catch out of the constructor
         try {
@@ -30,30 +26,36 @@ public class ProjectController {
             e.printStackTrace();
         }
     }
+    public static ArrayList<Project> getProjects(){
+        ArrayList<Project> p = new ArrayList<Project>();
+        for (Map.Entry<Integer, Project> entry : projectStorage.entrySet()) {
+            p.add(entry.getValue());
+        }
+        return p;
+    }
 
-    public static void createProject() {
+    public static Project createProject(String name, LocalDate date) {
+        LocalDate currentDateTime = LocalDate.now();
+        LocalDate endDate = date;
         try {
             projectID = IO.loadProjectID();
-        } catch (Exception e) {
+        }catch(Exception e){
             e.printStackTrace();
         }
-
-        String name = Input.fetchInputString(Print.ENTER_PROJECT_NAME);
-        String currentDateTime = DateHandler.getCurrentDate();
-        String endDate = setEndDate();
-        projectID++;
-        project = new Project(name, projectID, currentDateTime, endDate);
-        projectStorage.put(projectID, project);
-
-        printProjectStorage();
-
+        try {
+            projectID++;
+            project = new Project(name, projectID, currentDateTime, endDate);
+            projectStorage.put(projectID, project);
+            System.out.println(project);
+            IO.saveProject(project);
+        }catch (Exception e){
+        }
         try {
             IO.saveProjectID(projectID);
-        } catch (Exception e) {
+        }catch(Exception e){
             e.printStackTrace();
         }
-
-        Controller.runProjectController();
+        return project;
     }
 
     public static void openProject() {
@@ -90,25 +92,6 @@ public class ProjectController {
             case 5 -> Controller.runProjectController();
         }
     }
-    public static void assignTeam () {
-        teamController.printTeamStorage();
-        Team mTeam;
-        int id;
-        Print.print("Choose team: ");
-        do{
-            id = Input.fetchInputInt("");
-            if(!teamController.teamStorage.containsKey(id)){
-                Print.print(Print.ERROR_INPUT);
-                Controller.runProjectController();
-            }
-            if(id == 0){
-                Controller.runTeamController();
-            }
-        }while(!teamController.teamStorage.containsKey(id));
-        mTeam=teamController.teamStorage.get(id);
-        project.assignTeam(teamController.getTeamStorage().get(mTeam));
-
-    }
 
     public static void saveProjects() {
         for (Project project : projectStorage.values()) {
@@ -118,7 +101,6 @@ public class ProjectController {
                 e.printStackTrace();
             }
         }
-        Controller.runProjectController();
     }
 
     public static void saveProject(Project p) { // this method is better but implementations comes later =)
@@ -127,7 +109,6 @@ public class ProjectController {
         } catch (IOException e) {
             e.printStackTrace(); // fix error handling later
         }
-        Controller.runProjectController();
     }
 
     public static void saveProjectToExcel() { // this method is better but implementations comes later =)
@@ -149,8 +130,6 @@ public class ProjectController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
-        Controller.runProjectController();
     }
 
     public static void loadProject() {
@@ -164,7 +143,6 @@ public class ProjectController {
                 e.printStackTrace();
             }
         }
-        Controller.runProjectController();
     }
 
     public static void deleteProject(String s) {
@@ -189,7 +167,6 @@ public class ProjectController {
             }
         }
 
-        Controller.runProjectController();
     }
 
     public static void printProjectStorage() {

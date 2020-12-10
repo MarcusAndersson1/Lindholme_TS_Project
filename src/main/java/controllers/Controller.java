@@ -1,11 +1,11 @@
 package controllers;
 
 
-import menus.Print;
-import objects.Backlog;
+import menus.*;
+import objects.*;
 import objects.Team;
 import objects.User;
-import utilities.Input;
+import utilities.*;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 
@@ -56,9 +56,9 @@ public class Controller {
 
 
         switch (choice) {
-            case 1 -> ProjectController.createProject();
+            //case 1 -> ProjectController.createProject();
             case 2 -> ProjectController.openProject();
-            case 3 -> ProjectController.assignTeam();
+            //case 3 -> ProjectController.assignTeam();
             case 4 -> ProjectController.saveProjects();
             case 5 -> ProjectController.deleteProject("");
             case 6 -> ProjectController.loadProject();

@@ -3,21 +3,20 @@ package controllers;
 import ProjectPlanning.*;
 import objects.Project;
 import objects.*;
-import utilities.Input;
+import utilities.*;
 
 import java.util.ArrayList;
 
 public class ProjectPlanningController {
     private ProjectPlanning projectPlanning;
+    private Project project;
     public ProjectPlanningController(Project project){
-
-       this.projectPlanning=project.projectPlanning;
-
+     this.project = project;
     }
     public int idMaker(){
         int id;
         int size;
-        ArrayList<UserStory> stories =projectPlanning.getBacklog();
+        ArrayList<UserStory> stories = project.projectPlanning.getBacklog();
         size=stories.size();
         if(size==0){
             id=1;

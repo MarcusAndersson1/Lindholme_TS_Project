@@ -17,9 +17,9 @@
     }
     
     .button {
-      -fx-font: 16px "Arial";
+      -fx-font: 12px "Arial";
       -fx-text-fill: primary-text-color;
-      -fx-padding: 5;
+      -fx-padding: 3;
       -fx-background-color: default-primary-color;
       -fx-background-radius: 8;
       -fx-text-fill: white;
