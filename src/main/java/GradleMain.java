@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 
@@ -27,7 +28,11 @@ public class GradleMain extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("view/SignIn.Page.fxml"));
-        primaryStage.setTitle("Hello World");
+
+        Image icon = new Image ("/icons/LTSCP-icon.png");
+
+        primaryStage.getIcons().add(icon);
+        primaryStage.setTitle("Open Minded Cougar (LTSCP)");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
         //new ChangeScene().changeScene(primaryStage,"Create-Team.Page.fxml");
