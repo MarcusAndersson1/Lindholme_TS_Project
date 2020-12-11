@@ -5,8 +5,11 @@ import javafx.collections.ObservableList;
 import menus.Print;
 import objects.User;
 import utilities.Input;
+
+import java.lang.reflect.Array;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -72,7 +75,6 @@ public class UserController {
     }
 
     public static void printUserStorage() {
-
         if (userStorage.isEmpty()){
             System.out.println(Print.THE_LIST_IS_EMPTY);
         }else{
