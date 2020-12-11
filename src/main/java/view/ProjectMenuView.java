@@ -29,7 +29,7 @@ public class ProjectMenuView {
 
     }
     public void loadProjects(ActionEvent actionEvent){
-        System.out.println("Det funkade iaf");
+
             projectList.getItems().addAll(p.getProjects());
 
     }
