@@ -1,28 +1,22 @@
 package objects;
 
-import java.util.HashMap;
-import java.util.HashSet;
 
-public class ScrumMaster extends User {
+public class ScrumMaster extends TeamMember {
+    private String role;
 
-    private String scrumMaster;
-    private String teamName;
-    HashSet<Integer> ProjectsID = new HashSet<>();
+    public ScrumMaster(String name, int userID, String date, String password, int teamID) {
+        super(name, userID, date, password, teamID);
+        this.role = "Scrum Master";
 
-    public ScrumMaster(String scrumMaster, String name, int iD, String date) {
-        super(name, iD, date, "password123", "", "");
-
-        this.scrumMaster = scrumMaster;
-        this.teamName = teamName;
     }
 
-        public String getScrumMaster() { return scrumMaster; }
+    public String getRole() { return role; }
 
-        public String getTeamName() { return teamName; }
+    public void setRole(String role) { this.role = "Scrum Master"; }
 
         @Override
         public String toString() {
-            return "Username: " + getName() + " Team: " + getTeamName() + " Role: " + getScrumMaster();
+            return "Username: " + getName() + " Team: " + getTeamID()  + " Role: " + role;
         }
 
     }

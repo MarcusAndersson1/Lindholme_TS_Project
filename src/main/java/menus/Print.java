@@ -44,13 +44,11 @@ public class Print {
             + ("[5] Back") + EOL;
 */
 
-    /*  public static final String DEVELOPER_MENU = EOL + (" Developer Menu: ") + EOL
-              + ("[1] View Team ") + EOL
-              + ("[2] View Schedule") + EOL
-              + ("[3] Work on Project") + EOL
-              + ("[4] Team Chat") + EOL
-              + ("[5] Back") + EOL;
-  */
+      public static final String ASSIGN_ROLE = EOL + (" Choose a Team Member to assign to role: ") + EOL
+              + ("[1] Developer ") + EOL
+              + ("[2] Scrum Master") + EOL
+              + ("[3] Project Leader") + EOL;
+
     //user related
     public static final String CANNOT_DELETE_LOGGED_IN_USER = ("Error: Cannot delete, user is currently logged in");
     public static final String USER_DOES_NOT_EXIST = ("User does not exist") + EOL;

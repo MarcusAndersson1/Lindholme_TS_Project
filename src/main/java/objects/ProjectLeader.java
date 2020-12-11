@@ -1,29 +1,22 @@
 package objects;
 
+public class ProjectLeader extends TeamMember {
+    private String role;
 
-import java.util.HashMap;
-import java.util.HashSet;
-
-public class ProjectLeader extends User {
-
-    private String leader;
-    private String teamName;
-    public static HashMap<Integer,User> leaderMap = new HashMap<>();
-    HashSet<Integer> ProjectsID = new HashSet<>();
-
-    public ProjectLeader(String teamName, String leader, String name, int iD, String date) {
-        super(name, iD, date,"password123", "", "");
-        this.leader = leader;
-        this.teamName = teamName;
+    public ProjectLeader(String name, int userID, String date, String password, int teamID) {
+        super(name, userID, date, password, teamID);
+        this.role = "Project Leader";
 
     }
-    public String getLeader() { return leader; }
 
-    public String getTeamName() { return teamName; }
+    public String getRole() { return role; }
 
+    public void setRole(String role) {
+        this.role= "Project Leader";
+    }
     @Override
     public String toString() {
-        return "Username: " + getName() + " Team: " + getTeamName() + " Role: " + getLeader();
+        return "Username: " + getName() + " Team: " + getTeamID()  + " Role: " + role;
     }
 
 }

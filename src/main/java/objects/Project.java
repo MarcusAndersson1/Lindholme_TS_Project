@@ -39,6 +39,7 @@ public class Project implements Serializable {
     public void removeTeam(Team team) {
         teamList.remove(team.getTeamID());
     }
+
     public String getName() {
         return name;
     }
@@ -50,6 +51,7 @@ public class Project implements Serializable {
     public String getCreatedDate() {
         return createdDate;
     }
+
     public void setLastTimeOpened(String lastTimeOpened) {
         this.lastTimeOpened = lastTimeOpened;
     }
