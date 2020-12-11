@@ -57,6 +57,19 @@ public class TeamController {
 
         Controller.runTeamController();
     }
+    public static void createTeam(String name, ArrayList<User> teamMembers) { //this is used by the GUI
+        teamID = IO.loadTeamID();
+        String currentDateTime = DateHandler.getCurrentDate();
+        teamID++;
+        team = new Team(name, teamID, currentDateTime, teamMembers);
+        teamStorage.put(teamID, team);
+        printTeamStorage();
+        try {
+            IO.saveTeamID(teamID);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 
 
 

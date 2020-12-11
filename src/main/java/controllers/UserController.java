@@ -1,5 +1,7 @@
 package controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import menus.Print;
 import objects.User;
 import utilities.Input;
@@ -21,7 +23,9 @@ public class UserController {
         userStorage.put(3, new User("per", 3, "hallå", "Password123", "gmail@gmail.com", "Jag heter Marcus"));
 
     }
-
+    public static ObservableList<User> getUsers() {
+        return FXCollections.observableArrayList(userStorage.values());
+    }
     public static void createUser(String name, String password, String email, String personalPresentation) {
         System.out.println(Print.ENTER_USER_NAME);
         String currentDateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy - H:mm"));

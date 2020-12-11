@@ -9,7 +9,7 @@ public class Team  implements Serializable {
     private String teamName;
     private int teamID;
     private String createdDate;
-    public static ArrayList<User> memberList = new ArrayList<>();
+    public ArrayList<User> memberList = new ArrayList<>();
 
    // public static HashMap<Integer, User> getMemberMap() { return memberMap; }
     //public static void setMemberMap(HashMap<Integer, User> memberMap) { Team.memberMap = memberMap; }
@@ -18,6 +18,12 @@ public class Team  implements Serializable {
         this.teamName = teamName;
         this.teamID = teamID;
         this.createdDate = date;
+    }
+    public Team (String teamName, int teamID, String date, ArrayList<User> memberList){
+        this.teamName = teamName;
+        this.teamID = teamID;
+        this.createdDate = date;
+        this.memberList = memberList;
     }
     public ArrayList<User> getMemberList() {
         return memberList;

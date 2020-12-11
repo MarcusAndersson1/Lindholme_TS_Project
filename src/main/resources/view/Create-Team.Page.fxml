@@ -9,7 +9,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="700.0" stylesheets="@Stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.CreateTeamView">
    <children>
-      <Button layoutX="522.0" layoutY="406.0" mnemonicParsing="false" onAction="#createTeam" prefHeight="20.0" prefWidth="100.0" text="Create">
+      <Button fx:id="createButton" layoutX="522.0" layoutY="406.0" mnemonicParsing="false" onAction="#createTeam" prefHeight="20.0" prefWidth="100.0" text="Create">
          <font>
             <Font size="10.0" />
          </font>
@@ -19,12 +19,12 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <TextField fx:id="teamName" layoutX="129.0" layoutY="109.0" prefHeight="30.0" prefWidth="443.0" promptText="Team Name">
+      <TextField fx:id="teamNameField" layoutX="129.0" layoutY="109.0" prefHeight="30.0" prefWidth="443.0" promptText="Team Name">
          <font>
             <Font size="15.0" />
          </font>
       </TextField>
-      <Text fx:id="teamID" layoutX="129.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID: #0123">
+      <Text fx:id="teamIDDisplay" layoutX="157.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-1">
          <font>
             <Font size="18.0" />
          </font></Text>
@@ -45,7 +45,17 @@
             <Font size="10.0" />
          </font>
       </Button>
-      <ListView layoutX="41.0" layoutY="218.0" prefHeight="179.0" prefWidth="231.0" />
-      <ListView layoutX="378.0" layoutY="218.0" prefHeight="179.0" prefWidth="231.0" />
+      <ListView fx:id="usersListView" layoutX="41.0" layoutY="218.0" prefHeight="179.0" prefWidth="231.0" />
+      <ListView fx:id="usersInTeamListView" layoutX="378.0" layoutY="218.0" prefHeight="179.0" prefWidth="231.0" />
+      <Text fx:id="teamID1" layoutX="130.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fx:id="errorMessage" fill="RED" layoutX="94.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="513.13671875">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
    </children>
 </Pane>

@@ -62,9 +62,15 @@ public class IO{
         Team loadedTeam = (Team) ois.readObject();
         return loadedTeam;
     }
-    public static int loadTeamID() throws Exception {
-        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(TEAM_ID));
-        int loadedID = (int) ois.readObject();
+    public static int loadTeamID(){
+        int loadedID;
+        try {
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(TEAM_ID));
+            loadedID = (int) ois.readObject();
+        }catch(Exception e){
+            loadedID = 0;
+        }
+
         return loadedID;
     }
 }
