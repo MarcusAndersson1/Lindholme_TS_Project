@@ -23,9 +23,8 @@ public class UserController {
         userStorage.put(3, new User("per", 3, "hallå", "Password123", "gmail@gmail.com", "Jag heter Marcus"));
 
     }
-    public static ObservableList getUsers() {
-        ObservableList<User> users = FXCollections.observableArrayList(userStorage.values());
-        return users;
+    public static ObservableList<User> getUsers() {
+        return FXCollections.observableArrayList(userStorage.values());
     }
     public static void createUser(String name, String password, String email, String personalPresentation) {
         System.out.println(Print.ENTER_USER_NAME);
