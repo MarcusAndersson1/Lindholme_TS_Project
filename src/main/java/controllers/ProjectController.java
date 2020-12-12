@@ -28,10 +28,37 @@ public class ProjectController {
             e.printStackTrace();
         }
     }
+
+    public static int idMaker() {
+        int id;
+        int size;
+        size = project.getUserStories().size();
+        if (size == 0) {
+            id = 1;
+        } else {
+            id = size + 1;
+        }
+        return id;
+    }
+
+    public static UserStory createUserStory(String desc, Project p) {
+
+    UserStory u = new UserStory(desc, idMaker());
+        p.addUserStories(u);
+    return u;
+}
+
     public static ObservableList<Project> getProjects(){
         loadProject();
         printProjectStorage();
         return FXCollections.observableArrayList(projectStorage.values());
+    }
+    public static  ObservableList<UserStory> getBacklog(Project p){
+
+        return FXCollections.observableArrayList(p.getUserStories());
+    }
+    public static void addToBacklog(Project p, UserStory u){
+        p.addUserStories(u);
     }
 
     public static void setProject(Project project) {
@@ -41,6 +68,7 @@ public class ProjectController {
     public static Project getProject() {
         return ProjectController.project;
     }
+
 
     public static Project createProject(String name, LocalDate date) {
         LocalDate currentDateTime = LocalDate.now();
@@ -206,7 +234,7 @@ public class ProjectController {
 
     public static void runScrum() {
         int choice;
-        ScrumBoardController scrumController = new ScrumBoardController(project.projectPlanning);
+        //ScrumBoardController scrumController = new ScrumBoardController(project.projectPlanning);
         Print.print(Print.SCRUM_BOARD_MENU);
         do {
             choice = Input.fetchInputInt("");
@@ -216,8 +244,8 @@ public class ProjectController {
         } while (choice < 1 || choice > 4);
 
         switch (choice) {
-            case 1 -> scrumController.moveStory();
-            case 2 -> scrumController.endSprint();
+           // case 1 -> scrumController.moveStory();
+            //case 2 -> scrumController.endSprint();
             // case 3 -> scrumController.planSprint();
             case 4 -> Controller.runProjectController();
         }

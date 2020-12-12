@@ -3,10 +3,11 @@ package controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import menus.Print;
-import objects.User;
+import objects.*;
 import utilities.Input;
 
 import java.lang.reflect.Array;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -28,9 +29,8 @@ public class UserController {
 
         ArrayList<User> teamMembers= new ArrayList<User>(userStorage.values());
         String teamName = "Penis";
-            TeamController.createTeam(teamName, teamMembers);
-            System.out.println("team created bru ah");
-
+        Team t = new Team("The balls", 200, "2020/12/12");
+        TeamController.createTeam(t.getName(),teamMembers);
     }
     public static ObservableList<User> getUsers() {
         return FXCollections.observableArrayList(userStorage.values());

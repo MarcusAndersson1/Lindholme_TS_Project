@@ -1,6 +1,8 @@
 package controllers;
 
 import ProjectPlanning.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import objects.Project;
 import objects.*;
 import utilities.*;
@@ -9,15 +11,14 @@ import java.util.ArrayList;
 
 public class ProjectPlanningController {
     private ProjectPlanning projectPlanning;
-    private Project project;
+    public static Project project;
     public ProjectPlanningController(Project project){
      this.project = project;
     }
-    public int idMaker(){
+    public static int idMaker(){
         int id;
         int size;
-        ArrayList<UserStory> stories = project.projectPlanning.getBacklog();
-        size=stories.size();
+        size= project.getUserStories().size();
         if(size==0){
             id=1;
         }else {
@@ -25,13 +26,12 @@ public class ProjectPlanningController {
         }
         return id;
     }
-    public void createUserStory(){
+    public static UserStory createUserStory(){
         int id = idMaker();
         String desc = Input.fetchInputString("Write title ");
         int score = Input.fetchInputInt("Type score ");
-        UserStory userStory = new UserStory(desc,id,score);
-        projectPlanning.addToBacklog(userStory);
-        ProjectController.openProject();
+        UserStory userStory = new UserStory(desc,id);
+        return userStory;
     }
     public void createRisk(){
         projectPlanning.addRisk();
@@ -54,11 +54,7 @@ public class ProjectPlanningController {
         //add more code later
     }
 
-    public Project getProject() {
+    public static Project getProject() {
         return project;
-    }
-
-    public void setProject(Project project) {
-        this.project = project;
     }
 }

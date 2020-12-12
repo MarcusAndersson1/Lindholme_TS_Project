@@ -25,5 +25,15 @@
          </font>
       </Button>
       <ListView fx:id="teamListView" layoutX="140.0" layoutY="157.0" prefHeight="270.0" prefWidth="447.0" />
+      <Button layoutX="20.0" layoutY="188.0" mnemonicParsing="false" onAction="#removeTeam" prefHeight="20.0" prefWidth="100.0" text="Remove Team">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
+      <Button layoutX="20.0" layoutY="225.0" mnemonicParsing="false" onAction="#openTeam" prefHeight="20.0" prefWidth="100.0" text="Open Team">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
    </children>
 </Pane>

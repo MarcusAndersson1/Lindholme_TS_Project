@@ -4,17 +4,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class Backlog implements IBacklog, Serializable{
+public class Backlog implements Serializable{
     private ArrayList<UserStory> backlogList = new ArrayList<>();
+    UserStory userStory;
+    public void addToBacklog(UserStory u){
 
-    @Override
-    public void addToBacklog(String desc, int score){
-        int id  = idMaker();
-        UserStory story = new UserStory(desc,id,score);
-        backlogList.add(story);
+        backlogList.add(u);
 
     }
-    @Override
     public void remove(int id){
         backlogList.remove(id);
     }
@@ -28,8 +25,8 @@ public class Backlog implements IBacklog, Serializable{
 
     public int idMaker(){
         int id;
-        UserStory u =backlogList.get(backlogList.size());
-        id = u.getId()+1;
+       // UserStory u =backlogList.get(backlogList.size());
+        id = backlogList.size()+1;
         return id;
     }
 

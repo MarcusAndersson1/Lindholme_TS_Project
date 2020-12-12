@@ -49,12 +49,17 @@ public class ProjectMenuView implements Initializable  {
 
         projectList = FXCollections.observableArrayList(ProjectController.getProjects());
         projectListView.setItems(projectList);
-
+/*
         try {
             ID = IO.loadProjectID();
 
         }catch(Exception e){
            // System.out.println("hello");
         }
+
+ */
+
     }
+
+
 }

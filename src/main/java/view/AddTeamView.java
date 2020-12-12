@@ -26,8 +26,8 @@ public class AddTeamView implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        project = ProjectController.getProject();
-       teamList = FXCollections.observableArrayList(TeamController.getTeam());
+       project = ProjectController.getProject();
+       teamList = FXCollections.observableArrayList(TeamController.getTeams());
        teamListView.setItems(teamList);
         try {
             ID = IO.loadTeamID();
@@ -40,6 +40,18 @@ public class AddTeamView implements Initializable {
     public void addTeam(ActionEvent actionEvent) {
         Team t = teamListView.getSelectionModel().getSelectedItem();
         project.assignTeam(t);
-        System.out.println(project.teamList.toString());
+    }
+
+    public void removeTeam(ActionEvent actionEvent) {
+        Team t = teamListView.getSelectionModel().getSelectedItem();
+        project.removeTeam(t);
+    }
+
+    public void openTeam(ActionEvent actionEvent) {
+        Team t = teamListView.getSelectionModel().getSelectedItem();
+        TeamController.setTeam(t);
+        if(t!=null) {
+            new ChangeScene().changeScene(actionEvent, "Team.Home.Page.fxml");
+        }
     }
 }

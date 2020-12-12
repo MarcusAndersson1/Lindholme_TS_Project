@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import ProjectPlanning.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import utilities.DateHandler;
 
 
@@ -16,21 +18,24 @@ public class Project implements Serializable {
     private String lastTimeOpened;
     private ScrumBoard scrumboard;
     private Team assignedTeam;
-    public ProjectPlanning projectPlanning;
     public ArrayList<Team> teamList = new ArrayList<>();
-/*
-
-    private Scanner input = new Scanner(System.in);
-    private ArrayList<ToDo> toDoList = new ArrayList<>();
-
-*/
+    public ArrayList<UserStory> userStories = new ArrayList<>();
 
     public Project(String name, int teamID, LocalDate startDate, LocalDate endDate) {
         this.name = name;
         this.id = teamID;
         this.createdDate = startDate;
         this.endDate = endDate;
-        this.projectPlanning = new ProjectPlanning();
+
+        //this.projectPlanning = new ProjectPlanning();
+    }
+
+    public ObservableList<UserStory> getUserStories() {
+        return FXCollections.observableArrayList(userStories);
+    }
+
+    public void addUserStories(UserStory u) {
+        userStories.add(u);
     }
 
     public void assignTeam(Team team) {

@@ -48,7 +48,7 @@ public class SaveToExcel {
         
         }
         int rowNum = 1;
-        for(UserStory story: project.projectPlanning.getBacklog()) {
+        for(UserStory story: project.getUserStories()) {
             XSSFRow row = spreadsheet.createRow(rowNum++);
 
             row.createCell(0)

@@ -7,6 +7,7 @@ import menus.Print;
 import objects.Project;
 import objects.Team;
 import objects.User;
+import objects.UserStory;
 import utilities.DateHandler;
 import utilities.IO;
 import utilities.Input;
@@ -35,6 +36,8 @@ public class TeamController {
     }
 
  */
+
+
     public static HashMap<Integer, Team> getTeamStorage() { return teamStorage; }
     public static void setTeam(Team team){ currentTeam=team; }
 
@@ -59,8 +62,11 @@ public class TeamController {
 
         Controller.runTeamController();
     }
-    public static ObservableList<Team> getTeam() {
+    public static ObservableList<Team> getTeams() {
         return FXCollections.observableArrayList(teamStorage.values());
+    }
+    public static Team getTeam(){
+        return team;
     }
     public static void createTeam(String name, ArrayList<User> teamMembers) { //this is used by the GUI
         teamID = IO.loadTeamID();

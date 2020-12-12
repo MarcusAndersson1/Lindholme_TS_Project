@@ -30,11 +30,18 @@ public class EditProjectView implements Initializable {
     }
 
     public void back(ActionEvent actionEvent) {
-        new ChangeScene().changeScene(actionEvent,"Projects.Page.fxml");
+        new ChangeScene().changeScene(actionEvent,
+                "Projects.Page.fxml");
     }
 
-    public void addTeam(ActionEvent actionEvent) {
-        new ChangeScene().changeScene(actionEvent,"Add.Team.Page.fxml");
+    public void openBacklog(ActionEvent actionEvent){
+        new ChangeScene().changeScene(actionEvent,
+                "Project.BackLog.Page.fxml");
+
+    }
+    public void editTeam(ActionEvent actionEvent) {
+        new ChangeScene().changeScene(actionEvent,
+                "Add.Team.Page.fxml");
 
         //project.setTeam();
     }

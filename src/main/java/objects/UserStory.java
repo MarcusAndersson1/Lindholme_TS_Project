@@ -11,10 +11,9 @@ public class UserStory implements Serializable {
 
     UserStoryState state = UserStoryState.BACK_LOGG;
 
-    public UserStory(String description, int id, int points){
+    public UserStory(String description, int id){
         this.description = description;
         this.id = id;
-        this.points = points;
     }
     public int getId()
     {
@@ -49,7 +48,7 @@ public class UserStory implements Serializable {
 
     @Override
     public String toString() {
-        return "UserStory: "+" description: " + description + "points=" + points +
+        return description + " Story Points: " + points +
                 " id: " + getId() +
                 " state: " + getState();
     }
