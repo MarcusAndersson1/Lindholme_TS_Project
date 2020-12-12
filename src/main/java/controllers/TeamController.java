@@ -36,8 +36,6 @@ public class TeamController {
     }
 
  */
-
-
     public static HashMap<Integer, Team> getTeamStorage() { return teamStorage; }
     public static void setTeam(Team team){ currentTeam=team; }
 
