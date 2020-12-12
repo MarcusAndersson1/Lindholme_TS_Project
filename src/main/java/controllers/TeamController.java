@@ -1,6 +1,8 @@
 package controllers;
 
 import controllers.Controller;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import menus.Print;
 import objects.Project;
 import objects.Team;
@@ -56,6 +58,9 @@ public class TeamController {
         }
 
         Controller.runTeamController();
+    }
+    public static ObservableList<Team> getTeam() {
+        return FXCollections.observableArrayList(teamStorage.values());
     }
     public static void createTeam(String name, ArrayList<User> teamMembers) { //this is used by the GUI
         teamID = IO.loadTeamID();

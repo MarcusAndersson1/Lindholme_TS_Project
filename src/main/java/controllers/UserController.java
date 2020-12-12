@@ -25,6 +25,12 @@ public class UserController {
         userStorage.put(2, new User("olof", 2, "hallå", "Password123", "gmail@gmail.com", "Jag heter Marcus"));
         userStorage.put(3, new User("per", 3, "hallå", "Password123", "gmail@gmail.com", "Jag heter Marcus"));
 
+
+        ArrayList<User> teamMembers= new ArrayList<User>(userStorage.values());
+        String teamName = "Penis";
+            TeamController.createTeam(teamName, teamMembers);
+            System.out.println("team created bru ah");
+
     }
     public static ObservableList<User> getUsers() {
         return FXCollections.observableArrayList(userStorage.values());

@@ -54,4 +54,11 @@ public class ProjectPlanningController {
         //add more code later
     }
 
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
 }

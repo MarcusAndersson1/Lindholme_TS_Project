@@ -1,6 +1,8 @@
 package controllers;
 
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import objects.*;
 import utilities.*;
 
@@ -17,7 +19,7 @@ public class ProjectController {
     private static TeamController teamController;
     private static int projectID; // save to file
     private static Project project;
-    private static final HashMap<Integer, Project> projectStorage = new HashMap<Integer, Project>();
+    private static HashMap<Integer, Project> projectStorage = new HashMap<Integer, Project>();
 
     public ProjectController() { // move the try catch out of the constructor
         try {
@@ -26,12 +28,18 @@ public class ProjectController {
             e.printStackTrace();
         }
     }
-    public static ArrayList<Project> getProjects(){
-        ArrayList<Project> p = new ArrayList<Project>();
-        for (Map.Entry<Integer, Project> entry : projectStorage.entrySet()) {
-            p.add(entry.getValue());
-        }
-        return p;
+    public static ObservableList<Project> getProjects(){
+        loadProject();
+        printProjectStorage();
+        return FXCollections.observableArrayList(projectStorage.values());
+    }
+
+    public static void setProject(Project project) {
+        ProjectController.project = project;
+    }
+
+    public static Project getProject() {
+        return ProjectController.project;
     }
 
     public static Project createProject(String name, LocalDate date) {
@@ -62,10 +70,7 @@ public class ProjectController {
         // String currentDateTime =
         // LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy - H:mm"));
         // project.setLastTimeOpened(currentDateTime);
-        printProjectStorage();
         int id;
-        Print.print("Input project id: ");
-
         do {
             id = Input.fetchInputInt("");
             if (!projectStorage.containsKey(id)) {
