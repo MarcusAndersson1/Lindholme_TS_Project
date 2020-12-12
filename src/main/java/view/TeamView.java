@@ -1,9 +1,33 @@
 package view;
 
+import controllers.ProjectController;
 import controllers.TeamController;
+import controllers.UserController;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ListView;
+import objects.Project;
 import objects.Team;
-public class TeamView {
+
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class TeamView implements Initializable {
+
+    public ListView<Team> teamListView;
+    ObservableList<Team> teamList;
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        teamList = FXCollections.observableArrayList(TeamController.getTeam());
+        teamListView.setItems(teamList);
+
+    }
+
     public void openTeam(ActionEvent actionEvent) {
         //should pass the selected team to the next page somehow
         //controllers.TeamController.setTeam(Selected team from list);

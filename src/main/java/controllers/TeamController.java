@@ -38,6 +38,7 @@ public class TeamController {
     public static HashMap<Integer, Team> getTeamStorage() { return teamStorage; }
     public static void setTeam(Team team){ currentTeam=team; }
 
+
     public static void createTeam() {
         try {
             teamID = IO.loadTeamID();
@@ -62,6 +63,7 @@ public class TeamController {
     public static ObservableList<Team> getTeam() {
         return FXCollections.observableArrayList(teamStorage.values());
     }
+
     public static void createTeam(String name, ArrayList<User> teamMembers) { //this is used by the GUI
         teamID = IO.loadTeamID();
         String currentDateTime = DateHandler.getCurrentDate();
