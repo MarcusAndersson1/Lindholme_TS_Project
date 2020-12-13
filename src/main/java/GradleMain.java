@@ -17,12 +17,7 @@ public class GradleMain extends Application {
 
     public static void main(String[] args) {
         UserController.addTestUser();
-        /*
-        ProjectController.createProject("Kuk", LocalDate.now().plusDays(1));
-        ProjectController.createProject("Banan", LocalDate.now().plusDays(3));
-        ProjectController.createProject("Ollon", LocalDate.now().plusDays(80));
-        ProjectController.createProject("Rövsmör", LocalDate.now().plusDays(45));
-         */
+        System.out.println(ProjectController.getProjects());
         launch(args);
     }
 

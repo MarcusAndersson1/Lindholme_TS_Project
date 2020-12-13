@@ -26,7 +26,7 @@ public class EditProjectView implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         project = ProjectController.getProject();
         projectName.setText(project.getName());
-        projectInformationView.getItems().addAll(project.daysLeft(),project.getName(),project.teamList);
+        projectInformationView.getItems().addAll(project.daysLeft(),project.getName(),project.getTeamList(), project.getProjectDescription());
     }
 
     public void back(ActionEvent actionEvent) {

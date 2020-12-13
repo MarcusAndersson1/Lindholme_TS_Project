@@ -29,10 +29,17 @@
             <Font size="10.0" />
          </font>
       </Button>
-      <ListView fx:id="backlogListView" layoutX="502.0" layoutY="153.0" prefHeight="266.0" prefWidth="184.0" />
-      <Text layoutX="502.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Backlog" />
+      <ListView fx:id="backlogListView" layoutX="287.0" layoutY="153.0" prefHeight="266.0" prefWidth="399.0" />
+      <Text layoutX="287.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Backlogg" />
       <TextField fx:id="textBox" layoutX="147.0" layoutY="155.0" prefHeight="83.0" prefWidth="109.0" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
       <Text layoutX="145.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+      <TextField fx:id="storyPoints" layoutX="147.0" layoutY="294.0" prefHeight="83.0" prefWidth="109.0" />
+      <Text layoutX="145.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Story Points" />
+      <Button layoutX="145.0" layoutY="390.0" mnemonicParsing="false" onAction="#setValue" prefHeight="21.0" prefWidth="123.0" text="Update story point">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
    </children>
 </Pane>

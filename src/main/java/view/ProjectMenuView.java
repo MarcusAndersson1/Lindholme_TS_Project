@@ -22,7 +22,6 @@ import java.util.ResourceBundle;
 public class ProjectMenuView implements Initializable  {
 
     public Button openProject;
-    Project project;
     ObservableList<Project> projectList;
     @FXML
     public ListView<Project> projectListView;
@@ -46,20 +45,14 @@ public class ProjectMenuView implements Initializable  {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         projectList = FXCollections.observableArrayList(ProjectController.getProjects());
         projectListView.setItems(projectList);
-/*
-        try {
-            ID = IO.loadProjectID();
-
-        }catch(Exception e){
-           // System.out.println("hello");
-        }
-
- */
-
     }
 
 
+    public void removeProject(ActionEvent actionEvent) {
+        Project p = projectListView.getSelectionModel().getSelectedItem();
+        ProjectController.removeProject(p);
+        projectList.remove(p);
+    }
 }

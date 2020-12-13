@@ -50,7 +50,6 @@ public class ProjectController {
 
     public static ObservableList<Project> getProjects(){
         loadProject();
-        printProjectStorage();
         return FXCollections.observableArrayList(projectStorage.values());
     }
     public static  ObservableList<UserStory> getBacklog(Project p){
@@ -82,7 +81,6 @@ public class ProjectController {
             projectID++;
             project = new Project(name, projectID, currentDateTime, endDate);
             projectStorage.put(projectID, project);
-            System.out.println(project);
             IO.saveProject(project);
         }catch (Exception e){
         }
@@ -92,6 +90,12 @@ public class ProjectController {
             e.printStackTrace();
         }
         return project;
+    }
+    public static void removeProject(Project p){
+        projectStorage.remove(p.getID());
+    }
+    public static void removeUserStory(Project p, UserStory u){
+        p.getUserStories().remove(u);
     }
 
     public static void openProject() {
@@ -214,6 +218,12 @@ public class ProjectController {
 
         // String content = teamStorage.toString();
         // System.out.println(content);
+    }
+    public static void setProjectDescription(String s, Project p){
+        p.setProjectDescription(s);
+    }
+    public static String getProjectDescription(Project p){
+        return p.getProjectDescription();
     }
 
     public static String setEndDate() {

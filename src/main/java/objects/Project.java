@@ -18,8 +18,9 @@ public class Project implements Serializable {
     private String lastTimeOpened;
     private ScrumBoard scrumboard;
     private Team assignedTeam;
-    public ArrayList<Team> teamList = new ArrayList<>();
-    public ArrayList<UserStory> userStories = new ArrayList<>();
+    private String projectDescription;
+    private ArrayList<Team> teamList = new ArrayList<>();
+    private ArrayList<UserStory> userStories = new ArrayList<>();
 
     public Project(String name, int teamID, LocalDate startDate, LocalDate endDate) {
         this.name = name;
@@ -51,6 +52,18 @@ public class Project implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setProjectDescription(String projectDescription) {
+        this.projectDescription = projectDescription;
+    }
+
+    public String getProjectDescription() {
+        return projectDescription;
+    }
+
+    public ArrayList<Team> getTeamList() {
+        return teamList;
     }
 
     public LocalDate getCreatedDate() {
