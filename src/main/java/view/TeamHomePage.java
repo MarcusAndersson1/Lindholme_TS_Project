@@ -1,6 +1,5 @@
 package view;
 
-import controllers.ProjectController;
 import controllers.TeamController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,7 +12,6 @@ import javafx.scene.text.Text;
 import objects.Team;
 import objects.User;
 import objects.UserStory;
-import org.apache.xmlbeans.impl.xb.xsdschema.Public;
 
 
 import java.net.URL;
@@ -28,26 +26,24 @@ public class TeamHomePage implements Initializable {
     @FXML
     ListView<UserStory> backlogListView;
     public ObservableList<UserStory> backLogList;
-    Team t;
+    Team currentTeam;
     String back;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        t = TeamController.getTeam();
-        System.out.println(t.backlog);
-        teamName.setText(t.getName());
-        backLogList = FXCollections.observableArrayList(t.getBacklog());
-        teamList = FXCollections.observableArrayList(t.memberList);
+        System.out.println("tjafan");
+        currentTeam = TeamController.getTeam();
+        System.out.println(currentTeam.backlog);
+        teamName.setText(currentTeam.getName());
+        backLogList = FXCollections.observableArrayList(currentTeam.getBacklog());
+        teamList = FXCollections.observableArrayList(currentTeam.memberList);
         backlogListView.setItems(backLogList);
         teamListView.setItems(teamList);
-
-
     }
 
     public void back(ActionEvent actionEvent) {
-        new ChangeScene().changeScene(actionEvent, "Add.Team.Page.fxml");
+        new ChangeScene().changeScene(actionEvent, "Teams.Page.fxml");
     }
 
     public void editTeam(ActionEvent actionEvent) {
