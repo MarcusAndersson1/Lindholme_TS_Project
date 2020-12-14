@@ -37,7 +37,6 @@ public class CreateTeamView implements Initializable {
         userInTeamList = FXCollections.observableArrayList();
         usersListView.setItems(userList);
         usersInTeamListView.setItems(userInTeamList);
-        System.out.println("end");
         try {
             teamID = IO.loadTeamID();
         }catch(Exception e){
@@ -80,6 +79,12 @@ public class CreateTeamView implements Initializable {
         if(!teamMembers.isEmpty()&&!teamName.isBlank()&&teamID!=-1) {
             TeamController.createTeam(teamName, teamMembers);
             System.out.println("team created bru ah");
+            try{
+            IO.saveCurrentTeam();
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
         }
         backButton(actionEvent);
     }

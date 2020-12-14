@@ -77,6 +77,7 @@ public class TeamController {
         team = new Team(name, teamID, currentDateTime, teamMembers);
         teamStorage.put(teamID, team);
         printTeamStorage();
+        currentTeam=team;
         try {
             IO.saveTeamID(teamID);
         }catch(Exception e){
@@ -123,7 +124,9 @@ public class TeamController {
 
         Controller.runTeamController();
     }
-
+    public static void addTeam(Team t){
+        teamStorage.put(t.getTeamID(),t);
+    }
     public static void saveTeam(){
         for (Team team : teamStorage.values()){
             try{

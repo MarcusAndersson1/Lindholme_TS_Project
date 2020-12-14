@@ -11,6 +11,7 @@ import javafx.scene.control.ListView;
 import objects.Project;
 import objects.Team;
 import objects.User;
+import utilities.IO;
 
 
 import java.net.URL;
@@ -24,6 +25,7 @@ public class TeamView implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        IO.loadAllTeams();
         teamList = FXCollections.observableArrayList(TeamController.getTeams());
         teamListView.setItems(teamList);
     }

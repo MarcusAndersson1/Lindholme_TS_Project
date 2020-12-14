@@ -1,9 +1,13 @@
 package utilities;
 
+import controllers.TeamController;
 import objects.Project;
 import objects.Team;
 
 import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.stream.Stream;
 
 public class IO{
 
@@ -11,7 +15,8 @@ public class IO{
     public static final File USER_DATA= new File("src/main/java/Files/UserData.txt");
     public static final String PROJECT_LOCATION = ("src/main/java/Files/ProjectREPLACE_WITH_ID.txt");
     public static final File PROJECT_ID = new File("src/main/java/Files/ProjectID.txt");
-    public static final String TEAM_LOCATION = ("src/main/java/Files/TeamREPLACE_WITH_ID.txt");
+    public static final String TEAM_LOCATION = ("src/main/java/Files/Teams/TeamREPLACE_WITH_ID.txt");
+    public static final String TEAM_FOLDER = ("src/main/java/Files/Teams");
     public static final File TEAM_ID = new File("src/main/java/Files/TeamID.txt");
 
     public static void saveUsers() throws IOException {
@@ -29,15 +34,21 @@ public class IO{
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(saveProjectFile));
         oos.writeObject(project);
     }
+
     public static Project loadProject(int projectID) throws Exception {
         File loadProjectFile = new File(PROJECT_LOCATION.replace("REPLACE_WITH_ID", Integer.toString(projectID)));
         ObjectInputStream ois = new ObjectInputStream(new FileInputStream(loadProjectFile));
         Project loadedProject = (Project) ois.readObject();
         return loadedProject;
     }
-    public static int loadProjectID() throws Exception {
-        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(PROJECT_ID));
-        int loadedID = (int) ois.readObject();
+    public static int loadProjectID(){
+        int loadedID;
+        try {
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(PROJECT_ID));
+            loadedID = (int) ois.readObject();
+        }catch(Exception e){
+            loadedID = 0;
+        }
         return loadedID;
     }
     public static void saveProjectID(int projectID) throws IOException {
@@ -48,8 +59,26 @@ public class IO{
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(TEAM_ID));
         oos.writeObject(teamID);
     }
-
-
+    public static void saveCurrentTeam() throws IOException {
+        Team t = TeamController.getTeam();
+        File saveTeamFile = new File(TEAM_LOCATION.replace("REPLACE_WITH_ID",Integer.toString(t.getTeamID())));
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(saveTeamFile));
+        oos.writeObject(t);
+    }
+    public static void loadAllTeams(){
+            File path = new File(TEAM_FOLDER);
+            File[] fileList = path.listFiles();
+            for(File file : fileList) {
+                try{
+                    ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
+                    Team loadedTeam = (Team) ois.readObject();
+                    TeamController.addTeam(loadedTeam);
+                    ois.close();
+                }catch (Exception e){
+                    System.out.println("uh oh error in loadAllTeams");
+                }
+            }
+    }
     public static void saveTeam(Team team) throws IOException {
         File saveTeamFile = new File(TEAM_LOCATION.replace("REPLACE_WITH_ID", "1"));
         saveTeamFile.createNewFile();
