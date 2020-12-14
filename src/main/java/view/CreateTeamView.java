@@ -42,12 +42,11 @@ public class CreateTeamView implements Initializable {
             teamID = IO.loadTeamID();
         }catch(Exception e){
             teamID = -1;
-        }
-        teamIDDisplay.setText(Integer.toString(teamID++));
-        if(teamID == -1){
             errorMessage.setText("FATAL ERROR WHEN LOADING ID PLEASE CONTACT SUPPORT");
             createButton.setVisible(false);
         }
+        int t = teamID + 1;
+        teamIDDisplay.setText(Integer.toString((t)));
     }
 
 

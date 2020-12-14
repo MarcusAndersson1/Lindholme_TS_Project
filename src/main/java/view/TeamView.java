@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import objects.Project;
 import objects.Team;
+import objects.User;
 
 
 import java.net.URL;
@@ -23,15 +24,18 @@ public class TeamView implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        teamList = FXCollections.observableArrayList(TeamController.getTeam());
+        teamList = FXCollections.observableArrayList(TeamController.getTeams());
         teamListView.setItems(teamList);
-
     }
 
     public void openTeam(ActionEvent actionEvent) {
         //should pass the selected team to the next page somehow
         //controllers.TeamController.setTeam(Selected team from list);
-        new ChangeScene().changeScene(actionEvent, "Team.Page.fxml");
+        Team t = teamListView.getSelectionModel().getSelectedItem();
+        if(t != null) {
+            TeamController.setTeam(t);
+            new ChangeScene().changeScene(actionEvent, "Team.Home.Page.fxml");
+        }
     }
 
     public void newTeam(ActionEvent actionEvent) {

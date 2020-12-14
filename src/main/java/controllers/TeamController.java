@@ -60,9 +60,13 @@ public class TeamController {
 
         Controller.runTeamController();
     }
+
+
     public static ObservableList<Team> getTeams() {
         return FXCollections.observableArrayList(teamStorage.values());
     }
+
+
     public static Team getTeam(){
         return team;
     }
