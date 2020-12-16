@@ -1,6 +1,5 @@
 package view;
 
-import ProjectPlanning.ProjectPlanning;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,7 +13,6 @@ import javafx.scene.control.ListView;
 import controllers.*;
 
 import objects.*;
-import utilities.IO;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -30,7 +28,7 @@ public class ProjectMenuView implements Initializable  {
 
     public void openProject(ActionEvent actionEvent) {
         Project p = projectListView.getSelectionModel().getSelectedItem();
-        ProjectController.setProject(p);
+        ProjectController.setCurrentProject(p);
         if(p!=null) {
             new ChangeScene().changeScene(actionEvent, "Open-Project.Page.fxml");
         }

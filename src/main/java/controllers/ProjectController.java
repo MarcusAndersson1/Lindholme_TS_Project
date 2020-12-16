@@ -18,7 +18,7 @@ public class ProjectController {
 
     private static TeamController teamController;
     private static int projectID; // save to file
-    private static Project project;
+    private static Project currentProject;
     private static HashMap<Integer, Project> projectStorage = new HashMap<Integer, Project>();
 
     public ProjectController() { // move the try catch out of the constructor
@@ -32,7 +32,7 @@ public class ProjectController {
     public static int idMaker() {
         int id;
         int size;
-        size = project.getUserStories().size();
+        size = currentProject.getUserStories().size();
         if (size == 0) {
             id = 1;
         } else {
@@ -60,12 +60,12 @@ public class ProjectController {
         p.addUserStories(u);
     }
 
-    public static void setProject(Project project) {
-        ProjectController.project = project;
+    public static void setCurrentProject(Project currentProject) {
+        ProjectController.currentProject = currentProject;
     }
 
-    public static Project getProject() {
-        return ProjectController.project;
+    public static Project getCurrentProject() {
+        return ProjectController.currentProject;
     }
 
 
@@ -79,9 +79,9 @@ public class ProjectController {
         }
         try {
             projectID++;
-            project = new Project(name, projectID, currentDateTime, endDate);
-            projectStorage.put(projectID, project);
-            IO.saveProject(project);
+            currentProject = new Project(name, projectID, currentDateTime, endDate);
+            projectStorage.put(projectID, currentProject);
+            IO.saveProject(currentProject);
         }catch (Exception e){
         }
         try {
@@ -89,7 +89,7 @@ public class ProjectController {
         }catch(Exception e){
             e.printStackTrace();
         }
-        return project;
+        return currentProject;
     }
     public static void removeProject(Project p){
         projectStorage.remove(p.getID());
@@ -109,8 +109,8 @@ public class ProjectController {
                 Print.print(Print.ERROR_INPUT);
             }
         } while (!projectStorage.containsKey(id));
-        project = projectStorage.get(id);
-        System.out.println(project);
+        currentProject = projectStorage.get(id);
+        System.out.println(currentProject);
         int choice;
         Print.print(Print.PROJECT_PLANNING_MENU);
 
@@ -122,14 +122,16 @@ public class ProjectController {
         } while (choice < 1 || choice > 6);
 
         switch (choice) {
-            case 1 -> new ProjectPlanningController(project).createUserStory();
-            case 2 -> new ProjectPlanningController(project).viewUserStories();
-            case 3 -> new ProjectPlanningController(project).createRisk();
-            case 4 -> new ProjectPlanningController(project).viewRisks();
+            case 1 -> new ProjectPlanningController(currentProject).createUserStory();
+            case 2 -> new ProjectPlanningController(currentProject).viewUserStories();
+            case 3 -> new ProjectPlanningController(currentProject).createRisk();
+            case 4 -> new ProjectPlanningController(currentProject).viewRisks();
             case 5 -> Controller.runProjectController();
         }
     }
-
+    public static void addProject(Project project){
+        projectStorage.put(project.getID(),project);
+    }
     public static void saveProjects() {
         for (Project project : projectStorage.values()) {
             try {
@@ -160,10 +162,10 @@ public class ProjectController {
                 Print.print(Print.ERROR_INPUT);
             }
         } while (!projectStorage.containsKey(id));
-        project = projectStorage.get(id);
+        currentProject = projectStorage.get(id);
 
         try {
-           SaveToExcel.saveToExcel(project);
+           SaveToExcel.saveToExcel(currentProject);
         } catch (Exception e) {
             e.printStackTrace();
         }

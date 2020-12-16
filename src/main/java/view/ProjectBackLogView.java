@@ -1,16 +1,12 @@
 package view;
 
-import com.sun.prism.shader.AlphaOne_Color_AlphaTest_Loader;
 import controllers.ProjectController;
-import controllers.ProjectPlanningController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import objects.Project;
@@ -34,7 +30,7 @@ public class ProjectBackLogView implements Initializable {
     int storyPoint;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        p= ProjectController.getProject();
+        p= ProjectController.getCurrentProject();
         backlogList = FXCollections.observableList(ProjectController.getBacklog(p));
         backlogListView.setItems(backlogList);
     }

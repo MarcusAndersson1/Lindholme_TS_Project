@@ -1,38 +1,70 @@
 package utilities;
 
+import controllers.ProjectController;
 import controllers.TeamController;
 import objects.Project;
 import objects.Team;
+import objects.User;
 
 import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.stream.Stream;
 
 public class IO{
 
     //public static final File PROJECT_DATA= new File("Files/ProjectData.txt");
     public static final File USER_DATA= new File("src/main/java/Files/UserData.txt");
-    public static final String PROJECT_LOCATION = ("src/main/java/Files/ProjectREPLACE_WITH_ID.txt");
+    public static final String PROJECT_LOCATION = ("src/main/java/Files/Projects/ProjectREPLACE_WITH_ID.txt");
+    public static final String PROJECT_FOLDER = ("src/main/java/Files/Projects");
     public static final File PROJECT_ID = new File("src/main/java/Files/ProjectID.txt");
     public static final String TEAM_LOCATION = ("src/main/java/Files/Teams/TeamREPLACE_WITH_ID.txt");
     public static final String TEAM_FOLDER = ("src/main/java/Files/Teams");
     public static final File TEAM_ID = new File("src/main/java/Files/TeamID.txt");
 
-    public static void saveUsers() throws IOException {
+    public static void saveUsers(HashMap users) throws IOException {
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(USER_DATA));
-     //oos.writeObject(users);
+        oos.writeObject(users);
     }
-    public static void readUsers() throws Exception{
+    public static HashMap<Integer,User> readUsers() throws Exception{
         ObjectInputStream ois = new ObjectInputStream(new FileInputStream(USER_DATA));
-       //users = (ArrayList<objects.User>) ois.readObject();
+        HashMap<Integer, User> users = null;
+        try {
+            users = (HashMap<Integer, User>) ois.readObject();
+        }catch (Exception e){
+            System.out.println("readUsers error xD");
+        }
+        return users;
+    }
+    public static void loadAllProjects(){
+        File path = new File(PROJECT_FOLDER);
+        File[] fileList = path.listFiles();
+        for(File file : fileList) {
+            try{
+                ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
+                Project loadedProject = (Project) ois.readObject();
+                ProjectController.addProject(loadedProject);
+                ois.close();
+            }catch (Exception e){
+                System.out.println("uh oh error in loadAllProjects");
+            }
+        }
     }
     public static void saveProject(Project project) throws IOException {
-        //File saveProjectFile = new File(PROJECT_LOCATION.replace("REPLACE_WITH_ID", Integer.toString(project.getID())));
-        File saveProjectFile = new File(PROJECT_LOCATION.replace("REPLACE_WITH_ID", "1"));
-        saveProjectFile.createNewFile(); //if else här kanske
+        File saveProjectFile = new File(PROJECT_LOCATION.replace("REPLACE_WITH_ID", Integer.toString(project.getID())));
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(saveProjectFile));
         oos.writeObject(project);
+    }
+    public static void saveCurrentProject(){
+        Project project = ProjectController.getCurrentProject();
+        File saveProjectFile = new File(PROJECT_LOCATION.replace("REPLACE_WITH_ID", Integer.toString(project.getID())));
+        try {
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(saveProjectFile));
+            oos.writeObject(project);
+        }catch(Exception e){
+            System.out.println("SaveCurrentProject Error xD");
+        }
     }
 
     public static Project loadProject(int projectID) throws Exception {
