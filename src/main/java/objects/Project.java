@@ -38,6 +38,9 @@ public class Project implements Serializable {
     public void addUserStories(UserStory u) {
         userStories.add(u);
     }
+    public void removeUserStories(UserStory u){
+        userStories.remove(u);
+    }
 
     public void assignTeam(Team team) {
         teamList.add(team);

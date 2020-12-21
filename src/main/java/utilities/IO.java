@@ -9,6 +9,7 @@ import objects.User;
 import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.stream.Stream;
 
@@ -37,19 +38,21 @@ public class IO{
         }
         return users;
     }
-    public static void loadAllProjects(){
+    public static ArrayList<Project> loadAllProjects(){
+        ArrayList<Project> projects = new ArrayList<>();
         File path = new File(PROJECT_FOLDER);
         File[] fileList = path.listFiles();
-        for(File file : fileList) {
-            try{
-                ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
-                Project loadedProject = (Project) ois.readObject();
-                ProjectController.addProject(loadedProject);
-                ois.close();
-            }catch (Exception e){
-                System.out.println("uh oh error in loadAllProjects");
+            for(File file : fileList) {
+                try{
+                    ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
+                    Project loadedProject = (Project) ois.readObject();
+                    ProjectController.addProject(loadedProject);
+                    ois.close();
+                }catch (Exception e){
+                    System.out.println("uh oh error in loadAllTeams");
+                }
             }
-        }
+        return projects;
     }
     public static void saveProject(Project project) throws IOException {
         File saveProjectFile = new File(PROJECT_LOCATION.replace("REPLACE_WITH_ID", Integer.toString(project.getID())));

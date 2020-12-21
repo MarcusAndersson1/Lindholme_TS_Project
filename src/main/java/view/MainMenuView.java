@@ -11,7 +11,6 @@ public class MainMenuView {
     }
     public void openUsersView(ActionEvent actionEvent) {
         new ChangeScene().changeScene(actionEvent,"Users.Page.fxml");
-
     }
 
     public void openTeamView(ActionEvent actionEvent) {

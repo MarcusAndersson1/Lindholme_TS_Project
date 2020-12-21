@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
@@ -13,6 +14,7 @@ import objects.Project;
 import objects.UserStory;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class ProjectBackLogView implements Initializable {
@@ -24,18 +26,19 @@ public class ProjectBackLogView implements Initializable {
     public TextField textBox;
     @FXML
     public TextField storyPoints;
+    public DatePicker datePicker;
 
     ObservableList<UserStory> backlogList;
     Project p;
     int storyPoint;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        p= ProjectController.getCurrentProject();
+        p = ProjectController.getCurrentProject();
         backlogList = FXCollections.observableList(ProjectController.getBacklog(p));
         backlogListView.setItems(backlogList);
     }
     public void back(ActionEvent actionEvent) {
-        new ChangeScene().changeScene(actionEvent, "Open-Project.Page.fxml");
+        new ChangeScene().changeScene(actionEvent, "OpenProjectPage.fxml");
     }
     public void createUserStory(ActionEvent actionEvent) {
         if(textBox.getText()!="") {
@@ -71,4 +74,21 @@ public class ProjectBackLogView implements Initializable {
             storyPoints.clear();
         }
     }
+    public void setDone(ActionEvent actionEvent){
+        UserStory u = backlogListView.getSelectionModel().getSelectedItem();
+        LocalDate l = datePicker.getValue();
+        if(l!=null){
+            u.setDoneDate(l);
+        }
+        backlogListView.getItems().remove(u);
+        backlogListView.getItems().add(u);
+    }
+
+    public void remove(ActionEvent actionEvent) {
+        UserStory u = backlogListView.getSelectionModel().getSelectedItem();
+        ProjectController.removeUserStory(p, u);
+        backlogListView.getItems().remove(u);
+        // backlogListView.getItems().clear();
+    }
+
 }

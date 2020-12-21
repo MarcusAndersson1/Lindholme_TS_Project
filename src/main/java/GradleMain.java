@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import utilities.IO;
 
 
 import java.io.IOException;
@@ -17,16 +18,14 @@ public class GradleMain extends Application {
 
     public static void main(String[] args) {
         UserController.addTestUser();
-        System.out.println(ProjectController.getProjects());
+        IO.loadAllProjects();
         launch(args);
     }
 
-    @Override
+    //@Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("view/SignIn.Page.fxml"));
-
         Image icon = new Image ("/icons/LTSCP-icon.png");
-
         primaryStage.getIcons().add(icon);
         primaryStage.setTitle("Open Minded Cougar (LTSCP)");
         primaryStage.setScene(new Scene(root));

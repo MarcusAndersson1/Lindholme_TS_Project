@@ -13,6 +13,7 @@ import javafx.scene.control.ListView;
 import controllers.*;
 
 import objects.*;
+import utilities.IO;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -24,13 +25,11 @@ public class ProjectMenuView implements Initializable  {
     @FXML
     public ListView<Project> projectListView;
 
-    int ID;
-
     public void openProject(ActionEvent actionEvent) {
         Project p = projectListView.getSelectionModel().getSelectedItem();
         ProjectController.setCurrentProject(p);
         if(p!=null) {
-            new ChangeScene().changeScene(actionEvent, "Open-Project.Page.fxml");
+            new ChangeScene().changeScene(actionEvent, "OpenProjectPage.fxml");
         }
     }
     public void newProject(ActionEvent actionEvent){
@@ -43,6 +42,7 @@ public class ProjectMenuView implements Initializable  {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        System.out.println("vi kom hit");
         projectList = FXCollections.observableArrayList(ProjectController.getProjects());
         projectListView.setItems(projectList);
     }

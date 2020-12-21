@@ -28,9 +28,8 @@ public class UserController {
 
 
         ArrayList<User> teamMembers= new ArrayList<User>(userStorage.values());
-        String teamName = "Penis";
-        Team t = new Team("The balls", 200, "2020/12/12");
-        TeamController.createTeam(t.getName(),teamMembers);
+        //Team t = new Team("The balls", 200, "2020/12/12");
+        //TeamController.createTeam(t.getName(),teamMembers);
     }
     public static ObservableList<User> getUsers() {
         return FXCollections.observableArrayList(userStorage.values());

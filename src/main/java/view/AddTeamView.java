@@ -21,7 +21,7 @@ public class AddTeamView implements Initializable {
     Project project;
 
     public void back(ActionEvent actionEvent) {
-        new ChangeScene().changeScene(actionEvent, "Open-Project.Page.fxml");
+        new ChangeScene().changeScene(actionEvent, "OpenProjectPage.fxml");
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {

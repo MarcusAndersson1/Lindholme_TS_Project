@@ -6,7 +6,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
 import objects.Project;
+import utilities.IO;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -25,6 +27,11 @@ public class EditProjectView implements Initializable {
     public void back(ActionEvent actionEvent) {
         new ChangeScene().changeScene(actionEvent,
                 "Projects.Page.fxml");
+        try {
+            IO.saveProject(project);
+        } catch (IOException e){
+            System.out.println("Error while saving project");
+        }
     }
 
     public void openBacklog(ActionEvent actionEvent){
@@ -35,7 +42,10 @@ public class EditProjectView implements Initializable {
     public void editTeam(ActionEvent actionEvent) {
         new ChangeScene().changeScene(actionEvent,
                 "Add.Team.Page.fxml");
+    }
 
-        //project.setTeam();
+    public void openDashBoard(ActionEvent actionEvent) {
+        ProjectController.setCurrentProject(project);
+        new ChangeScene().changeScene(actionEvent, "DashBoardPage.fxml");
     }
 }
