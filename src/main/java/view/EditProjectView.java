@@ -21,7 +21,8 @@ public class EditProjectView implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         project = ProjectController.getCurrentProject();
         projectName.setText(project.getName());
-        projectInformationView.getItems().addAll(project.daysLeft(),project.getName(),project.getTeamList(), project.getProjectDescription());
+        projectInformationView.getItems().addAll(project.daysLeft() + ": Days left",project.getName(),
+        project.getTeamList(), project.getProjectDescription(), project.getBudget(), project.getMilestones(), project.getActivities());
     }
 
     public void back(ActionEvent actionEvent) {
@@ -47,5 +48,13 @@ public class EditProjectView implements Initializable {
     public void openDashBoard(ActionEvent actionEvent) {
         ProjectController.setCurrentProject(project);
         new ChangeScene().changeScene(actionEvent, "DashBoardPage.fxml");
+    }
+
+    public void editProject(ActionEvent actionEvent) {
+        new ChangeScene().changeScene(actionEvent, "EditProjectView.fxml");
+    }
+
+    public void projectDetails(ActionEvent actionEvent) {
+        new ChangeScene().changeScene(actionEvent, "ProjectDetailsView.fxml");
     }
 }

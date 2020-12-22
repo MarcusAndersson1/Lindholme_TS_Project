@@ -24,10 +24,10 @@ public class DateHandler {
         return formatter;
     }
 
-    public static int getBusinessDaysBetween(LocalDate mStartDate, LocalDate mEndDate) throws Exception {
+    public static ArrayList<LocalDate> getBusinessDaysBetween(LocalDate mStartDate, LocalDate mEndDate){
 
         List<LocalDate> allDays = new ArrayList<>();
-        List<LocalDate> businessDays = new ArrayList<>();
+        ArrayList<LocalDate> businessDays = new ArrayList<>();
         //long daysBetween = ChronoUnit.DAYS.between(mStartDate, mEndDate); if we want regular days
         while (!mStartDate.isAfter(mEndDate)) {
             allDays.add(mStartDate);
@@ -38,7 +38,7 @@ public class DateHandler {
                 businessDays.add(day);
             }
         }
-        return businessDays.size();
+        return businessDays;
     }
     public static String getCurrentDate(){
         String currentDate = LocalDateTime.now().format(format());

@@ -4,6 +4,7 @@ import controllers.ProjectController;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.geometry.Side;
 import javafx.scene.chart.*;
 import objects.Project;
 import objects.UserStory;
@@ -17,6 +18,7 @@ import java.util.ResourceBundle;
 
 public class DashboardView implements Initializable {
     public LineChart burnDownChart;
+    public LineChart budgetChart;
 
     Project project;
 
@@ -27,8 +29,15 @@ public class DashboardView implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         project = ProjectController.getCurrentProject();
-
         ObservableList<UserStory> userStories = project.getUserStories();
         burnDownChart.getData().add(GraphBuilder.burnDownChart(userStories,project));
-}
+        burnDownChart.getData().add(GraphBuilder.burnDownForecast(userStories,project));
+        burnDownChart.setLegendSide(Side.TOP);
+        burnDownChart.setCreateSymbols(false);
+        budgetChart.getData().add(GraphBuilder.budgetReport(userStories,project));
+        budgetChart.getData().add(GraphBuilder.budgetForecast(userStories,project));
+        budgetChart.setLegendSide(Side.TOP);
+        budgetChart.setCreateSymbols(false);
+
+    }
 }

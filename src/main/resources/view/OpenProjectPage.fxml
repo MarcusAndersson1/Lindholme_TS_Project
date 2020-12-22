@@ -14,12 +14,12 @@
             <Font size="10.0" />
          </font>
       </Button>
-      <Button layoutX="20.0" layoutY="180.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="100.0" text="Budget Report">
+      <Button layoutX="20.0" layoutY="180.0" mnemonicParsing="false" onAction="#editProject" prefHeight="20.0" prefWidth="100.0" text="Edit Project">
          <font>
             <Font size="10.0" />
          </font>
       </Button>
-      <Button layoutX="20.0" layoutY="210.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="100.0" text="Project Planing">
+      <Button layoutX="20.0" layoutY="210.0" mnemonicParsing="false" onAction="#projectDetails" prefHeight="20.0" prefWidth="100.0" text="Project Planing">
          <font>
             <Font size="10.0" />
          </font>
