@@ -1,35 +1,42 @@
 package view;
 
 import controllers.Controller;
+import controllers.ProjectController;
 import controllers.UserController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
+import objects.Project;
 import objects.User;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class UsersView {
 
-    private static ListView<User> listView;
+public class UsersView implements Initializable {
+    ObservableList<User> userList;
+    @FXML
+    public ListView<User> userListView;
 
-    public static void runUserView(){
-        ObservableList<User> list = FXCollections.observableArrayList();
-        list.addAll(UserController.getUser(1), UserController.getUser(2), UserController.getUser(3));
-        listView = new ListView<>();
-        listView.getItems().addAll(list);
-
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        System.out.println("vi kom hit");
+        userList = FXCollections.observableArrayList(UserController.getUsers());
+        userListView.setItems(userList);
     }
-
-    public void openUser(ActionEvent actionEvent){}
 
     public void newUserView(ActionEvent actionEvent) {
         new ChangeScene().changeScene(actionEvent,"Create-User.Page.fxml");
     }
 
     public void deleteUser(ActionEvent actionEvent) {
-        new ChangeScene().changeScene(actionEvent,"");
+            User user = userListView.getSelectionModel().getSelectedItem();
+            UserController.deleteUser(user);
+            userList.remove(user);
     }
     public void backToMainMenu (ActionEvent actionEvent) {
         new ChangeScene().changeScene(actionEvent,"MainMenu.Page.fxml");

@@ -21,6 +21,9 @@ public class UserController {
     private static int userID;
     private static HashMap<Integer, User> userStorage = new HashMap<>();
 
+
+
+
     public static void addTestUser() {
         userStorage.put(1, new User("stefan", 1, "hallå", "Password123", "gmail@gmail.com", "Jag heter Marcus"));
         userStorage.put(2, new User("olof", 2, "hallå", "Password123", "gmail@gmail.com", "Jag heter Marcus"));
@@ -54,30 +57,11 @@ public class UserController {
         Controller.runUserController();
     }
 
-    public static void deleteUser() {
-        int input = 0;
-        if (userStorage.isEmpty()) {
-            System.out.println(Print.THE_LIST_IS_EMPTY);
-        } else {
-                try {
-                    input = Integer.parseInt(Input.fetchInputString(Print.TYPE_ID));
-                } catch (Exception e) {
-
-                }
-                if(!userStorage.get(input).equals(Controller.getCurrentUser())){
-                    if (userStorage.containsKey(input)) {
-                        System.out.println("The user with ID " + input + " has been deleted");
-                        userStorage.remove(input);
-                    } else {
-                        System.out.println(Print.ERROR_INPUT);
-                    }
-                }else{
-                    Print.print(Print.CANNOT_DELETE_LOGGED_IN_USER);
-                }
+    public static void deleteUser(User user) {
+        System.out.println(getUser(user.getID()) + " has been deleted");
+                        userStorage.remove(user.getID());
                 }
 
-        Controller.runUserController();
-    }
 
     public static void printUserStorage() {
         if (userStorage.isEmpty()){
