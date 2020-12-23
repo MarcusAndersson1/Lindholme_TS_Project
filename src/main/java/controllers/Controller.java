@@ -95,6 +95,7 @@ public class Controller {
             return false;
         } else {
             Print.print(" Succe!!! ");
+            loginSuccessful(UserController.getUser(userID));
             return true;
         }
     }
@@ -131,7 +132,6 @@ public class Controller {
     public static void loginSuccessful(User user) {
         currentUser = user;
         user.setTimeOut(LocalDateTime.now());
-        Controller.controllerMenu();
     }
 
     public static void logOut() {

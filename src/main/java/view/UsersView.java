@@ -9,7 +9,9 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import menus.Print;
 import objects.Project;
 import objects.User;
 
@@ -18,7 +20,8 @@ import java.util.ResourceBundle;
 
 
 public class UsersView implements Initializable {
-    ObservableList<User> userList;
+    public Label errorMessage;
+     ObservableList<User> userList; //ska dessa variablar vara privata?
     @FXML
     public ListView<User> userListView;
 
@@ -34,9 +37,15 @@ public class UsersView implements Initializable {
     }
 
     public void deleteUser(ActionEvent actionEvent) {
+
             User user = userListView.getSelectionModel().getSelectedItem();
+        if(user.equals(Controller.getCurrentUser())){
+            errorMessage.setText(Print.CANNOT_DELETE_LOGGED_IN_USER);
+            System.out.println(Print.CANNOT_DELETE_LOGGED_IN_USER);
+        }else {
             UserController.deleteUser(user);
             userList.remove(user);
+        }
     }
     public void backToMainMenu (ActionEvent actionEvent) {
         new ChangeScene().changeScene(actionEvent,"MainMenu.Page.fxml");

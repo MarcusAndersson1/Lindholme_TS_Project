@@ -21,6 +21,7 @@ public class LogInView {
                 if(!Controller.checkUserID(id)){errorMessage.setText("Sign In Failed");
 
                 }else {
+
                     new ChangeScene().changeScene(event, "MainMenu.Page.fxml");
                 }
             }catch (Exception e){
