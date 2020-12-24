@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import menus.Print;
 import objects.*;
+import utilities.IO;
 import utilities.Input;
 
 import java.lang.reflect.Array;
@@ -22,21 +23,18 @@ public class UserController {
     private static HashMap<Integer, User> userStorage = new HashMap<>();
 
 
-
-
     public static void addTestUser() {
         userStorage.put(1, new User("stefan", 1, "hallå", "Password123", "gmail@gmail.com", "Jag heter Marcus"));
         userStorage.put(2, new User("olof", 2, "hallå", "Password123", "gmail@gmail.com", "Jag heter Marcus"));
         userStorage.put(3, new User("per", 3, "hallå", "Password123", "gmail@gmail.com", "Jag heter Marcus"));
-
-
-        ArrayList<User> teamMembers= new ArrayList<User>(userStorage.values());
-        //Team t = new Team("The balls", 200, "2020/12/12");
-        //TeamController.createTeam(t.getName(),teamMembers);
     }
+
+
     public static ObservableList<User> getUsers() {
         return FXCollections.observableArrayList(userStorage.values());
     }
+
+
     public static void createUser(String name, String password, String email, String personalPresentation) {
         System.out.println(Print.ENTER_USER_NAME);
         String currentDateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy - H:mm"));
@@ -44,23 +42,41 @@ public class UserController {
         userID = getMaxKey() + 1;
         User user = new User(name, userID, currentDateTime, password, email, personalPresentation);
         userStorage.put(userID, user);
+        saveUserMap();
         printUserStorage();
     }
+
 
     public static void openUser(){
         printUserStorage();
         Controller.runUserController();
     }
 
+
     public static void saveUser(){
 
         Controller.runUserController();
     }
 
+
+    public static void saveUserMap(){
+        IO.saveUsers(userStorage);
+    }
+
+
+    public static void loadUsers(){
+       HashMap<Integer,User> users= IO.readUsers();
+       if(users != null){
+           userStorage = users;
+       }
+    }
+
+
     public static void deleteUser(User user) {
             System.out.println(getUser(user.getID()) + " has been deleted");
             userStorage.remove(user.getID());
-                }
+            saveUserMap();
+    }
 
 
     public static void printUserStorage() {
@@ -72,6 +88,8 @@ public class UserController {
             }
         }
     }
+
+
     public static boolean userExists(int id){
         if (userStorage.containsKey(id)){
             return true;
@@ -79,13 +97,17 @@ public class UserController {
             return false;
         }
     }
+
+
     public static User getUser(int userID){
         return userStorage.get(userID);
     }
 
+
     public static String getUserPassword(int userID) {
         return userStorage.get(userID).getPassword();
     }
+
 
     public static String setUserPassword() {
         String password;
@@ -100,6 +122,7 @@ public class UserController {
         return password;
     }
 
+
     public static boolean isValidPassword(String password) {
         String regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,20}$";
         Pattern pattern = Pattern.compile(regex);
@@ -110,6 +133,7 @@ public class UserController {
             return true;
         }
     }
+
 
     public static int getMaxKey() {
         int maxKey = 0;

@@ -1,11 +1,15 @@
 package view;
 
 import controllers.Controller;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 
 import javafx.event.ActionEvent;
 import menus.Print;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class LogInView {
     public Button signInButton;
@@ -14,6 +18,7 @@ public class LogInView {
     public Label errorMessage;
     public Button quitButton;
     public CheckBox rememberMe;
+
 
     public void signIn(ActionEvent event){
             try{
@@ -27,10 +32,5 @@ public class LogInView {
             }catch (Exception e){
                 System.out.println(Print.ERROR_INPUT);
             }
-
-
-
     }
-
-
 }
