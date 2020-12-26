@@ -22,11 +22,10 @@ public class UserController {
     private static int userID;
     private static HashMap<Integer, User> userStorage = new HashMap<>();
 
-
     public static void addTestUser() {
-        userStorage.put(1, new User("stefan", 1, "hallå", "Password123", "gmail@gmail.com", "Jag heter Marcus"));
-        userStorage.put(2, new User("olof", 2, "hallå", "Password123", "gmail@gmail.com", "Jag heter Marcus"));
-        userStorage.put(3, new User("per", 3, "hallå", "Password123", "gmail@gmail.com", "Jag heter Marcus"));
+        userStorage.put(1, new Manager("stefan", 1, "hallå", "Password123", "gmail@gmail.com", "Jag heter Marcus"));
+        userStorage.put(2, new Manager("olof", 2, "hallå", "Password123", "gmail@gmail.com", "Jag heter Marcus"));
+        userStorage.put(3, new Manager("per", 3, "hallå", "Password123", "gmail@gmail.com", "Jag heter Marcus"));
     }
 
 
@@ -35,13 +34,26 @@ public class UserController {
     }
 
 
-    public static void createUser(String name, String password, String email, String personalPresentation) {
+    public static void createUser(String name, String password, String email, String personalPresentation, String userType) {
         System.out.println(Print.ENTER_USER_NAME);
         String currentDateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy - H:mm"));
        // password = setUserPassword();
-        userID = getMaxKey() + 1;
-        User user = new User(name, userID, currentDateTime, password, email, personalPresentation);
-        userStorage.put(userID, user);
+
+            User user;
+            userID = getMaxKey() + 1;
+            if(userType.equals("Manager")){
+                user = new Manager(name, userID, currentDateTime, password, email, personalPresentation);
+                userStorage.put(userID, user);
+                System.out.println("Manager created");
+           }else if(userType.equals("Developer")){
+                user = new DeveloperSubClass(name, userID, currentDateTime, password, email, personalPresentation);
+                userStorage.put(userID, user);
+                System.out.println("Developer created");
+           }else if(userType.equals("Stakeholder")){
+                user = new Stakeholder(name, userID, currentDateTime, password, email, personalPresentation);
+                userStorage.put(userID, user);
+                System.out.println("Stakeholder created");
+            }
         saveUserMap();
         printUserStorage();
     }
@@ -54,7 +66,6 @@ public class UserController {
 
 
     public static void saveUser(){
-
         Controller.runUserController();
     }
 
