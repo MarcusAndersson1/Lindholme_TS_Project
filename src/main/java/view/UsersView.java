@@ -37,15 +37,20 @@ public class UsersView implements Initializable {
     }
 
     public void deleteUser(ActionEvent actionEvent) {
+        User user = userListView.getSelectionModel().getSelectedItem();
+    if(user != null){
+    if(user.equals(Controller.getCurrentUser())){
+        errorMessage.setText(Print.CANNOT_DELETE_LOGGED_IN_USER);
+        System.out.println(Print.CANNOT_DELETE_LOGGED_IN_USER);
+    }else {
+        UserController.deleteUser(user);
+        userList.remove(user);
+    }
+    }else{
+        errorMessage.setText(Print.SELECT_A_USER);
+        System.out.println(Print.SELECT_A_USER);
+    }
 
-            User user = userListView.getSelectionModel().getSelectedItem();
-        if(user.equals(Controller.getCurrentUser())){
-            errorMessage.setText(Print.CANNOT_DELETE_LOGGED_IN_USER);
-            System.out.println(Print.CANNOT_DELETE_LOGGED_IN_USER);
-        }else {
-            UserController.deleteUser(user);
-            userList.remove(user);
-        }
     }
     public void backToMainMenu (ActionEvent actionEvent) {
         new ChangeScene().changeScene(actionEvent,"MainMenu.Page.fxml");
