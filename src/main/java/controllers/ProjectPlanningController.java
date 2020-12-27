@@ -1,13 +1,9 @@
 package controllers;
 
 import ProjectPlanning.*;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import objects.Project;
 import objects.*;
 import utilities.*;
-
-import java.util.ArrayList;
 
 public class ProjectPlanningController {
     private ProjectPlanning projectPlanning;
@@ -35,25 +31,24 @@ public class ProjectPlanningController {
     }
     public void createRisk(){
         projectPlanning.addRisk();
-        ProjectController.openProject();
+        //ProjectController.openProject();
     }
     public void viewUserStories(){
         for (UserStory u: projectPlanning.getBacklog()) {
             System.out.println(u);
 
         }
-        Controller.runProjectController();
+       // Controller.runProjectController();
     }
     public void viewRisks(){
         for (Risk u: projectPlanning.getRisks()) {
             System.out.println(u);
         }
-        Controller.runProjectController();
+        //Controller.runProjectController();
     }
     public void planSprint(){
         //add more code later
     }
-
     public static Project getProject() {
         return project;
     }

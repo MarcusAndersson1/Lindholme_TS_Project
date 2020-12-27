@@ -24,14 +24,19 @@ public class IO{
     public static final String TEAM_FOLDER = ("src/main/java/Files/Teams");
     public static final File TEAM_ID = new File("src/main/java/Files/TeamID.txt");
 
-    public static void saveUsers(HashMap users) throws IOException {
+    public static void saveUsers(HashMap<Integer,User> users) {
+        try{
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(USER_DATA));
-        oos.writeObject(users);
+        oos.writeObject(users);}
+        catch (Exception e){
+            System.out.println("Save users errore");
+            e.printStackTrace();
+        }
     }
-    public static HashMap<Integer,User> readUsers() throws Exception{
-        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(USER_DATA));
+    public static HashMap<Integer,User> readUsers(){
         HashMap<Integer, User> users = null;
         try {
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(USER_DATA));
             users = (HashMap<Integer, User>) ois.readObject();
         }catch (Exception e){
             System.out.println("readUsers error xD");
@@ -103,7 +108,8 @@ public class IO{
     public static void loadAllTeams(){
             File path = new File(TEAM_FOLDER);
             File[] fileList = path.listFiles();
-            for(File file : fileList) {
+
+        for(File file : fileList) {
                 try{
                     ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
                     Team loadedTeam = (Team) ois.readObject();

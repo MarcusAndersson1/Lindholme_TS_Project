@@ -4,6 +4,7 @@ import utilities.DateHandler;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserStory implements Serializable {
@@ -12,16 +13,17 @@ public class UserStory implements Serializable {
     String description;
     int points;
     int id;
+    int hours;
     List<String> tasks;
     LocalDate createdDate;
     LocalDate doneDate;
-
+    LocalDate startDate;
     UserStoryState state = UserStoryState.BACK_LOGG;
 
     public UserStory(String description, int id){
         this.description = description;
         this.id = id;
-        createdDate = LocalDate.now();
+        this.createdDate = LocalDate.now();
     }
 
     public void setCreatedDate(LocalDate createdDate) {
@@ -31,14 +33,12 @@ public class UserStory implements Serializable {
     public LocalDate getCreatedDate() {
         return createdDate;
     }
-
     public void setDoneDate(LocalDate doneDate) {
+        setHours(50);
         this.state = UserStoryState.DONE;
         this.doneDate = doneDate;
     }
-
     public LocalDate getDoneDate() {
-
         return doneDate;
     }
 
@@ -62,6 +62,7 @@ public class UserStory implements Serializable {
             this.state = UserStoryState.TODO;
         }else if(state.equals(UserStoryState.TODO)) {
             this.state = UserStoryState.IN_PROGRESS;
+            startDate = LocalDate.now();
         }else if (state.equals(UserStoryState.IN_PROGRESS)) {
             this.state = UserStoryState.TESTING;
         }else if (state.equals(UserStoryState.TESTING)) {
@@ -69,6 +70,19 @@ public class UserStory implements Serializable {
             doneDate = LocalDate.now();
         }
     }
+
+    public void reverseState(){
+        if(state.equals(UserStoryState.DONE)) {
+            this.state = UserStoryState.TESTING;
+        }else if(state.equals(UserStoryState.TESTING)) {
+            this.state = UserStoryState.IN_PROGRESS;
+        }else if (state.equals(UserStoryState.IN_PROGRESS)) {
+            this.state = UserStoryState.TODO;
+        }else if (state.equals(UserStoryState.TODO)) {
+            this.state = UserStoryState.BACK_LOGG;
+        }
+    }
+
     public String createTask(String task){
         int id = tasks.size() + 1;
         String mTask = "Task "+id+": "+" " + task;
@@ -87,6 +101,24 @@ public class UserStory implements Serializable {
 
     public UserStoryState getState() {
         return state;
+    }
+    public int timeSpent(){
+        ArrayList<LocalDate> days = new ArrayList<>();
+        try{
+            days = DateHandler.getBusinessDaysBetween(startDate,LocalDate.now());
+        }catch (Exception e){
+
+        }
+        hours = days.size() * 8;
+        return hours;
+    }
+
+    public void setHours(int hours) {
+        this.hours = hours;
+    }
+
+    public int getHours() {
+        return hours;
     }
 
     public void setPoints(int points) {

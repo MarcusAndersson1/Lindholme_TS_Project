@@ -1,4 +1,6 @@
-package ProjectPlanning;
+package objects;
+
+import ProjectPlanning.ProjectPlanning;
 
 public class Risk extends ProjectPlanning {
     private String name;

@@ -3,11 +3,12 @@ package objects;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
-import ProjectPlanning.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import utilities.DateHandler;
+import utilities.Input;
 
 
 public class Project implements Serializable {
@@ -21,6 +22,12 @@ public class Project implements Serializable {
     private String projectDescription;
     private ArrayList<Team> teamList = new ArrayList<>();
     private ArrayList<UserStory> userStories = new ArrayList<>();
+    private ArrayList<Activity> activities = new ArrayList<Activity>();
+    private ArrayList<Milestone> milestones= new ArrayList<Milestone>();
+    private ArrayList<Risk> risks = new ArrayList<Risk>();
+    private int budget;
+
+
 
     public Project(String name, int teamID, LocalDate startDate, LocalDate endDate) {
         this.name = name;
@@ -33,6 +40,13 @@ public class Project implements Serializable {
 
     public ObservableList<UserStory> getUserStories() {
         return FXCollections.observableArrayList(userStories);
+    }
+    public int getBudget() {
+        return budget;
+    }
+
+    public void setBudget(int budget) {
+        this.budget = budget;
     }
 
     public void addUserStories(UserStory u) {
@@ -51,6 +65,14 @@ public class Project implements Serializable {
     }
     public String getName() {
         return name;
+    }
+
+    public void setCreatedDate(LocalDate createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
     }
 
     public void setName(String name) {
@@ -88,22 +110,29 @@ public class Project implements Serializable {
         this.assignedTeam = assignedTeam;
     }
     public int daysLeft(){
-        int workingDays=0;
+        List<LocalDate> workingDays= new ArrayList<>();
         try{
-         workingDays =   DateHandler.getBusinessDaysBetween(getCreatedDate(),getEndDate());
+         workingDays =  DateHandler.getBusinessDaysBetween(getCreatedDate(),getEndDate());
         }catch(Exception e){
 
         }
-        return workingDays;
+        return workingDays.size();
     }
 
     public int getID() {
         return id;
     }
 
+    public ArrayList<Risk> getRisks() {
+        return risks;
+    }
 
-    public ScrumBoard getScrumboard() {
-        return scrumboard;
+    public ArrayList<Milestone> getMilestones() {
+        return milestones;
+    }
+
+    public ArrayList<Activity> getActivities() {
+        return activities;
     }
 
     @Override

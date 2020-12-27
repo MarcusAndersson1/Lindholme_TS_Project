@@ -39,7 +39,6 @@ public class Backlog implements Serializable{
         //
     }
 
-
     public ArrayList<UserStory> getBacklogList() {
         return backlogList;
     }

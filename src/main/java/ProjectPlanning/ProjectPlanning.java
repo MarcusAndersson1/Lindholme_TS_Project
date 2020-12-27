@@ -1,9 +1,6 @@
 package ProjectPlanning;
 
-import controllers.ProjectPlanningController;
-import objects.Backlog;
-import objects.ScrumBoard;
-import objects.UserStory;
+import objects.*;
 import utilities.Input;
 
 import java.io.Serializable;
@@ -30,17 +27,7 @@ import java.util.ArrayList;
      public ArrayList<UserStory> getBacklog() {
          return backlog;
      }
-     public int idMaker(){
-         int id;
-         int size;
-         size=risks.size();
-         if(size==0){
-             id=1;
-         }else {
-             id = size+1;
-         }
-         return id;
-     }
+
 
      Risk createRisk(String name){
          int id = idMaker();
@@ -67,20 +54,7 @@ import java.util.ArrayList;
     public void addMilestone(){
         String name = Input.fetchInputString("Enter milestone Name: ");
         String milestoneDate = Input.fetchInputString("Enter milestoneDate: dd/MM/YYYY");
-        milestones.add(new Milestone());
-    }
-    public void addActivity(){
-        String name = Input.fetchInputString("Enter Activity name: ");
-        String duration = Input.fetchInputString("Enter Activity duration: dd/MM/YYY");
-        activities.add(new Activity(name, duration));
-    }
-    public void createGantt(){
-        for (Activity a: activities) {
-            System.out.println(a.getDuration());
-        }
-        for (Milestone m: milestones) {
-            System.out.println(m.getName() + " : "+ m.getEndDate());
-        }
+        milestones.add(new Milestone(name));
     }
      public void addToBacklog(UserStory u){
 
@@ -90,6 +64,18 @@ import java.util.ArrayList;
 
      public ArrayList<Risk> getRisks() {
          return risks;
+     }
+
+     public int idMaker(){
+         int id;
+         int size;
+         size=risks.size();
+         if(size==0){
+             id=1;
+         }else {
+             id = size+1;
+         }
+         return id;
      }
 
  }

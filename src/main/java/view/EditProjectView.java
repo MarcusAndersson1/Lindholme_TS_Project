@@ -3,6 +3,7 @@ package view;
 import controllers.ProjectController;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
 import objects.Project;
@@ -17,11 +18,14 @@ public class EditProjectView implements Initializable {
     public Text projectName;
     Project project;
 
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         project = ProjectController.getCurrentProject();
         projectName.setText(project.getName());
-        projectInformationView.getItems().addAll(project.daysLeft(),project.getName(),project.getTeamList(), project.getProjectDescription());
+        projectInformationView.getItems().addAll(project.daysLeft() + ": Days left",project.getName(),
+        project.getTeamList(), project.getProjectDescription(), project.getBudget(), project.getMilestones(), project.getActivities());
     }
 
     public void back(ActionEvent actionEvent) {
@@ -34,6 +38,9 @@ public class EditProjectView implements Initializable {
         }
     }
 
+    public void openScrum(ActionEvent actionEvent){
+        new ChangeScene().changeScene(actionEvent, "Scrum-Board.Page.fxml");
+    }
     public void openBacklog(ActionEvent actionEvent){
         new ChangeScene().changeScene(actionEvent,
                 "Project.BackLog.Page.fxml");
@@ -47,5 +54,13 @@ public class EditProjectView implements Initializable {
     public void openDashBoard(ActionEvent actionEvent) {
         ProjectController.setCurrentProject(project);
         new ChangeScene().changeScene(actionEvent, "DashBoardPage.fxml");
+    }
+
+    public void editProject(ActionEvent actionEvent) {
+        new ChangeScene().changeScene(actionEvent, "EditProjectView.fxml");
+    }
+
+    public void projectDetails(ActionEvent actionEvent) {
+        new ChangeScene().changeScene(actionEvent, "ProjectDetailsView.fxml");
     }
 }

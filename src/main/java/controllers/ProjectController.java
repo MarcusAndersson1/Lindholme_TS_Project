@@ -4,6 +4,7 @@ package controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import objects.*;
+import org.apache.xmlbeans.impl.xb.xsdschema.Public;
 import utilities.*;
 
 import java.io.IOException;
@@ -47,7 +48,6 @@ public class ProjectController {
         p.addUserStories(u);
     return u;
 }
-
     public static ObservableList<Project> getProjects(){
         return FXCollections.observableArrayList(projectStorage.values());
     }
@@ -58,16 +58,12 @@ public class ProjectController {
     public static void addToBacklog(Project p, UserStory u){
         p.addUserStories(u);
     }
-
     public static void setCurrentProject(Project currentProject) {
         ProjectController.currentProject = currentProject;
     }
-
     public static Project getCurrentProject() {
         return ProjectController.currentProject;
     }
-
-
     public static Project createProject(String name, LocalDate date) {
         LocalDate currentDateTime = LocalDate.now();
         LocalDate endDate = date;
@@ -88,6 +84,8 @@ public class ProjectController {
         }catch(Exception e){
             e.printStackTrace();
         }
+        defaultMilestones();
+        defaultActivities();
         return currentProject;
     }
     public static void removeProject(Project p){
@@ -97,37 +95,6 @@ public class ProjectController {
         p.removeUserStories(u);
     }
 
-    public static void openProject() {
-        // String currentDateTime =
-        // LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy - H:mm"));
-        // project.setLastTimeOpened(currentDateTime);
-        int id;
-        do {
-            id = Input.fetchInputInt("");
-            if (!projectStorage.containsKey(id)) {
-                Print.print(Print.ERROR_INPUT);
-            }
-        } while (!projectStorage.containsKey(id));
-        currentProject = projectStorage.get(id);
-        System.out.println(currentProject);
-        int choice;
-        Print.print(Print.PROJECT_PLANNING_MENU);
-
-        do {
-            choice = Input.fetchInputInt("");
-            if (choice == 0 || choice < 1 || choice > 6) {
-                Print.print(Print.ERROR_INPUT);
-            }
-        } while (choice < 1 || choice > 6);
-
-        switch (choice) {
-            case 1 -> new ProjectPlanningController(currentProject).createUserStory();
-            case 2 -> new ProjectPlanningController(currentProject).viewUserStories();
-            case 3 -> new ProjectPlanningController(currentProject).createRisk();
-            case 4 -> new ProjectPlanningController(currentProject).viewRisks();
-            case 5 -> Controller.runProjectController();
-        }
-    }
     public static void addProject(Project project){
         projectStorage.put(project.getID(),project);
     }
@@ -210,7 +177,7 @@ public class ProjectController {
     public static void printProjectStorage() {
         if (projectStorage.isEmpty()) {
             System.out.println(Print.THE_LIST_IS_EMPTY);
-            Controller.runProjectController();
+           // Controller.runProjectController();
         } else {
             for (Map.Entry<Integer, Project> entry : projectStorage.entrySet()) {
                 System.out.println(entry.getValue());
@@ -231,7 +198,6 @@ public class ProjectController {
         String endDate = "";
         int check;
         do {
-
             try {
                 endDate = DateHandler.setDate();
 
@@ -243,23 +209,48 @@ public class ProjectController {
         return endDate;
     }
 
-    public static void runScrum() {
-        int choice;
-        //ScrumBoardController scrumController = new ScrumBoardController(project.projectPlanning);
-        Print.print(Print.SCRUM_BOARD_MENU);
-        do {
-            choice = Input.fetchInputInt("");
-            if (choice == 0 || choice < 1 || choice > 4) {
-                Print.print(Print.ERROR_INPUT);
-            }
-        } while (choice < 1 || choice > 4);
-
-        switch (choice) {
-           // case 1 -> scrumController.moveStory();
-            //case 2 -> scrumController.endSprint();
-            // case 3 -> scrumController.planSprint();
-            case 4 -> Controller.runProjectController();
+    public void createRisk(String name){
+        int id = idMaker();
+        Risk risk = new Risk(name,id);
+        addRisk(risk);
+    }
+    public static boolean defaultMilestones(){
+       // ArrayList<LocalDate> days = DateHandler.getBusinessDaysBetween(currentProject.getCreatedDate(), currentProject.getEndDate());
+        createMilestone("Project initiation", currentProject.getCreatedDate().plusWeeks(1));
+        createMilestone("Something else", currentProject.getCreatedDate().plusWeeks(2));
+        createMilestone("Project Almost Done", currentProject.getCreatedDate().plusWeeks(3));
+        createMilestone("Project Done", currentProject.getCreatedDate().plusWeeks(4));
+        if(currentProject.getCreatedDate().plusWeeks(4).isAfter(currentProject.getEndDate())){
+            return false;
+        }else {
+            return true;
         }
+    }
+    public static boolean defaultActivities(){
+        createActivity(currentProject.getMilestones().get(1), "Project Scoping", "3" );
+        createActivity(currentProject.getMilestones().get(1), "Team Creation", "2" );
+        createActivity(currentProject.getMilestones().get(2), "Execution", "15" );
+        createActivity(currentProject.getMilestones().get(3), "Project Finalization", "7" );
+        return true;
+    }
+    public static void createActivity(Milestone m, String name, String timeInDays ){
+        Activity a = new Activity(name, timeInDays, m );
+        addActivity(a);
+    }
+    public void addRisk(Risk r){
+        currentProject.getRisks().add(r);
+    }
+    public static void createMilestone(String name, LocalDate d){
+        Milestone m = new Milestone(name);
+        m.setMilestoneDate(d);
+        addMilestone(m);
+    }
+
+    public static void addMilestone(Milestone m){
+        currentProject.getMilestones().add(m);
+    }
+    public static void addActivity(Activity a){
+        currentProject.getActivities().add(a);
     }
 
 }

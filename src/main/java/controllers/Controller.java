@@ -35,35 +35,11 @@ public class Controller {
         } while (choice < 1 || choice > 4);
 
         switch (choice) {
-            case 1 -> runProjectController();
+           // case 1 -> runProjectController();
             case 2 -> runUserController();
             case 3 -> runTeamController();
             case 4 -> logOut();
 
-        }
-    }
-
-    public static void runProjectController() {
-        int choice;
-        Print.print(Print.PROJECT_MENU);
-
-        do {
-            choice = Input.fetchInputInt("");
-            if (choice < 1 || choice > 7) {
-                Print.print(Print.ERROR_INPUT);
-            }
-        } while (choice < 1 || choice > 7);
-
-
-        switch (choice) {
-            //case 1 -> ProjectController.createProject();
-            case 2 -> ProjectController.openProject();
-            //case 3 -> ProjectController.assignTeam();
-            case 4 -> ProjectController.saveProjects();
-            case 5 -> ProjectController.deleteProject("");
-            case 6 -> ProjectController.loadProject();
-            case 7 -> ProjectController.saveProjectToExcel();
-            case 8 -> controllerMenu();
         }
     }
 
@@ -83,7 +59,7 @@ public class Controller {
        //     case 1 -> UserController.createUser();
             case 2 -> UserController.openUser();
             case 3 -> UserController.saveUser();
-            case 4 -> UserController.deleteUser();
+       //     case 4 -> UserController.deleteUser();
             case 5 -> controllerMenu();
 
         }
@@ -119,6 +95,7 @@ public class Controller {
             return false;
         } else {
             Print.print(" Succe!!! ");
+            loginSuccessful(UserController.getUser(userID));
             return true;
         }
     }
@@ -155,7 +132,6 @@ public class Controller {
     public static void loginSuccessful(User user) {
         currentUser = user;
         user.setTimeOut(LocalDateTime.now());
-        Controller.controllerMenu();
     }
 
     public static void logOut() {
