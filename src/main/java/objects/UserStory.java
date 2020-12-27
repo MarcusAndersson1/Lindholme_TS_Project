@@ -70,6 +70,19 @@ public class UserStory implements Serializable {
             doneDate = LocalDate.now();
         }
     }
+
+    public void reverseState(){
+        if(state.equals(UserStoryState.DONE)) {
+            this.state = UserStoryState.TESTING;
+        }else if(state.equals(UserStoryState.TESTING)) {
+            this.state = UserStoryState.IN_PROGRESS;
+        }else if (state.equals(UserStoryState.IN_PROGRESS)) {
+            this.state = UserStoryState.TODO;
+        }else if (state.equals(UserStoryState.TODO)) {
+            this.state = UserStoryState.BACK_LOGG;
+        }
+    }
+
     public String createTask(String task){
         int id = tasks.size() + 1;
         String mTask = "Task "+id+": "+" " + task;

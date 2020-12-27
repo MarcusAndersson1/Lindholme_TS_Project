@@ -3,6 +3,7 @@ package view;
 import controllers.ProjectController;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
 import objects.Project;
@@ -16,6 +17,8 @@ public class EditProjectView implements Initializable {
     public ListView projectInformationView;
     public Text projectName;
     Project project;
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -35,6 +38,9 @@ public class EditProjectView implements Initializable {
         }
     }
 
+    public void openScrum(ActionEvent actionEvent){
+        new ChangeScene().changeScene(actionEvent, "Scrum-Board.Page.fxml");
+    }
     public void openBacklog(ActionEvent actionEvent){
         new ChangeScene().changeScene(actionEvent,
                 "Project.BackLog.Page.fxml");
