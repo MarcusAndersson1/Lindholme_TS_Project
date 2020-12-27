@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class TeamController {
 
     private static int teamID;
@@ -26,23 +27,28 @@ public class TeamController {
     public static HashMap<Integer, Team> teamStorage = new HashMap();
     private static Team currentTeam;
 
-/*
-    public static void addToTeamStorage (Integer integer, objects.Team team ){
-        teamStorage.put(integer, team);
+    /*
+        public static void addToTeamStorage (Integer integer, objects.Team team ){
+            teamStorage.put(integer, team);
+        }
+
+        public static void removeFromTeamStorage (Integer integer){
+            teamStorage.remove(integer);
+        }
+
+     */
+    public static HashMap<Integer, Team> getTeamStorage() {
+        return teamStorage;
     }
 
-    public static void removeFromTeamStorage (Integer integer){
-        teamStorage.remove(integer);
+    public static void setTeam(Team team) {
+        currentTeam = team;
     }
-
- */
-    public static HashMap<Integer, Team> getTeamStorage() { return teamStorage; }
-    public static void setTeam(Team team){ currentTeam=team; }
 
     public static void createTeam() {
         try {
             teamID = IO.loadTeamID();
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         String name = Input.fetchInputString(Print.ENTER_TEAM_NAME);
@@ -54,7 +60,7 @@ public class TeamController {
         printTeamStorage();
         try {
             IO.saveTeamID(teamID);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -67,9 +73,10 @@ public class TeamController {
     }
 
 
-    public static Team getTeam(){
+    public static Team getTeam() {
         return team;
     }
+
     public static void createTeam(String name, ArrayList<User> teamMembers) { //this is used by the GUI
         teamID = IO.loadTeamID();
         String currentDateTime = DateHandler.getCurrentDate();
@@ -77,46 +84,44 @@ public class TeamController {
         team = new Team(name, teamID, currentDateTime, teamMembers);
         teamStorage.put(teamID, team);
         printTeamStorage();
-        currentTeam=team;
+        currentTeam = team;
         try {
             IO.saveTeamID(teamID);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
 
-
-    public static void openTeam(){
+    public static void openTeam() {
         printTeamStorage();
         Team mTeam;
         int id;
         Print.print(Print.TYPE_ID);
-        do{
+        do {
             id = Input.fetchInputInt("");
-            if(!teamStorage.containsKey(id)){
+            if (!teamStorage.containsKey(id)) {
                 Print.print(Print.ERROR_INPUT);
             }
-            if(id == 0){
+            if (id == 0) {
                 Controller.runTeamController();
             }
-        }while(!teamStorage.containsKey(id));
-        mTeam=teamStorage.get(id);
+        } while (!teamStorage.containsKey(id));
+        mTeam = teamStorage.get(id);
         System.out.println(mTeam);
-
 
 
         int choice;
         Print.print(Print.EDIT_TEAM);
 
-        do{
+        do {
             choice = Integer.parseInt(Input.fetchInputString(""));
-            if(choice == 0 ||choice < 1 || choice > 2 ){
+            if (choice == 0 || choice < 1 || choice > 2) {
                 Print.print(Print.ERROR_INPUT);
             }
-        }while(choice < 1 || choice > 2 );
+        } while (choice < 1 || choice > 2);
 
-        switch (choice){
+        switch (choice) {
             case 1 -> TeamController.addTeamMember(mTeam);
             case 2 -> Controller.runTeamController();
         }
@@ -124,38 +129,42 @@ public class TeamController {
 
         Controller.runTeamController();
     }
-    public static void addTeam(Team t){
-        teamStorage.put(t.getTeamID(),t);
+
+    public static void addTeam(Team t) {
+        teamStorage.put(t.getTeamID(), t);
     }
-    public static void saveTeam(){
-        for (Team team : teamStorage.values()){
-            try{
-                IO.saveTeam(team);}
-            catch (IOException e){
+
+    public static void saveTeam() {
+        for (Team team : teamStorage.values()) {
+            try {
+                IO.saveTeam(team);
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
         Controller.runTeamController();
     }
+
     public static void loadTeam() {
         ArrayList<Integer> usersTeams = new ArrayList<>(); //take this list as input for the method instead
         usersTeams.add(1);
-        for (Integer teamID : usersTeams){
-            try{
+        for (Integer teamID : usersTeams) {
+            try {
                 Team loadedTeam = IO.loadTeam(teamID);  //perhaps check if file exists
-                teamStorage.put(loadedTeam.getTeamID(),loadedTeam);
-            }
-            catch (Exception e){ //or check what type of error is received here instead
+                teamStorage.put(loadedTeam.getTeamID(), loadedTeam);
+            } catch (Exception e) { //or check what type of error is received here instead
                 e.printStackTrace();
             }
         }
         Controller.runTeamController();
     }
-    public static void deleteTeam(Team team){
-     team.getTeamID();
-     teamStorage.remove(team.getTeamID());
-     //should remove team from file aswell =))
+
+    public static void deleteTeam(Team team) {
+        team.getTeamID();
+        teamStorage.remove(team.getTeamID());
+        //should remove team from file aswell =))
     }
+
     public static void deleteTeam(String s) {
         int check;
         if (teamStorage.isEmpty()) {
@@ -185,11 +194,11 @@ public class TeamController {
 
         if (teamStorage.isEmpty()) {
             System.out.println(Print.THE_LIST_IS_EMPTY);
-        }else{
-            for(Map.Entry<Integer, Team> entry: teamStorage.entrySet()){
+        } else {
+            for (Map.Entry<Integer, Team> entry : teamStorage.entrySet()) {
                 System.out.println(entry.getValue().toString());
 
-                }
+            }
         }
     }
 
@@ -199,10 +208,29 @@ public class TeamController {
         System.out.println(team);
         Print.print(Print.TYPE_ID);
         id = Input.fetchInputInt("");
-        if(UserController.userExists(id)) {
+        if (UserController.userExists(id)) {
             team.addTeamMember(UserController.getUser(id));
         }
         Controller.runTeamController();
     }
 
+    public static void assignRole() {
+        Team teamID;
+        System.out.println(Team.getMemberList());
+        int id;
+        Print.print("Choose Team Member: ");
+        do {
+            id = Input.fetchInputInt("");
+            if (!memberList.contains(id)) {
+                Print.print(Print.ERROR_INPUT);
+                Controller.runTeamController();
+            }
+            if (id == 0) {
+                Controller.runTeamController();
+            }
+            String role = Input.fetchInputString("");
+        } while (!memberList.contains(id));
+        memberList.get(id);
+        Team.assignRole(memberList.get(id).setRole(""));
+    }
 }

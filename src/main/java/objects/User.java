@@ -8,7 +8,7 @@ public class User implements Serializable{
 
 
     private String name;
-    private int iD;
+    private int userID;
     private String createdDate;
     private String password;
     private String email;
@@ -16,9 +16,9 @@ public class User implements Serializable{
     private int timeOutInc;
     private LocalDateTime timeOut = LocalDateTime.now();
     private Set<Integer> teamIDs;
-    public User(String name,int iD, String date, String password, String email, String personalPresentation){
+    public User(String name,int userID, String date, String password, String email, String personalPresentation){
         this.name = name;
-        this.iD = iD;
+        this.userID = userID;
         this.email = email;
         this.personalPresentation = personalPresentation;
         this.createdDate = date;
@@ -27,8 +27,8 @@ public class User implements Serializable{
     }
 
 
-    public int getID() {
-        return iD;
+    public int getUserID() {
+        return userID;
     }
 
     public String getName() {
@@ -48,7 +48,7 @@ public class User implements Serializable{
 
     @Override
     public String toString() {
-        return "Name: " + getName() + " ID: " + getID();
+        return "Name: " + getName() + " ID: " + getUserID();
     }
 
     public String getCreatedDate() {

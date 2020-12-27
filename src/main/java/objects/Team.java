@@ -8,15 +8,13 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Team  implements Serializable {
+public class Team implements Serializable {
     private String teamName;
     private int teamID;
     private String createdDate;
-    public ArrayList<User> memberList = new ArrayList<>();
+    public static ArrayList<User> memberList = new ArrayList<>();
     public ArrayList<UserStory> backlog = new ArrayList<>();
 
-   // public static HashMap<Integer, User> getMemberMap() { return memberMap; }
-    //public static void setMemberMap(HashMap<Integer, User> memberMap) { Team.memberMap = memberMap; }
 
     public Team (String teamName, int teamID, String date){
         this.teamName = teamName;
@@ -37,7 +35,7 @@ public class Team  implements Serializable {
         this.createdDate = date;
         this.memberList = memberList;
     }
-    public ArrayList<User> getMemberList() {
+    public static ArrayList<User> getMemberList() {
         return memberList;
     }
 
@@ -45,7 +43,7 @@ public class Team  implements Serializable {
         memberList.add(user);
         System.out.println(user + " added");
     }
-    public void removeTeamMember(User user){ memberList.remove(user.getID());
+    public void removeTeamMember(User user){ memberList.remove(user.getUserID());
     }
 
     public void viewTeam(){
@@ -53,6 +51,7 @@ public class Team  implements Serializable {
             System.out.println(user);
         }
     }
+    public static void assignRole(User user) { memberList.add((TeamMember) user); }
 
     public String getName() {
         return teamName;

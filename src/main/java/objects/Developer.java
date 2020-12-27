@@ -5,24 +5,24 @@ import java.util.HashSet;
 
 public class Developer extends User {
 
-    private String developer;
+    private static final String role = "Developer" ;
     private String teamName;
-    public static HashMap<Integer,User> developerMap = new HashMap<>();
     HashSet<Integer> ProjectsID = new HashSet<>();
 
-    public Developer(String teamName, String developer, String name, int iD, String date) {
+    public Developer(String teamName, String role, String name, int iD, String date) {
         super(name, iD, date,"password123", "", "");
 
-        this.developer = developer;
+
         this.teamName = teamName;
     }
-    public String getDeveloper() { return developer; }
+
+    public String getRole() { return "Developer"; }
 
     public String getTeamName() { return teamName; }
 
     @Override
     public String toString() {
-        return "Username: " + getName() + " Team: " + getTeamName() + " Role: " + getDeveloper();
+        return "Username: " + getName() + " Team: " + getTeamName() + " Role: " + role;
     }
 
 }
