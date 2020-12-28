@@ -9,12 +9,12 @@ public class ScrumMaster extends User {
     private String teamName;
     HashSet<Integer> ProjectsID = new HashSet<>();
 
-    public ScrumMaster(String name, String teamName, int userID, String date) {
+    public ScrumMaster(String name, String teamName, int userID, String date, String role) {
         super(name, userID, date, "password123", "", "");
 
         this.teamName = teamName;
     }
-        public String getRole() { return "Scrum Master"; }
+        public String getRole() { return role; }
 
         public String getTeamName() { return teamName; }
 

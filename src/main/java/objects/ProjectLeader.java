@@ -10,12 +10,12 @@ public class ProjectLeader extends User {
     private String teamName;
     HashSet<Integer> ProjectsID = new HashSet<>();
 
-    public ProjectLeader(String teamName, String name, int iD, String date) {
+    public ProjectLeader(String teamName, String name, int iD, String date, String role) {
         super(name, iD, date,"password123", "", "");
         this.teamName = teamName;
 
     }
-    public String getRole() { return "Project Leader"; }
+    public String getRole() { return role; }
 
     public String getTeamName() { return teamName; }
 

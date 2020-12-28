@@ -45,6 +45,9 @@ public abstract class User implements Serializable{
         this.password = password;
     }
 
+    public User setRole(String role){
+        return null;
+    }
 
     @Override
     public String toString() {

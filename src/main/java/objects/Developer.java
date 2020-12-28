@@ -16,7 +16,7 @@ public class Developer extends User {
         this.teamName = teamName;
     }
 
-    public String getRole() { return "Developer"; }
+    public String getRole() { return role; }
 
     public String getTeamName() { return teamName; }
 

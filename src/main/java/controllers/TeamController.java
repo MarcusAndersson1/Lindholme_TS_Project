@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import menus.Print;
 import objects.Project;
 import objects.Team;
+import objects.TeamMember;
 import objects.User;
 import objects.UserStory;
 import utilities.DateHandler;
@@ -215,13 +216,13 @@ public class TeamController {
     }
 
     public static void assignRole() {
-        Team teamID;
+        Team team = null;
         System.out.println(Team.getMemberList());
         int id;
         Print.print("Choose Team Member: ");
         do {
             id = Input.fetchInputInt("");
-            if (!memberList.contains(id)) {
+            if (!Team.memberList.contains(id)) {
                 Print.print(Print.ERROR_INPUT);
                 Controller.runTeamController();
             }
@@ -229,8 +230,7 @@ public class TeamController {
                 Controller.runTeamController();
             }
             String role = Input.fetchInputString("");
-        } while (!memberList.contains(id));
-        memberList.get(id);
-        Team.assignRole(memberList.get(id).setRole(""));
+        } while (!Team.memberList.contains(id));
+        Team.assignRole(Team.memberList.get(id).setRole(""));
     }
 }
