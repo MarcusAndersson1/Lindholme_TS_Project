@@ -7,7 +7,6 @@ public class Developer extends User {
 
     private static final String role = "Developer" ;
     private String teamName;
-    HashSet<Integer> ProjectsID = new HashSet<>();
 
     public Developer(String teamName, String role, String name, int iD, String date) {
         super(name, iD, date,"password123", "", "");

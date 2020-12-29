@@ -22,7 +22,7 @@ public class MainMenuView {
     }
 
     public void openInboxView(ActionEvent actionEvent) {
-        new ChangeScene().changeScene(actionEvent,"Users.Page.fxml"); //inbox not exist??? hallo gui team
+        new ChangeScene().changeScene(actionEvent,"Inbox.Page.fxml");
     }
 
     public void signOut(ActionEvent actionEvent) {
