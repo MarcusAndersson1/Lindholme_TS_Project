@@ -1,6 +1,7 @@
 package view;
 
 import controllers.Controller;
+import controllers.UserController;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
@@ -26,7 +27,7 @@ public class LogInView {
                 if(!Controller.checkUserID(id)){errorMessage.setText("Sign In Failed");
 
                 }else {
-
+                    Controller.loginSuccessful(UserController.getUser(id));
                     new ChangeScene().changeScene(event, "MainMenu.Page.fxml");
                 }
             }catch (Exception e){

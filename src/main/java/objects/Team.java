@@ -43,7 +43,7 @@ public class Team implements Serializable {
         memberList.add(user);
         System.out.println(user + " added");
     }
-    public void removeTeamMember(User user){ memberList.remove(user.getUserID());
+    public void removeTeamMember(User user){ memberList.remove(user.getID());
     }
 
     public void viewTeam(){

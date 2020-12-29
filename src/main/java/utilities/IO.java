@@ -29,7 +29,7 @@ public class IO{
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(USER_DATA));
         oos.writeObject(users);}
         catch (Exception e){
-            System.out.println("Save users errore");
+            System.out.println("Save users error");
             e.printStackTrace();
         }
     }

@@ -84,8 +84,8 @@ public class UserController {
 
 
     public static void deleteUser(User user) {
-            System.out.println(getUser(user.getUserID()) + " has been deleted");
-            userStorage.remove(user.getUserID());
+            System.out.println(getUser(user.getID()) + " has been deleted");
+            userStorage.remove(user.getID());
             saveUserMap();
     }
 

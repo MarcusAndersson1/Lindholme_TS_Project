@@ -1,14 +1,19 @@
 package objects;
 
+import controllers.UserController;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.Set;
 
 public abstract class User implements Serializable{
 
 
     private String name;
-    private int userID;
+    private int iD;
     private String createdDate;
     private String password;
     private String email;
@@ -16,9 +21,11 @@ public abstract class User implements Serializable{
     private int timeOutInc;
     private LocalDateTime timeOut = LocalDateTime.now();
     private Set<Integer> teamIDs;
-    public User(String name,int userID, String date, String password, String email, String personalPresentation){
+    private HashMap<Long, Message> messageStorage = new HashMap<>();
+
+    public User(String name,int iD, String date, String password, String email, String personalPresentation){
         this.name = name;
-        this.userID = userID;
+        this.iD = iD;
         this.email = email;
         this.personalPresentation = personalPresentation;
         this.createdDate = date;
@@ -27,8 +34,23 @@ public abstract class User implements Serializable{
     }
 
 
-    public int getUserID() {
-        return userID;
+    public ObservableList<Message> getMessages() {
+        return FXCollections.observableArrayList(messageStorage.values());
+    }
+
+
+    public Message getMessage(long messageID){
+        return messageStorage.get(messageID);
+    }
+    public void removeMessage(long messageID) {
+        messageStorage.remove(messageID);
+    }
+    public void addMessage(long messageID, Message message) {
+        messageStorage.put(messageID, message);
+    }
+
+    public int getID() {
+        return iD;
     }
 
     public String getName() {
@@ -51,7 +73,7 @@ public abstract class User implements Serializable{
 
     @Override
     public String toString() {
-        return "Name: " + getName() + " ID: " + getUserID();
+        return "Name: " + getName() + " ID: " + getID();
     }
 
     public String getCreatedDate() {

@@ -1,12 +1,13 @@
 import controllers.Controller;
+import controllers.MessageController;
 import controllers.ProjectController;
 import controllers.UserController;
-
+import objects.User;
 import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
-        UserController.addTestUser();
+     //   UserController.addTestUser();
         System.out.println(ProjectController.getProjects().toString());
     }
 }

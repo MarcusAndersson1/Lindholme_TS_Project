@@ -50,6 +50,9 @@ public class Print {
               + ("[4] Team Chat") + EOL
               + ("[5] Back") + EOL;
   */
+    //message related
+    public static final String SELECT_A_MESSAGE = ("Select a message");
+
     //user related
     public static final String CANNOT_DELETE_LOGGED_IN_USER = ("Cannot delete, user is currently logged in");
     public static final String A_USERTYPE_MUST_BE_CHOSEN = ("A user type must be chosen");

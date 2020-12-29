@@ -29,7 +29,7 @@
             <Font size="10.0" />
          </font>
       </Button>
-      <Button layoutX="20.0" layoutY="270.0" mnemonicParsing="false" onAction="#openInboxView" onMouseClicked="#openInboxView" prefHeight="20.0" prefWidth="100.0" text="Inbox">
+      <Button layoutX="20.0" layoutY="270.0" mnemonicParsing="false" onAction="#openInboxView" prefHeight="20.0" prefWidth="100.0" text="Inbox">
          <font>
             <Font size="10.0" />
          </font>

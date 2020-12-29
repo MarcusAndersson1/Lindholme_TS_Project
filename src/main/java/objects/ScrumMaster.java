@@ -7,6 +7,7 @@ public class ScrumMaster extends User {
 
     private static final String role = "Scrum Master" ;
     private String teamName;
+    HashSet<Integer> ProjectsID = new HashSet<>();
 
     public ScrumMaster(String name, String teamName, int userID, String date, String role) {
         super(name, userID, date, "password123", "", "");

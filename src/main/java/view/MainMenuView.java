@@ -3,6 +3,7 @@ package view;
 import controllers.Controller;
 import controllers.UserController;
 import javafx.event.ActionEvent;
+import utilities.IO;
 
 public class MainMenuView {
 
@@ -27,6 +28,7 @@ public class MainMenuView {
 
     public void signOut(ActionEvent actionEvent) {
         Controller.logOut();
+
         new ChangeScene().changeScene(actionEvent,"SignIn.Page.fxml");
     }
 }

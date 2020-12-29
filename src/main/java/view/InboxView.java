@@ -1,53 +1,63 @@
 package view;
 
+import controllers.Controller;
+import controllers.MessageController;
+import controllers.UserController;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
-import javafx.scene.input.ScrollEvent;
-import objects.Project;
-
+import menus.Print;
+import objects.Message;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class InboxView implements Initializable {
-    public Button newMessage;
-    public Button unreadMessage;
-    public Button sentMessage;
-    public Button drafts;
-    public DatePicker datePickerSentDate;
-    public DatePicker datePickerReceivedDate;
-    public Button deleteMessage;
-    public ListView allMessages;
-    ObservableList<Project> messageList;
+
+    public Label errorMessage;
+    public TextArea text;
+    public ObservableList<Message> messageList;
+    @FXML
+    public ListView<Message> messageListView;
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-    }
-    public void delete(ActionEvent actionEvent) {
-    }
-
-    public void back(ActionEvent actionEvent) {
-        new ChangeScene().changeScene(actionEvent, "MainMenu.Page.fxml");
-    }
-
-    public void newMessage(ActionEvent actionEvent) {new ChangeScene().changeScene(actionEvent, "NewMessage.Page.fxml");
-    }
-
-    public void unreadMessage(ActionEvent actionEvent) {
-    }
-
-    public void sentMessage(ActionEvent actionEvent) {
-    }
-
-    public void drafts(ActionEvent actionEvent) {
+        messageList = FXCollections.observableArrayList(UserController.getUser(Controller.getCurrentUser().getID()).getMessages());
+        messageListView.setItems(messageList);
 
     }
 
-    public void allMessages(ScrollEvent scrollEvent) {
-
+    public void openMessage(ActionEvent actionEvent){
+        Message message = messageListView.getSelectionModel().getSelectedItem();
+        text.setText(message.getMessage());
+        message.setRead(true);
+        messageList = FXCollections.observableArrayList(UserController.getUser(Controller.getCurrentUser().getID()).getMessages());
+        messageListView.setItems(messageList);
+        UserController.saveUserMap();
     }
+    public void newMessage(ActionEvent actionEvent){
+        new ChangeScene().changeScene(actionEvent,"Create-Message.Page.fxml");
+    }
+    public void deleteMessage(ActionEvent actionEvent){
+        Message message = messageListView.getSelectionModel().getSelectedItem();
+        if(message != null){
+            MessageController.deleteMessage(message.getMessageID());
+                messageList.remove(message);
+        }else{
+            errorMessage.setText(Print.SELECT_A_MESSAGE);
+            System.out.println(Print.SELECT_A_MESSAGE);
+        }
+        UserController.saveUserMap();
+    }
+
+    public void backToMainMenu (ActionEvent actionEvent) {
+        new ChangeScene().changeScene(actionEvent,"MainMenu.Page.fxml");
+        UserController.saveUserMap();
+    }
+
 }
