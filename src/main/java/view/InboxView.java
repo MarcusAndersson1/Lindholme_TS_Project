@@ -14,28 +14,27 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class InboxView implements Initializable {
-    public TextField newMessage;
+    public Button newMessage;
     public Button unreadMessage;
     public Button sentMessage;
     public Button drafts;
     public DatePicker datePickerSentDate;
     public DatePicker datePickerReceivedDate;
     public Button deleteMessage;
-    public TextField projectBudget;
     public ListView allMessages;
     ObservableList<Project> messageList;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
-        public void delete(ActionEvent actionEvent) {
-        }
-
-    public void back(ActionEvent actionEvent) {
-        new ChangeScene().changeScene(actionEvent, "Inbox.Page.fxml");
+    public void delete(ActionEvent actionEvent) {
     }
 
-    public void newMessage(ActionEvent actionEvent) {
+    public void back(ActionEvent actionEvent) {
+        new ChangeScene().changeScene(actionEvent, "MainMenu.Page.fxml");
+    }
+
+    public void newMessage(ActionEvent actionEvent) {new ChangeScene().changeScene(actionEvent, "NewMessage.Page.fxml");
     }
 
     public void unreadMessage(ActionEvent actionEvent) {
