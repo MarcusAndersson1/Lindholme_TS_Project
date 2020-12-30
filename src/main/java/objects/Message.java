@@ -1,5 +1,8 @@
 package objects;
 
+import controllers.Controller;
+import controllers.UserController;
+
 import java.awt.*;
 import java.io.Serializable;
 
@@ -26,14 +29,19 @@ public class Message implements Serializable {
 
     @Override
     public String toString() {
-        return getSenderName() + ": " + getRead() + "\nSent: " + getCreatedDate();
+        if(getSenderID() == (Controller.getCurrentUser().getID())){
+            return "To " + UserController.getUser(receiverID).getName() + ": " + "\nSent: " + getCreatedDate();
+        }else{
+            return "From " + getSenderName() + ": " + getRead() + "\nSent: " + getCreatedDate();
+        }
+
     }
 
     public String getRead() {
         if (!read){
             return "New Message.";
         }else{
-            return "Read.";
+            return "Opened.";
         }
     }
 

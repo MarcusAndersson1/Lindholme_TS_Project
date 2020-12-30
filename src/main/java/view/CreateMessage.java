@@ -29,6 +29,7 @@ public class CreateMessage implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         userList = FXCollections.observableArrayList(UserController.getUsers());
+        userList.remove(Controller.getCurrentUser());
         userListView.setItems(userList);
     }
 
@@ -42,7 +43,6 @@ public class CreateMessage implements Initializable {
                 MessageController.createMessage(userListView.getSelectionModel().getSelectedItem().getID(), message.getText());
                 UserController.saveUserMap();
                 new ChangeScene().changeScene(actionEvent,"Inbox.Page.fxml");
-
         }else{
             errorMessage.setText(Print.SELECT_A_USER);
             System.out.println(Print.SELECT_A_USER);

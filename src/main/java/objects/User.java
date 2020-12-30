@@ -42,6 +42,9 @@ public abstract class User implements Serializable{
     public Message getMessage(long messageID){
         return messageStorage.get(messageID);
     }
+    public void replaceMessage(long messageID, Message oldMessage, Message newMessage){
+        messageStorage.replace(messageID, oldMessage, newMessage);
+    }
     public void removeMessage(long messageID) {
         messageStorage.remove(messageID);
     }
