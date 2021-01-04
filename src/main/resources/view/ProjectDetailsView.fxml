@@ -39,11 +39,11 @@
          </font>
       </Text>
       <Text layoutX="140.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-      <Text layoutX="277.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Milestones" />
+      <Text layoutX="326.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Milestones" />
       <Text layoutX="149.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Activities" />
-      <ListView fx:id="mileStones" layoutX="277.0" layoutY="147.0" prefHeight="127.0" prefWidth="123.0" />
-      <ListView fx:id="activities" layoutX="149.0" layoutY="146.0" prefHeight="127.0" prefWidth="92.0" />
-      <ListView fx:id="risks" layoutX="431.0" layoutY="147.0" prefHeight="127.0" prefWidth="123.0" />
-      <Text layoutX="431.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Risks" />
+      <ListView fx:id="mileStones" layoutX="326.0" layoutY="147.0" prefHeight="127.0" prefWidth="142.0" />
+      <ListView fx:id="activities" layoutX="149.0" layoutY="146.0" prefHeight="127.0" prefWidth="142.0" />
+      <ListView fx:id="risks" layoutX="484.0" layoutY="147.0" prefHeight="127.0" prefWidth="156.0" />
+      <Text layoutX="484.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Risks" />
    </children>
 </Pane>

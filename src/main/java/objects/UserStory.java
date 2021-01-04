@@ -34,7 +34,7 @@ public class UserStory implements Serializable {
         return createdDate;
     }
     public void setDoneDate(LocalDate doneDate) {
-        setHours(50);
+        setHours();
         this.state = UserStoryState.DONE;
         this.doneDate = doneDate;
     }
@@ -45,6 +45,10 @@ public class UserStory implements Serializable {
     public int getId()
     {
 	return this.id;
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = LocalDate.now();
     }
 
     public int getPoints()
@@ -102,7 +106,7 @@ public class UserStory implements Serializable {
     public UserStoryState getState() {
         return state;
     }
-    public int timeSpent(){
+    public int setHours(){
         ArrayList<LocalDate> days = new ArrayList<>();
         try{
             days = DateHandler.getBusinessDaysBetween(startDate,LocalDate.now());
@@ -110,12 +114,13 @@ public class UserStory implements Serializable {
 
         }
         hours = days.size() * 8;
-        return hours;
+        return this.hours;
     }
-
+/*
     public void setHours(int hours) {
         this.hours = hours;
     }
+    */
 
     public int getHours() {
         return hours;
