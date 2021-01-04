@@ -8,10 +8,11 @@ public class Risk extends ProjectPlanning {
     private int severity;
     private int occurrence;
     private int rating;
-    public Risk(String name, int ID){
+    private int impact;
+    private double cost;
+    public Risk(String name){
         super();
         this.name = name;
-        this.ID = ID;
     }
     public String getName() {
             return name;
@@ -33,9 +34,13 @@ public class Risk extends ProjectPlanning {
         this.severity = severity;
     }
 
-    public int getRating() {
-        this.rating = getOccurrence() * getSeverity();
-        return this.rating;
+    public void setImpact(int impact) {
+        this.impact = impact;
+    }
+
+    public double getCost() {
+        cost = (severity * occurrence * impact )/100;
+        return this.cost;
     }
 
     public int getID() {
@@ -44,6 +49,6 @@ public class Risk extends ProjectPlanning {
 
     @Override
     public String toString() {
-        return "Risk: "+ name +" ID: " + getID()+ " Rating: " + getRating();
+        return "Risk: "+ name + " Cost Of Risk " + getCost();
     }
 }

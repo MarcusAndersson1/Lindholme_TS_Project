@@ -4,7 +4,6 @@ package controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import objects.*;
-import org.apache.xmlbeans.impl.xb.xsdschema.Public;
 import utilities.*;
 
 import java.io.IOException;
@@ -183,9 +182,6 @@ public class ProjectController {
                 System.out.println(entry.getValue());
             }
         }
-
-        // String content = teamStorage.toString();
-        // System.out.println(content);
     }
     public static void setProjectDescription(String s, Project p){
         p.setProjectDescription(s);
@@ -209,10 +205,10 @@ public class ProjectController {
         return endDate;
     }
 
-    public void createRisk(String name){
-        int id = idMaker();
-        Risk risk = new Risk(name,id);
+    public static Risk createRisk(String name){
+        Risk risk = new Risk(name);
         addRisk(risk);
+        return risk;
     }
     public static boolean defaultMilestones(){
        // ArrayList<LocalDate> days = DateHandler.getBusinessDaysBetween(currentProject.getCreatedDate(), currentProject.getEndDate());
@@ -233,17 +229,19 @@ public class ProjectController {
         createActivity(currentProject.getMilestones().get(3), "Project Finalization", "7" );
         return true;
     }
-    public static void createActivity(Milestone m, String name, String timeInDays ){
+    public static Activity createActivity(Milestone m, String name, String timeInDays ){
         Activity a = new Activity(name, timeInDays, m );
         addActivity(a);
+        return a;
     }
-    public void addRisk(Risk r){
+    public static void addRisk(Risk r){
         currentProject.getRisks().add(r);
     }
-    public static void createMilestone(String name, LocalDate d){
+    public static Milestone createMilestone(String name, LocalDate d){
         Milestone m = new Milestone(name);
         m.setMilestoneDate(d);
         addMilestone(m);
+        return m;
     }
 
     public static void addMilestone(Milestone m){
@@ -251,6 +249,18 @@ public class ProjectController {
     }
     public static void addActivity(Activity a){
         currentProject.getActivities().add(a);
+    }
+    public static ObservableList<Activity> getActivities(){
+        return FXCollections.observableArrayList(currentProject.getActivities());
+    }
+
+    public static ObservableList<Milestone> getMilestones(){
+        return FXCollections.observableArrayList(currentProject.getMilestones());
+    }
+
+
+    public static ObservableList<Risk> getRisk(){
+        return FXCollections.observableArrayList(currentProject.getRisks());
     }
 
 }

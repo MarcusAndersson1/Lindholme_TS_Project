@@ -31,7 +31,7 @@ import java.util.ArrayList;
 
      Risk createRisk(String name){
          int id = idMaker();
-         Risk risk = new Risk(name,id);
+         Risk risk = new Risk(name);
          return risk;
     }
     public void addRisk(){
