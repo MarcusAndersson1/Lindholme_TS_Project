@@ -25,11 +25,6 @@ public class UserStory implements Serializable {
         this.id = id;
         this.createdDate = LocalDate.now();
     }
-
-    public void setCreatedDate(LocalDate createdDate) {
-        this.createdDate = createdDate;
-    }
-
     public LocalDate getCreatedDate() {
         return createdDate;
     }
@@ -47,8 +42,8 @@ public class UserStory implements Serializable {
 	return this.id;
     }
 
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = LocalDate.now();
+    public void setStartDate(LocalDate localDate) {
+        this.startDate = localDate;
     }
 
     public int getPoints()
@@ -116,11 +111,10 @@ public class UserStory implements Serializable {
         hours = days.size() * 8;
         return this.hours;
     }
-/*
-    public void setHours(int hours) {
+
+    public void overRideHours(int hours) {
         this.hours = hours;
     }
-    */
 
     public int getHours() {
         return hours;

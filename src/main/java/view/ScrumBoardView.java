@@ -9,6 +9,7 @@ import javafx.scene.control.ListView;
 import objects.*;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -66,6 +67,7 @@ public class ScrumBoardView implements Initializable {
                 u.setState();
                 open.getItems().remove(u);
                 toDo.getItems().add(u);
+                u.setStartDate(LocalDate.now());
             } else if (toDo.getItems().contains(u)) {
                 u.setState();
                 toDo.getItems().remove(u);
@@ -75,6 +77,7 @@ public class ScrumBoardView implements Initializable {
                 u.setState();
                 doing.getItems().remove(u);
                 closed.getItems().add(u);
+                u.setDoneDate(LocalDate.now());
 
             }
         }
