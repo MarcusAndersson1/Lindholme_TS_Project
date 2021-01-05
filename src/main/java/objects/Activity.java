@@ -7,14 +7,14 @@ import java.time.LocalDate;
 
 public class Activity implements Serializable {
     private String name;
-    private String duration;
-    private int id;
+    private int duration;
     private Milestone m;
     private LocalDate startDate;
 
-    public Activity(String name, String duration, Milestone m) {
+    public Activity(String name, int duration, Milestone m) {
         this.name = name;
         this.duration = duration;
+        this.m = m;
     }
 
     public String getName() {
@@ -22,8 +22,7 @@ public class Activity implements Serializable {
     }
 
     public LocalDate getStartDate() {
-        LocalDate endDate = m.getMilestoneDate();
-        LocalDate startDate = m.getMilestoneDate().minusDays(Integer.parseInt(duration));
+        LocalDate startDate = m.getMilestoneDate().minusDays(duration);
         return startDate;
     }
 
@@ -31,7 +30,7 @@ public class Activity implements Serializable {
         return m;
     }
 
-    public String getDuration() {
+    public int getDuration() {
         return duration;
     }
 
@@ -39,12 +38,12 @@ public class Activity implements Serializable {
         this.name = name;
     }
 
-    public void setDuration(String duration) {
+    public void setDuration(int duration) {
         this.duration = duration;
     }
 
     @Override
     public String toString() {
-        return "Activity:" + name;
+        return getName() + " " + getStartDate().format(DateHandler.format());
     }
 }

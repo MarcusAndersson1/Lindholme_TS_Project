@@ -82,6 +82,10 @@ public class UserStory implements Serializable {
         }
     }
 
+    public void setCreatedDate(LocalDate createdDate) {
+        this.createdDate = createdDate;
+    }
+
     public String createTask(String task){
         int id = tasks.size() + 1;
         String mTask = "Task "+id+": "+" " + task;

@@ -18,10 +18,6 @@ public class MainMenuView {
         new ChangeScene().changeScene(actionEvent,"Teams.Page.fxml");
     }
 
-    public void openScheduleView(ActionEvent actionEvent) {
-        new ChangeScene().changeScene(actionEvent,"Schedule.Page.fxml");
-    }
-
     public void openInboxView(ActionEvent actionEvent) {
         new ChangeScene().changeScene(actionEvent,"Inbox.Page.fxml");
     }

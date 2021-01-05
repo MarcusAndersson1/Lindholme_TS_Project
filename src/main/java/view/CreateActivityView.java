@@ -15,8 +15,8 @@ import java.util.ResourceBundle;
 
 public class CreateActivityView implements Initializable {
 
-    public ListView mileStones;
-    public Spinner duration;
+    public ListView<Milestone> mileStones;
+    public Spinner<Integer> duration;
     public TextField activityName;
     ObservableList<Milestone> milestoneList;
 
@@ -37,11 +37,11 @@ public class CreateActivityView implements Initializable {
                 && !activityName.getText().equals("")
                 && mileStones.getSelectionModel().getSelectedItem() != null){
 
-            Activity a = ProjectController.createActivity( (Milestone) mileStones.getSelectionModel().getSelectedItem() ,
-                    duration.getValue().toString(),
-                    activityName.getText());
+            Activity a = ProjectController.createActivity(activityName.getText(),
+                                                        Integer.parseInt(duration.getValue().toString()),
+                                                        mileStones.getSelectionModel().getSelectedItem());
+
             activityName.clear();
         }
-
     }
 }
