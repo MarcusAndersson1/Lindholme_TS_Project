@@ -46,11 +46,16 @@
       </Text>
       <Text layoutX="140.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Project Data:" />
       <ProgressIndicator layoutX="20.0" layoutY="50.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="100.0" progress="0.0" />
-      <Button layoutX="20.0" layoutY="334.0" mnemonicParsing="false" onAction="#editTeam" prefHeight="20.0" prefWidth="100.0" text="View Teams">
+      <Button layoutX="20.0" layoutY="360.0" mnemonicParsing="false" onAction="#editTeam" prefHeight="20.0" prefWidth="100.0" text="View Teams">
          <font>
             <Font size="10.0" />
          </font>
       </Button>
       <ListView fx:id="projectInformationView" layoutX="135.0" layoutY="151.0" prefHeight="269.0" prefWidth="520.0" />
+      <Button layoutX="20.0" layoutY="329.0" mnemonicParsing="false" onAction="#loadBacklog" prefHeight="20.0" prefWidth="100.0" text="Load Backlog">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Button>
    </children>
 </Pane>

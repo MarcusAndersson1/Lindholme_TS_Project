@@ -5,10 +5,12 @@ import controllers.TeamController;
 import objects.Project;
 import objects.Team;
 import objects.User;
+import objects.UserStory;
 
 import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.stream.Stream;
@@ -23,6 +25,7 @@ public class IO{
     public static final String TEAM_LOCATION = ("src/main/java/Files/Teams/TeamREPLACE_WITH_ID.txt");
     public static final String TEAM_FOLDER = ("src/main/java/Files/Teams");
     public static final File TEAM_ID = new File("src/main/java/Files/TeamID.txt");
+    private static final String IMPORT_OBJECTS = "src/main/java/Files/userStories.txt";
 
     public static void saveUsers(HashMap<Integer,User> users) {
         try{
@@ -142,5 +145,29 @@ public class IO{
         }
 
         return loadedID;
+    }
+    public static void importObject () {
+        try {
+            BufferedReader myReader = new BufferedReader(new FileReader(IMPORT_OBJECTS));
+            String data = "";
+            while ((data = myReader.readLine()) != null) {
+                String[] objects = data.split("[;]");
+                        String name = objects[0];
+                        String startDate = (objects[1]);
+                        String endDate = objects[2];
+                        int point = Integer.parseInt(objects[3]);
+                        int hours = Integer.parseInt(objects[4]);
+                        UserStory u = ProjectController.createUserStory(name, ProjectController.getCurrentProject());
+                        u.setStartDate(LocalDate.parse(startDate,DateHandler.format() ));
+                        u.setDoneDate(LocalDate.parse(endDate,DateHandler.format() ));
+                        u.setPoints(point);
+                        u.overRideHours(hours);
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error while reading.");
+            e.printStackTrace();// Its printing like a error message
+        }
+        System.out.println("User stories loaded succesfully");
     }
 }

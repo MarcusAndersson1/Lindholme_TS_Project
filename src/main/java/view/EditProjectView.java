@@ -63,4 +63,8 @@ public class EditProjectView implements Initializable {
     public void projectDetails(ActionEvent actionEvent) {
         new ChangeScene().changeScene(actionEvent, "ProjectDetailsView.fxml");
     }
+
+    public void loadBacklog(ActionEvent actionEvent) {
+        IO.importObject();
+    }
 }
