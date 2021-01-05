@@ -1,6 +1,6 @@
 new risk;5;5;100
-Running out of budget;5;2;40
+Budget;5;2;40
 Corona-virus;5;2;200
-Excessive reliance on key staff;5;2;200
+Key staff reliance ;5;2;200
 Faulty communication;5;3;10
-Lack of knowledge in GUI;3;3;10
+GUI Knowledge;3;3;10

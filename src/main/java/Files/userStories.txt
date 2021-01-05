@@ -16,3 +16,9 @@ As a project leader I want to store and load teams so I don't have to enter the 
 As a project manager I want several teams working on a project with several backlog;17/11/2020;22/11/2020;5;10
 As a project leader I want to avoid the the creation of users, teams and projects with invalid information;17/11/2020;22/11/2020;2;4
 As a user I want to have a user interface to navigate the program;17/11/2020;22/11/2020;8;16
+As a team we want to move the project to javaFX to be able to implement GUI;17/11/2020;22/11/2020;13;20
+As a team leader I want to be able to save data from projects to csv(excel) to make the information more accessible;17/11/2020;15/12/2020;5;10
+As a project manager I want to be able to export project data to files compatible with Excel and the like to be able to manage data from the project;17/11/2020;22/11/2020;13;20
+As a user I want to have a user interface to use functions of the program;17/11/2020;22/11/2020;8;15
+As a user I want to be able to be part of several teams at the same time to be able to work on multiple projects;17/11/2020;22/11/2020;3;8
+As Project leader I want to be able to present date with graphical aids to improve communication;17/11/2020;22/11/2020;13;20

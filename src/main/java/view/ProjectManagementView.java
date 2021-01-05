@@ -39,12 +39,15 @@ public class ProjectManagementView implements Initializable {
     public void deleteItem(ActionEvent actionEvent) {
         if(mileStones.getSelectionModel().getSelectedItem() != null) {
             mileStones.getItems().remove(mileStones.getSelectionModel().getSelectedItem());
+            ProjectController.getCurrentProject().getMilestones().remove(mileStones.getSelectionModel().getSelectedItem());
         }
         if(activities.getSelectionModel().getSelectedItem() != null) {
             activities.getItems().remove(activities.getSelectionModel().getSelectedItem());
+            ProjectController.getCurrentProject().getActivities().remove(activities.getSelectionModel().getSelectedItem());
         }
         if(risks.getSelectionModel().getSelectedItem() != null) {
             risks.getItems().remove(risks   .getSelectionModel().getSelectedItem());
+            ProjectController.getCurrentProject().getRisks().remove(risks.getSelectionModel().getSelectedItem());
         }
 
     }
