@@ -1,6 +1,6 @@
-package objects;
+package objects.UserTypes;
 
-import java.io.Serializable;
+import objects.UserTypes.User;
 
 public class Manager extends User {
 

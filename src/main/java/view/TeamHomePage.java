@@ -10,7 +10,7 @@ import javafx.scene.control.ListView;
 
 import javafx.scene.text.Text;
 import objects.Team;
-import objects.User;
+import objects.UserTypes.User;
 import objects.UserStory;
 
 

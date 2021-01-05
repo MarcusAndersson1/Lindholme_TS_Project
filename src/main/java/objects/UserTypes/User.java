@@ -1,7 +1,9 @@
-package objects;
+package objects.UserTypes;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import objects.Message;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.HashMap;

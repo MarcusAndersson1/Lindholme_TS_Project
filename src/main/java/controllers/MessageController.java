@@ -2,7 +2,6 @@ package controllers;
 
 
 import objects.Message;
-import objects.User;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

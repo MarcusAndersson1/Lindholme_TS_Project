@@ -3,9 +3,12 @@ package controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import menus.Print;
-import objects.*;
+import objects.UserTypes.Developer;
+import objects.UserTypes.Manager;
+import objects.UserTypes.Stakeholder;
+import objects.UserTypes.User;
 import utilities.IO;
-import utilities.Input;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -41,7 +44,7 @@ public class UserController {
                 userStorage.put(userID, user);
                 System.out.println("Manager created");
            }else if(userType.equals("Developer")){
-                user = new DeveloperSubClass(name, userID, currentDateTime, password);
+                user = new Developer(name, userID, currentDateTime, password);
                 userStorage.put(userID, user);
                 System.out.println("Developer created");
            }else if(userType.equals("Stakeholder")){

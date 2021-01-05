@@ -1,21 +1,14 @@
 package controllers;
 
-import controllers.Controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import menus.Print;
-import objects.Project;
 import objects.Team;
-import objects.TeamMember;
-import objects.User;
-import objects.UserStory;
+import objects.UserTypes.User;
 import utilities.DateHandler;
 import utilities.IO;
 import utilities.Input;
 
-import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;

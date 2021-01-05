@@ -1,16 +1,12 @@
 package view;
 
-import controllers.ProjectController;
 import controllers.TeamController;
-import controllers.UserController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
-import objects.Project;
 import objects.Team;
-import objects.User;
 import utilities.IO;
 
 

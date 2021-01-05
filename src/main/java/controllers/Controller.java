@@ -2,7 +2,7 @@ package controllers;
 
 
 import menus.*;
-import objects.User;
+import objects.UserTypes.User;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

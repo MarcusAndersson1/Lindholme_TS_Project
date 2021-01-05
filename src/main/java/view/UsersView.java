@@ -1,10 +1,8 @@
 package view;
 
 import controllers.Controller;
-import controllers.ProjectController;
 import controllers.UserController;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,8 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import menus.Print;
-import objects.Project;
-import objects.User;
+import objects.UserTypes.User;
 
 import java.net.URL;
 import java.util.ResourceBundle;

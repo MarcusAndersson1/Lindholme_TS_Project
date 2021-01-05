@@ -3,15 +3,12 @@ package utilities;
 import controllers.ProjectController;
 import controllers.TeamController;
 import objects.*;
+import objects.UserTypes.User;
 
-import java.awt.*;
 import java.io.*;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.stream.Stream;
 
 public class IO {
 

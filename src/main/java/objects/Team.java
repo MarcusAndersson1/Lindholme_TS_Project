@@ -2,11 +2,10 @@ package objects;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import objects.UserTypes.User;
 
 import java.io.Serializable;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Team implements Serializable {
     private String teamName;
@@ -51,7 +50,6 @@ public class Team implements Serializable {
             System.out.println(user);
         }
     }
-    public static void assignRole(User user) { memberList.add((TeamMember) user); }
 
     public String getName() {
         return teamName;

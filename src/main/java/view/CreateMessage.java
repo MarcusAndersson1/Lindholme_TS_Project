@@ -12,9 +12,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import menus.Print;
-import objects.User;
+import objects.UserTypes.User;
 
-import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
