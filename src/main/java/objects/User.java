@@ -14,18 +14,14 @@ public abstract class User implements Serializable{
     private int iD;
     private String createdDate;
     private String password;
-    private String email;
-    private String personalPresentation;
     private int timeOutInc;
     private LocalDateTime timeOut = LocalDateTime.now();
     private Set<Integer> teamIDs;
     private HashMap<Long, Message> messageStorage = new HashMap<>();
 
-    public User(String name,int iD, String date, String password, String email, String personalPresentation){
+    public User(String name,int iD, String date, String password){
         this.name = name;
         this.iD = iD;
-        this.email = email;
-        this.personalPresentation = personalPresentation;
         this.createdDate = date;
         this.password = password;
 

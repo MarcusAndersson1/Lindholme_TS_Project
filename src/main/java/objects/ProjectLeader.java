@@ -11,7 +11,7 @@ public class ProjectLeader extends User {
     HashSet<Integer> ProjectsID = new HashSet<>();
 
     public ProjectLeader(String teamName, String name, int iD, String date, String role) {
-        super(name, iD, date,"password123", "", "");
+        super(name, iD, date,"password123");
         this.teamName = teamName;
 
     }

@@ -1,6 +1,5 @@
 package objects;
 
-import java.util.HashMap;
 import java.util.HashSet;
 
 public class Developer extends User {
@@ -9,8 +8,8 @@ public class Developer extends User {
     private String teamName;
     HashSet<Integer> ProjectsID = new HashSet<>();
 
-    public Developer(String teamName, String role, String name, int iD, String date) {
-        super(name, iD, date,"password123", "", "");
+    public Developer(String teamName, String password, String name, int iD, String date) {
+        super(name, iD, date, password);
 
 
         this.teamName = teamName;

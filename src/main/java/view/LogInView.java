@@ -2,15 +2,11 @@ package view;
 
 import controllers.Controller;
 import controllers.UserController;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 
 import javafx.event.ActionEvent;
 import menus.Print;
-
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class LogInView {
     public Button signInButton;
