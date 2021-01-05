@@ -3,10 +3,10 @@ package controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import menus.Print;
-import objects.UserTypes.Developer;
-import objects.UserTypes.Manager;
-import objects.UserTypes.Stakeholder;
-import objects.UserTypes.User;
+import objects.UserObjects.Developer;
+import objects.UserObjects.Manager;
+import objects.UserObjects.Stakeholder;
+import objects.UserObjects.User;
 import utilities.IO;
 
 import java.time.LocalDateTime;

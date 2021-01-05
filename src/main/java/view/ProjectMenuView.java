@@ -12,8 +12,7 @@ import javafx.scene.control.ListView;
 
 import controllers.*;
 
-import objects.*;
-import utilities.IO;
+import objects.ProjectObjects.Project;
 
 import java.net.URL;
 import java.util.ResourceBundle;

@@ -4,7 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import menus.Print;
 import objects.Team;
-import objects.UserTypes.User;
+import objects.UserObjects.User;
 import utilities.DateHandler;
 import utilities.IO;
 import utilities.Input;

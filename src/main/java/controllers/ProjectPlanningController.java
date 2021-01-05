@@ -1,8 +1,9 @@
 package controllers;
 
 import ProjectPlanning.*;
-import objects.Project;
-import objects.*;
+import objects.ProjectObjects.Project;
+import objects.ProjectObjects.Risk;
+import objects.ProjectObjects.UserStory;
 import utilities.*;
 
 public class ProjectPlanningController {

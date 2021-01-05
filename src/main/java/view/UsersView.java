@@ -10,7 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import menus.Print;
-import objects.UserTypes.User;
+import objects.UserObjects.User;
 
 import java.net.URL;
 import java.util.ResourceBundle;

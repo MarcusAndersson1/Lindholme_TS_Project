@@ -1,4 +1,4 @@
-package objects;
+package objects.ProjectObjects;
 
 public interface IBacklog {
 

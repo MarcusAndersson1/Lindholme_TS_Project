@@ -3,7 +3,7 @@ package controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import objects.*;
+import objects.ProjectObjects.*;
 import utilities.*;
 
 import java.io.IOException;

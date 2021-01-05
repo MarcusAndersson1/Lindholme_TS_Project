@@ -10,8 +10,8 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-import objects.Project;
-import objects.UserStory;
+import objects.ProjectObjects.Project;
+import objects.ProjectObjects.UserStory;
 
 import java.net.URL;
 import java.time.LocalDate;

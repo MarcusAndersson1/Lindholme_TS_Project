@@ -8,8 +8,8 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import objects.Project;
-import objects.UserStory;
+import objects.ProjectObjects.Project;
+import objects.ProjectObjects.UserStory;
 
 // plugins { // For gradle!!!
 //     id 'java-library'

@@ -6,15 +6,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.geometry.Side;
 import javafx.scene.chart.*;
-import objects.Project;
-import objects.Risk;
-import objects.UserStory;
-import utilities.DateHandler;
+import objects.ProjectObjects.Project;
+import objects.ProjectObjects.Risk;
+import objects.ProjectObjects.UserStory;
 import utilities.GraphBuilder;
 
 import java.net.URL;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class DashboardView implements Initializable {

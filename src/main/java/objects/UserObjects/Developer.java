@@ -1,6 +1,4 @@
-package objects.UserTypes;
-
-import objects.UserTypes.User;
+package objects.UserObjects;
 
 public class Developer extends User {
     public Developer(String name, int iD, String date, String password) {

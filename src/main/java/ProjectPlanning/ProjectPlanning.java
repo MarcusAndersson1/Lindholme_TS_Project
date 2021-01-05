@@ -1,6 +1,6 @@
 package ProjectPlanning;
 
-import objects.*;
+import objects.ProjectObjects.*;
 import utilities.Input;
 
 import java.io.Serializable;

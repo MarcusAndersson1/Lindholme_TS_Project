@@ -6,12 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
-import objects.Project;
-import utilities.DateHandler;
-
-import java.time.LocalDate;
-import java.util.Calendar;
+import objects.ProjectObjects.Project;
 
 public class CreateProjectView {
 

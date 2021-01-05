@@ -1,6 +1,4 @@
-package objects.UserTypes;
-
-import objects.UserTypes.User;
+package objects.UserObjects;
 
 public class Manager extends User {
 

@@ -7,8 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
-import objects.Project;
-import objects.Risk;
+import objects.ProjectObjects.Risk;
 
 import java.net.URL;
 import java.util.ResourceBundle;

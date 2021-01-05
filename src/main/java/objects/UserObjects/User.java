@@ -1,4 +1,4 @@
-package objects.UserTypes;
+package objects.UserObjects;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

@@ -1,4 +1,6 @@
-package objects;
+package objects.ProjectObjects;
+
+import objects.ProjectObjects.UserStory;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -17,7 +19,7 @@ public class Backlog implements Serializable{
     }
 
     public void printAll(){
-        System.out.println("    objects.Backlog: ");
+        System.out.println("    objects.ProjectObjects.Backlog: ");
         for(UserStory story : backlogList) {
             System.out.println(story.description + " " + story.points + "p" + " Id: " + story.id);
         }

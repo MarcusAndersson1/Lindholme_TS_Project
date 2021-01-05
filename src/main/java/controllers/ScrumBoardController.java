@@ -1,7 +1,7 @@
 package controllers;
 
 import ProjectPlanning.ProjectPlanning;
-import objects.*;
+import objects.ProjectObjects.ScrumBoard;
 import utilities.Input;
 
 public class ScrumBoardController {

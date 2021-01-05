@@ -1,4 +1,4 @@
-package objects;
+package objects.ProjectObjects;
 
 import utilities.Input;
 
@@ -8,10 +8,10 @@ import java.util.ArrayList;
 public class ScrumBoard implements Serializable {
     ArrayList<UserStory> sprint = new ArrayList<>();
 
-    void ScrumBoard(Backlog b){
+    public void ScrumBoard(Backlog b){
         setSprint(b);
     }
-    //Puts all storys in todu in a separate list for this sprint
+    //Puts all stories in to do in a separate list for this sprint
     public void setSprint(Backlog b){
         ArrayList<UserStory> list = b.getBacklogList();
         for (UserStory u: list ) {
@@ -21,23 +21,18 @@ public class ScrumBoard implements Serializable {
             }
         }
     }
-    // Move a user story from todo --> in progress --> testing --> done
+    // Move a user story from to do --> in progress --> testing --> done
     public void moveStory(int id){
         UserStory u= sprint.get(id);
 
    }
 
-    // moves all storys not done to backlogg
+    // moves all stories not done to backlog
     public void endSprint(){
         for (UserStory u: sprint) {
             if(!u.getState().equals(UserStoryState.DONE)){
                 u.state= UserStoryState.BACK_LOGG;
             }
         }
-    }
-    public void planSprint(Backlog b){
-        int id = Input.fetchInputInt("choose story id");
-        ArrayList<UserStory> backlogList = b.getBacklogList();
-        backlogList.get(id).setState();
     }
 }

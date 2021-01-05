@@ -5,7 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import objects.Project;
+import objects.ProjectObjects.Project;
 
 import java.net.URL;
 import java.util.ResourceBundle;

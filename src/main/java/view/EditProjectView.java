@@ -3,17 +3,13 @@ package view;
 import controllers.ProjectController;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
-import objects.Milestone;
-import objects.Project;
+import objects.ProjectObjects.Project;
 import utilities.IO;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class EditProjectView implements Initializable {

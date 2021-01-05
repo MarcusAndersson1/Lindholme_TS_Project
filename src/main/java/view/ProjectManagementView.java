@@ -5,12 +5,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
-import objects.Activity;
-import objects.Milestone;
-import objects.Risk;
-import utilities.IO;
+import objects.ProjectObjects.Activity;
+import objects.ProjectObjects.Milestone;
+import objects.ProjectObjects.Risk;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 

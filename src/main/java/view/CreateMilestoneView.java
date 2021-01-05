@@ -7,7 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import objects.Milestone;
+import objects.ProjectObjects.Milestone;
 
 import java.net.URL;
 import java.util.ResourceBundle;

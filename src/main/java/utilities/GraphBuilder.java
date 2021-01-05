@@ -1,12 +1,12 @@
 package utilities;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.*;
-import jdk.jfr.Category;
-import objects.*;
+import objects.ProjectObjects.Project;
+import objects.ProjectObjects.Risk;
+import objects.ProjectObjects.UserStory;
+import objects.ProjectObjects.UserStoryState;
 
-import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.util.*;
 

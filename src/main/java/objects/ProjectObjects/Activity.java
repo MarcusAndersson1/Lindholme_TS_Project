@@ -1,5 +1,6 @@
-package objects;
+package objects.ProjectObjects;
 
+import objects.ProjectObjects.Milestone;
 import utilities.DateHandler;
 
 import java.io.Serializable;

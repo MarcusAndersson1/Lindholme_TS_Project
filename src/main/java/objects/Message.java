@@ -61,10 +61,6 @@ public class Message implements Serializable {
         return messageID;
     }
 
-    public void setMessageID(int messageID) {
-        this.messageID = messageID;
-    }
-
     public int getSenderID() {
         return senderID;
     }

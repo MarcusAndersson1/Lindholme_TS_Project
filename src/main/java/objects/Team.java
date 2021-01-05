@@ -2,7 +2,8 @@ package objects;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import objects.UserTypes.User;
+import objects.ProjectObjects.UserStory;
+import objects.UserObjects.User;
 
 import java.io.Serializable;
 import java.util.ArrayList;

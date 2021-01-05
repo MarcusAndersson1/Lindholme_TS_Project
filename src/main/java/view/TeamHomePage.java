@@ -10,8 +10,8 @@ import javafx.scene.control.ListView;
 
 import javafx.scene.text.Text;
 import objects.Team;
-import objects.UserTypes.User;
-import objects.UserStory;
+import objects.UserObjects.User;
+import objects.ProjectObjects.UserStory;
 
 
 import java.net.URL;

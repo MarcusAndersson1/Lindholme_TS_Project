@@ -12,7 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import menus.Print;
-import objects.UserTypes.User;
+import objects.UserObjects.User;
 
 import java.net.URL;
 import java.util.ResourceBundle;

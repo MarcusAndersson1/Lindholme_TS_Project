@@ -3,7 +3,10 @@ package utilities;
 import controllers.ProjectController;
 import controllers.TeamController;
 import objects.*;
-import objects.UserTypes.User;
+import objects.ProjectObjects.Project;
+import objects.ProjectObjects.Risk;
+import objects.ProjectObjects.UserStory;
+import objects.UserObjects.User;
 
 import java.io.*;
 import java.time.LocalDate;

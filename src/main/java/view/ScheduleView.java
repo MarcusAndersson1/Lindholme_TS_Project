@@ -3,9 +3,8 @@ package view;
 import controllers.ProjectController;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TabPane;
 import javafx.scene.layout.GridPane;
-import objects.Project;
+import objects.ProjectObjects.Project;
 
 import java.net.URL;
 import java.util.ResourceBundle;
