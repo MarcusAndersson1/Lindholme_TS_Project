@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Side;
 import javafx.scene.chart.*;
 import objects.Project;
+import objects.Risk;
 import objects.UserStory;
 import utilities.DateHandler;
 import utilities.GraphBuilder;
@@ -19,6 +20,7 @@ import java.util.ResourceBundle;
 public class DashboardView implements Initializable {
     public LineChart burnDownChart;
     public LineChart budgetChart;
+    public BarChart riskChart;
 
     Project project;
 
@@ -38,6 +40,11 @@ public class DashboardView implements Initializable {
         budgetChart.getData().add(GraphBuilder.budgetForecast(userStories,project));
         budgetChart.setLegendSide(Side.TOP);
         budgetChart.setCreateSymbols(false);
+
+        ObservableList<Risk> risks = ProjectController.getRisk();
+        riskChart.getData().add(GraphBuilder.riskChart(risks,project));
+
+        riskChart.setLegendSide(Side.BOTTOM);
 
     }
 }

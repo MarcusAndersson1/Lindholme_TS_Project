@@ -163,7 +163,6 @@ public class IO{
                         u.setPoints(point);
                         u.overRideHours(hours);
             }
-
         } catch (IOException e) {
             System.out.println("Error while reading.");
             e.printStackTrace();// Its printing like a error message

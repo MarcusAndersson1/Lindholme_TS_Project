@@ -107,43 +107,16 @@ public class GraphBuilder {
         data.setName("Burn Down Forecast");
         return data;
     }
-
-    public static StackedBarChart<Number, String> ganttChart(Project p) {
-        CategoryAxis yAxis = new CategoryAxis();
-        ArrayList<Activity> activities = p.getActivities();
-
-        yAxis.setCategories(FXCollections.observableArrayList(Arrays.asList
-                ("Africa", "America", "Asia", "Europe", "Oceania")));
-        NumberAxis xAxis = new NumberAxis();
-        xAxis.setLabel("Dates");
-
-        StackedBarChart<Number, String> stackedBarChart = new StackedBarChart<Number, String>(xAxis, yAxis);
-        stackedBarChart.setTitle("Gantt");
-        XYChart.Series<Number, String> series1 = new XYChart.Series<>();
-        series1.getData().add(new XYChart.Data<Number, String>());
-        XYChart.Series<Number, String> series2 = new XYChart.Series<>();
-        series2.getData().add(new XYChart.Data<Number, String>());
-
-       /* for (Activity a : activities) {
-            DateHandler.getBusinessDaysBetween(a.getStartDate(),a.getMilestone().getMilestoneDate());
-            series1.getData().add(new XYChart.Data<Number, String>( DateHandler.getBusinessDaysBetween(a.getStartDate(),a.getMilestone().getMilestoneDate()).size(), a.getName()));
+    public static XYChart.Series<String, Number> riskChart(ObservableList<Risk> risks, Project p) {
+        XYChart.Series<String, Number> data = new XYChart.Series<>();
+        data.setName("Risk Chart");
+        for(Risk r: risks){
+            data.getData().add(new XYChart.Data<String, Number>
+                    (r.getName(), r.getCost()));
         }
-
-
-
-
-        for (Activity a: activities) {
-            series2.getData().add(new XYChart.Data<Number, String>(DateHandler.getBusinessDaysBetween(p.getCreatedDate(),a.getStartDate()).size(), a.getName()));
-        }
-
-        list.add(series1);
-        list.add(series2);
-
-        */
-        stackedBarChart.getData().addAll(series1,series2);
-
-
-        return stackedBarChart;
+        return data;
     }
+
+
 
 }
