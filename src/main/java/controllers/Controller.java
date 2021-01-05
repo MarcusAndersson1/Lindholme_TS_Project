@@ -5,6 +5,7 @@ import menus.*;
 import objects.User;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Controller {
     static User currentUser;
@@ -72,9 +73,7 @@ public class Controller {
     }
 
     public static String getLockedOutTime(User user){
-        String remainingTime = "The user account has been locked. "  +
-                "Remaining Time: " + (user.getTimeOut().getMinute() - LocalDateTime.now().getMinute()) + " minutes";
-        return remainingTime;
+        return "The user account has been locked until " + user.getTimeOut().format(DateTimeFormatter.ofPattern("H:mm:ss"));
     }
 }
 

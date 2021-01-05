@@ -34,8 +34,8 @@ public class LogInView {
 
 
             }catch (Exception e){
-                errorMessage.setText(Print.ERROR_INPUT);
-                System.out.println(Print.ERROR_INPUT);
+                errorMessage.setText("User does not exist");
+                System.out.println("User does not exist");
             }
     }
 }
