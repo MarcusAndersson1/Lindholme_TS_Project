@@ -35,13 +35,18 @@ public class InboxView implements Initializable {
 
     public void openMessage(ActionEvent actionEvent){
         Message message = messageListView.getSelectionModel().getSelectedItem();
-        text.setText(message.getMessage());
-        if(message.getSenderID() != Controller.getCurrentUser().getID()){
-            UserController.getUser(Controller.getCurrentUser().getID()).getMessage(message.getMessageID()).setRead(true);
+        if(message != null){
+            text.setText(message.getMessage());
+            if(message.getSenderID() != Controller.getCurrentUser().getID()){
+                UserController.getUser(Controller.getCurrentUser().getID()).getMessage(message.getMessageID()).setRead(true);
+            }
+            messageList = FXCollections.observableArrayList(UserController.getUser(Controller.getCurrentUser().getID()).getMessages());
+            messageListView.setItems(messageList);
+            UserController.saveUserMap();
+        }else{
+            errorMessage.setText(Print.SELECT_A_MESSAGE);
+            System.out.println(Print.SELECT_A_MESSAGE);
         }
-        messageList = FXCollections.observableArrayList(UserController.getUser(Controller.getCurrentUser().getID()).getMessages());
-        messageListView.setItems(messageList);
-        UserController.saveUserMap();
     }
     public void newMessage(ActionEvent actionEvent){
         new ChangeScene().changeScene(actionEvent,"Create-Message.Page.fxml");
@@ -60,13 +65,17 @@ public class InboxView implements Initializable {
 
     public void replyMessage(ActionEvent actionEvent){
         Message message = messageListView.getSelectionModel().getSelectedItem();
-        MessageController.replyMessage(message, replyText.getText(), message.getSenderID());
-        text.setText(UserController.getUser(message.getSenderID()).getMessage(message.getMessageID()).getMessage());
-        replyText.clear();
-        messageList = FXCollections.observableArrayList(UserController.getUser(Controller.getCurrentUser().getID()).getMessages());
-        messageListView.setItems(messageList);
-        UserController.saveUserMap();
-
+        if(message != null){
+            MessageController.replyMessage(message, replyText.getText(), message.getSenderID());
+            text.setText(UserController.getUser(message.getSenderID()).getMessage(message.getMessageID()).getMessage());
+            replyText.clear();
+            messageList = FXCollections.observableArrayList(UserController.getUser(Controller.getCurrentUser().getID()).getMessages());
+            messageListView.setItems(messageList);
+            UserController.saveUserMap();
+        }else{
+            errorMessage.setText(Print.SELECT_A_MESSAGE);
+            System.out.println(Print.SELECT_A_MESSAGE);
+        }
     }
 
     public void backToMainMenu (ActionEvent actionEvent) {
