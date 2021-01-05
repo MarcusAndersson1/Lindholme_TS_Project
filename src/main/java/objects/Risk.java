@@ -39,7 +39,7 @@ public class Risk extends ProjectPlanning {
     }
 
     public double getCost() {
-        cost = (severity * occurrence * impact )/100;
+        cost = (severity * occurrence * impact );
         return this.cost;
     }
 
@@ -49,6 +49,6 @@ public class Risk extends ProjectPlanning {
 
     @Override
     public String toString() {
-        return "Risk: "+ name + " Cost Of Risk " + getCost();
+        return getName() + " Cost Of Risk " + getCost();
     }
 }

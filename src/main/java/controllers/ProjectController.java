@@ -83,8 +83,6 @@ public class ProjectController {
         }catch(Exception e){
             e.printStackTrace();
         }
-        defaultMilestones();
-        defaultActivities();
         return currentProject;
     }
     public static void removeProject(Project p){
@@ -223,14 +221,10 @@ public class ProjectController {
         }
     }
     public static boolean defaultActivities(){
-        createActivity(currentProject.getMilestones().get(1), "Project Scoping", "3" );
-        createActivity(currentProject.getMilestones().get(1), "Team Creation", "2" );
-        createActivity(currentProject.getMilestones().get(2), "Execution", "15" );
-        createActivity(currentProject.getMilestones().get(3), "Project Finalization", "7" );
         return true;
     }
-    public static Activity createActivity(Milestone m, String name, String timeInDays ){
-        Activity a = new Activity(name, timeInDays, m );
+    public static Activity createActivity(String name, int duration, Milestone m){
+        Activity a = new Activity(name, duration, m );
         addActivity(a);
         return a;
     }
