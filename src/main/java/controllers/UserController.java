@@ -58,18 +58,6 @@ public class UserController {
         printUserStorage();
     }
 
-
-    public static void openUser(){
-        printUserStorage();
-        Controller.runUserController();
-    }
-
-
-    public static void saveUser(){
-        Controller.runUserController();
-    }
-
-
     public static void saveUserMap(){
         IO.saveUsers(userStorage);
     }
@@ -132,7 +120,6 @@ public class UserController {
         } while (isValidPassword(password));
         return password;
     }
-
 
     public static boolean isValidPassword(String password) {
         String regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,20}$";

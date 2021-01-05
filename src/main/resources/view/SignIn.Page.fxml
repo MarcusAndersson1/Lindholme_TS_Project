@@ -12,7 +12,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="700.0" stylesheets="@Stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LogInView">
    <children>
-      <TextField fx:id="usernameField" layoutX="215.0" layoutY="212.0" prefHeight="27.0" prefWidth="265.0" promptText="Username" />
+      <TextField fx:id="usernameField" layoutX="215.0" layoutY="212.0" prefHeight="27.0" prefWidth="265.0" promptText="User ID" />
       <PasswordField fx:id="passwordField" layoutX="215.0" layoutY="257.0" prefHeight="27.0" prefWidth="265.0" promptText="Password" />
       <Button fx:id="signInButton" defaultButton="true" layoutX="545.0" layoutY="410.0" mnemonicParsing="false" onAction="#signIn" prefHeight="20.0" prefWidth="100.0" text="Sign In">
          <font>
@@ -27,7 +27,7 @@
       </Button>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="274.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@LTSCP%20logo.png" />
+            <Image url="@LTSCP logo.png" />
          </image>
       </ImageView>
       <Label fx:id="errorMessage" layoutX="215.0" layoutY="187.0" textFill="#e40101" />

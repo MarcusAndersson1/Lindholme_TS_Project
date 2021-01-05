@@ -1,9 +1,7 @@
 package objects;
 
-import controllers.UserController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -95,8 +93,8 @@ public abstract class User implements Serializable{
         this.timeOut = timeOut;
     }
 
-    public void timeOut30Minutes() {
-        this.timeOut = LocalDateTime.now().plusMinutes(1);
+    public void timeOutInMinutes() {
+        this.timeOut = LocalDateTime.now().plusMinutes(10);
     }
 
     public LocalDateTime getTimeOut() {

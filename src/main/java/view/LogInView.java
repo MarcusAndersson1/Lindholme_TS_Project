@@ -23,14 +23,22 @@ public class LogInView {
 
     public void signIn(ActionEvent event){
             try{
-                int id = Integer.parseInt(usernameField.getText());
-                if(!Controller.checkUserID(id)){errorMessage.setText("Sign In Failed");
 
-                }else {
-                    Controller.loginSuccessful(UserController.getUser(id));
+                int userID = Integer.parseInt(usernameField.getText());
+                String password = passwordField.getText();
+                UserController.saveUserMap();
+                if(Controller.checkUserID(userID) && Controller.checkPassword(userID, password)){
+                    Controller.loginSuccessful(UserController.getUser(userID));
                     new ChangeScene().changeScene(event, "MainMenu.Page.fxml");
+                }else if(Controller.timeOutChecker(userID)) {
+                    errorMessage.setText("Sign In Failed: " +  Controller.getAttemptsLeft(UserController.getUser(userID)));
+                    } else{
+                  errorMessage.setText(Controller.getLockedOutTime(UserController.getUser(userID)));
                 }
+
+
             }catch (Exception e){
+                errorMessage.setText(Print.ERROR_INPUT);
                 System.out.println(Print.ERROR_INPUT);
             }
     }
