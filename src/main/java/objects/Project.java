@@ -112,7 +112,7 @@ public class Project implements Serializable {
     public int daysLeft(){
         List<LocalDate> workingDays= new ArrayList<>();
         try{
-         workingDays =  DateHandler.getBusinessDaysBetween(getCreatedDate(),getEndDate());
+         workingDays =  DateHandler.getBusinessDaysBetween(LocalDate.now(),getEndDate());
         }catch(Exception e){
 
         }

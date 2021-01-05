@@ -44,7 +44,7 @@ public class GraphBuilder {
             days = DateHandler.getBusinessDaysBetween(p.getCreatedDate(), p.getEndDate());
         } catch (Exception e) {
         }
-        int b = budget / days.size();
+        double b = (double) budget / (double) days.size();
         // days.sort(LocalDate::compareTo);
         int budgetUsed = 0;
         for (LocalDate l : days) {
@@ -92,17 +92,24 @@ public class GraphBuilder {
         XYChart.Series<String, Number> data = new XYChart.Series<>();
         int storyPointsLeft = 0;
         ArrayList<LocalDate> days = new ArrayList<>();
+        try {
             days = DateHandler.getBusinessDaysBetween(p.getCreatedDate(), p.getEndDate());
+        } catch (Exception e) {
+
+        }
         for (UserStory u : userStories) {
             storyPointsLeft += u.getPoints();
         }
-        int burnDown = storyPointsLeft / days.size();
+        double burnDown = (double) storyPointsLeft / (double) days.size();
 
-        // days.sort(LocalDate::compareTo);
         for (LocalDate l : days) {
+            if(storyPointsLeft <=0 ){
+                storyPointsLeft = 0;
+            }
             data.getData().add(new XYChart.Data<String, Number>
                     (l.format(DateHandler.format()), storyPointsLeft));
             storyPointsLeft -= burnDown;
+
         }
         data.setName("Burn Down Forecast");
         return data;

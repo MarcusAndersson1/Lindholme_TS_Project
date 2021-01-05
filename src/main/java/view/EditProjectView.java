@@ -6,11 +6,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
+import objects.Milestone;
 import objects.Project;
 import utilities.IO;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class EditProjectView implements Initializable {
@@ -24,8 +27,13 @@ public class EditProjectView implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         project = ProjectController.getCurrentProject();
         projectName.setText(project.getName());
-        projectInformationView.getItems().addAll(project.daysLeft() + ": Days left",project.getName(),
-        project.getTeamList(), project.getProjectDescription(), project.getBudget(), project.getMilestones(), project.getActivities());
+        projectInformationView.getItems().addAll(project.daysLeft() + ": Days left",project.getName(),project.getMilestones(),
+        project.getTeamList(), project.getProjectDescription(), project.getBudget());
+        try {
+            IO.saveProject(project);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void back(ActionEvent actionEvent) {
@@ -66,5 +74,6 @@ public class EditProjectView implements Initializable {
 
     public void loadBacklog(ActionEvent actionEvent) {
         IO.importObject();
+        IO.importRisk();
     }
 }

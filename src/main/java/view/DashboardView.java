@@ -43,8 +43,8 @@ public class DashboardView implements Initializable {
 
         ObservableList<Risk> risks = ProjectController.getRisk();
         riskChart.getData().add(GraphBuilder.riskChart(risks,project));
+        riskChart.setLegendSide(Side.LEFT);
 
-        riskChart.setLegendSide(Side.BOTTOM);
 
     }
 }
