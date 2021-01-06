@@ -1,6 +1,5 @@
 package Objects.Project;
 
-import Utilities.DateHandler;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -11,10 +10,9 @@ public class Activity implements Serializable {
     private Milestone m;
     private LocalDate startDate;
 
-    public Activity(String name, int duration, Milestone m) {
+    public Activity(String name, int duration) {
         this.name = name;
         this.duration = duration;
-        this.m = m;
     }
 
     public String getName() {
@@ -38,12 +36,19 @@ public class Activity implements Serializable {
         this.name = name;
     }
 
+    public void setM(Milestone m) {
+        this.m = m;
+    }
+
     public void setDuration(int duration) {
         this.duration = duration;
     }
 
     @Override
     public String toString() {
-        return getName() + " " + getStartDate().format(DateHandler.format());
+        if(getMilestone() == null){
+            return getName() + " Connect to milestone to get start date";
+        }
+        return getName() + " " + getStartDate();
     }
 }

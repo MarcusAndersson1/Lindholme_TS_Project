@@ -1,17 +1,18 @@
 package Utilities;
 
-import Controllers.ProjectController;
-import Controllers.TeamController;
-import Objects.Project.Project;
-import Objects.Project.Risk;
-import Objects.Project.UserStory;
-import Objects.Team.Team;
-import Objects.User.User;
-
 import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import Controllers.ProjectController;
+import Controllers.TeamController;
+import Utilities.DateHandler;
+import javafx.collections.ObservableList;
+import Objects.Project.*;
+import Objects.Team.Team;
+import Objects.User.User;
+
 
 public class IO {
 
@@ -23,8 +24,8 @@ public class IO {
     public static final String TEAM_LOCATION = ("src/main/java/Files/Teams/TeamREPLACE_WITH_ID.txt");
     public static final String TEAM_FOLDER = ("src/main/java/Files/Teams");
     public static final File TEAM_ID = new File("src/main/java/Files/TeamID.txt");
-    private static final String IMPORT_OBJECTS = "src/main/java/Files/userStories.txt";
-    private static final String IMPORT_RISK ="src/main/java/Files/risk.txt";
+    // private static final String IMPORT_OBJECTS = "src/main/java/Files/userStories.txt";
+    // private static final String IMPORT_RISK ="src/main/java/Files/risk.txt";
 
     public static void saveUsers(HashMap<Integer, User> users) {
         try {
@@ -160,7 +161,7 @@ public class IO {
 
     public static void importObject() {
         try {
-            BufferedReader myReader = new BufferedReader(new FileReader(IMPORT_OBJECTS));
+            BufferedReader myReader = new BufferedReader(new FileReader("src/main/java/Files/" + ProjectController.getCurrentProject().getName() + "/userStory.txt"));
             String data = "";
             while ((data = myReader.readLine()) != null) {
                 String[] objects = data.split("[;]");
@@ -184,7 +185,7 @@ public class IO {
 
     public static void importRisk() {
         try {
-            BufferedReader myReader = new BufferedReader(new FileReader(IMPORT_RISK));
+            BufferedReader myReader = new BufferedReader(new FileReader("src/main/java/Files/" + ProjectController.getCurrentProject().getName() + "/risks.txt"));
             String data = "";
             while ((data = myReader.readLine()) != null) {
                 String[] objects = data.split("[;]");
@@ -200,6 +201,99 @@ public class IO {
         } catch (IOException e) {
             System.out.println("Error while reading.");
             e.printStackTrace();// Its printing like a error message
+        }
+    }
+
+    public static void importActivity() {
+        try {
+            BufferedReader myReader = new BufferedReader(new FileReader("src/main/java/Files/"+ ProjectController.getCurrentProject().getName() + "/activities.txt"));
+            String data = "";
+            while ((data = myReader.readLine()) != null) {
+                String[] objects = data.split("[;]");
+                String name = objects[0];
+                int duration = Integer.parseInt(objects[1]);
+                Activity a = ProjectController.createActivity(name,duration);
+            }
+        } catch (IOException e) {
+            System.out.println("Error while reading.");
+            e.printStackTrace();// Its printing like a error message
+        }
+    }
+    public static void importMilestone() {
+        try {
+            BufferedReader myReader = new BufferedReader(new FileReader("src/main/java/Files/"+ ProjectController.getCurrentProject().getName() + "/milestones.txt"));
+            String data = "";
+            while ((data = myReader.readLine()) != null) {
+                String[] objects = data.split("[;]");
+                String name = objects[0];
+                String deadLine = objects[1];
+                Milestone m = ProjectController.createMilestone(name,LocalDate.parse(deadLine, DateHandler.format()));
+            }
+        } catch (IOException e) {
+            System.out.println("Error while reading.");
+            e.printStackTrace();// Its printing like a error message
+        }
+    }
+
+    public static void writeProject (Project p){
+
+        String directoryName = "src/main/java/Files/" + p.getName();
+        File directory = new File(directoryName);
+        if (! directory.exists()){
+            directory.mkdir();
+        }
+        ArrayList<Risk> risks =  p.getRisks();
+        ArrayList<Activity> activities = p.getActivities();
+        ArrayList<Milestone> milestones =  p.getMilestones();
+        ObservableList<UserStory> userStories = p.getUserStories();
+
+        BufferedWriter writer;
+        try {
+            int count = 0;
+            writer = new BufferedWriter(new FileWriter(directoryName + "/risks.txt", true));
+            writer.flush();
+            for (Risk r : risks) {
+                if (count != 0) {
+                    writer.newLine();
+                }
+                writer.write(r.getName() + ";" + r.getSeverity() + ";" + r.getOccurrence() + ";" + r.getImpact());
+                count ++;
+            }
+            count = 0;
+            writer = new BufferedWriter(new FileWriter(directoryName + "/activities.txt", true));
+            writer.flush();
+            for (Activity a : activities) {
+                if (count != 0) {
+                    writer.newLine();
+                }
+                writer.write(a.getName() + ";" + a.getDuration());
+                count++;
+            }
+
+            count = 0;
+            writer = new BufferedWriter(new FileWriter(directoryName + "/milestones.txt", true));
+            writer.flush();
+            for (Milestone m : milestones) {
+                if (count != 0) {
+                    writer.newLine();
+                }
+                writer.write(m.getName() + ";" + m.getMilestoneDate().format(DateHandler.format()));
+                count ++;
+            }
+            count = 0;
+            writer = new BufferedWriter(new FileWriter(directoryName + "/userStory.txt", false));
+            writer.flush();
+            for (UserStory u : userStories) {
+                if (count != 0) {
+                    writer.newLine();
+                }
+                writer.write(u.getDescription() + ";" + u.getCreatedDate().format(DateHandler.format()) + ";" + u.getDoneDate().format(DateHandler.format()) + ";" + u.getPoints() + ";" + u.getHours());
+                count++;
+            }
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Error while writing");
+            e.printStackTrace();
         }
     }
 }

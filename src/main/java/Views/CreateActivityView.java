@@ -15,10 +15,8 @@ import java.util.ResourceBundle;
 
 public class CreateActivityView implements Initializable {
 
-    public ListView<Milestone> mileStones;
     public Spinner<Integer> duration;
     public TextField activityName;
-    ObservableList<Milestone> milestoneList;
 
     public void back(ActionEvent actionEvent) {
         new ChangeScene().changeScene(actionEvent, "ProjectDetailsView.fxml");
@@ -27,19 +25,14 @@ public class CreateActivityView implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        milestoneList = ProjectController.getMilestones();
-        mileStones.getItems().addAll(milestoneList);
 
     }
 
     public void createActivity(ActionEvent actionEvent) {
         if(!duration.getValue().toString().equals("")
-                && !activityName.getText().equals("")
-                && mileStones.getSelectionModel().getSelectedItem() != null){
-
+                && !activityName.getText().equals("")){
             Activity a = ProjectController.createActivity(activityName.getText(),
-                                                        Integer.parseInt(duration.getValue().toString()),
-                                                        mileStones.getSelectionModel().getSelectedItem());
+                    Integer.parseInt(duration.getValue().toString()));
 
             activityName.clear();
         }

@@ -38,6 +38,10 @@ public class Risk extends ProjectPlanning {
         this.impact = impact;
     }
 
+    public int getImpact() {
+        return impact;
+    }
+
     public double getCost() {
         cost = (severity * occurrence * impact );
         return this.cost;

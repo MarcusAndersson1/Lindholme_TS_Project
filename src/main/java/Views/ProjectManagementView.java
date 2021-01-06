@@ -19,6 +19,7 @@ public class ProjectManagementView implements Initializable {
     ObservableList<Risk> risksList;
     public ListView<Activity> activities;
     ObservableList<Activity> activityList;
+    public static Activity a;
 
     public void newMilestone(ActionEvent actionEvent) {
         new ChangeScene().changeScene(actionEvent, "CreateMilestonePage.fxml");
@@ -54,5 +55,20 @@ public class ProjectManagementView implements Initializable {
         mileStones.getItems().addAll(milestoneList);
         risksList = ProjectController.getRisk();
         risks.getItems().addAll(risksList);
+    }
+
+    public void editItem(ActionEvent actionEvent) {
+        if(mileStones.getSelectionModel().getSelectedItem() != null) {
+
+        }
+        if(activities.getSelectionModel().getSelectedItem() != null) {
+            a = activities.getSelectionModel().getSelectedItem();
+
+            new ChangeScene().changeScene(actionEvent, "EditActiviyPage.fxml");
+        }
+        if(risks.getSelectionModel().getSelectedItem() != null) {
+
+
+        }
     }
 }

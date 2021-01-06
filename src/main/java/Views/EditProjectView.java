@@ -24,7 +24,7 @@ public class EditProjectView implements Initializable {
         project = ProjectController.getCurrentProject();
         projectName.setText(project.getName());
         projectInformationView.getItems().addAll(project.daysLeft() + ": Days left",project.getName(),project.getMilestones(),
-        project.getTeamList(), project.getProjectDescription(), project.getBudget());
+                project.getTeamList(), project.getProjectDescription(), project.getBudget());
         try {
             IO.saveProject(project);
         } catch (IOException e) {
@@ -71,5 +71,11 @@ public class EditProjectView implements Initializable {
     public void loadBacklog(ActionEvent actionEvent) {
         IO.importObject();
         IO.importRisk();
+        IO.importActivity();
+        IO.importMilestone();
+    }
+
+    public void saveToFile(ActionEvent actionEvent) {
+        IO.writeProject(ProjectController.getCurrentProject());
     }
 }

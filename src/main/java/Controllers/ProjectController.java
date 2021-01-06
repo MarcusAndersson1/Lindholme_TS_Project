@@ -221,8 +221,8 @@ public class ProjectController {
     public static boolean defaultActivities(){
         return true;
     }
-    public static Activity createActivity(String name, int duration, Milestone m){
-        Activity a = new Activity(name, duration, m );
+    public static Activity createActivity(String name, int duration){
+        Activity a = new Activity(name, duration);
         addActivity(a);
         return a;
     }
