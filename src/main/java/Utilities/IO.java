@@ -59,7 +59,7 @@ public class IO {
                 ProjectController.addProject(loadedProject);
                 ois.close();
             } catch (Exception e) {
-                System.out.println("uh oh error in loadAllTeams");
+                System.out.println("uh oh error in load Projects");
             }
         }
         return projects;
