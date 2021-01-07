@@ -24,17 +24,17 @@
             <Font size="10.0" />
          </font>
       </Button>
-      <Button layoutX="20.0" layoutY="248.0" mnemonicParsing="false" onAction="#openInboxView" prefHeight="20.0" prefWidth="100.0" text="Inbox">
+      <Button layoutX="20.0" layoutY="240.0" mnemonicParsing="false" onAction="#openInboxView" prefHeight="20.0" prefWidth="100.0" text="Inbox">
          <font>
             <Font size="10.0" />
          </font>
       </Button>
-      <Button layoutX="20.0" layoutY="390.0" mnemonicParsing="false" onAction="#signOut" prefHeight="20.0" prefWidth="100.0" text="Sign Out">
+      <Button layoutX="20.0" layoutY="405.0" mnemonicParsing="false" onAction="#signOut" prefHeight="20.0" prefWidth="100.0" text="Sign Out">
          <font>
             <Font size="10.0" />
          </font>
       </Button>
-      <ScrollPane layoutX="140.0" layoutY="150.0" prefHeight="285.0" prefWidth="545.0">
+      <ScrollPane layoutX="140.0" layoutY="150.0" prefHeight="276.0" prefWidth="545.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="700.0" prefWidth="527.0" />
         </content>

@@ -38,6 +38,5 @@
       </font>
    </Text>
    <Text layoutX="140.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose Project:" />
-   <ListView fx:id="projectListView" layoutX="156.0" layoutY="171.0" prefHeight="238.0" prefWidth="470.0" />
+   <ListView fx:id="projectListView" layoutX="135.0" layoutY="151.0" prefHeight="269.0" prefWidth="520.0" />
 </Pane>
-
