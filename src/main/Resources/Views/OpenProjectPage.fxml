@@ -39,7 +39,7 @@
             <Font size="10.0" />
          </font>
       </Button>
-      <Text fx:id="projectName" layoutX="14.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Project Name" wrappingWidth="142.0">
+      <Text fx:id="projectName" layoutX="14.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Project Name" wrappingWidth="538.0">
          <font>
             <Font size="20.0" />
          </font>
