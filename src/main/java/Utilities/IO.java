@@ -234,9 +234,24 @@ public class IO {
             e.printStackTrace();// Its printing like a error message
         }
     }
+    public static void importProjectData() {
+        Project p = ProjectController.getCurrentProject();
+        try {
+            BufferedReader myReader = new BufferedReader(new FileReader("src/main/java/Files/"+ ProjectController.getCurrentProject().getName() + "/projectInformation.txt"));
+            String data = "";
+            while ((data = myReader.readLine()) != null) {
+                String[] objects = data.split("[;]");
+                p.setCreatedDate(LocalDate.parse(objects[0],DateHandler.format()));
+                p.setEndDate(LocalDate.parse(objects[1],DateHandler.format()));
+                p.setBudget(Integer.parseInt(objects[2]));
+            }
+        } catch (IOException e) {
+            System.out.println("Error while reading.");
+            e.printStackTrace();// Its printing like a error message
+        }
+    }
 
     public static void writeProject (Project p){
-
         String directoryName = "src/main/java/Files/" + p.getName();
         File directory = new File(directoryName);
         if (! directory.exists()){
@@ -290,6 +305,13 @@ public class IO {
                 writer.write(u.getDescription() + ";" + u.getCreatedDate().format(DateHandler.format()) + ";" + u.getDoneDate().format(DateHandler.format()) + ";" + u.getPoints() + ";" + u.getHours());
                 count++;
             }
+
+            count = 0;
+            writer = new BufferedWriter(new FileWriter(directoryName + "/projectInformation.txt", true));
+            writer.flush();
+                writer.write(p.getCreatedDate().format(DateHandler.format())+ ";" + p.getEndDate().format(DateHandler.format())+ ";" +
+                        p.getBudget());
+                count ++;
             writer.close();
         } catch (IOException e) {
             System.out.println("Error while writing");
