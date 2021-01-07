@@ -73,6 +73,7 @@ public class EditProjectView implements Initializable {
         IO.importRisk();
         IO.importActivity();
         IO.importMilestone();
+        IO.importProjectData();
     }
 
     public void saveToFile(ActionEvent actionEvent) {
