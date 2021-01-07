@@ -51,8 +51,8 @@ public class CreateUserView {
                         noUserTypeSelected();
                     }
                 }else{
-                    errorMessage.setText("Passwords must be between 8-20 characters and contain at least \na uppercase character, a lowercase character and a digit");
-                    System.out.println("Passwords must be between 8-20 characters and contain at least a uppercase character, a lowercase character and a digit");
+                    errorMessage.setText(Print.INVALID_PASSWORD);
+                    System.out.println(Print.INVALID_PASSWORD);
                 }
 
             }else{

@@ -1,10 +1,11 @@
 package Utilities;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import Controllers.ProjectController;
 import Controllers.TeamController;
 import Utilities.DateHandler;
@@ -15,8 +16,6 @@ import Objects.User.User;
 
 
 public class IO {
-
-    //public static final File PROJECT_DATA= new File("Files/ProjectData.txt");
     public static final File USER_DATA = new File("src/main/java/Files/UserData.txt");
     public static final String PROJECT_LOCATION = ("src/main/java/Files/Projects/ProjectREPLACE_WITH_ID.txt");
     public static final String PROJECT_FOLDER = ("src/main/java/Files/Projects");
@@ -24,8 +23,6 @@ public class IO {
     public static final String TEAM_LOCATION = ("src/main/java/Files/Teams/TeamREPLACE_WITH_ID.txt");
     public static final String TEAM_FOLDER = ("src/main/java/Files/Teams");
     public static final File TEAM_ID = new File("src/main/java/Files/TeamID.txt");
-    // private static final String IMPORT_OBJECTS = "src/main/java/Files/userStories.txt";
-    // private static final String IMPORT_RISK ="src/main/java/Files/risk.txt";
 
     public static void saveUsers(HashMap<Integer, User> users) {
         try {
@@ -36,6 +33,7 @@ public class IO {
             e.printStackTrace();
         }
     }
+
 
     public static HashMap<Integer, User> readUsers() {
         HashMap<Integer, User> users = null;
@@ -133,11 +131,14 @@ public class IO {
         }
     }
 
-    public static void saveTeam(Team team) throws IOException {
-        File saveTeamFile = new File(TEAM_LOCATION.replace("REPLACE_WITH_ID", "1"));
-        saveTeamFile.createNewFile();
-        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(saveTeamFile));
-        oos.writeObject(team);
+
+    public static void removeTeamFile(Team team){
+        String textFileName = "Team" + team.getTeamID() + ".txt";
+        try{
+            Files.deleteIfExists(Path.of("src/main/java/Files/Teams/" + textFileName));
+        }catch(Exception IO){
+            System.out.println(IO);
+        }
     }
 
     public static Team loadTeam(int teamID) throws Exception {

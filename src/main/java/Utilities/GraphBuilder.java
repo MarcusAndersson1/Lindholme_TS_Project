@@ -20,12 +20,10 @@ public class GraphBuilder {
         } catch (Exception e) {
 
         }
-        // days.sort(LocalDate::compareTo);
         for (LocalDate l : days) {
             int budgetUsed = 0;
             for (UserStory u : userStories) {
                 if (u.getState() == UserStoryState.DONE && l.isAfter(u.getDoneDate())) {
-                    //Just nu blir det inget för vi sätter inga timmar
                     budgetUsed += u.getHours();
                 }
             }

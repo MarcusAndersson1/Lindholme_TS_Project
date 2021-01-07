@@ -76,7 +76,7 @@ public class CreateTeamView implements Initializable {
 
         if(!teamMembers.isEmpty()&&!teamName.isBlank()&&teamID!=-1) {
             TeamController.createTeam(teamName, teamMembers);
-            System.out.println("team created bru ah");
+            System.out.println("Team created");
             try{
             IO.saveCurrentTeam();
             }

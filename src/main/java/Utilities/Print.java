@@ -20,19 +20,10 @@ public class Print {
     public static final String A_USERTYPE_MUST_BE_CHOSEN = ("A user type must be chosen");
     public static final String SELECT_A_USER = ("Select a user");
     public static final String USER_DOES_NOT_EXIST = ("User does not exist") + EOL;
-    public static final String ENTER_PASSWORD = ("Enter Password") + EOL;
-    public static final String VALID_PASSWORD = ("Valid Password") + EOL;
-    public static final String INVALID_PASSWORD = ("Invalid Password: \n" +
-            "Password must contain at least one lower case letter, one upper case letter, one digit, " +
-            "and contain at least 8 characters and at most 20 characters. \n" +
-            "No white spaces allowed. \n") + EOL;
-
-
-    public static final String ENTER_USER_NAME = ("Enter User Name: ");
-    public static final String ENTER_ROLE = ("Enter Role: ");
+    public static final String INVALID_PASSWORD = ("Passwords must be between 8-20 characters and contain at least \na uppercase character, a lowercase character and a digit") + EOL;
     //team related
+    public static final String SELECT_A_TEAM = ("Select a team");
 
-    public static final String ENTER_TEAM_NAME = ("Enter Team Name: ");
 
     public static void print(String stringToPrint) {
         System.out.print(stringToPrint);
