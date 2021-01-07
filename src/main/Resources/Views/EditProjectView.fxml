@@ -24,15 +24,15 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <TextField fx:id="projectName" layoutX="120.0" layoutY="65.0" prefHeight="21.0" prefWidth="450.0" promptText="Project Name">
+      <TextField fx:id="projectName" layoutX="120.0" layoutY="121.0" prefHeight="21.0" prefWidth="450.0" promptText="Project Name">
          <font>
             <Font size="10.0" />
          </font>
       </TextField>
       <Text layoutX="35.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Project ID" />
-      <DatePicker fx:id="datePickerStartDate" layoutX="119.0" layoutY="107.0" promptText="Start Date" />
-      <TextField fx:id="projectDescription" alignment="TOP_LEFT" layoutX="119.0" layoutY="158.0" prefHeight="34.0" prefWidth="443.0" promptText="Project Descriptio" />
-      <DatePicker fx:id="datePickerEndDate" layoutX="323.0" layoutY="107.0" promptText="End Date" />
-      <TextField fx:id="projectBudget" alignment="TOP_LEFT" layoutX="119.0" layoutY="208.0" prefHeight="34.0" prefWidth="443.0" promptText="Project Budget" />
+      <DatePicker fx:id="datePickerStartDate" layoutX="119.0" layoutY="163.0" prefHeight="29.0" prefWidth="220.0" promptText="Start Date" />
+      <TextField fx:id="projectDescription" alignment="TOP_LEFT" layoutX="119.0" layoutY="214.0" prefHeight="34.0" prefWidth="450.0" promptText="Project Descriptio" />
+      <DatePicker fx:id="datePickerEndDate" layoutX="350.0" layoutY="163.0" prefHeight="29.0" prefWidth="220.0" promptText="End Date" />
+      <TextField fx:id="projectBudget" alignment="TOP_LEFT" layoutX="119.0" layoutY="264.0" prefHeight="34.0" prefWidth="450.0" promptText="Project Budget" />
    </children>
 </Pane>

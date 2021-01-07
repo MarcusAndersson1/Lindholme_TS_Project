@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import Objects.Project.Project;
 import Objects.Project.UserStory;
@@ -21,6 +22,8 @@ public class ScrumBoardView implements Initializable {
     public ListView<UserStory> toDo;
     public ListView<UserStory> doing;
     public ListView<UserStory> closed;
+    public Button MoveLeftArrow;
+    public Button MoveRightArrow;
 
     ObservableList<UserStory> storyList;
     ArrayList<ListView<UserStory>> a = new ArrayList<>();
@@ -32,6 +35,8 @@ public class ScrumBoardView implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        MoveLeftArrow.setStyle("-fx-font: 36 arial;");
+        MoveRightArrow.setStyle("-fx-font: 36 arial;");
 
         //storyList = FXCollections.observableArrayList(project.getUserStories());
         //storyListView.setItems(storyList);
