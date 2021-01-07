@@ -31,7 +31,7 @@
          </image>
       </ImageView>
       <Label fx:id="errorMessage" layoutX="215.0" layoutY="187.0" textFill="#e40101" />
-      <Button fx:id="createAccount" defaultButton="true" layoutX="436.0" layoutY="410.0" mnemonicParsing="false" onAction="#newUserView" prefHeight="20.0" prefWidth="100.0" text="Create Account">
+      <Button fx:id="createAccount" layoutX="436.0" layoutY="410.0" mnemonicParsing="false" onAction="#newUserView" prefHeight="20.0" prefWidth="100.0" text="Create Account">
          <font>
             <Font size="10.0" />
          </font>

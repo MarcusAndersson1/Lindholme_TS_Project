@@ -39,12 +39,12 @@
          </font>
       </Text>
       <Text layoutX="140.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-      <Text layoutX="350.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Milestones" />
-      <Text layoutX="149.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Activities" />
-      <ListView fx:id="mileStones" layoutX="350.0" layoutY="146.0" prefHeight="280.0" prefWidth="189.0" />
-      <ListView fx:id="activities" layoutX="149.0" layoutY="146.0" prefHeight="280.0" prefWidth="189.0" />
-      <ListView fx:id="risks" layoutX="549.0" layoutY="146.0" prefHeight="280.0" prefWidth="134.0" />
-      <Text layoutX="549.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Risks" />
+      <Text layoutX="144.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Milestones" />
+      <Text layoutX="146.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Activities" />
+      <ListView fx:id="mileStones" layoutX="144.0" layoutY="190.0" prefHeight="105.0" prefWidth="534.0" />
+      <ListView fx:id="activities" layoutX="144.0" layoutY="61.0" prefHeight="105.0" prefWidth="534.0" />
+      <ListView fx:id="risks" layoutX="142.0" layoutY="318.0" prefHeight="105.0" prefWidth="534.0" />
+      <Text layoutX="142.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Risks" />
       <Button fx:id="edit" layoutX="20.0" layoutY="264.0" mnemonicParsing="false" onAction="#editItem" prefHeight="20.0" prefWidth="100.0" text="Edit">
          <font>
             <Font size="10.0" />
