@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import Controllers.ProjectController;
 import Controllers.TeamController;
-import Utilities.DateHandler;
 import javafx.collections.ObservableList;
 import Objects.Project.*;
 import Objects.Team.Team;
@@ -29,7 +28,7 @@ public class IO {
             ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(USER_DATA));
             oos.writeObject(users);
         } catch (Exception e) {
-            System.out.println("Save users error");
+            System.out.println("saveUsers error");
             e.printStackTrace();
         }
     }
@@ -41,7 +40,7 @@ public class IO {
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(USER_DATA));
             users = (HashMap<Integer, User>) ois.readObject();
         } catch (Exception e) {
-            System.out.println("readUsers error xD");
+            System.out.println("readUsers error");
         }
         return users;
     }
@@ -57,31 +56,31 @@ public class IO {
                 ProjectController.addProject(loadedProject);
                 ois.close();
             } catch (Exception e) {
-                System.out.println("uh oh error in load Projects");
+                System.out.println("loadAllProjects error");
             }
         }
         return projects;
     }
 
     public static void saveProject(Project project) throws IOException {
-        File saveProjectFile = new File(PROJECT_LOCATION.replace("REPLACE_WITH_ID", Integer.toString(project.getID())));
+        File saveProjectFile = new File(PROJECT_LOCATION.replace(Print.REPLACE_WITH_ID, Integer.toString(project.getID())));
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(saveProjectFile));
         oos.writeObject(project);
     }
 
     public static void saveCurrentProject() {
         Project project = ProjectController.getCurrentProject();
-        File saveProjectFile = new File(PROJECT_LOCATION.replace("REPLACE_WITH_ID", Integer.toString(project.getID())));
+        File saveProjectFile = new File(PROJECT_LOCATION.replace(Print.REPLACE_WITH_ID, Integer.toString(project.getID())));
         try {
             ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(saveProjectFile));
             oos.writeObject(project);
         } catch (Exception e) {
-            System.out.println("SaveCurrentProject Error xD");
+            System.out.println("SaveCurrentProject error");
         }
     }
 
     public static Project loadProject(int projectID) throws Exception {
-        File loadProjectFile = new File(PROJECT_LOCATION.replace("REPLACE_WITH_ID", Integer.toString(projectID)));
+        File loadProjectFile = new File(PROJECT_LOCATION.replace(Print.REPLACE_WITH_ID, Integer.toString(projectID)));
         ObjectInputStream ois = new ObjectInputStream(new FileInputStream(loadProjectFile));
         Project loadedProject = (Project) ois.readObject();
         return loadedProject;
@@ -110,7 +109,7 @@ public class IO {
 
     public static void saveCurrentTeam() throws IOException {
         Team t = TeamController.getTeam();
-        File saveTeamFile = new File(TEAM_LOCATION.replace("REPLACE_WITH_ID", Integer.toString(t.getTeamID())));
+        File saveTeamFile = new File(TEAM_LOCATION.replace(Print.REPLACE_WITH_ID, Integer.toString(t.getTeamID())));
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(saveTeamFile));
         oos.writeObject(t);
     }
@@ -126,7 +125,7 @@ public class IO {
                 TeamController.addTeam(loadedTeam);
                 ois.close();
             } catch (Exception e) {
-                System.out.println("uh oh error in loadAllTeams");
+                System.out.println("loadAllTeams error");
             }
         }
     }
@@ -142,7 +141,7 @@ public class IO {
     }
 
     public static Team loadTeam(int teamID) throws Exception {
-        File loadTeamFile = new File(TEAM_LOCATION.replace("REPLACE_WITH_ID", Integer.toString(teamID)));
+        File loadTeamFile = new File(TEAM_LOCATION.replace(Print.REPLACE_WITH_ID, Integer.toString(teamID)));
         ObjectInputStream ois = new ObjectInputStream(new FileInputStream(loadTeamFile));
         Team loadedTeam = (Team) ois.readObject();
         return loadedTeam;
@@ -178,10 +177,10 @@ public class IO {
                 u.overRideHours(hours);
             }
         } catch (IOException e) {
-            System.out.println("Error while reading.");
-            e.printStackTrace();// Its printing like a error message
+            System.out.println("Error while reading importObjects.");
+            e.printStackTrace();
         }
-        System.out.println("User stories loaded succesfully");
+        System.out.println("User stories loaded successfully");
     }
 
     public static void importRisk() {
@@ -200,8 +199,8 @@ public class IO {
                 r.setImpact(impact);
             }
         } catch (IOException e) {
-            System.out.println("Error while reading.");
-            e.printStackTrace();// Its printing like a error message
+            System.out.println("Error while reading importRisk.");
+            e.printStackTrace();// Its printing like an error message
         }
     }
 
@@ -216,8 +215,8 @@ public class IO {
                 Activity a = ProjectController.createActivity(name,duration);
             }
         } catch (IOException e) {
-            System.out.println("Error while reading.");
-            e.printStackTrace();// Its printing like a error message
+            System.out.println("Error while reading importActivity.");
+            e.printStackTrace();
         }
     }
     public static void importMilestone() {
@@ -231,8 +230,8 @@ public class IO {
                 Milestone m = ProjectController.createMilestone(name,LocalDate.parse(deadLine, DateHandler.format()));
             }
         } catch (IOException e) {
-            System.out.println("Error while reading.");
-            e.printStackTrace();// Its printing like a error message
+            System.out.println("Error while reading importMilestone.");
+            e.printStackTrace();
         }
     }
     public static void importProjectData() {
@@ -247,7 +246,7 @@ public class IO {
                 p.setBudget(Integer.parseInt(objects[2]));
             }
         } catch (IOException e) {
-            System.out.println("Error while reading.");
+            System.out.println("Error while reading importProjectDate.");
             e.printStackTrace();// Its printing like a error message
         }
     }
@@ -315,7 +314,7 @@ public class IO {
                 count ++;
             writer.close();
         } catch (IOException e) {
-            System.out.println("Error while writing");
+            System.out.println("Error while writing Project");
             e.printStackTrace();
         }
     }

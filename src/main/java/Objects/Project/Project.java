@@ -34,8 +34,6 @@ public class Project implements Serializable {
         this.id = teamID;
         this.createdDate = startDate;
         this.endDate = endDate;
-
-        //this.projectPlanning = new objects.Project.ProjectPlanning();
     }
 
     public ObservableList<UserStory> getUserStories() {
@@ -137,7 +135,7 @@ public class Project implements Serializable {
 
     @Override
     public String toString() {
-        return  " id: " + id +"  Project name: " + name + " Created date: " + getCreatedDate() + " " + daysLeft() +" days to complete.";
+        return  " ID: " + id +"  Project name: " + name + " Created date: " + getCreatedDate() + " " + daysLeft() +" days to complete.";
     }
 }
 

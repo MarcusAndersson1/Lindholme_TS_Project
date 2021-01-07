@@ -30,9 +30,7 @@ public class AddTeamView implements Initializable {
        teamListView.setItems(teamList);
         try {
             ID = IO.loadTeamID();
-
         }catch(Exception e){
-            // System.out.println("hello");
         }
     }
 

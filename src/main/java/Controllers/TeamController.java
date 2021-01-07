@@ -38,7 +38,7 @@ public class TeamController {
         return team;
     }
 
-    public static void createTeam(String name, ArrayList<User> teamMembers) { //this is used by the GUI
+    public static void createTeam(String name, ArrayList<User> teamMembers) {
         teamID = IO.loadTeamID();
         String currentDateTime = DateHandler.getCurrentDate();
         teamID++;
@@ -59,7 +59,7 @@ public class TeamController {
 
 
     public static void deleteTeam(Team team) {
-        System.out.println("Team: " + team.getTeamID() + " has been deleted");
+        System.out.println(team.getTeamID() + Print.HAS_BEEN_DELETED);
         teamStorage.remove(team.getTeamID());
         try {
             IO.removeTeamFile(team);

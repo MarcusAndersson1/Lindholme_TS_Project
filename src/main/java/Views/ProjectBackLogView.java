@@ -88,7 +88,6 @@ public class ProjectBackLogView implements Initializable {
         UserStory u = backlogListView.getSelectionModel().getSelectedItem();
         ProjectController.removeUserStory(p, u);
         backlogListView.getItems().remove(u);
-        // backlogListView.getItems().clear();
     }
 
 }

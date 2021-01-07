@@ -33,14 +33,14 @@ public class CreateUserView {
 
     public void createUser (ActionEvent actionEvent){
             if(name.getText().isEmpty() || name.getText().isBlank()){
-                errorMessage.setText("Name cannot be empty or blank");
-                System.out.println("Name cannot be empty or blank");
+                errorMessage.setText("Name" + Print.NOT_EMPTY_OR_BLANK);
+                System.out.println("Name" + Print.NOT_EMPTY_OR_BLANK);
             }else if(password.getText().isEmpty() || password.getText().isBlank()){
-                errorMessage.setText("Password cannot be empty or blank");
-                System.out.println("Password cannot be empty or blank");
+                errorMessage.setText("Password" + Print.NOT_EMPTY_OR_BLANK);
+                System.out.println("Password" + Print.NOT_EMPTY_OR_BLANK);
             }else if(confirmPassword.getText().isEmpty() || confirmPassword.getText().isBlank()){
-                errorMessage.setText("Confirm Password cannot be empty or blank");
-                System.out.println("Confirm Password cannot be empty or blank");
+                errorMessage.setText("Confirm Password" + Print.NOT_EMPTY_OR_BLANK);
+                System.out.println("Confirm Password" + Print.NOT_EMPTY_OR_BLANK);
             }else if(password.getText().equals(confirmPassword.getText())){
                 if(UserController.isValidPassword(password.getText())){
                     if (userType != null ){
@@ -56,8 +56,8 @@ public class CreateUserView {
                 }
 
             }else{
-                errorMessage.setText("Passwords does not match");
-                System.out.println("Passwords does not match");
+                errorMessage.setText(Print.PASSWORD_NOT_MATCH);
+                System.out.println(Print.PASSWORD_NOT_MATCH);
             }
     }
 

@@ -2,6 +2,7 @@ package Views;
 
 import Controllers.Controller;
 import Controllers.UserController;
+import Utilities.Print;
 import javafx.scene.control.*;
 
 
@@ -26,15 +27,15 @@ public class LogInView {
                     Controller.loginSuccessful(UserController.getUser(userID));
                     new ChangeScene().changeScene(event, "MainMenu.Page.fxml");
                 }else if(Controller.timeOutChecker(userID)) {
-                    errorMessage.setText("Sign In Failed: " +  Controller.getAttemptsLeft(UserController.getUser(userID)));
+                    errorMessage.setText(Print.SIGN_IN_FAILED +  Controller.getAttemptsLeft(UserController.getUser(userID)));
                     } else{
                   errorMessage.setText(Controller.getLockedOutTime(UserController.getUser(userID)));
                 }
 
 
             }catch (Exception e){
-                errorMessage.setText("User does not exist");
-                System.out.println("User does not exist");
+                errorMessage.setText(Print.USER_NOT_EXIST);
+                System.out.println(Print.USER_NOT_EXIST);
             }
     }
     public void newUserView(ActionEvent actionEvent) {
