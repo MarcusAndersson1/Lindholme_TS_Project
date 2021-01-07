@@ -18,8 +18,7 @@ import java.util.ResourceBundle;
 
 public class UsersView implements Initializable {
     public Label errorMessage;
-     ObservableList<User> userList; //ska dessa variablar vara privata?
-    @FXML
+    private ObservableList<User> userList;
     public ListView<User> userListView;
 
     @Override
