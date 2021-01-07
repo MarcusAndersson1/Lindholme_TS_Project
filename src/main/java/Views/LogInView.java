@@ -14,7 +14,7 @@ public class LogInView {
     public Label errorMessage;
     public Button quitButton;
     public CheckBox rememberMe;
-
+    public Button createAccount;
 
     public void signIn(ActionEvent event){
             try{
@@ -36,5 +36,8 @@ public class LogInView {
                 errorMessage.setText("User does not exist");
                 System.out.println("User does not exist");
             }
+    }
+    public void newUserView(ActionEvent actionEvent) {
+        new ChangeScene().changeScene(actionEvent,"Create-User-Login.Page.fxml");
     }
 }

@@ -24,7 +24,6 @@ public class UsersView implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("vi kom hit");
         userList = FXCollections.observableArrayList(UserController.getUsers());
         userListView.setItems(userList);
     }
