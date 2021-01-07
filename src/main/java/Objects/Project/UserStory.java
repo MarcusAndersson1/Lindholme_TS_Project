@@ -131,7 +131,7 @@ public class UserStory implements Serializable {
     @Override
     public String toString() {
         return description + " Story Points: " + points +
-                " id: " + getId() +
+                " ID: " + getId() +
                 " state: " + getState();
     }
 }

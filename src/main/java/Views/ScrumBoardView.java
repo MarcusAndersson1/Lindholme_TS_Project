@@ -37,10 +37,6 @@ public class ScrumBoardView implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         MoveLeftArrow.setStyle("-fx-font: 36 arial;");
         MoveRightArrow.setStyle("-fx-font: 36 arial;");
-
-        //storyList = FXCollections.observableArrayList(project.getUserStories());
-        //storyListView.setItems(storyList);
-
         p = ProjectController.getCurrentProject();
         storyList = FXCollections.observableList(ProjectController.getBacklog(p));
 
@@ -91,8 +87,6 @@ public class ScrumBoardView implements Initializable {
     }
 
     public void moveLeft(ActionEvent actionEvent) {
-        // u = null;
-
         for (ListView<UserStory> l : a) {
             UserStory u = l.getSelectionModel().getSelectedItem();
             l.getSelectionModel().select(null);

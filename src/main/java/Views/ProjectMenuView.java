@@ -41,7 +41,6 @@ public class ProjectMenuView implements Initializable  {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("vi kom hit");
         projectList = FXCollections.observableArrayList(ProjectController.getProjects());
         projectListView.setItems(projectList);
     }

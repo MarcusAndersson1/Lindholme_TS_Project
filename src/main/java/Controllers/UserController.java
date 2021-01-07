@@ -22,9 +22,7 @@ public class UserController {
     private static HashMap<Integer, User> userStorage = new HashMap<>();
 
     public static void addTestUser() {
-        userStorage.put(1, new Manager("stefan", 1, "hallå", "Password123"));
-        userStorage.put(2, new Manager("olof", 2, "hallå", "Password123"));
-        userStorage.put(3, new Manager("per", 3, "hallå", "Password123"));
+  //      userStorage.put(1, new Manager("Default Manager", 1, "08/01/2021 - 00:00", "Password123"));
     }
 
 
@@ -35,22 +33,17 @@ public class UserController {
 
     public static void createUser(String name, String password, String userType) {
         String currentDateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy - H:mm"));
-       // password = setUserPassword();
-
             User user;
             userID = getMaxKey() + 1;
             if(userType.equals("Manager")){
                 user = new Manager(name, userID, currentDateTime, password);
                 userStorage.put(userID, user);
-                System.out.println("Manager created");
            }else if(userType.equals("Developer")){
                 user = new Developer(name, userID, currentDateTime, password);
                 userStorage.put(userID, user);
-                System.out.println("Developer created");
            }else if(userType.equals("Stakeholder")){
                 user = new Stakeholder(name, userID, currentDateTime, password);
                 userStorage.put(userID, user);
-                System.out.println("Stakeholder created");
             }
         saveUserMap();
         printUserStorage();
@@ -70,7 +63,7 @@ public class UserController {
 
 
     public static void deleteUser(User user) {
-            System.out.println(getUser(user.getID()) + " has been deleted");
+            System.out.println(getUser(user.getID()) + Print.HAS_BEEN_DELETED);
             userStorage.remove(user.getID());
             saveUserMap();
     }

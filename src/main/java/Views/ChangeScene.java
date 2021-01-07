@@ -1,5 +1,6 @@
 package Views;
 
+import Utilities.Print;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -11,16 +12,12 @@ public class ChangeScene {
     public void changeScene(ActionEvent event, String nextScenePath){
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         try {
-            Parent nextScenee = FXMLLoader.load(getClass().getResource(nextScenePath));
-            Scene nextScene = new Scene(nextScenee);
+            Parent parent = FXMLLoader.load(getClass().getResource(nextScenePath));
+            Scene nextScene = new Scene(parent);
             window.setScene(nextScene);
         } catch (Exception e){
-            System.out.println(" File path not found ");
+            System.out.println(Print.FILE_PATH_NOT_FOUND);
         }
-
-
-        //getting stage information below
-
         window.show();
 
     }

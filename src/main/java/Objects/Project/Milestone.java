@@ -1,5 +1,7 @@
 package Objects.Project;
 
+import Utilities.Print;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -29,6 +31,6 @@ public class Milestone implements Serializable {
 
     @Override
     public String toString() {
-        return getName() +" Dead Line " + milestoneDate;
+        return getName() + "" + Print.DEAD_LINE + milestoneDate;
     }
 }

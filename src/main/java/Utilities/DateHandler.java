@@ -18,7 +18,6 @@ public class DateHandler {
 
         List<LocalDate> allDays = new ArrayList<>();
         ArrayList<LocalDate> businessDays = new ArrayList<>();
-        //long daysBetween = ChronoUnit.DAYS.between(mStartDate, mEndDate); if we want regular days
         while (!mStartDate.isAfter(mEndDate)) {
             allDays.add(mStartDate);
             mStartDate = mStartDate.plusDays(1);

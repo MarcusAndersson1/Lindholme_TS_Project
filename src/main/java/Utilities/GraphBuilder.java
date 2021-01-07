@@ -65,12 +65,10 @@ public class GraphBuilder {
         } catch (Exception e) {
 
         }
-        // days.sort(LocalDate::compareTo);
         for (LocalDate l : days) {
             storyPointsLeft = 0;
             for (UserStory u : userStories) {
 
-                //    System.out.println(l + " " + u.getCreatedDate() +" "+ u.getDoneDate());
                 if (l.isAfter(u.getCreatedDate())) {
                     storyPointsLeft += u.getPoints();
                 }
@@ -121,7 +119,4 @@ public class GraphBuilder {
         }
         return data;
     }
-
-
-
 }
