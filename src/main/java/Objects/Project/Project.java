@@ -26,6 +26,17 @@ public class Project implements Serializable {
     private ArrayList<Milestone> milestones= new ArrayList<Milestone>();
     private ArrayList<Risk> risks = new ArrayList<Risk>();
     private int budget;
+    private boolean loadArchive = true;
+
+    public boolean getLoadArchive() {
+        return loadArchive;
+    }
+
+    public void setLoadArchive(boolean loadArchive) {
+        this.loadArchive = loadArchive;
+    }
+
+
 
 
 

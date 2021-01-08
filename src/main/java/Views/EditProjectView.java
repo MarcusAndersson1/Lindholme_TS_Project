@@ -24,6 +24,7 @@ public class EditProjectView implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        loadFronfile.setVisible(ProjectController.getCurrentProject().getLoadArchive());
         projectName.setText(project.getName());
         projectInformationView.getItems().addAll(project.daysLeft() + ": Days left",project.getName(),project.getMilestones().toString(),
                 project.getTeamList().toString(), project.getProjectDescription());
@@ -71,6 +72,8 @@ public class EditProjectView implements Initializable {
     }
 
     public void loadBacklog(ActionEvent actionEvent) {
+
+        ProjectController.getCurrentProject().setLoadArchive(false);
         ProjectController.getCurrentProject().getUserStories().clear();
         ProjectController.getCurrentProject().getActivities().clear();
         ProjectController.getCurrentProject().getMilestones().clear();
@@ -80,7 +83,8 @@ public class EditProjectView implements Initializable {
         IO.importActivity();
         IO.importMilestone();
         IO.importProjectData();
-        loadFronfile.setVisible(false);
+        loadFronfile.setVisible(ProjectController.getCurrentProject().getLoadArchive());
+
     }
     public void saveToFile(ActionEvent actionEvent) {
         IO.writeProject();

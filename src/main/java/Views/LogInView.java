@@ -14,7 +14,7 @@ public class LogInView {
     public TextField usernameField;
     public Label errorMessage;
     public Button quitButton;
-    public CheckBox rememberMe;
+
     public Button createAccount;
 
     public void signIn(ActionEvent event){

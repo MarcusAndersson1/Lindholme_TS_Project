@@ -36,7 +36,7 @@ public class TeamHomePage implements Initializable {
         System.out.println(currentTeam.backlog);
         teamName.setText(currentTeam.getName());
         backLogList = FXCollections.observableArrayList(currentTeam.getBacklog());
-        teamList = FXCollections.observableArrayList(currentTeam.memberList);
+        teamList = FXCollections.observableArrayList(TeamController.getTeam().getMemberList());
         backlogListView.setItems(backLogList);
         teamListView.setItems(teamList);
     }

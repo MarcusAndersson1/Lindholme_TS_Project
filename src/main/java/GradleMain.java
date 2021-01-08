@@ -16,6 +16,7 @@ public class GradleMain extends Application {
         UserController.loadUsers();
         UserController.addTestUser();
         IO.loadAllProjects();
+        IO.loadAllTeams();
         launch(args);
     }
 

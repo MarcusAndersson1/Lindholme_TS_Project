@@ -72,10 +72,12 @@ public class CreateTeamView implements Initializable {
 
 
     public void createTeam(ActionEvent actionEvent) {
-        ArrayList<User> teamMembers= new ArrayList<>(userInTeamList);
+        ArrayList<User> teamMembers= new ArrayList<>();
         String teamName = teamNameField.getText();
 
-        if(!teamMembers.isEmpty()&&!teamName.isBlank()&&teamID!=-1) {
+        for(User user: userInTeamList){
+            teamMembers.add(user);
+        }
             TeamController.createTeam(teamName, teamMembers);
             System.out.println(Print.TEAM_CREATED);
             try{
@@ -84,7 +86,7 @@ public class CreateTeamView implements Initializable {
             catch (Exception e){
                 e.printStackTrace();
             }
-        }
+
         backButton(actionEvent);
     }
 }

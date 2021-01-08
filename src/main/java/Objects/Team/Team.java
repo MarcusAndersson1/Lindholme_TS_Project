@@ -12,7 +12,7 @@ public class Team implements Serializable {
     private String teamName;
     private int teamID;
     private String createdDate;
-    public static ArrayList<User> memberList = new ArrayList<>();
+    public ArrayList<User> memberList = new ArrayList<>();
     public ArrayList<UserStory> backlog = new ArrayList<>();
 
 
@@ -37,6 +37,10 @@ public class Team implements Serializable {
     }
 
 
+
+    public ArrayList<User> getMemberList() {
+        return this.memberList;
+    }
     public String getName() {
         return teamName;
     }
@@ -54,6 +58,6 @@ public class Team implements Serializable {
 
     @Override
     public String toString() {
-        return "ID: "+ getTeamID()+" Team: " + teamName + "Team members :" + memberList.toString();
+        return "ID: "+ getTeamID()+" Team: " + teamName + "Team members :" + this.memberList.toString();
     }
 }
