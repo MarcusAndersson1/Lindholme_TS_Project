@@ -260,7 +260,7 @@ public class IO {
         BufferedWriter writer;
         try {
             int count = 0;
-            writer = new BufferedWriter(new FileWriter(directoryName + "/risks.txt", false));
+            writer = new BufferedWriter(new FileWriter(directoryName + "/risks.txt", true));
             writer.flush();
             for (Risk r : risks) {
                 if (count != 0) {
@@ -270,7 +270,7 @@ public class IO {
                 count ++;
             }
             count = 0;
-            writer = new BufferedWriter(new FileWriter(directoryName + "/activities.txt", false));
+            writer = new BufferedWriter(new FileWriter(directoryName + "/activities.txt", true));
             writer.flush();
             for (Activity a : activities) {
                 if (count != 0) {
@@ -281,7 +281,7 @@ public class IO {
             }
 
             count = 0;
-            writer = new BufferedWriter(new FileWriter(directoryName + "/milestones.txt", false));
+            writer = new BufferedWriter(new FileWriter(directoryName + "/milestones.txt", true));
             writer.flush();
             for (Milestone m : milestones) {
                 if (count != 0) {
@@ -291,7 +291,7 @@ public class IO {
                 count ++;
             }
             count = 0;
-            writer = new BufferedWriter(new FileWriter(directoryName + "/userStory.txt", false));
+            writer = new BufferedWriter(new FileWriter(directoryName + "/userStory.txt", true));
             writer.flush();
             for (UserStory u : userStories) {
                 if (count != 0) {
