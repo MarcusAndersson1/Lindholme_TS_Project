@@ -1,8 +1,7 @@
 package Objects.Project;
 
-import Objects.Project.ProjectPlanning.ProjectPlanning;
 
-public class Risk extends ProjectPlanning {
+public class Risk {
     private String name;
     private int ID;
     private int severity;
