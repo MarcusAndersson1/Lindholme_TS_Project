@@ -30,11 +30,10 @@ public class ProjectBackLogView implements Initializable {
 
     ObservableList<UserStory> backlogList;
     Project p;
-    int storyPoint;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         p = ProjectController.getCurrentProject();
-        backlogList = FXCollections.observableList(ProjectController.getBacklog(p));
+        backlogList = FXCollections.observableList(ProjectController.getCurrentProject().getUserStories());
         backlogListView.setItems(backlogList);
     }
     public void back(ActionEvent actionEvent) {

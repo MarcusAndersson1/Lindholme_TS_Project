@@ -80,13 +80,6 @@ public class IO {
         }
     }
 
-    public static Project loadProject(int projectID) throws Exception {
-        File loadProjectFile = new File(PROJECT_LOCATION.replace(Print.REPLACE_WITH_ID, Integer.toString(projectID)));
-        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(loadProjectFile));
-        Project loadedProject = (Project) ois.readObject();
-        return loadedProject;
-    }
-
     public static int loadProjectID() {
         int loadedID;
         try {
@@ -97,7 +90,14 @@ public class IO {
         }
         return loadedID;
     }
-
+    public static void removeProjectFile(Project project){
+        String projectFileName = "Project" + project.getID() + ".txt";
+        try{
+            Files.deleteIfExists(Path.of("src/main/java/Files/Projects/" + projectFileName));
+        }catch(Exception IO){
+            System.out.println(IO);
+        }
+    }
     public static void saveProjectID(int projectID) throws IOException {
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(PROJECT_ID));
         oos.writeObject(projectID);
@@ -139,13 +139,6 @@ public class IO {
         }catch(Exception IO){
             System.out.println(IO);
         }
-    }
-
-    public static Team loadTeam(int teamID) throws Exception {
-        File loadTeamFile = new File(TEAM_LOCATION.replace(Print.REPLACE_WITH_ID, Integer.toString(teamID)));
-        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(loadTeamFile));
-        Team loadedTeam = (Team) ois.readObject();
-        return loadedTeam;
     }
 
     public static int loadTeamID() {
