@@ -11,6 +11,7 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 import Objects.Project.Activity;
 import Objects.Project.Milestone;
+import javafx.scene.text.Text;
 
 
 import java.net.URL;
@@ -19,6 +20,7 @@ import java.util.ResourceBundle;
 public class EditActivityView implements Initializable {
     public ListView<Milestone> mileStone;
     public TextField activityName;
+    public Text title;
     ObservableList<Milestone> milestoneList;
     public Spinner<Integer> duration;
     Activity a = ProjectManagementView.a;
@@ -44,5 +46,6 @@ public class EditActivityView implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         milestoneList = ProjectController.getMilestones();
         mileStone.getItems().addAll(milestoneList);
+        title.setText(a.getName());
     }
 }
