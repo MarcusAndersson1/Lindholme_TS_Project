@@ -30,7 +30,9 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <ListView fx:id="mileStones" layoutX="361.0" layoutY="152.0" prefHeight="213.0" prefWidth="236.0" />
-      <Spinner fx:id="duration" initialValue="0" layoutX="120.0" layoutY="163.0" max="20" min="1" />
+      <ListView fx:id="mileStones" layoutX="80.0" layoutY="181.0" prefHeight="213.0" prefWidth="530.0" />
+      <Spinner fx:id="duration" initialValue="0" layoutX="80.0" layoutY="124.0" max="20" min="1" prefHeight="29.0" prefWidth="210.0" />
+      <Text layoutX="80.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration:" />
+      <Text layoutX="80.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Activities:" />
    </children>
 </Pane>
