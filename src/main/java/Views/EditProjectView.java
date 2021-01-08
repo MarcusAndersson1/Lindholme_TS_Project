@@ -16,18 +16,17 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class EditProjectView implements Initializable {
-    public ListView projectInformationView;
+    public ListView<String> projectInformationView;
     public Text projectName;
     public Button loadFronfile;
     public Button aProject;
-    Project project;
+    Project project = ProjectController.getCurrentProject();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        project = ProjectController.getCurrentProject();
         projectName.setText(project.getName());
-        projectInformationView.getItems().addAll(project.daysLeft() + ": Days left",project.getName(),project.getMilestones(),
-                project.getTeamList(), project.getProjectDescription(), project.getBudget());
+        projectInformationView.getItems().addAll(project.daysLeft() + ": Days left",project.getName(),project.getMilestones().toString(),
+                project.getTeamList().toString(), project.getProjectDescription());
         try {
             IO.saveProject(project);
         } catch (IOException e) {
@@ -83,9 +82,7 @@ public class EditProjectView implements Initializable {
         IO.importProjectData();
         loadFronfile.setVisible(false);
     }
-
     public void saveToFile(ActionEvent actionEvent) {
-        IO.writeProject(ProjectController.getCurrentProject());
-        aProject.setVisible(false);
+        IO.writeProject();
     }
 }

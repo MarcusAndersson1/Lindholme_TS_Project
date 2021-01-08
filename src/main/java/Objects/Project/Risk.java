@@ -1,7 +1,9 @@
 package Objects.Project;
 
 
-public class Risk {
+import java.io.Serializable;
+
+public class Risk implements Serializable {
     private String name;
     private int ID;
     private int severity;

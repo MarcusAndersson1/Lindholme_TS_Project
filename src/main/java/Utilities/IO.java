@@ -155,7 +155,7 @@ public class IO {
 
     public static void importObject() {
         try {
-            BufferedReader myReader = new BufferedReader(new FileReader("src/main/java/Files/" + ProjectController.getCurrentProject().getName() + "/userStory.txt"));
+            BufferedReader myReader = new BufferedReader(new FileReader("src/main/java/Files/Resent/userStory.txt"));
             String data = "";
             while ((data = myReader.readLine()) != null) {
                 String[] objects = data.split("[;]");
@@ -179,7 +179,7 @@ public class IO {
 
     public static void importRisk() {
         try {
-            BufferedReader myReader = new BufferedReader(new FileReader("src/main/java/Files/" + ProjectController.getCurrentProject().getName() + "/risks.txt"));
+            BufferedReader myReader = new BufferedReader(new FileReader("src/main/java/Files/Resent/risks.txt"));
             String data = "";
             while ((data = myReader.readLine()) != null) {
                 String[] objects = data.split("[;]");
@@ -200,7 +200,7 @@ public class IO {
 
     public static void importActivity() {
         try {
-            BufferedReader myReader = new BufferedReader(new FileReader("src/main/java/Files/"+ ProjectController.getCurrentProject().getName() + "/activities.txt"));
+            BufferedReader myReader = new BufferedReader(new FileReader("src/main/java/Files/Resent/activities.txt"));
             String data = "";
             while ((data = myReader.readLine()) != null) {
                 String[] objects = data.split("[;]");
@@ -215,7 +215,7 @@ public class IO {
     }
     public static void importMilestone() {
         try {
-            BufferedReader myReader = new BufferedReader(new FileReader("src/main/java/Files/"+ ProjectController.getCurrentProject().getName() + "/milestones.txt"));
+            BufferedReader myReader = new BufferedReader(new FileReader("src/main/java/Files/Resent/milestones.txt"));
             String data = "";
             while ((data = myReader.readLine()) != null) {
                 String[] objects = data.split("[;]");
@@ -231,7 +231,7 @@ public class IO {
     public static void importProjectData() {
         Project p = ProjectController.getCurrentProject();
         try {
-            BufferedReader myReader = new BufferedReader(new FileReader("src/main/java/Files/"+ ProjectController.getCurrentProject().getName() + "/projectInformation.txt"));
+            BufferedReader myReader = new BufferedReader(new FileReader("src/main/java/Files/Resent/projectInformation.txt"));
             String data = "";
             while ((data = myReader.readLine()) != null) {
                 String[] objects = data.split("[;]");
@@ -245,8 +245,9 @@ public class IO {
         }
     }
 
-    public static void writeProject (Project p){
-        String directoryName = "src/main/java/Files/" + p.getName();
+    public static void writeProject (){
+        Project p = ProjectController.getCurrentProject();
+        String directoryName = "src/main/java/Files/Resent/" + p.getName();
         File directory = new File(directoryName);
         if (! directory.exists()){
             directory.mkdir();
@@ -259,7 +260,7 @@ public class IO {
         BufferedWriter writer;
         try {
             int count = 0;
-            writer = new BufferedWriter(new FileWriter(directoryName + "/risks.txt", true));
+            writer = new BufferedWriter(new FileWriter(directoryName + "/risks.txt", false));
             writer.flush();
             for (Risk r : risks) {
                 if (count != 0) {
@@ -269,7 +270,7 @@ public class IO {
                 count ++;
             }
             count = 0;
-            writer = new BufferedWriter(new FileWriter(directoryName + "/activities.txt", true));
+            writer = new BufferedWriter(new FileWriter(directoryName + "/activities.txt", false));
             writer.flush();
             for (Activity a : activities) {
                 if (count != 0) {
@@ -280,7 +281,7 @@ public class IO {
             }
 
             count = 0;
-            writer = new BufferedWriter(new FileWriter(directoryName + "/milestones.txt", true));
+            writer = new BufferedWriter(new FileWriter(directoryName + "/milestones.txt", false));
             writer.flush();
             for (Milestone m : milestones) {
                 if (count != 0) {
@@ -290,7 +291,7 @@ public class IO {
                 count ++;
             }
             count = 0;
-            writer = new BufferedWriter(new FileWriter(directoryName + "/userStory.txt", true));
+            writer = new BufferedWriter(new FileWriter(directoryName + "/userStory.txt", false));
             writer.flush();
             for (UserStory u : userStories) {
                 if (count != 0) {
@@ -299,13 +300,11 @@ public class IO {
                 writer.write(u.getDescription() + ";" + u.getCreatedDate().format(DateHandler.format()) + ";" + u.getDoneDate().format(DateHandler.format()) + ";" + u.getPoints() + ";" + u.getHours());
                 count++;
             }
-            System.out.println(p.getUserStories());
-            count = 0;
+
             writer = new BufferedWriter(new FileWriter(directoryName + "/projectInformation.txt", false));
             writer.flush();
                 writer.write(p.getCreatedDate().format(DateHandler.format())+ ";" + p.getEndDate().format(DateHandler.format())+ ";" +
                         p.getBudget());
-                count ++;
             writer.close();
         } catch (IOException e) {
             System.out.println("Error while writing Project");

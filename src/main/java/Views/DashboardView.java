@@ -15,9 +15,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class DashboardView implements Initializable {
-    public LineChart burnDownChart;
-    public LineChart budgetChart;
-    public BarChart riskChart;
+    public LineChart<String , Number> burnDownChart;
+    public LineChart<String, Number> budgetChart;
+    public BarChart<String, Number> riskChart;
 
     Project project;
 
@@ -41,7 +41,5 @@ public class DashboardView implements Initializable {
         ObservableList<Risk> risks = ProjectController.getRisk();
         riskChart.getData().add(GraphBuilder.riskChart(risks,project));
         riskChart.setLegendSide(Side.LEFT);
-
-
     }
 }
