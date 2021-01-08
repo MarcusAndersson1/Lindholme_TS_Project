@@ -27,12 +27,11 @@ public class TeamHomePage implements Initializable {
     ListView<UserStory> backlogListView;
     public ObservableList<UserStory> backLogList;
     Team currentTeam;
-    String back;
+
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("tjafan");
         currentTeam = TeamController.getTeam();
         System.out.println(currentTeam.backlog);
         teamName.setText(currentTeam.getName());

@@ -3,7 +3,6 @@ package Controllers;
 
 import Objects.User.User;
 import Utilities.Print;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -32,7 +31,7 @@ public class Controller {
             }else if(user.getTimeOutInc() < 3) {
                 Print.print(Print.WRONG_PASSWORD);
                 user.incTimeOut();
-                System.out.println(4 - user.getTimeOutInc() + " attempts left. ");
+                System.out.println(4 - user.getTimeOutInc() + Print.ATTEMPTS_LEFT);
                 return false;
             } else{
                 LockOutUser(user);
@@ -55,7 +54,7 @@ public class Controller {
         user.setTimeOut(LocalDateTime.now());
     }
     public static String getAttemptsLeft(User user){
-        return 4 - user.getTimeOutInc() + " attempts left. ";
+        return 4 - user.getTimeOutInc() + Print.ATTEMPTS_LEFT;
 
     }
     public static void logOut() {
@@ -73,7 +72,7 @@ public class Controller {
     }
 
     public static String getLockedOutTime(User user){
-        return "The user account has been locked until " + user.getTimeOut().format(DateTimeFormatter.ofPattern("H:mm:ss"));
+        return Print.THE_ACCOUNT_HAS_BEEN_LOCKED + user.getTimeOut().format(DateTimeFormatter.ofPattern("H:mm:ss"));
     }
 }
 

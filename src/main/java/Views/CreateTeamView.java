@@ -2,6 +2,7 @@ package Views;
 
 import Controllers.TeamController;
 import Controllers.UserController;
+import Utilities.Print;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -39,7 +40,7 @@ public class CreateTeamView implements Initializable {
             teamID = IO.loadTeamID();
         }catch(Exception e){
             teamID = -1;
-            errorMessage.setText("FATAL ERROR WHEN LOADING ID PLEASE CONTACT SUPPORT");
+            errorMessage.setText(Print.ERROR_LOADING_ID);
             createButton.setVisible(false);
         }
         int t = teamID + 1;
@@ -76,7 +77,7 @@ public class CreateTeamView implements Initializable {
 
         if(!teamMembers.isEmpty()&&!teamName.isBlank()&&teamID!=-1) {
             TeamController.createTeam(teamName, teamMembers);
-            System.out.println("team created bru ah");
+            System.out.println(Print.TEAM_CREATED);
             try{
             IO.saveCurrentTeam();
             }

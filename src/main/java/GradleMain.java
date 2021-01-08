@@ -24,9 +24,8 @@ public class GradleMain extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("Views/SignIn.Page.fxml"));
         Image icon = new Image ("/Icons/LTSCP-icon.png");
         primaryStage.getIcons().add(icon);
-        primaryStage.setTitle("Open Minded Cougar (LTSCP)");
+        primaryStage.setTitle("LTSCP");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
-        //new ChangeScene().changeScene(primaryStage,"Create-Team.Page.fxml");
     }
 }

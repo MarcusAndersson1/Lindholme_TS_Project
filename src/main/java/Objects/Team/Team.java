@@ -35,22 +35,7 @@ public class Team implements Serializable {
         this.createdDate = date;
         this.memberList = memberList;
     }
-    public static ArrayList<User> getMemberList() {
-        return memberList;
-    }
 
-    public void addTeamMember(User user){
-        memberList.add(user);
-        System.out.println(user + " added");
-    }
-    public void removeTeamMember(User user){ memberList.remove(user.getID());
-    }
-
-    public void viewTeam(){
-        for(User user : memberList) {
-            System.out.println(user);
-        }
-    }
 
     public String getName() {
         return teamName;

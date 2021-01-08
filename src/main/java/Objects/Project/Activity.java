@@ -1,6 +1,8 @@
 package Objects.Project;
 
 
+import Utilities.Print;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -47,7 +49,7 @@ public class Activity implements Serializable {
     @Override
     public String toString() {
         if(getMilestone() == null){
-            return getName() + " Connect to milestone to get start date";
+            return getName() + Print.CONNECT_TO_MILESTONE_START_DATE;
         }
         return getName() + " " + getStartDate();
     }

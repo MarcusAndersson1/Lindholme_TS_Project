@@ -20,12 +20,10 @@ public class GraphBuilder {
         } catch (Exception e) {
 
         }
-        // days.sort(LocalDate::compareTo);
         for (LocalDate l : days) {
             int budgetUsed = 0;
             for (UserStory u : userStories) {
                 if (u.getState() == UserStoryState.DONE && l.isAfter(u.getDoneDate())) {
-                    //Just nu blir det inget för vi sätter inga timmar
                     budgetUsed += u.getHours();
                 }
             }
@@ -67,12 +65,10 @@ public class GraphBuilder {
         } catch (Exception e) {
 
         }
-        // days.sort(LocalDate::compareTo);
         for (LocalDate l : days) {
             storyPointsLeft = 0;
             for (UserStory u : userStories) {
 
-                //    System.out.println(l + " " + u.getCreatedDate() +" "+ u.getDoneDate());
                 if (l.isAfter(u.getCreatedDate())) {
                     storyPointsLeft += u.getPoints();
                 }
@@ -123,7 +119,4 @@ public class GraphBuilder {
         }
         return data;
     }
-
-
-
 }

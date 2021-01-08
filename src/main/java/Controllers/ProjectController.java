@@ -19,7 +19,7 @@ public class ProjectController {
     private static Project currentProject;
     private static HashMap<Integer, Project> projectStorage = new HashMap<Integer, Project>();
 
-    public ProjectController() { // move the try catch out of the constructor
+    public ProjectController() {
         try {
             this.projectID = IO.loadProjectID();
         } catch (Exception e) {
@@ -93,23 +93,6 @@ public class ProjectController {
     public static void addProject(Project project){
         projectStorage.put(project.getID(),project);
     }
-    public static void saveProjects() {
-        for (Project project : projectStorage.values()) {
-            try {
-                IO.saveProject(project);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public static void saveProject(Project p) { // this method is better but implementations comes later =)
-        try {
-            IO.saveProject(p);
-        } catch (IOException e) {
-            e.printStackTrace(); // fix error handling later
-        }
-    }
 
     public static void saveProjectToExcel() { // this method is better but implementations comes later =)
         
@@ -130,43 +113,6 @@ public class ProjectController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public static void loadProject() {
-        ArrayList<Integer> usersProjects = new ArrayList<>(); // take this list as input for the method instead
-        usersProjects.add(1);
-        for (Integer projectID : usersProjects) {
-            try {
-                Project loadedProject = IO.loadProject(projectID); // perhaps check if file exists
-                projectStorage.put(loadedProject.getID(), loadedProject);
-            } catch (Exception e) { // or check what type of error is received here instead
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public static void deleteProject(String s) {
-        int check;
-        if (projectStorage.isEmpty()) {
-            System.out.println(Print.THE_LIST_IS_EMPTY);
-        } else {
-            do {
-                try {
-                    s = Input.fetchInputString(Print.TYPE_ID);
-                } catch (Exception e) {
-                    check = 1;
-                }
-                check = 0;
-            } while (check == 1);
-
-            if (projectStorage.containsKey(Integer.parseInt(s))) {
-                System.out.println("The project with ID " + s + " has been deleted");
-                projectStorage.remove(Integer.parseInt(s));
-            } else {
-                System.out.println(Print.ERROR_INPUT);
-            }
-        }
-
     }
 
     public static void printProjectStorage() {

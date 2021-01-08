@@ -17,7 +17,7 @@ public class CreateUserViewLogin {
     public Label errorMessage;
 
     public void backToUserView (ActionEvent actionEvent) {
-        new ChangeScene().changeScene(actionEvent,"SignIn.Page.fxml");
+        new ChangeScene().changeScene(actionEvent,"Users.Page.fxml");
     }
 
     public void setUserTypeToManager(){
@@ -33,31 +33,31 @@ public class CreateUserViewLogin {
 
     public void createUser (ActionEvent actionEvent){
         if(name.getText().isEmpty() || name.getText().isBlank()){
-            errorMessage.setText("Name cannot be empty or blank");
-            System.out.println("Name cannot be empty or blank");
+            errorMessage.setText("Name" + Print.NOT_EMPTY_OR_BLANK);
+            System.out.println("Name" + Print.NOT_EMPTY_OR_BLANK);
         }else if(password.getText().isEmpty() || password.getText().isBlank()){
-            errorMessage.setText("Password cannot be empty or blank");
-            System.out.println("Password cannot be empty or blank");
+            errorMessage.setText("Password" + Print.NOT_EMPTY_OR_BLANK);
+            System.out.println("Password" + Print.NOT_EMPTY_OR_BLANK);
         }else if(confirmPassword.getText().isEmpty() || confirmPassword.getText().isBlank()){
-            errorMessage.setText("Confirm Password cannot be empty or blank");
-            System.out.println("Confirm Password cannot be empty or blank");
+            errorMessage.setText("Confirm Password" + Print.NOT_EMPTY_OR_BLANK);
+            System.out.println("Confirm Password" + Print.NOT_EMPTY_OR_BLANK);
         }else if(password.getText().equals(confirmPassword.getText())){
             if(UserController.isValidPassword(password.getText())){
                 if (userType != null ){
                     UserController.createUser(name.getText(), password.getText(),  userType);
-                    new ChangeScene().changeScene(actionEvent,"SignIn.Page.fxml");
+                    new ChangeScene().changeScene(actionEvent,"Users.Page.fxml");
                     userType = null;
                 } else{
                     noUserTypeSelected();
                 }
             }else{
-                errorMessage.setText("Passwords must be between 8-20 characters and contain at least \na uppercase character, a lowercase character and a digit");
-                System.out.println("Passwords must be between 8-20 characters and contain at least a uppercase character, a lowercase character and a digit");
+                errorMessage.setText(Print.INVALID_PASSWORD);
+                System.out.println(Print.INVALID_PASSWORD);
             }
 
         }else{
-            errorMessage.setText("Passwords does not match");
-            System.out.println("Passwords does not match");
+            errorMessage.setText(Print.PASSWORD_NOT_MATCH);
+            System.out.println(Print.PASSWORD_NOT_MATCH);
         }
     }
 
