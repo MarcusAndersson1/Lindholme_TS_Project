@@ -20,17 +20,19 @@
                 <Font size="10.0" />
             </font>
         </Button>
-        <Text fx:id="title" layoutX="18.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Activity" wrappingWidth="252.66664123535156">
+        <Text fx:id="title" layoutX="14.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Activity" wrappingWidth="351.66664123535156">
             <font>
                 <Font size="20.0" />
             </font>
         </Text>
-        <Spinner fx:id="duration" initialValue="0" layoutX="120.0" layoutY="114.0" max="20" min="0" />
-        <Button layoutX="555.0" layoutY="420.0" mnemonicParsing="false" onAction="#editActivity" prefHeight="20.0" prefWidth="100.0" text="Edit">
+        <Spinner fx:id="duration" initialValue="0" layoutX="95.0" layoutY="129.0" max="20" min="0" prefHeight="29.0" prefWidth="210.0" />
+        <Button layoutX="555.0" layoutY="410.0" mnemonicParsing="false" onAction="#editActivity" prefHeight="20.0" prefWidth="100.0" text="Edit">
             <font>
                 <Font size="10.0" />
             </font>
         </Button>
-      <ListView fx:id="mileStone" layoutX="120.0" layoutY="165.0" prefHeight="200.0" prefWidth="200.0" />
+      <ListView fx:id="mileStone" layoutX="95.0" layoutY="184.0" prefHeight="200.0" prefWidth="510.0" />
+      <Text layoutX="95.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration:" wrappingWidth="62.22900390625" />
+      <Text layoutX="95.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Activeties:" />
     </children>
 </Pane>
