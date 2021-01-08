@@ -17,7 +17,7 @@ public class CreateUserViewLogin {
     public Label errorMessage;
 
     public void backToUserView (ActionEvent actionEvent) {
-        new ChangeScene().changeScene(actionEvent,"Users.Page.fxml");
+        new ChangeScene().changeScene(actionEvent,"SignIn.Page.fxml");
     }
 
     public void setUserTypeToManager(){
@@ -45,7 +45,7 @@ public class CreateUserViewLogin {
             if(UserController.isValidPassword(password.getText())){
                 if (userType != null ){
                     UserController.createUser(name.getText(), password.getText(),  userType);
-                    new ChangeScene().changeScene(actionEvent,"Users.Page.fxml");
+                    new ChangeScene().changeScene(actionEvent,"SignIn.Page.fxml");
                     userType = null;
                 } else{
                     noUserTypeSelected();
