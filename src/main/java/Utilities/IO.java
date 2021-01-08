@@ -57,6 +57,7 @@ public class IO {
                 ois.close();
             } catch (Exception e) {
                 System.out.println("loadAllProjects error");
+                e.printStackTrace();
             }
         }
         return projects;
