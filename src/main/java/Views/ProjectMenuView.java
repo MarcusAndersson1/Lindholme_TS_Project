@@ -1,5 +1,6 @@
 package Views;
 
+import Utilities.IO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,9 +26,9 @@ public class ProjectMenuView implements Initializable  {
     public ListView<Project> projectListView;
 
     public void openProject(ActionEvent actionEvent) {
-        Project p = projectListView.getSelectionModel().getSelectedItem();
-        ProjectController.setCurrentProject(p);
-        if(p!=null) {
+        Project project = projectListView.getSelectionModel().getSelectedItem();
+        ProjectController.setCurrentProject(project);
+        if(project!=null) {
             new ChangeScene().changeScene(actionEvent, "OpenProjectPage.fxml");
         }
     }
@@ -47,8 +48,11 @@ public class ProjectMenuView implements Initializable  {
 
 
     public void removeProject(ActionEvent actionEvent) {
-        Project p = projectListView.getSelectionModel().getSelectedItem();
-        ProjectController.removeProject(p);
-        projectList.remove(p);
+        Project project = projectListView.getSelectionModel().getSelectedItem();
+        if(project!=null) {
+            ProjectController.removeProject(project);
+            projectList.remove(project);
+            IO.removeProjectFile(project);
+        }
     }
 }

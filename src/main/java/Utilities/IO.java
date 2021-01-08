@@ -89,7 +89,14 @@ public class IO {
         }
         return loadedID;
     }
-
+    public static void removeProjectFile(Project project){
+        String projectFileName = "Project" + project.getID() + ".txt";
+        try{
+            Files.deleteIfExists(Path.of("src/main/java/Files/Projects/" + projectFileName));
+        }catch(Exception IO){
+            System.out.println(IO);
+        }
+    }
     public static void saveProjectID(int projectID) throws IOException {
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(PROJECT_ID));
         oos.writeObject(projectID);
