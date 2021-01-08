@@ -33,6 +33,6 @@
         </Button>
       <ListView fx:id="mileStone" layoutX="95.0" layoutY="184.0" prefHeight="200.0" prefWidth="510.0" />
       <Text layoutX="95.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration:" wrappingWidth="62.22900390625" />
-      <Text layoutX="95.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Activeties:" />
+      <Text layoutX="95.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Milestones:" />
     </children>
 </Pane>
