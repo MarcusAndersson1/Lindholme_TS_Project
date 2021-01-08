@@ -1,8 +1,11 @@
 package Views;
 
 import Controllers.ProjectController;
+import Objects.Project.UserStory;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
 import Objects.Project.Project;
@@ -15,9 +18,8 @@ import java.util.ResourceBundle;
 public class EditProjectView implements Initializable {
     public ListView projectInformationView;
     public Text projectName;
+    public Button loadFronfile;
     Project project;
-
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -69,11 +71,16 @@ public class EditProjectView implements Initializable {
     }
 
     public void loadBacklog(ActionEvent actionEvent) {
+        ProjectController.getCurrentProject().getUserStories().clear();
+        ProjectController.getCurrentProject().getActivities().clear();
+        ProjectController.getCurrentProject().getMilestones().clear();
+        ProjectController.getCurrentProject().getRisks().clear();
         IO.importObject();
         IO.importRisk();
         IO.importActivity();
         IO.importMilestone();
         IO.importProjectData();
+        loadFronfile.setVisible(false);
     }
 
     public void saveToFile(ActionEvent actionEvent) {
