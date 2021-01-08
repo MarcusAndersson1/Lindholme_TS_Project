@@ -19,6 +19,7 @@ public class EditProjectView implements Initializable {
     public ListView projectInformationView;
     public Text projectName;
     public Button loadFronfile;
+    public Button aProject;
     Project project;
 
     @Override
@@ -85,5 +86,6 @@ public class EditProjectView implements Initializable {
 
     public void saveToFile(ActionEvent actionEvent) {
         IO.writeProject(ProjectController.getCurrentProject());
+        aProject.setVisible(false);
     }
 }

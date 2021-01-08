@@ -296,7 +296,7 @@ public class IO {
                 count ++;
             }
             count = 0;
-            writer = new BufferedWriter(new FileWriter(directoryName + "/userStory.txt", false));
+            writer = new BufferedWriter(new FileWriter(directoryName + "/userStory.txt", true));
             writer.flush();
             for (UserStory u : userStories) {
                 if (count != 0) {
@@ -305,9 +305,9 @@ public class IO {
                 writer.write(u.getDescription() + ";" + u.getCreatedDate().format(DateHandler.format()) + ";" + u.getDoneDate().format(DateHandler.format()) + ";" + u.getPoints() + ";" + u.getHours());
                 count++;
             }
-
+            System.out.println(p.getUserStories());
             count = 0;
-            writer = new BufferedWriter(new FileWriter(directoryName + "/projectInformation.txt", true));
+            writer = new BufferedWriter(new FileWriter(directoryName + "/projectInformation.txt", false));
             writer.flush();
                 writer.write(p.getCreatedDate().format(DateHandler.format())+ ";" + p.getEndDate().format(DateHandler.format())+ ";" +
                         p.getBudget());

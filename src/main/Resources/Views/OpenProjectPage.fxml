@@ -55,7 +55,7 @@
             <Font size="10.0" />
          </font>
       </Button>
-      <Button layoutX="20.0" layoutY="330.0" mnemonicParsing="false" onAction="#saveToFile" prefHeight="20.0" prefWidth="100.0" text="Archive Project">
+      <Button fx:id="aProject" layoutX="20.0" layoutY="330.0" mnemonicParsing="false" onAction="#saveToFile" prefHeight="20.0" prefWidth="100.0" text="Archive Project">
          <font>
             <Font size="10.0" />
          </font>
